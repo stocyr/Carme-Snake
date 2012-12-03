@@ -26,18 +26,12 @@
 /* global variables */
 volatile direction snake_direction;
 
-int snake[SNAKE_BUFFER];
-int head;
-int tail;
-int size;
-
-location food;
-location field_size;
-int level;
-
 
 int main()
 {
+    location food;
+    location field_size;
+    int level;
     
 }
 

@@ -10,7 +10,7 @@
 /*                                                                           */
 /*  Function   : controlls the snake actions                                 */
 /*                                                                           */
-/*  Procedures : step_forward(), step_forward_eat(), check_wall_collision(), */
+/*  Procedures : step_forward(), eat(), check_wall_collision(),              */
 /*               check_snake_collision(), check_food_collision()             */
 /*                                                                           */
 /*  Author     : C. Stoller                                                  */
