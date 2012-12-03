@@ -27,7 +27,7 @@
 /* Enumerations */
 
 // direction
-enum direction {RIGHT, UP, LEFT, DOWN}
+enum direction {RIGHT, UP, LEFT, DOWN};
 
 
 /* Structs */

@@ -21,7 +21,7 @@
 /*  n00bSoft                                                                 */
 /*****************************************************************************/
 
-include main.h
+#include "main.h"
 
 /* global variables */
 volatile direction snake_direction;
