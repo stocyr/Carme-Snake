@@ -28,6 +28,10 @@
 #include main.h
 
 /* prototypes */
-step_forward(), step_forward_eat(), check_wall_collision(), check_snake_collision(), check_food_collision()
+result step_forward();
+void eat(location food);
+int check_wall_collision(location field_size);
+int check_snake_collision();
+int check_food_collision(location food);
 
 #endif

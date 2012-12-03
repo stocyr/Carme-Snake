@@ -29,6 +29,9 @@
 
 
 /* prototypes */
-draw_snake_head(), clear_nake_tail(), draw_field(), draw_food()
+void draw_snake_head(location head);
+void clear_nake_tail(location tail);
+void draw_field();
+void draw_food(location food);
 
 #endif

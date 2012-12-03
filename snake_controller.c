@@ -28,3 +28,9 @@ int snake[SNAKE_BUFFER];
 int head;
 int tail;
 int size;
+
+result step_forward();
+void eat(location food);
+int check_wall_collision(location field_size);
+int check_snake_collision();
+int check_food_collision(location food);

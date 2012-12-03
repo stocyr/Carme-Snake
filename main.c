@@ -33,19 +33,20 @@ int main()
     location field_size;
     int level;
     
+    return 0;
 }
 
-int init_game()
+void init_game(direction init_dir)
 {
     
 }
 
-int randomize_food()
+location randomize_food()
 {
     
 }
 
-int delay()
+void delay(int ms)
 {
     
 }

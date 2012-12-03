@@ -24,3 +24,22 @@
 
 #include main.h
 
+void draw_snake_head(location head)
+{
+    
+}
+
+void clear_nake_tail(location tail)
+{
+    
+}
+
+void draw_field()
+{
+    
+}
+
+void draw_food(location food)
+{
+    
+}
