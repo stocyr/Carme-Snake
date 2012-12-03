@@ -1,13 +1,16 @@
+#ifndef GAME_LOGIC_H
+#define GAME_LOGIC_H
+
 /*****************************************************************************/
 /*  o o o o      Berner Fachhochschule                                       */
 /*        :...o  Technik und Informatik                                      */
 /*****************************************************************************/
-/*  Header     : main.c                                         Version 1.0  */
+/*  Header     : main.h                                         Version 1.0  */
 /*****************************************************************************/
 /*                                                                           */
-/*  Function   : main file for game                                          */
+/*  Function   : Header for main() (main.c)                                  */
 /*                                                                           */
-/*  Procedures : main(), init_game(), randomize_food()                       */
+/*  Procedures : -                                                           */
 /*                                                                           */
 /*  Author     : C. Stoller                                                  */
 /*                                                                           */
@@ -21,16 +24,31 @@
 /*  n00bSoft                                                                 */
 /*****************************************************************************/
 
-include main.h
+/* Enumerations */
+
+// direction
+enum direction {RIGHT, UP, LEFT, DOWN}
+
+
+/* Structs */
+
+// location
+typedef struct {
+	int x;
+	int y;
+} location;
+
 
 /* global variables */
-volatile direction snake_direction;
+extern volatile direction snake_direction;
 
-int snake[SNAKE_BUFFER];
-int head;
-int tail;
-int size;
+extern int snake[SNAKE_BUFFER];
+extern int head;
+extern int tail;
+extern int size;
 
-location food;
-location field_size;
-int level;
+extern location food;
+extern location field_size;
+extern int level;
+
+#endif
