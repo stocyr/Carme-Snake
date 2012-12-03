@@ -1,16 +1,17 @@
-#ifndef GAME_LOGIC_H
-#define GAME_LOGIC_H
+#ifndef GRAPHICS_H
+#define GRAPHICS_H
 
 /*****************************************************************************/
 /*  o o o o      Berner Fachhochschule                                       */
 /*        :...o  Technik und Informatik                                      */
 /*****************************************************************************/
-/*  Header     : main.h                                         Version 1.0  */
+/*  Header     : graphics.c                                     Version 1.0  */
 /*****************************************************************************/
 /*                                                                           */
-/*  Function   : Header for main() (main.c)                                  */
+/*  Function   : graphics functions for snake game                           */
 /*                                                                           */
-/*  Procedures : -                                                           */
+/*  Procedures : draw_snake_head(), clear_nake_tail(), draw_field(),         */
+/*               draw_food()                                                 */
 /*                                                                           */
 /*  Author     : C. Stoller                                                  */
 /*                                                                           */
@@ -18,43 +19,19 @@
 /*                                                                           */
 /*  History    : 03.12.2012  File created                                    */
 /*                                                                           */
-/*  File       : main.h                                                      */
+/*  File       : graphics.h                                                  */
 /*                                                                           */
 /*****************************************************************************/
 /*  n00bSoft                                                                 */
 /*****************************************************************************/
-/* Makkros*/
-#define SNAKE_BUFFER	100		// max. Grösse für Schlange
 
-/* Enumerations */
-
-// direction
-enum direction {RIGHT, UP, LEFT, DOWN};
+#include main.h
 
 
-enum result {NOTHING, FOOD, COLLISION};
-
-
-
-/* Structs */
-
-// location
-typedef struct {
-	int x;
-	int y;
-} location;
-
-
-/* global variables */
-extern volatile enum direction snake_direction;
-
-extern int snake[SNAKE_BUFFER];
-extern int head;
-extern int tail;
-extern int size;
-
-extern location food;
-extern location field_size;
-extern int level;
+/* prototypes */
+void draw_snake_head(location head);
+void clear_nake_tail(location tail);
+void draw_field();
+void draw_food(location food);
 
 #endif

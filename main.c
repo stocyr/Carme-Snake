@@ -7,7 +7,7 @@
 /*                                                                           */
 /*  Function   : main file for game                                          */
 /*                                                                           */
-/*  Procedures : main(), init_game(), randomize_food()                       */
+/*  Procedures : main(), init_game(), randomize_food(), delay()              */
 /*                                                                           */
 /*  Author     : C. Stoller                                                  */
 /*                                                                           */
@@ -15,22 +15,46 @@
 /*                                                                           */
 /*  History    : 03.12.2012  File created                                    */
 /*                                                                           */
-/*  File       : LaserChess.h                                                */
+/*  File       : main.c                                                      */
 /*                                                                           */
 /*****************************************************************************/
 /*  n00bSoft                                                                 */
 /*****************************************************************************/
 
+
 #include "main.h"
 
-/* global variables */
-volatile direction snake_direction;
 
-int snake[SNAKE_BUFFER];
-int head;
-int tail;
-int size;
+/* global variables */
+volatile enum direction snake_direction;
+
+
 
 location food;
 location field_size;
 int level;
+
+int main()
+{
+    location food;
+    location field_size;
+    int level;
+
+    return 0;
+}
+
+void init_game(enum direction init_dir)
+{
+
+}
+
+location randomize_food()
+{
+
+}
+
+void delay(int ms)
+{
+
+}
+

@@ -172,7 +172,7 @@ int buttonHandler(INT8U button, INT8U position, INT8U maxpos) {
 	}
 	return (position);
 }
-int main(void){
+int main_old(void){							//////////////////////////zu Main old umbenennt weil es Fehler gab
 
 	ERR_CODES error = CARME_NO_ERROR;
 	INT8U test = 9;

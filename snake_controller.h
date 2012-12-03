@@ -1,16 +1,17 @@
-#ifndef GAME_LOGIC_H
-#define GAME_LOGIC_H
+#ifndef SNAKE_CONTROLLER_H
+#define SNAKE_CONTROLLER_H
 
 /*****************************************************************************/
 /*  o o o o      Berner Fachhochschule                                       */
 /*        :...o  Technik und Informatik                                      */
 /*****************************************************************************/
-/*  Header     : main.h                                         Version 1.0  */
+/*  Header     : snake_controller.c                             Version 1.0  */
 /*****************************************************************************/
 /*                                                                           */
-/*  Function   : Header for main() (main.c)                                  */
+/*  Function   : controlls the snake actions                                 */
 /*                                                                           */
-/*  Procedures : -                                                           */
+/*  Procedures : step_forward(), eat(), check_wall_collision(),              */
+/*               check_snake_collision(), check_food_collision()             */
 /*                                                                           */
 /*  Author     : C. Stoller                                                  */
 /*                                                                           */
@@ -18,43 +19,19 @@
 /*                                                                           */
 /*  History    : 03.12.2012  File created                                    */
 /*                                                                           */
-/*  File       : main.h                                                      */
+/*  File       : snake_controller.h                                          */
 /*                                                                           */
 /*****************************************************************************/
 /*  n00bSoft                                                                 */
 /*****************************************************************************/
-/* Makkros*/
-#define SNAKE_BUFFER	100		// max. Grösse für Schlange
 
-/* Enumerations */
+#include main.h
 
-// direction
-enum direction {RIGHT, UP, LEFT, DOWN};
-
-
-enum result {NOTHING, FOOD, COLLISION};
-
-
-
-/* Structs */
-
-// location
-typedef struct {
-	int x;
-	int y;
-} location;
-
-
-/* global variables */
-extern volatile enum direction snake_direction;
-
-extern int snake[SNAKE_BUFFER];
-extern int head;
-extern int tail;
-extern int size;
-
-extern location food;
-extern location field_size;
-extern int level;
+/* prototypes */
+result step_forward();
+void eat(location food);
+int check_wall_collision(location field_size);
+int check_snake_collision();
+int check_food_collision(location food);
 
 #endif
