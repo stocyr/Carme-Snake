@@ -1,14 +1,17 @@
+#ifndef GRAPHICS_H
+#define GRAPHICS_H
+
 /*****************************************************************************/
 /*  o o o o      Berner Fachhochschule                                       */
 /*        :...o  Technik und Informatik                                      */
 /*****************************************************************************/
-/*  Header     : snake_controller.c                             Version 1.0  */
+/*  Header     : graphics.c                                     Version 1.0  */
 /*****************************************************************************/
 /*                                                                           */
-/*  Function   : controlls the snake actions                                 */
+/*  Function   : graphics functions for snake game                           */
 /*                                                                           */
-/*  Procedures : step_forward(), step_forward_eat(), check_wall_collision(), */
-/*               check_snake_collision(), check_food_collision()             */
+/*  Procedures : draw_snake_head(), clear_nake_tail(), draw_field(),         */
+/*               draw_food()                                                 */
 /*                                                                           */
 /*  Author     : C. Stoller                                                  */
 /*                                                                           */
@@ -16,7 +19,7 @@
 /*                                                                           */
 /*  History    : 03.12.2012  File created                                    */
 /*                                                                           */
-/*  File       : snake_controller.c                                          */
+/*  File       : graphics.h                                                  */
 /*                                                                           */
 /*****************************************************************************/
 /*  n00bSoft                                                                 */
@@ -24,3 +27,8 @@
 
 #include main.h
 
+
+/* prototypes */
+draw_snake_head(), clear_nake_tail(), draw_field(), draw_food()
+
+#endif

@@ -7,7 +7,7 @@
 /*                                                                           */
 /*  Function   : main file for game                                          */
 /*                                                                           */
-/*  Procedures : main(), init_game(), randomize_food()                       */
+/*  Procedures : main(), init_game(), randomize_food(), delay()              */
 /*                                                                           */
 /*  Author     : C. Stoller                                                  */
 /*                                                                           */
@@ -15,13 +15,13 @@
 /*                                                                           */
 /*  History    : 03.12.2012  File created                                    */
 /*                                                                           */
-/*  File       : LaserChess.h                                                */
+/*  File       : main.c                                                      */
 /*                                                                           */
 /*****************************************************************************/
 /*  n00bSoft                                                                 */
 /*****************************************************************************/
 
-include main.h
+#include main.h
 
 /* global variables */
 volatile direction snake_direction;
@@ -34,3 +34,24 @@ int size;
 location food;
 location field_size;
 int level;
+
+
+int main()
+{
+    
+}
+
+int init_game()
+{
+    
+}
+
+int randomize_food()
+{
+    
+}
+
+int delay()
+{
+    
+}

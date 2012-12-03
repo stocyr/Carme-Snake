@@ -1,3 +1,6 @@
+#ifndef SNAKE_CONTROLLER_H
+#define SNAKE_CONTROLLER_H
+
 /*****************************************************************************/
 /*  o o o o      Berner Fachhochschule                                       */
 /*        :...o  Technik und Informatik                                      */
@@ -16,7 +19,7 @@
 /*                                                                           */
 /*  History    : 03.12.2012  File created                                    */
 /*                                                                           */
-/*  File       : snake_controller.c                                          */
+/*  File       : snake_controller.h                                          */
 /*                                                                           */
 /*****************************************************************************/
 /*  n00bSoft                                                                 */
@@ -24,3 +27,7 @@
 
 #include main.h
 
+/* prototypes */
+step_forward(), step_forward_eat(), check_wall_collision(), check_snake_collision(), check_food_collision()
+
+#endif
