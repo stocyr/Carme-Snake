@@ -22,24 +22,35 @@
 /*  n00bSoft                                                                 */
 /*****************************************************************************/
 
-#include main.h
+#include <GUI.h>
+
+#include "graphics.h"
+
+void init_graphics(void)
+{
+	GUI_Init();
+}
 
 void draw_snake_head(location head)
 {
-    
+	GUI_SetColor(SNAKECOLOR);
+	GUI_DrawCircle(head.x, head.y, SNAKERAD);
 }
 
-void clear_nake_tail(location tail)
+void clear_snake_tail(location tail)
 {
-    
+	GUI_SetColor(BACKCOLOR);
+	GUI_DrawCircle(tail.x, tail.y, SNAKERAD);
 }
 
 void draw_field()
 {
-    
+	GUI_SetColor(BACKCOLOR);
+	GUI_FillRect(0, 0, GUI_GetScreenSizeX(), GUI_GetScreenSizeY());
 }
 
 void draw_food(location food)
 {
-    
+	GUI_SetColor(FOODCOLOR);
+	GUI_DrawCircle(food.x, food.y, SNAKERAD);
 }

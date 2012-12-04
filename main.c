@@ -23,7 +23,7 @@
 
 
 #include "main.h"
-
+#include "graphics.h"
 
 /* global variables */
 volatile enum direction snake_direction;
@@ -36,9 +36,26 @@ int level;
 
 int main()
 {
-    location food;
+    init_graphics();		//Function um Grafik Lib zu initialisieren, gibt evtl später mal Errorcode zurück...
+
+	location food;
     location field_size;
     int level;
+
+    ////////////////////////////////////////test
+    draw_field();
+    field_size.x = 100;
+    field_size.y = 200;
+    int i = 0;
+    draw_snake_head(field_size);
+    for(i=0;i<40;i++){
+    field_size.x += 2;
+    draw_snake_head(field_size);
+    }
+
+    while(1); //für immer warten
+    /////////////////////////////////////////
+
 
     return 0;
 }

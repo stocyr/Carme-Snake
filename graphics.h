@@ -1,37 +1,49 @@
-#ifndef GRAPHICS_H
-#define GRAPHICS_H
-
+#ifndef GRAPHICS_H_
+#define GRAPHICS_H_
 /*****************************************************************************/
 /*  o o o o      Berner Fachhochschule                                       */
 /*        :...o  Technik und Informatik                                      */
 /*****************************************************************************/
-/*  Header     : graphics.c                                     Version 1.0  */
+/*  Header     : main.h                                         Version 1.0  */
 /*****************************************************************************/
 /*                                                                           */
-/*  Function   : graphics functions for snake game                           */
+/*  Function   : Header for graphic functions                                */
 /*                                                                           */
 /*  Procedures : draw_snake_head(), clear_nake_tail(), draw_field(),         */
 /*               draw_food()                                                 */
 /*                                                                           */
-/*  Author     : C. Stoller                                                  */
+/*  Author     : M.Bärtschi                                                  */
 /*                                                                           */
-/*  Email      : stolc2@bfh.ch                                               */
+/*  Email      : bartm9@bfh.ch                                               */
 /*                                                                           */
-/*  History    : 03.12.2012  File created                                    */
+/*  History    : 05.12.2012  File created                                    */
 /*                                                                           */
 /*  File       : graphics.h                                                  */
 /*                                                                           */
 /*****************************************************************************/
 /*  n00bSoft                                                                 */
 /*****************************************************************************/
+#include <GUI.h>
 
-#include main.h
+#include "main.h"
 
+/* Makkros */
+#define BACKCOLOR GUI_BLUE
+#define SNAKECOLOR GUI_BLACK
+#define FOODCOLOR GUI_RED
+#define SNAKERAD 1
 
-/* prototypes */
-void draw_snake_head(location head);
-void clear_nake_tail(location tail);
+/* Globale Variablen */
+
+void init_graphics();
+
+void draw_snake_head();
+
+void clear_snake_tail();
+
 void draw_field();
-void draw_food(location food);
+
+
+void draw_food();
 
 #endif
