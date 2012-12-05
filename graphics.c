@@ -43,7 +43,7 @@ void clear_snake_tail(location tail)
 	GUI_DrawCircle(tail.x, tail.y, SNAKERAD);
 }
 
-void draw_field()
+void draw_field(void)
 {
 	GUI_SetColor(BACKCOLOR);
 	GUI_FillRect(0, 0, GUI_GetScreenSizeX(), GUI_GetScreenSizeY());
