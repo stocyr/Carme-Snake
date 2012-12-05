@@ -27,7 +27,7 @@
  */
 
 .include "../startup/pxa270.s"			/* include PXA270 register definitions   */
-
+.include "../uCfunctions.s"
 /*.set FLASH,1 */
 .set SDRAM_STARTADDRESS,0xa0000000
 
@@ -73,7 +73,7 @@ wivec:			b SWI_Routine		/* 0x08 software interrupt vector		  */
 pabtvec:		b PA_Routine		/* 0x0c prefetch abort vector			  */
 dabtvec:		b DA_Routine		/* 0x10 data abort vector				  */
 rsvdvec:		b rsvdvec			/* 0x14 reserved (not used by XSCALE)	  */
-irqvec:			b IRQ_Routine		/* 0x18 interrupt vector		  		  */
+irqvec:			b interrupt_handler@b IRQ_Routine		/* 0x18 interrupt vector		  		  */
 fiqvec:			b FIQ_Routine		/* 0x1c fast interrupt vector		  	  */
 
 /*
@@ -88,11 +88,11 @@ fiqvec:			b FIQ_Routine		/* 0x1c fast interrupt vector		  	  */
     SUB PC, PC, #4            @ branch to next instruction
     @ At this point, any previous CP15 writes are
     @ guaranteed to have taken effect.
-.endm    
-        
+.endm
+
 Reset_Handler:
 
-/************ mask all interrupts ***********************************************/	
+/************ mask all interrupts ***********************************************/
 	mov r1,#0;
 	ldr r0,=ICMR
 	str r1, [r0]
@@ -100,11 +100,11 @@ Reset_Handler:
 	str r1, [r0]
 
 /************ initialize Memory- and SDRAM-Controller *************************/
-	
+
 .ifdef FLASH
 	/* refer section 6.4.10 in the PXA27x manual  							  */
 	/* 1. wait at least 200 uS until clocks are stabilized					  */
-	ldr r0, =OSCR			
+	ldr r0, =OSCR
 	mov r1, #0
 	str r1,[r0]				/* reset OS-Timer (Clock: 3.25MHz)				  */
 wait_loop:
@@ -115,13 +115,13 @@ wait_loop:
 
 	/* step 1a. initialize memory controller								  */
 	mov r0, #MEMC_BASE		/* load memory controller base address			  */
-	
+
 	ldr r1, =0x000095f2
 	str r1, [r0,#MSC0_OFFSET]
-	
+
 	ldr r1, =0x0000f974
 	str r1, [r0,#MSC1_OFFSET]
-	
+
 	ldr r1, =0x00000000
 	str r1, [r0,#MSC2_OFFSET]
 
@@ -147,11 +147,11 @@ wait_loop:
 	-> Self-refresh */
 	ldr r1, =0x20ca401E;
 	str r1, [r0,#MDREFR_OFFSET]
-	
+
 	/* step 2: Initialize Synchronous static FLASH							  */
 	ldr r1, =0x40044004;
 	str r1, [r0,#SXCNFG_OFFSET]
-	SXCNFG = 0x40044004;	
+	SXCNFG = 0x40044004;
 
 	/* step 3: Toggle SDRAM controller through the following state sequence:
 		K0FREE=0, K1FREE=0, K2FREE=0
@@ -159,7 +159,7 @@ wait_loop:
 		-> Self-refresh (1 too) */
 	ldr r1, =0x2043601E;
 	str r1, [r0,#MDREFR_OFFSET]
-	
+
 	/* SLFRSH = 0															  */
 	ldr r1, =0x2003601E;
 	str r1, [r0,#MDREFR_OFFSET]
@@ -167,7 +167,7 @@ wait_loop:
 	/* E1PIN = 1															  */
 	ldr r1, =0x2003e01E;
 	str r1, [r0,#MDREFR_OFFSET]
-	/* -> NOP (wo write required)											  */	
+	/* -> NOP (wo write required)											  */
 
 	/* step 4: configure , but not enable SDRAM Partition					  */
 	ldr r1, =0x08000ac8;
@@ -175,24 +175,24 @@ wait_loop:
 
 	ldr r1, =0xffffffff;
 	str r1, [r0,#BSCNTR0_OFFSET]
-	
+
 	ldr r1, =0xffffff5f;
 	str r1, [r0,#BSCNTR1_OFFSET]
 
 	ldr r1, =0xffffffff;
 	str r1, [r0,#BSCNTR2_OFFSET]
-	
+
 	ldr r1, =0xffffffff;
 	str r1, [r0,#BSCNTR3_OFFSET]
-	
+
 	/* step 5 wait at least 200 uS											  */
-	ldr r2, =OSCR			
+	ldr r2, =OSCR
 	mov r3, #0
 	str r3,[r2]				/* reset OS-Timer (Clock: 3.25MHz)				  */
 wait_loop1:
 	ldr r3,[r2]
 	cmp r3,#0x290			/* 0x290 ~ 650-> 650*1/3.25MHz ~ 200 us 		  */
-	bls wait_loop1	
+	bls wait_loop1
 
 	/* step 7: trigger 8 refresh cycles										  */
 	ldr r2,=SDRAM_STARTADDRESS
@@ -201,13 +201,13 @@ wait_loop1:
 loop3:
 	str r1,[r2]
 	subs r3,r3,#1
-	bne loop3	
+	bne loop3
 
     /* step 9: Enable SDRAM Partition 0 									  */
 	ldr r1, =0x08000ac9;
 	str r1, [r0,#MDCNFG_OFFSET]
 
-    /* step 10: Write the MDMRS register to trigger an MRS command to 
+    /* step 10: Write the MDMRS register to trigger an MRS command to
                 all enabled SDRAM banks
      -> PALL -> MRS -> NOP */
     ldr r1, =0x00000000;
@@ -251,33 +251,33 @@ loop3:
     ORR r0, r0, #4             @ Enable DCache by setting ‘C’ (bit 2)
     MCR p15, 0, r0, c1, c0, 0  @ And update the Control register
 /************ Setup a stack for each mode *************************************/
-  			  
+
 	ldr r0, =_und_stack_top_address
 	/* Undefined Instruction Mode 											  */
 	msr CPSR_c, #MODE_UND|I_BIT|F_BIT 	/* switch in UndefinedInstruction Mode*/
 	mov sp, r0
 	sub r0, r0, #UND_STACK_SIZE
-	
+
 	/* Abort Mode 															  */
 	msr CPSR_c, #MODE_ABT|I_BIT|F_BIT 	/* switch in Abort Mode				  */
 	mov sp, r0
 	sub r0, r0, #ABT_STACK_SIZE
 
-	/* FIQ Mode 															  */	
+	/* FIQ Mode 															  */
 	msr CPSR_c, #MODE_FIQ|I_BIT|F_BIT 	/* switch in FIQ Mode				  */
-	mov sp, r0	
+	mov sp, r0
 	sub r0, r0, #FIQ_STACK_SIZE
-	
-	/* IRQ Mode 															  */	
+
+	/* IRQ Mode 															  */
 	msr CPSR_c, #MODE_IRQ|I_BIT|F_BIT 	/* switch in IRQ Mode				  */
 	mov sp, r0
 	sub r0, r0, #IRQ_STACK_SIZE
-	
+
 	/* switch in Supervisor Mode											  */
 	msr CPSR_c, #MODE_SVC|I_BIT|F_BIT 	/* switch in Supervisor Mode		  */
 	mov sp, r0
 	sub r0, r0, #SVC_STACK_SIZE
-	
+
 	/* switch in User Mode													  */
 	msr CPSR_c, #MODE_SYS|I_BIT|F_BIT 	/* switch in User Mode				  */
 	mov sp, r0
@@ -300,12 +300,12 @@ zerobss_loop:
 	cmp     R1, R2
     strlo   R0, [R1], #4
     blo     zerobss_loop
-			
+
 /* Enter the C code  **********************************************************/
     bl BSP_STARTUP_init
     b main
 loop:
     b loop
 
-			
+
 .end
