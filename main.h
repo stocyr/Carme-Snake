@@ -46,7 +46,9 @@ typedef struct {
 
 
 /* global variables */
-extern volatile enum direction snake_direction;
+//extern volatile enum direction snake_direction;
+volatile enum direction snake_direction;
+volatile int timer_iqr_flag;
 
 extern int snake[SNAKE_BUFFER];
 extern int head;
@@ -56,5 +58,12 @@ extern int size;
 extern location food;
 extern location field_size;
 extern int level;
+
+/* function prototype for asm_soubrutines */
+extern init_counter();
+
+extern enable_interrupts();
+extern disable_interrupts();
+extern int get_interrupt_state();
 
 #endif

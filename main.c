@@ -26,7 +26,6 @@
 #include "graphics.h"
 
 /* global variables */
-volatile enum direction snake_direction;
 
 
 
@@ -67,11 +66,18 @@ void init_game(enum direction init_dir)
 
 location randomize_food()
 {
-
+	location food = {4,4};
+	return food;
 }
 
 void delay(int ms)
 {
+	while(ms > 0)
+	{
+		ms--;
+		while(!timer_iqr_flag);
+		timer_iqr_flag = 0;
 
+	}
 }
 
