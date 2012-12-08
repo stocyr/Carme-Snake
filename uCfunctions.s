@@ -103,6 +103,7 @@ B
 no_timer_irq:
 # kommt der interupt von UART?
 MOV r1,#11						@ Timer Interrupt ID = ??????? -> 11 ersetzen
+# TST fehlt
 BNE r0,r1, no_uart_interrupt
 
 # UART Verarbeitung: je nach erhaltenem Zeichen wird die Variable snake_direction anders gesetzt.

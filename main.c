@@ -72,11 +72,16 @@ location randomize_food()
 
 void delay(int ms)
 {
+	///Timer starten - muesme dr timer i dere funktion starte, oder geit me eifach ga luege ob scho e interrupt isch cho, de ischme im schlimschte fau e ms z früeh fertig... hingäge ergäb se so e subere takt wo immer glich läng isch, we dr räscht vom code chürzer aus 1 ms geit...
+
+	start_timer();
+	timer_iqr_flag = 0;
 	while(ms > 0)
 	{
-		ms--;
+
 		while(!timer_iqr_flag);
 		timer_iqr_flag = 0;
+		ms--;
 
 	}
 }
