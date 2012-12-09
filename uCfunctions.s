@@ -9,11 +9,11 @@
 /*                                                                           */
 /*  Procedures : interrupthandler, timerinit, UARTinit                       */
 /*                                                                           */
-/*  Author     : C. Stoller                                                  */
+/*  Author     : M.Bärtschi                                                  */
 /*                                                                           */
-/*  Email      : stolc2@bfh.ch                                               */
+/*  Email      : bartm9@bfh.ch                                               */
 /*                                                                           */
-/*  History    : 03.12.2012  File created                                    */
+/*  History    : 05.12.2012  File created                                    */
 /*                                                                           */
 /*  File       : uCfunctions.s                                               */
 /*                                                                           */
@@ -29,6 +29,9 @@
 .global enable_interrupts
 .global disable_interrupts
 .global get_interrupt_state
+.global start_timer
+
+.data
 
 .extern timer_iqr_flag
 .extern snake_direction
@@ -85,8 +88,8 @@ STMFD 	sp!, {r0-r2, lr} 		@ save context
 # kommt der Interrupt vom Timer?
 LDR r0,=ICHP
 LDR r1,[r0]
-MOV r2,#13						@ Timer Interrupt ID = ??????? -> 13 ersetzen
-BNE r0,r1,no_timer_irq			@ step over if NO timer irq was thrown
+TST	r1,#(1<<26)					@ Timer Interrupt ID = 26
+BNE no_timer_irq				@ step over if NO timer irq was thrown
 
 # OSCR0 auf 0 setzen wenn Interrupt ausgelöst wurde
 LDR r0,=OSCR0
@@ -98,16 +101,18 @@ LDR r0,=timer_iqr_flag
 MOV r1,#1
 STR r1,[r0]
 
-B
+B end_interrupt_handler
 
 no_timer_irq:
 # kommt der interupt von UART?
-MOV r1,#11						@ Timer Interrupt ID = ??????? -> 11 ersetzen
-# TST fehlt
-BNE r0,r1, no_uart_interrupt
+
+
+TST r1,#(1<<22)					@ UART Interrupt ID = |FFUART Id = 22 | BTUART ID = 23 | STUART ID = 24 |
+BNE no_uart_interrupt
 
 # UART Verarbeitung: je nach erhaltenem Zeichen wird die Variable snake_direction anders gesetzt.
-LDR r0,=UART_ZEICHEN_REGISTER
+#FFRBR -> DLAB muss 0 sein für zugriff
+LDR r0,=FFRBR
 LDR r1,[r0]
 
 LDR r0,=snake_direction
@@ -126,14 +131,51 @@ MOV r1,#0
 STR r1,[r0]
 
 # restore context, return
-LDMFD 	sp!, {r0-r1, pc}^
+LDMFD 	sp!,{r0-r1, pc}^
 
 
 enable_interrupts:
-
+STMFD 	sp!, {r0-r3, lr} 		@ save context
+# CPSR = CPSR & ~(1<<7)
+MRS r1,cpsr
+BIC r1,r1,#(1<<7)
+MSR cpsr_c,r1
+LDMFD 	sp!, {r0-r3, pc}^ 		@ restore context, return
 
 disable_interrupts:
+STMFD 	sp!, {r0-r3, lr} 		@ save context
+# CPSR = CPSR | (1<<7)
+MRS r1,cpsr
+ORR r1,r1,#(1<<7)
+MSR cpsr_c,r1
+LDMFD 	sp!, {r0-r3, pc}^ 		@ restore context, return
 
 
 get_interrupt_state:
+# Gibt 0 zurück, wenn Interrupts zugelassen sind, sonst einen Wert ungleich 0
+STMFD 	sp!, {r0-r3, lr} 		@ save context
+MRS r1,cpsr
+TST r1,#(1<<7)
+BNE	interrupt_active
+MOV r0,#1
+B end_get_interrupt_state
+
+interrupt_active:
+MOV r0,#0
+end_get_interrupt_state:
+LDMFD 	sp!,{r1-r3, pc}^ 		@ restore context, return
+
+start_timer:
+STMFD 	sp!, {r0-r3, lr} 		@ save context
+# OSCR0 auf 0 setzen wenn Interrupt ausgelöst wurde
+LDR r0,=OSCR0
+MOV r1,#0
+STR r1,[r0]
+
+# Timer flag (wird in C-Funktionen genutzt) löschen
+LDR r0,=timer_iqr_flag
+MOV r1,#0
+STR r1,[r0]
+
+LDMFD 	sp!, {r0-r3, pc}^ 		@ restore context, return
 

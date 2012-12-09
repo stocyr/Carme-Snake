@@ -61,6 +61,7 @@ extern int level;
 
 /* function prototype for asm_soubrutines */
 extern init_counter();
+extern start_timer();
 
 extern enable_interrupts();
 extern disable_interrupts();

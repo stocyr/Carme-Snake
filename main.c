@@ -36,7 +36,7 @@ int level;
 int main()
 {
     init_graphics();		//Function um Grafik Lib zu initialisieren, gibt evtl später mal Errorcode zurück...
-
+    init_counter();
 	location food;
     location field_size;
     int level;
@@ -74,8 +74,8 @@ void delay(int ms)
 {
 	///Timer starten - muesme dr timer i dere funktion starte, oder geit me eifach ga luege ob scho e interrupt isch cho, de ischme im schlimschte fau e ms z früeh fertig... hingäge ergäb se so e subere takt wo immer glich läng isch, we dr räscht vom code chürzer aus 1 ms geit...
 
+
 	start_timer();
-	timer_iqr_flag = 0;
 	while(ms > 0)
 	{
 
@@ -83,6 +83,18 @@ void delay(int ms)
 		timer_iqr_flag = 0;
 		ms--;
 
+	}
+}
+void restore_interruptstate(int old_state)
+{
+	/* Stellt den alten Interrupt-Zustand wieder her */
+	if(old_state == 0)
+	{
+		enable_interrupts();
+	}
+	else
+	{
+		disable_interrupts();
 	}
 }
 
