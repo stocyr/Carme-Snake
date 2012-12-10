@@ -24,6 +24,7 @@
 
 #include "main.h"
 #include "graphics.h"
+#include "snake_controller.h"
 #include "GUI.h"
 #include "carme.h"
 #include "bitopera.h"
@@ -45,9 +46,31 @@ void init_game(enum direction init_dir)
 
 }
 
+int randomize()
+{
+	// chosen by fair dice roll.
+	// guaranteed to be random.
+	// http://xkcd.com/221/
+	return 4;
+}
+
+location randomize_location()
+{
+	location pos;
+
+	pos.x = (GUI_GetTime() + randomize())%PLAYGROUND_X_MAX;
+	pos.y = (GUI_GetTime() + randomize())%PLAYGROUND_X_MAX;
+}
+
 location randomize_food()
 {
-	location food = {4,4};
+	location food;
+	do
+	{
+		food = randomize_location();
+	}
+	while(!check_snake_collision(food));
+
 	return food;
 }
 
@@ -82,39 +105,33 @@ void restore_interruptstate(int old_state)
 
 int main()
 {
-	location food;
-    location field_size;
-    int level;
-    int i = 0;
+    int level = 1;
 
 	init_graphics();		//Function um Grafik Lib zu initialisieren, gibt evtl später mal Errorcode zurück...
     init_counter();
     enable_interrupts();
     start_timer();
 
+    init_snake();
 
+    while(1)
+    {
+    	switch(step_forward(check_initial_state()))
+    	{
+    	case COLLISION:
+    		// send_max_score_and_level();
+    		level = 1;
+    		init_snake();
+    		break;
+    	case FOOD:
+    		food = randomize_food();
+    		break;
+    	case NOTHING:
+    		break;
+    	}
 
-
-    draw_field();
-    field_size.x = 100;
-    field_size.y = 200;
-
-
-    for(i=0;i<40;i++){
-    	delay(100);
-    	field_size.x += 2;
-    draw_snake_head(field_size);
+    	delay(400);
     }
-
-    GUI_DispStringAt("begin: ", 0, 0);
-    GUI_DispCharAt(timer_irq_flag+'0', 7*8, 0*16);
-    while(!timer_irq_flag);
-    GUI_DispStringAt("flag: ", 0, 1);
-    GUI_DispCharAt(timer_irq_flag+'0', 6*8, 1*16);
-    timer_irq_flag = 0;
-
-    while(1); //für immer warten
-    /////////////////////////////////////////
 
     return 0;
 }

@@ -9,7 +9,7 @@
 /*                                                                           */
 /*  Function   : Header for graphic functions                                */
 /*                                                                           */
-/*  Procedures : draw_snake_head(), clear_nake_tail(), draw_field(),         */
+/*  Procedures : draw_snake_head(), clear_snake_tail(), draw_field(),        */
 /*               draw_food()                                                 */
 /*                                                                           */
 /*  Author     : M.Bärtschi                                                  */

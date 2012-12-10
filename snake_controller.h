@@ -28,10 +28,12 @@
 #include "main.h"
 
 /* prototypes */
-result step_forward();
+enum result step_forward(int initial);
 void eat(location food);
-int check_wall_collision(location field_size);
-int check_snake_collision();
-int check_food_collision(location food);
+int check_wall_collision(location pos);
+int check_snake_collision(location pos);
+int check_food_collision(location pos);
+int check_initial_state();
+void init_snake();
 
 #endif
