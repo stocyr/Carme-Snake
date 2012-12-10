@@ -30,6 +30,7 @@
 #include "bitopera.h"
 #include "interrupt_ivo.h"
 #include "interrupt.h"
+#include "randomc.h"
 
 /* global variables */
 
@@ -58,8 +59,9 @@ location randomize_location()
 {
 	location pos;
 
-	pos.x = (GUI_GetTime() + randomize())%PLAYGROUND_X_MAX;
-	pos.y = (GUI_GetTime() + randomize())%PLAYGROUND_X_MAX;
+	pos.x = RanGen.IRandom(0, PLAYGROUND_X_MAX);
+	pos.y = RanGen.IRandom(0, PLAYGROUND_Y_MAX);
+
 	return pos;
 }
 
@@ -112,6 +114,8 @@ int main()
     init_counter();
     enable_interrupts();
     start_timer();
+
+    CRandomMersenne RanGen(GUI_GetTime());
 
     init_snake();
 
