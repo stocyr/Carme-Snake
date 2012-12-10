@@ -34,13 +34,13 @@ void init_graphics(void)
 void draw_snake_head(location head)
 {
 	GUI_SetColor(SNAKECOLOR);
-	GUI_DrawCircle(head.x, head.y, SNAKERAD);
+	GUI_DrawCircle(PLAYGROUND_TO_LCD(head.x), PLAYGROUND_TO_LCD(head.y), SNAKERAD);
 }
 
 void clear_snake_tail(location tail)
 {
 	GUI_SetColor(BACKCOLOR);
-	GUI_DrawCircle(tail.x, tail.y, SNAKERAD);
+	GUI_DrawCircle(PLAYGROUND_TO_LCD(tail.x), PLAYGROUND_TO_LCD(tail.y), SNAKERAD);
 }
 
 void draw_field(void)
@@ -52,5 +52,5 @@ void draw_field(void)
 void draw_food(location food)
 {
 	GUI_SetColor(FOODCOLOR);
-	GUI_DrawCircle(food.x, food.y, SNAKERAD);
+	GUI_DrawCircle(PLAYGROUND_TO_LCD(food.x), PLAYGROUND_TO_LCD(food.y), SNAKERAD);
 }

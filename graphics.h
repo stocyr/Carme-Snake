@@ -32,6 +32,8 @@
 #define SNAKECOLOR GUI_BLACK
 #define FOODCOLOR GUI_RED
 #define SNAKERAD 1
+#define LCD_FACTOR 	(GUI_GetScreenSizeX()/PLAYGROUND_X_MAX)
+#define PLAYGROUND_TO_LCD(x) (x*LCD_FACTOR-LCD_FACTOR/2)
 
 /* Globale Variablen */
 

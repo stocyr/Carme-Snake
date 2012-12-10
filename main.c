@@ -60,6 +60,7 @@ location randomize_location()
 
 	pos.x = (GUI_GetTime() + randomize())%PLAYGROUND_X_MAX;
 	pos.y = (GUI_GetTime() + randomize())%PLAYGROUND_X_MAX;
+	return pos;
 }
 
 location randomize_food()
