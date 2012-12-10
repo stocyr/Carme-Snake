@@ -25,7 +25,7 @@
 /*  n00bSoft                                                                 */
 /*****************************************************************************/
 
-#include main.h
+#include "main.h"
 
 /* prototypes */
 result step_forward();

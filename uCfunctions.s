@@ -31,16 +31,16 @@
 .global get_interrupt_state
 .global start_timer
 
-.data
+#.data
 
-.extern timer_iqr_flag
+.extern timer_irq_flag
 .extern snake_direction
 
 .text
 
 
 init_counter:
-STMFD 	sp!, {r0-r1, lr} 		@ save context
+STMFD 	sp!, {r0-r2, lr} 		@ save context
 # CTR0s Interrupt initialisieren
 # ICMR = ICMR | (1<<26); Interrupt freigeben
 LDR r0,=ICMR
@@ -55,13 +55,22 @@ STR r1, [r0]
 # IPR0 = IPR0 | 26; Timer Interrupt als Priorität 0 (höchste) festlegen
 LDR r0,=IPR0
 LDR r1,[r0]
-AND r1,r1,#0xFFFFFFC0
-ORR r1,r1,#26		@ 26 hineinschreiben
+
+MOV r1,#26		@ 26 hineinschreiben
+ORR r1,r1,#(1<<31)
 STR r1, [r0]
+
+
 # OSMR0 = 3250000; Match Register so setzen, dass sich 1ms Tackt ergibt
-LDR r1,=3250000
+LDR r1,=3250
 LDR r0,=OSMR0
 STR r1,[r0]
+
+# OSCR auf 0 setzen wenn Interrupt ausgelöst wurde
+LDR r0,=OSCR
+MOV r1,#0
+STR r1,[r0]
+
 # OIER = OIER | 1; Interrupt für OSMR0 freigeben
 LDR r0,=OIER
 LDR r1,[r0]
@@ -73,7 +82,7 @@ LDR r1,[r0]
 ORR r1,r1,#(1<<9)		@ Bit 9 setzen
 STR r1, [r0]
 
-LDMFD 	sp!, {r0-r1, pc}^ 		@ restore context, return
+LDMFD 	sp!, {r0-r2, pc}^ 		@ restore context, return
 
 
 init_uart:
@@ -91,13 +100,13 @@ LDR r1,[r0]
 TST	r1,#(1<<26)					@ Timer Interrupt ID = 26
 BNE no_timer_irq				@ step over if NO timer irq was thrown
 
-# OSCR0 auf 0 setzen wenn Interrupt ausgelöst wurde
-LDR r0,=OSCR0
+# OSCR auf 0 setzen wenn Interrupt ausgelöst wurde
+LDR r0,=OSCR
 MOV r1,#0
 STR r1,[r0]
 
 # Timer flag (wird in C-Funktionen genutzt) setzen
-LDR r0,=timer_iqr_flag
+LDR r0,=timer_irq_flag
 MOV r1,#1
 STR r1,[r0]
 
@@ -118,6 +127,7 @@ LDR r1,[r0]
 LDR r0,=snake_direction
 
 STR r1,[r0]
+B end_interrupt_handler
 
 no_uart_interrupt:
 # hier kommen evtl. weitere interrupt ID's
@@ -127,11 +137,12 @@ end_interrupt_handler:
 
 # OSSR löschen um Interrupt zurückzusetzen
 LDR r0,=OSSR
-MOV r1,#0
+LDR r1,=0xFFF
 STR r1,[r0]
 
 # restore context, return
-LDMFD 	sp!,{r0-r1, pc}^
+LDMFD 	sp!,{r0-r2, pc}^
+
 
 
 enable_interrupts:
@@ -167,13 +178,13 @@ LDMFD 	sp!,{r1-r3, pc}^ 		@ restore context, return
 
 start_timer:
 STMFD 	sp!, {r0-r3, lr} 		@ save context
-# OSCR0 auf 0 setzen wenn Interrupt ausgelöst wurde
-LDR r0,=OSCR0
+# OSCR auf 0 setzen wenn Interrupt ausgelöst wurde
+LDR r0,=OSCR
 MOV r1,#0
 STR r1,[r0]
 
 # Timer flag (wird in C-Funktionen genutzt) löschen
-LDR r0,=timer_iqr_flag
+LDR r0,=timer_irq_flag
 MOV r1,#0
 STR r1,[r0]
 

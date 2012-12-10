@@ -72,7 +72,7 @@ wivec:			b SWI_Routine		/* 0x08 software interrupt vector		  */
 pabtvec:		b PA_Routine		/* 0x0c prefetch abort vector			  */
 dabtvec:		b DA_Routine		/* 0x10 data abort vector				  */
 rsvdvec:		b rsvdvec			/* 0x14 reserved (not used by XSCALE)	  */
-irqvec:			b interrupt_handler @b IRQ_Routine		/* 0x18 interrupt vector		  		  */
+irqvec:			b interrupt_handler @ IRQ_Routine		/* 0x18 interrupt vector		  		  */
 fiqvec:			b FIQ_Routine		/* 0x1c fast interrupt vector		  	  */
 
 /*
@@ -221,7 +221,7 @@ loop3:
 
 /************ initialize Clocks ***********************************************/
 	ldr	r0,  =CKEN
-	ldr	r1,  =0x00400000 /* disable all clocks expect the memory controller	  */
+	ldr	r1,  =0x00400240 /* disable all clocks expect the memory controller, ostimer and ffuart	  */
 	str	r1,  [r0]
 
 	ldr	r0,  =CCCR
@@ -306,5 +306,25 @@ zerobss_loop:
 loop:
     b loop
 
+
+/* Stub for Interrupt handlers ************************************************/
+
+UNDEF_Routine:
+    b UNDEF_Routine
+
+SWI_Routine:
+	b SWI_Routine
+
+PA_Routine:
+	b PA_Routine
+
+DA_Routine:
+	b DA_Routine
+
+IRQ_Routine:
+	b IRQ_Routine
+
+FIQ_Routine:
+	b FIQ_Routine
 
 .end

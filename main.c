@@ -24,40 +24,21 @@
 
 #include "main.h"
 #include "graphics.h"
+#include "GUI.h"
+#include "carme.h"
+#include "bitopera.h"
+#include "interrupt_ivo.h"
+#include "interrupt.h"
 
 /* global variables */
 
-
+volatile enum direction snake_direction;
+volatile int timer_irq_flag = 0;
 
 location food;
 location field_size;
 int level;
 
-int main()
-{
-    init_graphics();		//Function um Grafik Lib zu initialisieren, gibt evtl später mal Errorcode zurück...
-    init_counter();
-	location food;
-    location field_size;
-    int level;
-
-    ////////////////////////////////////////test
-    draw_field();
-    field_size.x = 100;
-    field_size.y = 200;
-    int i = 0;
-    draw_snake_head(field_size);
-    for(i=0;i<40;i++){
-    field_size.x += 2;
-    draw_snake_head(field_size);
-    }
-
-    while(1); //für immer warten
-    /////////////////////////////////////////
-
-
-    return 0;
-}
 
 void init_game(enum direction init_dir)
 {
@@ -79,8 +60,8 @@ void delay(int ms)
 	while(ms > 0)
 	{
 
-		while(!timer_iqr_flag);
-		timer_iqr_flag = 0;
+		while(!timer_irq_flag);
+		timer_irq_flag = 0;
 		ms--;
 
 	}
@@ -98,3 +79,42 @@ void restore_interruptstate(int old_state)
 	}
 }
 
+
+int main()
+{
+	location food;
+    location field_size;
+    int level;
+    int i = 0;
+
+	init_graphics();		//Function um Grafik Lib zu initialisieren, gibt evtl später mal Errorcode zurück...
+    init_counter();
+    enable_interrupts();
+    start_timer();
+
+
+
+
+    draw_field();
+    field_size.x = 100;
+    field_size.y = 200;
+
+
+    for(i=0;i<40;i++){
+    	delay(100);
+    	field_size.x += 2;
+    draw_snake_head(field_size);
+    }
+
+    GUI_DispStringAt("begin: ", 0, 0);
+    GUI_DispCharAt(timer_irq_flag+'0', 7*8, 0*16);
+    while(!timer_irq_flag);
+    GUI_DispStringAt("flag: ", 0, 1);
+    GUI_DispCharAt(timer_irq_flag+'0', 6*8, 1*16);
+    timer_irq_flag = 0;
+
+    while(1); //für immer warten
+    /////////////////////////////////////////
+
+    return 0;
+}

@@ -1,5 +1,5 @@
-#ifndef GAME_LOGIC_H
-#define GAME_LOGIC_H
+#ifndef MAIN_H
+#define MAIN_H
 
 /*****************************************************************************/
 /*  o o o o      Berner Fachhochschule                                       */
@@ -23,7 +23,7 @@
 /*****************************************************************************/
 /*  n00bSoft                                                                 */
 /*****************************************************************************/
-/* Makkros*/
+/* Makros*/
 #define SNAKE_BUFFER	100		// max. Grösse für Schlange
 
 /* Enumerations */
@@ -39,7 +39,7 @@ enum result {NOTHING, FOOD, COLLISION};
 /* Structs */
 
 // location
-typedef struct {
+typedef struct location {
 	int x;
 	int y;
 } location;
@@ -47,10 +47,10 @@ typedef struct {
 
 /* global variables */
 //extern volatile enum direction snake_direction;
-volatile enum direction snake_direction;
-volatile int timer_iqr_flag;
+extern volatile enum direction snake_direction;
+extern volatile int timer_irq_flag;
 
-extern int snake[SNAKE_BUFFER];
+extern location snake[SNAKE_BUFFER];
 extern int head;
 extern int tail;
 extern int size;
@@ -60,11 +60,12 @@ extern location field_size;
 extern int level;
 
 /* function prototype for asm_soubrutines */
-extern init_counter();
-extern start_timer();
+extern void init_counter();
+extern void start_timer();
 
-extern enable_interrupts();
-extern disable_interrupts();
+extern void enable_interrupts();
+extern void disable_interrupts();
+extern void interrupt_handler();
 extern int get_interrupt_state();
 
 #endif

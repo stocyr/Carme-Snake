@@ -548,7 +548,7 @@
 
 
 /*
- * OS Timer & Match Registers
+ * OS Timer & Match Registers 
  */
 
 /* General Timer Registers */
@@ -559,7 +559,7 @@
 
 /* OS Timer 0*/
 .set OSMR0, 0x40A00000 		/* OS Timer 0 Match Register */
-.set OSCR0, 0x40A00010 		/* OS Timer 0 Counter Register */
+.set OSCR, 0x40A00010 		/* OS Timer 0 Counter Register */
 
 /* OS Timer 1*/
 .set OSMR1, 0x40A00004 		/* OS Timer 1 Match Register */
@@ -800,7 +800,7 @@
 .set    PKSR, 0x40F00054   	/* Power Manager KB Level-Detect Register */
 
 /*
- * SSP Serial Port Registers
+ * SSP Serial Port Registers 
  */
 
 
