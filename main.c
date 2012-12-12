@@ -116,13 +116,15 @@ int main()
 
 	init_graphics();		//Function um Grafik Lib zu initialisieren, gibt evtl später mal Errorcode zurück...
     init_counter();
-    enable_interrupts();
 
     //CRandomMersenne RanGen(GUI_GetTime());
 
     while(1)
     {
+    	disable_interrupts();
     	draw_field();
+    	enable_interrupts();
+
     	init_snake();
 
     	start_timer();
@@ -145,7 +147,9 @@ int main()
 				break;
 			case FOOD:
 				food = randomize_food();
+				disable_interrupts();
 				draw_food(food);
+				enable_interrupts();
 				break;
 			case NOTHING:
 				break;
@@ -154,6 +158,8 @@ int main()
 			delay(400);
 		}
 		while(game_over != 1);
+
+		game_over = 0;
     }
 
     return 0;
