@@ -23,6 +23,7 @@
 /*****************************************************************************/
 
 #include "main.h"
+#include "graphics.h"
 #include "snake_controller.h"
 
 location snake[SNAKE_BUFFER];
@@ -33,7 +34,9 @@ int startup_size = INITIAL_SIZE;
 
 enum result step_forward(int initial)
 {
-	location new_pos = snake[head];
+	location new_pos;
+	new_pos.x = snake[head].x;
+	new_pos.y = snake[head].y;
 
 	switch(snake_direction)
 		{
@@ -58,8 +61,10 @@ enum result step_forward(int initial)
 	}
 
 	// head erhöhen
-	head = (++head)%SNAKE_BUFFER;
-	snake[head] = new_pos;
+	head++;
+	head %= SNAKE_BUFFER;
+	snake[head].x = new_pos.x;
+	snake[head].y = new_pos.y;
 	draw_snake_head(snake[head]);
 
 	if(initial)
@@ -83,59 +88,14 @@ enum result step_forward(int initial)
 	}
 	else
 	{
-		if(initial)
+		if(!initial)
 		{
-			// länge bleibt zwar gleich. Tail löschen:
+			// länge bleibt gleich. Tail löschen:
 			clear_snake_tail(snake[tail]);
 			// tail nachrutschen
-			tail = (++tail)%SNAKE_BUFFER;
+			tail++;
+			tail %= SNAKE_BUFFER;
 		}
-		return NOTHING;
-	}
-}
-
-
-enum result step_forward_initial()
-{
-	location new_pos = snake[head];
-
-	switch(snake_direction)
-		{
-		case RIGHT:
-			new_pos.x++;
-			break;
-		case UP:
-			new_pos.y--;
-			break;
-		case LEFT:
-			new_pos.x--;
-			break;
-		case DOWN:
-			new_pos.y++;
-			break;
-		}
-
-	// wenn eine kollision passieren würde, kollisipon zurückliefern, nicht mehr fahren.
-	if(check_wall_collision(new_pos) || check_snake_collision(new_pos))
-	{
-		return COLLISION;
-	}
-
-	// head erhöhen
-	head = (++head)%SNAKE_BUFFER;
-	snake[head] = new_pos;
-	draw_snake_head(snake[head]);
-
-	size++;
-	// wenn auf FOOD getroffen, FOOD zurückkliefern
-	if(check_food_collision(new_pos))
-	{
-		// länge von Snake erhöhen
-		startup_size++;
-		return FOOD;
-	}
-	else
-	{
 		return NOTHING;
 	}
 }
@@ -147,13 +107,13 @@ int check_wall_collision(location pos)
 	if((pos.x < PLAYGROUND_X_MAX && pos.x >= 0) &&
 	   (pos.y < PLAYGROUND_Y_MAX && pos.y >= 0))
 	{
-		// true zurückgeben
-		return 1;
+		// false zurückgeben
+		return 0;
 	}
 	else
 	{
-		// false zurückgeben
-		return 0;
+		// true zurückgeben
+		return 1;
 	}
 }
 
@@ -165,7 +125,8 @@ int check_snake_collision(location pos)
 
 	for(i = 0; i < size; i++)
 	{
-		proove = snake[(tail+i)%SNAKE_BUFFER];
+		proove.x = snake[(tail+i)%SNAKE_BUFFER].x;
+		proove.y = snake[(tail+i)%SNAKE_BUFFER].y;
 		if(proove.x == pos.x && proove.y == pos.y)
 		{
 			return 1;
@@ -193,4 +154,6 @@ void init_snake()
 	size = 1;
 	snake[head].x = PLAYGROUND_X_MAX / 2;
 	snake[head].y = PLAYGROUND_Y_MAX / 2;
+
+	draw_snake_head(snake[head]);
 }

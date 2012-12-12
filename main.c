@@ -62,6 +62,9 @@ location randomize_location()
 	//pos.x = RanGen.IRandom(0, PLAYGROUND_X_MAX);
 	//pos.y = RanGen.IRandom(0, PLAYGROUND_Y_MAX);
 
+	pos.x = (GUI_GetTime() + randomize())%PLAYGROUND_X_MAX;
+	pos.y = (GUI_GetTime() + randomize())%PLAYGROUND_X_MAX;
+
 	return pos;
 }
 
@@ -113,11 +116,19 @@ int main()
 	init_graphics();		//Function um Grafik Lib zu initialisieren, gibt evtl später mal Errorcode zurück...
     init_counter();
     enable_interrupts();
-    start_timer();
 
     //CRandomMersenne RanGen(GUI_GetTime());
-
+    draw_field();
     init_snake();
+
+    start_timer();
+
+    // warten bis eine taste gedrückt wird, welche den initialen zustand von snake_direction ändert
+    //while(snake_direction == 57); --> später wieder reinnehmen, wenn uart modul fertig.
+
+    // jetzt food zeichnen
+    food = randomize_food();
+    draw_food(food);
 
     while(1)
     {
@@ -130,6 +141,7 @@ int main()
     		break;
     	case FOOD:
     		food = randomize_food();
+    		draw_food(food);
     		break;
     	case NOTHING:
     		break;

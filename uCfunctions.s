@@ -40,7 +40,7 @@
 
 
 init_counter:
-STMFD 	sp!, {r0-r2, lr} 		@ save context
+STMFD 	sp!, {r0-r1, lr} 		@ save context
 # CTR0s Interrupt initialisieren
 # ICMR = ICMR | (1<<26); Interrupt freigeben
 LDR r0,=ICMR
@@ -82,7 +82,7 @@ LDR r1,[r0]
 ORR r1,r1,#(1<<9)		@ Bit 9 setzen
 STR r1, [r0]
 
-LDMFD 	sp!, {r0-r2, pc}^ 		@ restore context, return
+LDMFD 	sp!, {r0-r1, pc}^ 		@ restore context, return
 
 
 init_uart:
@@ -92,7 +92,7 @@ init_uart:
 interrupt_handler:
 #ICHP enthält die ID der interruptauslösenden Quelle
 
-STMFD 	sp!, {r0-r2, lr} 		@ save context
+STMFD 	sp!, {r0-r1, lr} 		@ save context
 
 # kommt der Interrupt vom Timer?
 LDR r0,=ICHP
@@ -141,30 +141,30 @@ LDR r1,=0xFFF
 STR r1,[r0]
 
 # restore context, return
-LDMFD 	sp!,{r0-r2, pc}^
+LDMFD 	sp!,{r0-r1, pc}^
 
 
 
 enable_interrupts:
-STMFD 	sp!, {r0-r3, lr} 		@ save context
+STMFD 	sp!, {r0, lr} 		@ save context
 # CPSR = CPSR & ~(1<<7)
-MRS r1,cpsr
-BIC r1,r1,#(1<<7)
-MSR cpsr_c,r1
-LDMFD 	sp!, {r0-r3, pc}^ 		@ restore context, return
+MRS r0,cpsr
+BIC r0,r0,#(1<<7)
+MSR cpsr_c,r0
+LDMFD 	sp!, {r0, pc}^ 		@ restore context, return
 
 disable_interrupts:
-STMFD 	sp!, {r0-r3, lr} 		@ save context
+STMFD 	sp!, {r0, lr} 		@ save context
 # CPSR = CPSR | (1<<7)
-MRS r1,cpsr
-ORR r1,r1,#(1<<7)
-MSR cpsr_c,r1
-LDMFD 	sp!, {r0-r3, pc}^ 		@ restore context, return
+MRS r0,cpsr
+ORR r0,r0,#(1<<7)
+MSR cpsr_c,r0
+LDMFD 	sp!, {r0, pc}^ 		@ restore context, return
 
 
 get_interrupt_state:
 # Gibt 0 zurück, wenn Interrupts zugelassen sind, sonst einen Wert ungleich 0
-STMFD 	sp!, {r0-r3, lr} 		@ save context
+STMFD 	sp!, {r0-r1, lr} 		@ save context
 MRS r1,cpsr
 TST r1,#(1<<7)
 BNE	interrupt_active
@@ -174,10 +174,10 @@ B end_get_interrupt_state
 interrupt_active:
 MOV r0,#0
 end_get_interrupt_state:
-LDMFD 	sp!,{r1-r3, pc}^ 		@ restore context, return
+LDMFD 	sp!,{r0-r1, pc}^ 		@ restore context, return
 
 start_timer:
-STMFD 	sp!, {r0-r3, lr} 		@ save context
+STMFD 	sp!, {r0-r1, lr} 		@ save context
 # OSCR auf 0 setzen wenn Interrupt ausgelöst wurde
 LDR r0,=OSCR
 MOV r1,#0
@@ -188,5 +188,5 @@ LDR r0,=timer_irq_flag
 MOV r1,#0
 STR r1,[r0]
 
-LDMFD 	sp!, {r0-r3, pc}^ 		@ restore context, return
+LDMFD 	sp!, {r0-r1, pc}^ 		@ restore context, return
 
