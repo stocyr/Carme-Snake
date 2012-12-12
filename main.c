@@ -58,12 +58,13 @@ int randomize()
 location randomize_location()
 {
 	location pos;
+	static int x = 0;
 
 	//pos.x = RanGen.IRandom(0, PLAYGROUND_X_MAX);
 	//pos.y = RanGen.IRandom(0, PLAYGROUND_Y_MAX);
 
-	pos.x = (GUI_GetTime() + randomize())%PLAYGROUND_X_MAX;
-	pos.y = (GUI_GetTime() + randomize())%PLAYGROUND_X_MAX;
+	pos.x = PLAYGROUND_X_MAX / 2 + 8 + ((x++)%2)*7;
+	pos.y = PLAYGROUND_Y_MAX / 2;
 
 	return pos;
 }
@@ -157,7 +158,7 @@ int main()
 				break;
 			}
 
-			delay(200);
+			delay(130);
 		}
 		while(game_over != 1);
 
