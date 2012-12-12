@@ -24,9 +24,7 @@
 /*  n00bSoft                                                                 */
 /*****************************************************************************/
 /* Makros*/
-#define SNAKE_BUFFER		100		// max. Grösse für Schlange
-#define PLAYGROUND_X_MAX	80
-#define PLAYGROUND_Y_MAX	60
+#define SNAKE_BUFFER		100		// max. Grösse für Schlang
 #define INITIAL_SIZE		4
 
 /* Enumerations */

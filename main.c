@@ -136,6 +136,8 @@ int main()
 		food = randomize_food();
 		draw_food(food);
 
+		enable_interrupts();
+
 		do
 		{
 			switch(step_forward(check_initial_state()))
@@ -155,7 +157,7 @@ int main()
 				break;
 			}
 
-			delay(400);
+			delay(200);
 		}
 		while(game_over != 1);
 
