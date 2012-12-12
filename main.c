@@ -75,7 +75,7 @@ location randomize_food()
 	{
 		food = randomize_location();
 	}
-	while(!check_snake_collision(food));
+	while(check_snake_collision(food));
 
 	return food;
 }
@@ -112,42 +112,48 @@ void restore_interruptstate(int old_state)
 int main()
 {
     int level = 1;
+    int game_over = 0;
 
 	init_graphics();		//Function um Grafik Lib zu initialisieren, gibt evtl später mal Errorcode zurück...
     init_counter();
     enable_interrupts();
 
     //CRandomMersenne RanGen(GUI_GetTime());
-    draw_field();
-    init_snake();
-
-    start_timer();
-
-    // warten bis eine taste gedrückt wird, welche den initialen zustand von snake_direction ändert
-    //while(snake_direction == 57); --> später wieder reinnehmen, wenn uart modul fertig.
-
-    // jetzt food zeichnen
-    food = randomize_food();
-    draw_food(food);
 
     while(1)
     {
-    	switch(step_forward(check_initial_state()))
-    	{
-    	case COLLISION:
-    		// send_max_score_and_level();
-    		level = 1;
-    		init_snake();
-    		break;
-    	case FOOD:
-    		food = randomize_food();
-    		draw_food(food);
-    		break;
-    	case NOTHING:
-    		break;
-    	}
+    	draw_field();
+    	init_snake();
 
-    	delay(400);
+    	start_timer();
+
+    	// warten bis eine taste gedrückt wird, welche den initialen zustand von snake_direction ändert
+		//while(snake_direction == 57); --> später wieder reinnehmen, wenn uart modul fertig.
+
+		// jetzt food zeichnen
+		food = randomize_food();
+		draw_food(food);
+
+		do
+		{
+			switch(step_forward(check_initial_state()))
+			{
+			case COLLISION:
+				// send_max_score_and_level();
+				level = 1;
+				game_over = 1;
+				break;
+			case FOOD:
+				food = randomize_food();
+				draw_food(food);
+				break;
+			case NOTHING:
+				break;
+			}
+
+			delay(400);
+		}
+		while(game_over != 1);
     }
 
     return 0;
