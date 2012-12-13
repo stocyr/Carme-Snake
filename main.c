@@ -26,10 +26,10 @@
 #include "graphics.h"
 #include "snake_controller.h"
 #include "GUI.h"
-#include "carme.h"
-#include "bitopera.h"
-#include "interrupt_ivo.h"
-#include "interrupt.h"
+//#include "carme.h"
+//#include "bitopera.h"
+//#include "interrupt_ivo.h"
+//#include "interrupt.h"
 #include "marsenne.h"
 
 /* global variables */
@@ -83,8 +83,6 @@ location randomize_food()
 
 void delay(int ms)
 {
-	///Timer starten - muesme dr timer i dere funktion starte, oder geit me eifach ga luege ob scho e interrupt isch cho, de ischme im schlimschte fau e ms z früeh fertig... hingäge ergäb se so e subere takt wo immer glich läng isch, we dr räscht vom code chürzer aus 1 ms geit...
-
 
 	start_timer();
 	while(ms > 0)
@@ -117,6 +115,7 @@ int main()
 
 	init_graphics();		//Function um Grafik Lib zu initialisieren, gibt evtl später mal Errorcode zurück...
     init_counter();
+    init_uart();
 
     //CRandomMersenne RanGen(GUI_GetTime());
 
@@ -125,6 +124,12 @@ int main()
     	disable_interrupts();
     	draw_field();
     	enable_interrupts();
+    	/* Nach däm enable gheit er grad i timerinterrupt
+    	 * u nachem Interrupt füehrt er us unerklärleche gründ disable interrupts
+    	 * us u niermer weis werum...
+    	 *
+    	 *
+    	 */
 
     	init_snake();
 

@@ -30,7 +30,7 @@
 /* Enumerations */
 
 // direction
-enum direction {RIGHT, UP, LEFT, DOWN};
+enum direction {RIGHT = 'r', UP = 'u', LEFT = 'l', DOWN = 'd'};
 
 
 enum result {NOTHING, FOOD, COLLISION};
@@ -62,6 +62,7 @@ extern int level;
 
 /* function prototype for asm_soubrutines */
 extern void init_counter();
+extern void init_uart();
 extern void start_timer();
 
 extern void enable_interrupts();

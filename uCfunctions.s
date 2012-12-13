@@ -25,6 +25,7 @@
 .include "../startup/pxa270.s"
 
 .global init_counter
+.global init_uart
 .global interrupt_handler
 .global enable_interrupts
 .global disable_interrupts
@@ -86,13 +87,100 @@ LDMFD 	sp!, {r0-r1, pc}^ 		@ restore context, return
 
 
 init_uart:
+STMFD 	sp!, {r0-r2, lr} 		@ save context
 
+# UART initialisieren:
+# 8 bit Daten
+# 1 Stop bit
+# no parity
+# 9600 baud
+# Clock einschalten
+# CKEN |= (1<<6);	// uart clock einschalten
 
+# UART selbst ausschalten
+# FFLCR &= ~(1<<7);	// DLAB löschen
+LDR r0,=FFLCR
+LDR r1,[r0]
+BIC r1,r1,#(1<<7)
+STR r1,[r0]
+# FFIER &= ~(1<<6);	// UUE ausschalten
+LDR r1,=FFIER
+LDR r2,[r1]
+BIC r2,r2,#(1<<6)
+STR r2,[r1]
+# GPIO<34> als RxD wählen -> Alternate Function 1 -> Bit 5,4   = 01
+# GPIO<39> als TxD wählen -> Alternate Function 2 -> Bit 15,14 = 10
+LDR r1,=GAFR1_L
+LDR r2,[r1]
+LDR r2,=0x8010		@ wenns nicht geht zuerst noch bit 5 und 14 löschen, sollten aber 0 sein vom Reset
+ORR r2,r2,r1
+STR r2,[r1]
+
+# Data Direction:
+# GPDR1 &= ~(1<<2);	// Pin 34 als RxD -> Input
+LDR r1,=GPDR1
+LDR r2,[r1]
+BIC r2,r2,#(1<<2)
+
+# GPDR1 |= (1<<7);	// Pin 39 als TxD -> Output
+ORR r2,r2,#(1<<7)
+STR r2,[r1]
+# FIFO ausschalten
+# FFFCR = 0;
+LDR r1,=FFFCR
+MOV r2,#0
+STR r2,[r1]
+# Modem control ausschalten
+# FFMCR = 0;
+LDR r1,=FFMCR
+MOV r2,#0
+STR r2,[r1]
+# Infrarot ausschalten
+# FFISR = 0;
+LDR r1,=FFISR
+MOV r2,#0
+STR r2,[r1]
+# Auto Baudrate ausschalten
+# FFABR = 0;
+LDR r1,=FFABR
+MOV r2,#0
+STR r2,[r1]
+# BAUD rate
+# FFLCR |= (1<<7);	// DLAB setzen
+LDR r1,[r0]
+ORR r1,r1,#(1<<7)
+STR r1,[r0]
+# FFDLL = 96;			// Bausrate: 9600
+LDR r1,=FFDLL
+MOV r2,#96
+STR r2,[r1]
+# FFDLH = 0;
+LDR r1,=FFDLH
+MOV r2,#0
+STR r2,[r1]
+# Line control konfigurieren
+# FFLCR = 0;			// 1 stop bit, kein parity bit
+MOV r1,#0
+# FFLCR |= (1<<0);	// 8bit übertragung
+ORR r1,r1,#(1<<0)
+# FFLCR |= (1<<1);	// 8bit übertragung
+ORR r1,r1,#(1<<1)
+# UART selbst einschalten
+# FFLCR &= ~(1<<7);	// DLAB löschen
+BIC r1,r1,#(1<<7)
+STR r1,[r0]
+# FFIER = (1<<6);	// UUE einschalten
+LDR r1,=FFIER
+LDR r2,[r1]
+ORR r2,r2,#(1<<6)
+STR r2,[r1]
+
+LDMFD 	sp!, {r0-r2, pc}^ 		@ restore context, return
 
 interrupt_handler:
 #ICHP enthält die ID der interruptauslösenden Quelle
 
-STMFD 	sp!, {r0-r1, lr} 		@ save context
+STMFD 	sp!, {r0-r1, r12, lr} 		@ save context
 
 # kommt der Interrupt vom Timer?
 LDR r0,=ICHP
@@ -115,18 +203,62 @@ B end_interrupt_handler
 no_timer_irq:
 # kommt der interupt von UART?
 
-
 TST r1,#(1<<22)					@ UART Interrupt ID = |FFUART Id = 22 | BTUART ID = 23 | STUART ID = 24 |
 BNE no_uart_interrupt
-
 # UART Verarbeitung: je nach erhaltenem Zeichen wird die Variable snake_direction anders gesetzt.
-#FFRBR -> DLAB muss 0 sein für zugriff
+
+# FFLCR &= ~(1<<7);	// DLAB löschen
+LDR r0,=FFLCR
+LDR r1,[r0]
+BIC r1,r1,#(1<<7)
+STR r1,[r0]
+
+# Abfragen ob Daten bereit -> FFLSR Bit 0 = 1?
+LDR r0,=FFLSR
+LDR r1,[r0]
+TST r1,#(1<<0)
+BNE data_not_ready
+# Daten bereit -> Richtung einlesen
 LDR r0,=FFRBR
 LDR r1,[r0]
 
+# Richtungsvariable laden
 LDR r0,=snake_direction
+# Richtung prüfen
+CMP r1,#'r'
+BEQ case_right
+CMP r1,#'l'
+BEQ case_left
+CMP r1,#'u'
+BEQ case_up
+CMP r1,#'d'
+BEQ case_down
+# Keine Übereinstimmung -> default, nichts machen
+B end_switch
 
+case_right:
+MOV r1,#'r'
+b end_switch
+
+case_left:
+MOV r1,#'l'
+b end_switch
+
+case_up:
+MOV r1,#'u'
+b end_switch
+
+case_down:
+MOV r1,#'d'
+b end_switch
+
+# Variable speichern
+end_switch:
 STR r1,[r0]
+
+data_not_ready:
+
+
 B end_interrupt_handler
 
 no_uart_interrupt:
@@ -141,17 +273,21 @@ LDR r1,=0xFFF
 STR r1,[r0]
 
 # restore context, return
-LDMFD 	sp!,{r0-r1, pc}^
+LDMFD 	sp!, {r0-r1, r12, pc}^
 
 
 
 enable_interrupts:
-STMFD 	sp!, {r0, lr} 		@ save context
+STMFD 	sp!, {r0-r1, lr} 		@ save context
+# OSCR auf 0 setzen
+LDR r0,=OSCR
+MOV r1,#0
+STR r1,[r0]
 # CPSR = CPSR & ~(1<<7)
-MRS r0,cpsr
+MRS r0,cpsr					@ mängisch verreiset er da eifach :(
 BIC r0,r0,#(1<<7)
-MSR cpsr_c,r0
-LDMFD 	sp!, {r0, pc}^ 		@ restore context, return
+MSR cpsr_c,r0				@ macht er nich, wieso???????????????????????????????????????
+LDMFD 	sp!, {r0-r1, pc}^ 		@ restore context, return
 
 disable_interrupts:
 STMFD 	sp!, {r0, lr} 		@ save context

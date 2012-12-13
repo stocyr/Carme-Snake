@@ -27,6 +27,8 @@
  *            apps with the gnu toolchain.
  * 			- 2006/09/22: Erwin Stucki (sce2) <erwin.stucki@bfh.ch>
  * 			  Added some definitions for the PXA270.
+ *			- 2012/12/13: Marcel Bärtschi bartm9@bfh.ch
+ *			  Added FFABR Auto-Baud Control Register
  ***************************************************************************
  *  \todo - This file was built for the pxa255. There are still some missing registers
  * 				completed Modules: 	Interrupt, SSP and PWM
@@ -222,6 +224,7 @@
 .set FFSPR, 0x4010001C 			/* Scratch Pad Register (read/write)*/
 .set FFISR, 0x40100020 			/* Infrared Selection Register (read/write)*/
 .set FFFOR, 0x40100024 			/* Receive FIFO Occupancy Register (read/write)*/
+.set FFABR, 0x40100028			/* Auto-Baud Control Register (read/write)*/ 						/* added by bartm9 */
 .set FFDLL, 0x40100000 			/* Divisor Latch Low Register (DLAB = 1) (read/write)*/
 .set FFDLH, 0x40100004 			/* Divisor Latch High Register (DLAB = 1) (read/write)*/
 
@@ -548,7 +551,7 @@
 
 
 /*
- * OS Timer & Match Registers 
+ * OS Timer & Match Registers
  */
 
 /* General Timer Registers */
@@ -800,7 +803,7 @@
 .set    PKSR, 0x40F00054   	/* Power Manager KB Level-Detect Register */
 
 /*
- * SSP Serial Port Registers 
+ * SSP Serial Port Registers
  */
 
 
