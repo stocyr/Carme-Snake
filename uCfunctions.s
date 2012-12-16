@@ -97,6 +97,12 @@ STMFD 	sp!, {r0-r2, lr} 		@ save context
 # Clock einschalten
 # CKEN |= (1<<6);	// uart clock einschalten
 
+# UART Interrupt als Priorität 1 setzen
+LDR r0,=IPR1
+MOV r2,#22
+ORR r2,r2,#(1<<31)
+STR r2,[r0]
+
 # UART selbst ausschalten
 # FFLCR &= ~(1<<7);	// DLAB löschen
 LDR r0,=FFLCR
@@ -283,6 +289,12 @@ STMFD 	sp!, {r0-r1, lr} 		@ save context
 LDR r0,=OSCR
 MOV r1,#0
 STR r1,[r0]
+
+# OSSR löschen um Interrupt zurückzusetzen
+LDR r0,=OSSR
+LDR r1,=0xFFF
+STR r1,[r0]
+
 # CPSR = CPSR & ~(1<<7)
 MRS r0,cpsr					@ mängisch verreiset er da eifach :(
 BIC r0,r0,#(1<<7)
