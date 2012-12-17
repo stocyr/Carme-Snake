@@ -34,7 +34,7 @@
 
 /* global variables */
 
-volatile enum direction snake_direction = 'r';
+volatile enum direction snake_direction = '?';
 volatile int timer_irq_flag = 0;
 
 location food;
@@ -115,76 +115,8 @@ int main()
     int game_over = 0;
 
 	init_graphics();		//Function um Grafik Lib zu initialisieren, gibt evtl später mal Errorcode zurück...
-    //init_counter();
-    //init_uart();
-
-
-
-
-
-
-
-
-	// UART initialisieren:
-	//
-	// 8 bit Daten
-	// 1 Stop bit
-	// no parity
-	// 9600 baud
-	//
-
-	// Clock einschalten
-	CKEN |= (1<<6);	// uart clock einschalten
-
-	// UART selbst ausschalten
-	FFLCR &= ~(1<<7);	// DLAB löschen
-	FFIER &= ~(1<<6);	// UUE ausschalten
-
-	// Alternate function register
-	GAFR1_L |= (1<<4);	// Pin 34: RxD
-	GAFR1_L &= ~(1<<5);	// Pin 34: RxD
-	GAFR1_L |= (1<<15);	// Pin 39: TxD
-	GAFR1_L &= ~(1<<14);	// Pin 39: TxD
-
-	// Data Direction:
-	GPDR1 &= ~(1<<2);	// Pin 34 als RxD -> Input
-	GPDR1 |= (1<<7);	// Pin 39 als TxD -> Output
-
-	// FIFO ausschalten
-	FFFCR = 0;
-
-	// Modem control ausschalten
-	FFMCR = 0;
-
-	// Infrarot ausschalten
-	FFISR = 0;
-
-	// Auto Baudrate ausschalten
-	FFABR = 0;
-
-	// BAUD rate
-	FFLCR |= (1<<7);	// DLAB setzen
-	FFDLL = 96;			// Bausrate: 9600
-	FFDLH = 0;
-
-	// Line control konfigurieren
-	FFLCR = 0;			// 1 stop bit, kein parity bit
-	FFLCR |= (1<<0);	// 8bit übertragung
-	FFLCR |= (1<<1);	// 8bit übertragung
-
-	// UART selbst einschalten
-	FFLCR &= ~(1<<7);	// DLAB löschen
-	FFIER = (1<<6);	// UUE einschalten
-
-
-	IPR1 = 26;
-	bitset(IPR1, 31);
-	IPR0 = 22;
-	bitset(IPR0, 31);
-
-
-
-
+    init_counter();
+    init_uart();
 
 
     //CRandomMersenne RanGen(GUI_GetTime());
@@ -194,6 +126,7 @@ int main()
     {
     	disable_interrupts();
     	draw_field();
+    	snake_direction = '?';
     	enable_interrupts();
     	/* Nach däm enable gheit er grad i timerinterrupt
     	 * u nachem Interrupt füehrt er us unerklärleche gründ disable interrupts
@@ -207,7 +140,7 @@ int main()
     	//start_timer();
 
     	// warten bis eine taste gedrückt wird, welche den initialen zustand von snake_direction ändert
-		//while(snake_direction == 57); --> später wieder reinnehmen, wenn uart modul fertig.
+		while(snake_direction == 63); //--> später wieder reinnehmen, wenn uart modul fertig.
 
 		// jetzt food zeichnen
 		food = randomize_food();
@@ -234,7 +167,7 @@ int main()
 				break;
 			}
 
-			//delay(130);
+			delay(130);
 		}
 		while(game_over != 1);
 

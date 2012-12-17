@@ -95,6 +95,28 @@ STMFD 	sp!, {r0-r3, lr} 		@ save context
 # no parity
 # 9600 baud
 # Clock einschalten
+
+# GPIO<34> als RxD wählen -> Alternate Function 1 -> Bit 5,4   = 01
+# GPIO<39> als TxD wählen -> Alternate Function 2 -> Bit 15,14 = 10
+LDR r1,=GAFR1_L
+LDR r2,[r1]
+LDR r3,=0x8010		@ wenns nicht geht zuerst noch bit 5 und 14 löschen, sollten aber 0 sein vom Reset
+ORR r2,r2,r3
+BIC r2,r2,#(1<<5)
+BIC r2,r2,#(1<<14)
+STR r2,[r1]
+
+# Data Direction:
+# GPDR1 &= ~(1<<2);	// Pin 34 als RxD -> Input
+LDR r1,=GPDR1
+LDR r2,[r1]
+BIC r2,r2,#(1<<2)
+
+# GPDR1 |= (1<<7);	// Pin 39 als TxD -> Output
+ORR r2,r2,#(1<<7)
+STR r2,[r1]
+
+
 # CKEN |= (1<<6);	// uart clock einschalten
 LDR r0,=CKEN
 LDR r1,[r0]
@@ -118,25 +140,7 @@ LDR r1,=FFIER
 LDR r2,[r1]
 BIC r2,r2,#(1<<6)
 STR r2,[r1]
-# GPIO<34> als RxD wählen -> Alternate Function 1 -> Bit 5,4   = 01
-# GPIO<39> als TxD wählen -> Alternate Function 2 -> Bit 15,14 = 10
-LDR r1,=GAFR1_L
-LDR r2,[r1]
-LDR r3,=0x8010		@ wenns nicht geht zuerst noch bit 5 und 14 löschen, sollten aber 0 sein vom Reset
-ORR r2,r2,r3
-BIC r2,r2,#(1<<5)
-BIC r2,r2,#(1<<14)
-STR r2,[r1]
 
-# Data Direction:
-# GPDR1 &= ~(1<<2);	// Pin 34 als RxD -> Input
-LDR r1,=GPDR1
-LDR r2,[r1]
-BIC r2,r2,#(1<<2)
-
-# GPDR1 |= (1<<7);	// Pin 39 als TxD -> Output
-ORR r2,r2,#(1<<7)
-STR r2,[r1]
 # FIFO ausschalten
 # FFFCR = 0;
 LDR r1,=FFFCR
@@ -193,7 +197,7 @@ LDMFD 	sp!, {r0-r3, pc}^ 		@ restore context, return
 
 interrupt_handler:
 #ICHP enthält die ID der interruptauslösenden Quelle
-
+SUB lr, lr, #4 						@ adjust link register for return address
 STMFD 	sp!, {r0-r1, r12, lr} 		@ save context
 
 # kommt der Interrupt vom Timer?
@@ -212,7 +216,7 @@ LDR r0,=timer_irq_flag
 MOV r1,#1
 STR r1,[r0]
 
-B end_interrupt_handler
+# B end_interrupt_handler
 
 no_timer_irq:
 # kommt der interupt von UART?
@@ -231,7 +235,7 @@ STR r1,[r0]
 LDR r0,=FFLSR
 LDR r1,[r0]
 TST r1,#(1<<0)
-BNE data_not_ready
+# BNE data_not_ready
 # Daten bereit -> Richtung einlesen
 LDR r0,=FFRBR
 LDR r1,[r0]
@@ -252,23 +256,27 @@ B end_switch
 
 case_right:
 MOV r1,#'r'
+STR r1,[r0]
 b end_switch
 
 case_left:
 MOV r1,#'l'
+STR r1,[r0]
 b end_switch
 
 case_up:
 MOV r1,#'u'
+STR r1,[r0]
 b end_switch
 
 case_down:
 MOV r1,#'d'
+STR r1,[r0]
 b end_switch
 
 # Variable speichern
 end_switch:
-STR r1,[r0]
+
 
 data_not_ready:
 
