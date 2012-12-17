@@ -35,6 +35,7 @@
 #define ICMR uvp(0x40D00004)
 #define ICLR uvp(0x40D00008)
 #define IPR0 uvp(0x40D0001C)
+#define IPR1 uvp(0x40D00020)
 #define ICHP uvp(0x40D00018)
 
 // Täimer

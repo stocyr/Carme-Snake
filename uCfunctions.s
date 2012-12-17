@@ -53,8 +53,8 @@ LDR r0,=ICLR
 LDR r1,[r0]
 BIC r1,r1,#(1<<26)
 STR r1, [r0]
-# IPR0 = IPR0 | 26; Timer Interrupt als Priorität 0 (höchste) festlegen
-LDR r0,=IPR0
+# IPR0 = IPR0 | 26; Timer Interrupt als Priorität 1 (2. höchste) festlegen
+LDR r0,=IPR1
 LDR r1,[r0]
 
 MOV r1,#26		@ 26 hineinschreiben
@@ -87,7 +87,7 @@ LDMFD 	sp!, {r0-r1, pc}^ 		@ restore context, return
 
 
 init_uart:
-STMFD 	sp!, {r0-r2, lr} 		@ save context
+STMFD 	sp!, {r0-r3, lr} 		@ save context
 
 # UART initialisieren:
 # 8 bit Daten
@@ -96,9 +96,13 @@ STMFD 	sp!, {r0-r2, lr} 		@ save context
 # 9600 baud
 # Clock einschalten
 # CKEN |= (1<<6);	// uart clock einschalten
+LDR r0,=CKEN
+LDR r1,[r0]
+ORR	r1,r1,#(1<<6)
+STR r1,[r0]
 
-# UART Interrupt als Priorität 1 setzen
-LDR r0,=IPR1
+# UART Interrupt als Priorität 0 setzen
+LDR r0,=IPR0
 MOV r2,#22
 ORR r2,r2,#(1<<31)
 STR r2,[r0]
@@ -118,8 +122,10 @@ STR r2,[r1]
 # GPIO<39> als TxD wählen -> Alternate Function 2 -> Bit 15,14 = 10
 LDR r1,=GAFR1_L
 LDR r2,[r1]
-LDR r2,=0x8010		@ wenns nicht geht zuerst noch bit 5 und 14 löschen, sollten aber 0 sein vom Reset
-ORR r2,r2,r1
+LDR r3,=0x8010		@ wenns nicht geht zuerst noch bit 5 und 14 löschen, sollten aber 0 sein vom Reset
+ORR r2,r2,r3
+BIC r2,r2,#(1<<5)
+BIC r2,r2,#(1<<14)
 STR r2,[r1]
 
 # Data Direction:
@@ -153,6 +159,7 @@ MOV r2,#0
 STR r2,[r1]
 # BAUD rate
 # FFLCR |= (1<<7);	// DLAB setzen
+LDR r0,=FFLCR
 LDR r1,[r0]
 ORR r1,r1,#(1<<7)
 STR r1,[r0]
@@ -171,6 +178,7 @@ MOV r1,#0
 ORR r1,r1,#(1<<0)
 # FFLCR |= (1<<1);	// 8bit übertragung
 ORR r1,r1,#(1<<1)
+
 # UART selbst einschalten
 # FFLCR &= ~(1<<7);	// DLAB löschen
 BIC r1,r1,#(1<<7)
@@ -181,7 +189,7 @@ LDR r2,[r1]
 ORR r2,r2,#(1<<6)
 STR r2,[r1]
 
-LDMFD 	sp!, {r0-r2, pc}^ 		@ restore context, return
+LDMFD 	sp!, {r0-r3, pc}^ 		@ restore context, return
 
 interrupt_handler:
 #ICHP enthält die ID der interruptauslösenden Quelle
@@ -328,11 +336,6 @@ start_timer:
 STMFD 	sp!, {r0-r1, lr} 		@ save context
 # OSCR auf 0 setzen wenn Interrupt ausgelöst wurde
 LDR r0,=OSCR
-MOV r1,#0
-STR r1,[r0]
-
-# Timer flag (wird in C-Funktionen genutzt) löschen
-LDR r0,=timer_irq_flag
 MOV r1,#0
 STR r1,[r0]
 

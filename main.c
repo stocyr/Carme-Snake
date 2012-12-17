@@ -26,15 +26,15 @@
 #include "graphics.h"
 #include "snake_controller.h"
 #include "GUI.h"
-//#include "carme.h"
-//#include "bitopera.h"
+#include "carme.h"
+#include "bitopera.h"
 //#include "interrupt_ivo.h"
 //#include "interrupt.h"
 #include "marsenne.h"
 
 /* global variables */
 
-volatile enum direction snake_direction;
+volatile enum direction snake_direction = 'r';
 volatile int timer_irq_flag = 0;
 
 location food;
@@ -58,13 +58,13 @@ int randomize()
 location randomize_location()
 {
 	location pos;
-	//static int x = 0;
+	static int x = 0;
 
-	pos.x = genrand_real2()*PLAYGROUND_X_MAX;
-	pos.y = genrand_real2()*PLAYGROUND_Y_MAX;
+	//pos.x = genrand_real2()*PLAYGROUND_X_MAX;
+	//pos.y = genrand_real2()*PLAYGROUND_Y_MAX;
 
-	//pos.x = PLAYGROUND_X_MAX / 2 + 8 + ((x++)%2)*7;
-	//pos.y = PLAYGROUND_Y_MAX / 2;
+	pos.x = PLAYGROUND_X_MAX / 2 + 8 + ((x++)%2)*7;
+	pos.y = PLAYGROUND_Y_MAX / 2;
 
 	return pos;
 }
@@ -85,6 +85,7 @@ void delay(int ms)
 {
 
 	start_timer();
+	timer_irq_flag = 0;
 	while(ms > 0)
 	{
 
@@ -114,10 +115,80 @@ int main()
     int game_over = 0;
 
 	init_graphics();		//Function um Grafik Lib zu initialisieren, gibt evtl später mal Errorcode zurück...
-    init_counter();
-    init_uart();
+    //init_counter();
+    //init_uart();
+
+
+
+
+
+
+
+
+	// UART initialisieren:
+	//
+	// 8 bit Daten
+	// 1 Stop bit
+	// no parity
+	// 9600 baud
+	//
+
+	// Clock einschalten
+	CKEN |= (1<<6);	// uart clock einschalten
+
+	// UART selbst ausschalten
+	FFLCR &= ~(1<<7);	// DLAB löschen
+	FFIER &= ~(1<<6);	// UUE ausschalten
+
+	// Alternate function register
+	GAFR1_L |= (1<<4);	// Pin 34: RxD
+	GAFR1_L &= ~(1<<5);	// Pin 34: RxD
+	GAFR1_L |= (1<<15);	// Pin 39: TxD
+	GAFR1_L &= ~(1<<14);	// Pin 39: TxD
+
+	// Data Direction:
+	GPDR1 &= ~(1<<2);	// Pin 34 als RxD -> Input
+	GPDR1 |= (1<<7);	// Pin 39 als TxD -> Output
+
+	// FIFO ausschalten
+	FFFCR = 0;
+
+	// Modem control ausschalten
+	FFMCR = 0;
+
+	// Infrarot ausschalten
+	FFISR = 0;
+
+	// Auto Baudrate ausschalten
+	FFABR = 0;
+
+	// BAUD rate
+	FFLCR |= (1<<7);	// DLAB setzen
+	FFDLL = 96;			// Bausrate: 9600
+	FFDLH = 0;
+
+	// Line control konfigurieren
+	FFLCR = 0;			// 1 stop bit, kein parity bit
+	FFLCR |= (1<<0);	// 8bit übertragung
+	FFLCR |= (1<<1);	// 8bit übertragung
+
+	// UART selbst einschalten
+	FFLCR &= ~(1<<7);	// DLAB löschen
+	FFIER = (1<<6);	// UUE einschalten
+
+
+	IPR1 = 26;
+	bitset(IPR1, 31);
+	IPR0 = 22;
+	bitset(IPR0, 31);
+
+
+
+
+
 
     //CRandomMersenne RanGen(GUI_GetTime());
+    //init_genrand(GUI_GetTime());
 
     while(1)
     {
@@ -133,9 +204,7 @@ int main()
 
     	init_snake();
 
-    	start_timer();
-
-    	init_genrand(GUI_GetTime());
+    	//start_timer();
 
     	// warten bis eine taste gedrückt wird, welche den initialen zustand von snake_direction ändert
 		//while(snake_direction == 57); --> später wieder reinnehmen, wenn uart modul fertig.
@@ -165,7 +234,7 @@ int main()
 				break;
 			}
 
-			delay(130);
+			//delay(130);
 		}
 		while(game_over != 1);
 
