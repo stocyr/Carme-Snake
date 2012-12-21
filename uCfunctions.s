@@ -62,7 +62,7 @@ ORR r1,r1,#(1<<31)
 STR r1, [r0]
 
 
-# OSMR0 = 3250000; Match Register so setzen, dass sich 1ms Tackt ergibt
+# OSMR0 = 3250; Match Register so setzen, dass sich 1ms Tackt ergibt
 LDR r1,=3250
 LDR r0,=OSMR0
 STR r1,[r0]
@@ -187,10 +187,11 @@ ORR r1,r1,#(1<<1)
 # FFLCR &= ~(1<<7);	// DLAB löschen
 BIC r1,r1,#(1<<7)
 STR r1,[r0]
-# FFIER = (1<<6);	// UUE einschalten
+# FFIER = (1<<6);	// UUE einschalten, Interrupts von RX enablen (bit RAVIE)
 LDR r1,=FFIER
 LDR r2,[r1]
 ORR r2,r2,#(1<<6)
+ORR r2,r2,#(1<<0)
 STR r2,[r1]
 
 LDMFD 	sp!, {r0-r3, pc}^ 		@ restore context, return
@@ -216,7 +217,7 @@ LDR r0,=timer_irq_flag
 MOV r1,#1
 STR r1,[r0]
 
-# B end_interrupt_handler
+B end_interrupt_handler
 
 no_timer_irq:
 # kommt der interupt von UART?
