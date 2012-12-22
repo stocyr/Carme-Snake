@@ -117,7 +117,7 @@ int main()
 	init_graphics();		//Function um Grafik Lib zu initialisieren, gibt evtl später mal Errorcode zurück...
     init_counter();
     init_uart();
-
+    init_counter();
 
     //CRandomMersenne RanGen(GUI_GetTime());
     //init_genrand(GUI_GetTime());
