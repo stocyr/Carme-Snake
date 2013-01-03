@@ -68,7 +68,7 @@ int level;				///< Enthält den Level des Spiels
 
 
 /**
- * Zufallszahlgenerator
+ * Zufallszahlgenerator.
  * Zufallszahlgenerator aus http://xkcd.com/221/:
  * @return Random number *chosen by fair dice roll.* <p>
  * *guaranteed to be random.*
@@ -83,7 +83,7 @@ int randomize()
 
 
 /**
- * Zufallspositionsgenerator
+ * Zufallspositionsgenerator.
  * Liefert innerhalb der Spielfeldgrösse eine zufällige Position zurück.
  * @return liefert eine zufällige Position zurück
  */
@@ -103,7 +103,7 @@ location randomize_location()
 
 
 /**
- * Zufallspositionsgenerator mit Überprüfung
+ * Zufallspositionsgenerator mit Überprüfung.
  * Liefert eine Zufällige Position innerhalb des Spielfeldes,
  * jedoch *nicht* auf der Schlange drauf.
  * @return liefert eine zufällige Position zurück
@@ -122,8 +122,8 @@ location randomize_food()
 
 
 /**
- * kurzbeschreibung.
- * lange beschreibung.
+ * Verzögerungsfunktion.
+ * Verzögert den Ablauf um eine gewisse Anzahl Millisekunden (mit Timer-Interrupts).
  * @param ms Gibt an, wieviele Millisekunden gewartet werden soll
  */
 void delay(int ms)
