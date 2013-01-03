@@ -38,9 +38,16 @@
  */
 location snake[SNAKE_BUFFER];
 
-int head = 0;	///< der Head des Ringbuffers 'snake[]'
-int tail = 0;	///< der Tail des Ringbuffers 'snake[]'
-int size = 0;	///< die Länge der Schlange im Ringbuffer 'snake[]'
+int head = 0;	///< Head des Ringbuffers 'snake[]'.
+int tail = 0;	///< Tail des Ringbuffers 'snake[]'.
+int size = 0;	///< Länge der Schlange im Ringbuffer 'snake[]'.
+/**
+ * Enthält die Länge der Schlange während dem Aufstarten.
+ * Die Schlange beginnt als einzelnes Glied und wächst dann in die Richtung,
+ * in die der Spieler das erste Mal gedrückt hat. Diese wachsende Länge wird
+ * mit dieser Variable gespeichert. Schlussendlich ist dann nur noch die variable
+ * 'size' des Ringbuffers dafür zuständig.
+ */
 int startup_size = INITIAL_SIZE;
 
 enum result step_forward(int initial)
