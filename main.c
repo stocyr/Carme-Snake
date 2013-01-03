@@ -26,6 +26,18 @@
  * Diese Datei enthält die spielsteuernden Funktionen.
  */
 
+/**
+ * @mainpage Carme-Snake
+ *
+ * Dieses Spiel ist eine Snake-Klon. <br>
+ * Das Spiel wird auf dem LCD der CARME Kits angezeigt, die Bedienung erfolgt über die Pfeiltasten an einem PC. <br>
+ * Das Interface PC <-> CARME erfolgt per RS232 auf den UART1 Port des CARME Kits. <br>
+ *
+ * <img src="../../DFD.jpg">
+ *
+ * @author Cyril Stoller <br> Marcel Bärtschi
+ */
+
 #include "main.h"
 #include "graphics.h"
 #include "snake_controller.h"
