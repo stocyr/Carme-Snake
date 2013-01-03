@@ -36,14 +36,14 @@
 
 /* global variables */
 /**
- * globale Variable, welche vom Interrupthandler über UART aktualisiert wird.
+ * Globale Variable, welche vom Interrupthandler über UART aktualisiert wird.
  * Die Variable ist das Interface zur UART Schnittstelle. Sie enthält die Richtung,
  * in die die Schlange steuern soll. Wird per PC Tastatur gesteuert und dann per
  * UART zum CARME Kit gesendet.
  */
 volatile enum direction snake_direction = '?';
 /**
- * globale Variable, welche vom Interrupthandler über den Timer gesetzt wird.
+ * Globale Variable, welche vom Interrupthandler über den Timer gesetzt wird.
  * Alle 1ms wird das Flag vom Interrupt des Timers gesetzt. Damit werden genaue
  * Zeitverzögerungen möglich.
  */
