@@ -50,6 +50,15 @@ int size = 0;	///< Länge der Schlange im Ringbuffer 'snake[]'.
  */
 int startup_size = INITIAL_SIZE;
 
+
+/**
+ * Geht mit der Schlange einen Schritt in die eingeschlagene Richtung weiter.
+ * Prüft dabei, ob entweder auf Futter gestossen wurde, oder ob eine Kollision
+ * vorliegt.
+ * @return gibt das Ergebnis dieses Schrittes zurück:
+ * Entweder passierte gar nichts, die Schlange traf auf Futter oder es gab eine
+ * Kollision
+ */
 enum result step_forward(int initial)
 {
 	location new_pos;
@@ -119,6 +128,11 @@ enum result step_forward(int initial)
 }
 
 
+/**
+ * Überprüft, ob eine Position ausserhalb des Spielfeldes ist.
+ * @param pos übergibt die zu prüfende Position
+ * @return liefert bei Kollision (= ausserhalb) 1, sonst 0
+ */
 int check_wall_collision(location pos)
 {
 	// wenn innerhalb der definierten Array-grenzen:
@@ -136,6 +150,11 @@ int check_wall_collision(location pos)
 }
 
 
+/**
+ * Überprüft, ob eine Position sich auf der Schlange befindet.
+ * @param pos übergibt die zu prüfende Position
+ * @return liefert bei Kollision (= auf der Schlange) 1, sonst 0
+ */
 int check_snake_collision(location pos)
 {
 	int i;
@@ -154,17 +173,31 @@ int check_snake_collision(location pos)
 }
 
 
+/**
+ * Überprüft, ob sich Futter an einer einer gewissen Position befindet.
+ * @param pos übergibt die zu prüfende Position
+ * @return liefert bei Kollision (= auf dem Futter) 1, sonst 0
+ */
 int check_food_collision(location pos)
 {
 	return food.x == pos.x && food.y == pos.y;
 }
 
 
+/**
+ * Überprüft, ob die Schlange sich noch im Aufstartmodus befindet.
+ * Das heisst, sie hat noch nicht die volle Länge von 'INITIAL_SIZE' erreicht.
+ * @return liefert 1, wenn noch im Aufstartmodus, sonst 0
+ */
 int check_initial_state()
 {
 	return size < startup_size;
 }
 
+
+/**
+ * Initialisiert den Ringbuffer der Schlange.
+ */
 void init_snake()
 {
 	head = 0;

@@ -30,29 +30,52 @@
 
 #include "graphics.h"
 
+
+/**
+ * Initialisiert die GUI Funktionen der mitgelieferten CARME GUI Library.
+ */
 void init_graphics(void)
 {
 	GUI_Init();
 }
 
+
+/**
+ * Zeichnet ein Snake-Glied.
+ * @param pos gibt die Rasterposition an, an der gezeichnet werden soll
+ */
 void draw_snake_head(location head)
 {
 	GUI_SetColor(SNAKECOLOR);
 	GUI_DrawCircle(PLAYGROUND_TO_LCD(head.x), PLAYGROUND_TO_LCD(head.y), SNAKERAD);
 }
 
+/**
+ * Löscht ein Snake-Glied.
+ * @param pos gibt die Rasterposition an, an der ein Snake-Glied gelöscht werden soll
+ */
 void clear_snake_tail(location tail)
 {
 	GUI_SetColor(BACKCOLOR);
 	GUI_DrawCircle(PLAYGROUND_TO_LCD(tail.x), PLAYGROUND_TO_LCD(tail.y), SNAKERAD);
 }
 
+
+/**
+ * Zeichnet das Spielfeld.
+ * Die Hintergrundfarbe ist mit Makros in der Datei \file graphics.h definiert.
+ */
 void draw_field(void)
 {
 	GUI_SetColor(BACKCOLOR);
 	GUI_FillRect(0, 0, GUI_GetScreenSizeX(), GUI_GetScreenSizeY());
 }
 
+
+/**
+ * Zeichnet Futter.
+ * @param pos gibt die Rasterposition an, an der gezeichnet werden soll
+ */
 void draw_food(location food)
 {
 	GUI_SetColor(FOODCOLOR);

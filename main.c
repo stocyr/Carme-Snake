@@ -54,6 +54,13 @@ volatile int timer_irq_flag = 0;
 location food;			///< Enthält die Position des Futters
 int level;				///< Enthält den Level des Spiels
 
+
+/**
+ * Zufallszahlgenerator
+ * Zufallszahlgenerator aus http://xkcd.com/221/:
+ * @return Random number *chosen by fair dice roll.* <p>
+ * *guaranteed to be random.*
+ */
 int randomize()
 {
 	// chosen by fair dice roll.
@@ -62,6 +69,12 @@ int randomize()
 	return 4;
 }
 
+
+/**
+ * Zufallspositionsgenerator
+ * Liefert innerhalb der Spielfeldgrösse eine zufällige Position zurück.
+ * @return liefert eine zufällige Position zurück
+ */
 location randomize_location()
 {
 	location pos;
@@ -76,6 +89,13 @@ location randomize_location()
 	return pos;
 }
 
+
+/**
+ * Zufallspositionsgenerator mit Überprüfung
+ * Liefert eine Zufällige Position innerhalb des Spielfeldes,
+ * jedoch *nicht* auf der Schlange drauf.
+ * @return liefert eine zufällige Position zurück
+ */
 location randomize_food()
 {
 	location food;
@@ -88,11 +108,11 @@ location randomize_food()
 	return food;
 }
 
+
 /**
  * kurzbeschreibung.
  * lange beschreibung.
- * @param ms Wieviele Millisekunden gewartet werden soll
- * @return: nix
+ * @param ms Gibt an, wieviele Millisekunden gewartet werden soll
  */
 void delay(int ms)
 {
@@ -108,6 +128,12 @@ void delay(int ms)
 
 	}
 }
+
+
+/**
+ * Stellt einen gespeicherten Interruptzustand wieder her.
+ * @param gibt den Zustand an, der wiederhergestellt werden soll
+ */
 void restore_interruptstate(int old_state)
 {
 	/* Stellt den alten Interrupt-Zustand wieder her */
@@ -122,6 +148,10 @@ void restore_interruptstate(int old_state)
 }
 
 
+/**
+ * Hauptfunktion. Wird als erstes aufgerufen.
+ * @return gibt 0 zurück
+ */
 int main()
 {
     int level = 1;
