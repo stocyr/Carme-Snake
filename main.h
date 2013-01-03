@@ -32,22 +32,29 @@
  */
 
 /* Makros*/
-#define SNAKE_BUFFER		100		// max. Grösse für Schlang
-#define INITIAL_SIZE		4
+#define SNAKE_BUFFER		100		///< Maximal mögliche Länge der Schlage im Ringbuffer
+#define INITIAL_SIZE		4		///< Lönge der Schlange bei Begin des Spiels
 
 /* Enumerations */
-
-// direction
+/**
+ * Dieser Enumerator dient zur Aufschlüsselung der Zeichen von der UART Schnittstelle.
+ * Er definiert dadurch auch gleich das Protokoll: Je nachdem, welches Zeichen von der
+ * Schnittstelle ankommt, wird es als die jeweilige Richtung interpretiert.
+ */
 enum direction {RIGHT = 'r', UP = 'u', LEFT = 'l', DOWN = 'd'};
-
-
+/**
+ * Dieser Enumerator wird von der Funktion <step_forward>"()" gebraucht.
+ * Sie signalisiert damit, was passiert ist, nachdem die Schlange einen Schritt vorwärts gemacht hat.
+ * Entweder passierte nicht, die Schlange schnappte sich ein Futter oder sie kollidierte mit sich selbst oder der Wand.
+ */
 enum result {NOTHING, FOOD, COLLISION};
 
 
-
 /* Structs */
-
-// location
+/**
+ * Diese Struktur wird benutzt, um Positionsdaten in einer Variable zu speichern.
+ * Sie kann Pixelkoordinaten *oder* Rasterkoordinaten enthalten!
+ */
 typedef struct location {
 	int x;
 	int y;
@@ -55,7 +62,6 @@ typedef struct location {
 
 
 /* global variables */
-//extern volatile enum direction snake_direction;
 extern volatile enum direction snake_direction;
 extern volatile int timer_irq_flag;
 
@@ -68,14 +74,14 @@ extern location food;
 extern location field_size;
 extern int level;
 
-/* function prototype for asm_soubrutines */
-extern void init_counter();
-extern void init_uart();
-extern void start_timer();
+/* function prototypes for asm_soubrutines */
+extern void init_counter();		///< initialisiert den Timer auf Hardwarestufe
+extern void init_uart();		///< initialisiert die UART Schnittstelle auf Hardwarestufe
+extern void start_timer();		///< startet den Timer auf Hardwarestufe
 
-extern void enable_interrupts();
-extern void disable_interrupts();
-extern void interrupt_handler();
-extern int get_interrupt_state();
+extern void enable_interrupts();	///< schaltet Interrupts auf Hardwarestufe ein
+extern void disable_interrupts();	///< schaltet Interrupts auf Hardwarestufe aus
+extern void interrupt_handler();	///< Interrupt handler, der UART- und Timerinterrupt behandelt
+extern int get_interrupt_state();	///< liefert zurück, ob Interrupts eingeschaltet sind oder nicht
 
 #endif

@@ -32,18 +32,25 @@
 #include "GUI.h"
 #include "carme.h"
 #include "bitopera.h"
-//#include "interrupt_ivo.h"
-//#include "interrupt.h"
 #include "marsenne.h"
 
 /* global variables */
-
+/**
+ * globale Variable, welche vom Interrupthandler über UART aktualisiert wird.
+ * Die Variable ist das Interface zur UART Schnittstelle. Sie enthält die Richtung,
+ * in die die Schlange steuern soll. Wird per PC Tastatur gesteuert und dann per
+ * UART zum CARME Kit gesendet.
+ */
 volatile enum direction snake_direction = '?';
+/**
+ * globale Variable, welche vom Interrupthandler über den Timer gesetzt wird.
+ * Alle 1ms wird das Flag vom Interrupt des Timers gesetzt. Damit werden genaue
+ * Zeitverzögerungen möglich.
+ */
 volatile int timer_irq_flag = 0;
 
-location food;
-location field_size;
-int level;
+location food;			///< Enthält die Position des Futters
+int level;				///< Enthält den Level des Spiels
 
 
 void init_game(enum direction init_dir)

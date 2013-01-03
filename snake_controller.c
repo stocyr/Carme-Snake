@@ -32,10 +32,15 @@
 #include "graphics.h"
 #include "snake_controller.h"
 
+/**
+ * Diese Variable ist ein Ringbuffer, der alle Positionen der Schlange enthält.
+ * Die Variablen 'head', 'tail' und 'size' gehören auch dazu.
+ */
 location snake[SNAKE_BUFFER];
-int head = 0;
-int tail = 0;
-int size = 0;
+
+int head = 0;	///< der Head des Ringbuffers 'snake[]'
+int tail = 0;	///< der Tail des Ringbuffers 'snake[]'
+int size = 0;	///< die Länge der Schlange im Ringbuffer 'snake[]'
 int startup_size = INITIAL_SIZE;
 
 enum result step_forward(int initial)
