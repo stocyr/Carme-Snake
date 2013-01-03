@@ -1,0 +1,479 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1">
+<title>Carme-Snake: D:/Programming/C/Carme-Snake/graphics.h-Dateireferenz</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Erzeugt von Doxygen 1.4.5 -->
+<div class="tabs">
+  <ul>
+    <li><a href="index.html"><span>Hauptseite</span></a></li>
+    <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+    <li id="current"><a href="files.html"><span>Dateien</span></a></li>
+    <li><a href="dirs.html"><span>Verzeichnisse</span></a></li>
+  </ul></div>
+<div class="tabs">
+  <ul>
+    <li><a href="files.html"><span>Auflistung&nbsp;der&nbsp;Dateien</span></a></li>
+    <li><a href="globals.html"><span>Datei-Elemente</span></a></li>
+  </ul></div>
+<div class="nav">
+<a class="el" href="dir_D_3A_2F.html">D:</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_D_3A_2FProgramming_2F.html">Programming</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_D_3A_2FProgramming_2FC_2F.html">C</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_D_3A_2FProgramming_2FC_2FCarme_2DSnake_2F.html">Carme-Snake</a></div>
+<h1>graphics.h-Dateireferenz</h1>Enthält Makros und Prototypen für das Modul 'graphics. <a href="#_details">Mehr ...</a>
+<p>
+<code>#include &lt;GUI.h&gt;</code><br>
+<code>#include &quot;<a class="el" href="main_8h-source.html">main.h</a>&quot;</code><br>
+
+<p>
+Include-Abhängigkeitsdiagramm für graphics.h:<p><center><img src="graphics_8h__incl.png" border="0" usemap="#D:/Programming/C/Carme-Snake/graphics.h_map" alt=""></center>
+<map name="D:/Programming/C/Carme-Snake/graphics.h_map">
+<area href="main_8h-source.html" shape="rect" coords="331,56,392,83" alt="">
+</map>
+
+<p>
+Dieser Graph zeigt, welche Datei direkt oder indirekt diese Datei enthält:<p><center><img src="graphics_8h__dep__incl.png" border="0" usemap="#D:/Programming/C/Carme-Snake/graphics.hdep_map" alt=""></center>
+<map name="D:/Programming/C/Carme-Snake/graphics.hdep_map">
+<area href="graphics_8c-source.html" shape="rect" coords="354,5,630,32" alt="">
+<area href="main_8c-source.html" shape="rect" coords="365,56,619,83" alt="">
+<area href="snake__controller_8c-source.html" shape="rect" coords="331,107,653,133" alt="">
+</map>
+
+<p>
+<a href="graphics_8h-source.html">gehe zum Quellcode dieser Datei</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Makrodefinitionen</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="graphics_8h.html#07b903e9e8a4fde6478284b484791848">BACKCOLOR</a>&nbsp;&nbsp;&nbsp;GUI_BLUE</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Hintergrundfarbe des Spielfeldes.  <a href="#07b903e9e8a4fde6478284b484791848"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="graphics_8h.html#7adb1eb9e41a429c4247d7a4635e509d">SNAKECOLOR</a>&nbsp;&nbsp;&nbsp;GUI_BLACK</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Farbe der Schlange.  <a href="#7adb1eb9e41a429c4247d7a4635e509d"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="graphics_8h.html#d3dab3964c2b890e9bc1f0790892b18c">FOODCOLOR</a>&nbsp;&nbsp;&nbsp;GUI_RED</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Farbe des Futters.  <a href="#d3dab3964c2b890e9bc1f0790892b18c"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="graphics_8h.html#51be9c35552c1297c4c64bed085de60f">SNAKERAD</a>&nbsp;&nbsp;&nbsp;3</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Radius der Schlangenglieder.  <a href="#51be9c35552c1297c4c64bed085de60f"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="graphics_8h.html#88be69b0577a14f4fa3bbfa0ff17a41d">ELEMENT</a>&nbsp;&nbsp;&nbsp;5</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Rasterbreite eines Schlangengliedes oder Futters in Pixel.  <a href="#88be69b0577a14f4fa3bbfa0ff17a41d"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="graphics_8h.html#f09dc2a84e4502401e8f58c2e5e9f3d4">PLAYGROUND_X_MAX</a>&nbsp;&nbsp;&nbsp;64</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Breite des Spielfeldes in Rastern.  <a href="#f09dc2a84e4502401e8f58c2e5e9f3d4"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="graphics_8h.html#6d0fa46c381dcb823c09d0e3c0411baf">PLAYGROUND_Y_MAX</a>&nbsp;&nbsp;&nbsp;48</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Höhe des Spielfeldes in Rastern.  <a href="#6d0fa46c381dcb823c09d0e3c0411baf"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="graphics_8h.html#178fb4a8a4e6eaa0f2aa54693f80cab7">PLAYGROUND_TO_LCD</a>(x)&nbsp;&nbsp;&nbsp;(x*ELEMENT+ELEMENT/2)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Umrechnungsmakrofunktion für Rasterposition -&gt; Pixelposition.  <a href="#178fb4a8a4e6eaa0f2aa54693f80cab7"></a><br></td></tr>
+<tr><td colspan="2"><br><h2>Funktionen</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="graphics_8h.html#2ea797d7068d8f7e20e03be5decd61c1">init_graphics</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialisiert die GUI Funktionen der mitgelieferten CARME GUI Library.  <a href="#2ea797d7068d8f7e20e03be5decd61c1"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="graphics_8h.html#5294702ba2d8873cb4bf55995060e42f">draw_snake_head</a> ()</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="graphics_8h.html#4d19292367794ab876c34e95266399f7">clear_snake_tail</a> ()</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="graphics_8h.html#c0a25299c5037360623c3eceb267baac">draw_field</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Zeichnet das Spielfeld.  <a href="#c0a25299c5037360623c3eceb267baac"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="graphics_8h.html#e0fd65274dd1d6156fb302ca16440f9e">draw_food</a> ()</td></tr>
+
+</table>
+<hr><a name="_details"></a><h2>Ausführliche Beschreibung</h2>
+Enthält Makros und Prototypen für das Modul 'graphics. 
+<p>
+
+<p>
+Definiert in Datei <a class="el" href="graphics_8h-source.html">graphics.h</a>.<hr><h2>Makro-Dokumentation</h2>
+<a class="anchor" name="07b903e9e8a4fde6478284b484791848"></a><!-- doxytag: member="graphics.h::BACKCOLOR" ref="07b903e9e8a4fde6478284b484791848" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">#define BACKCOLOR&nbsp;&nbsp;&nbsp;GUI_BLUE          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Hintergrundfarbe des Spielfeldes. 
+<p>
+
+<p>
+Definiert in Zeile <a class="el" href="graphics_8h-source.html#l00036">36</a> der Datei <a class="el" href="graphics_8h-source.html">graphics.h</a>.
+<p>
+Wird benutzt von <a class="el" href="graphics_8c-source.html#l00057">clear_snake_tail()</a> und <a class="el" href="graphics_8c-source.html#l00068">draw_field()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="88be69b0577a14f4fa3bbfa0ff17a41d"></a><!-- doxytag: member="graphics.h::ELEMENT" ref="88be69b0577a14f4fa3bbfa0ff17a41d" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">#define ELEMENT&nbsp;&nbsp;&nbsp;5          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Rasterbreite eines Schlangengliedes oder Futters in Pixel. 
+<p>
+
+<p>
+Definiert in Zeile <a class="el" href="graphics_8h-source.html#l00040">40</a> der Datei <a class="el" href="graphics_8h-source.html">graphics.h</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="d3dab3964c2b890e9bc1f0790892b18c"></a><!-- doxytag: member="graphics.h::FOODCOLOR" ref="d3dab3964c2b890e9bc1f0790892b18c" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">#define FOODCOLOR&nbsp;&nbsp;&nbsp;GUI_RED          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Farbe des Futters. 
+<p>
+
+<p>
+Definiert in Zeile <a class="el" href="graphics_8h-source.html#l00038">38</a> der Datei <a class="el" href="graphics_8h-source.html">graphics.h</a>.
+<p>
+Wird benutzt von <a class="el" href="graphics_8c-source.html#l00079">draw_food()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="178fb4a8a4e6eaa0f2aa54693f80cab7"></a><!-- doxytag: member="graphics.h::PLAYGROUND_TO_LCD" ref="178fb4a8a4e6eaa0f2aa54693f80cab7" args="(x)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">#define PLAYGROUND_TO_LCD          </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">x&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap>&nbsp;&nbsp;&nbsp;(x*ELEMENT+ELEMENT/2)</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Umrechnungsmakrofunktion für Rasterposition -&gt; Pixelposition. 
+<p>
+
+<p>
+Definiert in Zeile <a class="el" href="graphics_8h-source.html#l00043">43</a> der Datei <a class="el" href="graphics_8h-source.html">graphics.h</a>.
+<p>
+Wird benutzt von <a class="el" href="graphics_8c-source.html#l00057">clear_snake_tail()</a>, <a class="el" href="graphics_8c-source.html#l00079">draw_food()</a> und <a class="el" href="graphics_8c-source.html#l00047">draw_snake_head()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="f09dc2a84e4502401e8f58c2e5e9f3d4"></a><!-- doxytag: member="graphics.h::PLAYGROUND_X_MAX" ref="f09dc2a84e4502401e8f58c2e5e9f3d4" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">#define PLAYGROUND_X_MAX&nbsp;&nbsp;&nbsp;64          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Breite des Spielfeldes in Rastern. 
+<p>
+
+<p>
+Definiert in Zeile <a class="el" href="graphics_8h-source.html#l00041">41</a> der Datei <a class="el" href="graphics_8h-source.html">graphics.h</a>.
+<p>
+Wird benutzt von <a class="el" href="snake__controller_8c-source.html#l00136">check_wall_collision()</a>, <a class="el" href="snake__controller_8c-source.html#l00201">init_snake()</a> und <a class="el" href="main_8c-source.html#l00090">randomize_location()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="6d0fa46c381dcb823c09d0e3c0411baf"></a><!-- doxytag: member="graphics.h::PLAYGROUND_Y_MAX" ref="6d0fa46c381dcb823c09d0e3c0411baf" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">#define PLAYGROUND_Y_MAX&nbsp;&nbsp;&nbsp;48          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Höhe des Spielfeldes in Rastern. 
+<p>
+
+<p>
+Definiert in Zeile <a class="el" href="graphics_8h-source.html#l00042">42</a> der Datei <a class="el" href="graphics_8h-source.html">graphics.h</a>.
+<p>
+Wird benutzt von <a class="el" href="snake__controller_8c-source.html#l00136">check_wall_collision()</a>, <a class="el" href="snake__controller_8c-source.html#l00201">init_snake()</a> und <a class="el" href="main_8c-source.html#l00090">randomize_location()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="7adb1eb9e41a429c4247d7a4635e509d"></a><!-- doxytag: member="graphics.h::SNAKECOLOR" ref="7adb1eb9e41a429c4247d7a4635e509d" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">#define SNAKECOLOR&nbsp;&nbsp;&nbsp;GUI_BLACK          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Farbe der Schlange. 
+<p>
+
+<p>
+Definiert in Zeile <a class="el" href="graphics_8h-source.html#l00037">37</a> der Datei <a class="el" href="graphics_8h-source.html">graphics.h</a>.
+<p>
+Wird benutzt von <a class="el" href="graphics_8c-source.html#l00047">draw_snake_head()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="51be9c35552c1297c4c64bed085de60f"></a><!-- doxytag: member="graphics.h::SNAKERAD" ref="51be9c35552c1297c4c64bed085de60f" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">#define SNAKERAD&nbsp;&nbsp;&nbsp;3          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Radius der Schlangenglieder. 
+<p>
+
+<p>
+Definiert in Zeile <a class="el" href="graphics_8h-source.html#l00039">39</a> der Datei <a class="el" href="graphics_8h-source.html">graphics.h</a>.
+<p>
+Wird benutzt von <a class="el" href="graphics_8c-source.html#l00057">clear_snake_tail()</a>, <a class="el" href="graphics_8c-source.html#l00079">draw_food()</a> und <a class="el" href="graphics_8c-source.html#l00047">draw_snake_head()</a>.    </td>
+  </tr>
+</table>
+<hr><h2>Dokumentation der Funktionen</h2>
+<a class="anchor" name="4d19292367794ab876c34e95266399f7"></a><!-- doxytag: member="graphics.h::clear_snake_tail" ref="4d19292367794ab876c34e95266399f7" args="()" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">void clear_snake_tail           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="c0a25299c5037360623c3eceb267baac"></a><!-- doxytag: member="graphics.h::draw_field" ref="c0a25299c5037360623c3eceb267baac" args="()" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">void draw_field           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">void&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Zeichnet das Spielfeld. 
+<p>
+Die Hintergrundfarbe ist mit Makros in der Datei <a class="el" href="graphics_8h.html">graphics.h</a> definiert. 
+<p>
+Definiert in Zeile <a class="el" href="graphics_8c-source.html#l00068">68</a> der Datei <a class="el" href="graphics_8c-source.html">graphics.c</a>.
+<p>
+Benutzt <a class="el" href="graphics_8h-source.html#l00036">BACKCOLOR</a>.
+<p>
+Wird benutzt von <a class="el" href="main_8c-source.html#l00167">main()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="e0fd65274dd1d6156fb302ca16440f9e"></a><!-- doxytag: member="graphics.h::draw_food" ref="e0fd65274dd1d6156fb302ca16440f9e" args="()" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">void draw_food           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="5294702ba2d8873cb4bf55995060e42f"></a><!-- doxytag: member="graphics.h::draw_snake_head" ref="5294702ba2d8873cb4bf55995060e42f" args="()" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">void draw_snake_head           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="2ea797d7068d8f7e20e03be5decd61c1"></a><!-- doxytag: member="graphics.h::init_graphics" ref="2ea797d7068d8f7e20e03be5decd61c1" args="()" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">void init_graphics           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Initialisiert die GUI Funktionen der mitgelieferten CARME GUI Library. 
+<p>
+
+<p>
+Definiert in Zeile <a class="el" href="graphics_8c-source.html#l00037">37</a> der Datei <a class="el" href="graphics_8c-source.html">graphics.c</a>.
+<p>
+Wird benutzt von <a class="el" href="main_8c-source.html#l00167">main()</a>.    </td>
+  </tr>
+</table>
+<hr size="1"><address style="align: right;"><small>Erzeugt am Fri Jan 4 00:09:21 2013 für Carme-Snake von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.4.5 </small></address>
+</body>
+</html>

@@ -1,0 +1,361 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1">
+<title>Carme-Snake: D:/Programming/C/Carme-Snake/bitopera.h-Dateireferenz</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Erzeugt von Doxygen 1.4.5 -->
+<div class="tabs">
+  <ul>
+    <li><a href="index.html"><span>Hauptseite</span></a></li>
+    <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+    <li id="current"><a href="files.html"><span>Dateien</span></a></li>
+    <li><a href="dirs.html"><span>Verzeichnisse</span></a></li>
+  </ul></div>
+<div class="tabs">
+  <ul>
+    <li><a href="files.html"><span>Auflistung&nbsp;der&nbsp;Dateien</span></a></li>
+    <li><a href="globals.html"><span>Datei-Elemente</span></a></li>
+  </ul></div>
+<div class="nav">
+<a class="el" href="dir_D_3A_2F.html">D:</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_D_3A_2FProgramming_2F.html">Programming</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_D_3A_2FProgramming_2FC_2F.html">C</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_D_3A_2FProgramming_2FC_2FCarme_2DSnake_2F.html">Carme-Snake</a></div>
+<h1>bitopera.h-Dateireferenz</h1>Stellt Makros für das Bitweise Manipulieren von Registern zur Verfügung. <a href="#_details">Mehr ...</a>
+<p>
+
+<p>
+Dieser Graph zeigt, welche Datei direkt oder indirekt diese Datei enthält:<p><center><img src="bitopera_8h__dep__incl.png" border="0" usemap="#D:/Programming/C/Carme-Snake/bitopera.hdep_map" alt=""></center>
+<map name="D:/Programming/C/Carme-Snake/bitopera.hdep_map">
+<area href="main_8c-source.html" shape="rect" coords="329,5,583,32" alt="">
+</map>
+
+<p>
+<a href="bitopera_8h-source.html">gehe zum Quellcode dieser Datei</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Makrodefinitionen</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="bitopera_8h.html#0899dadf330c54fdbab1fe7a03b384ed">bitset</a>(Reg, BitNr)&nbsp;&nbsp;&nbsp;Reg |= (1&lt;&lt;BitNr)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="bitopera_8h.html#056d3c39b396946e6f39924ae287bb78">bitclr</a>(Reg, BitNr)&nbsp;&nbsp;&nbsp;Reg &amp;= (~(1&lt;&lt;BitNr))</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="bitopera_8h.html#0faf883e09b8afc049d4ef2b438b5f99">bittgl</a>(Reg, BitNr)&nbsp;&nbsp;&nbsp;Reg ^= (1&lt;&lt;BitNr)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="bitopera_8h.html#c2504918e76177c77c073f5c5c35dc6c">bitpats</a>(Reg, Pattern)&nbsp;&nbsp;&nbsp;Reg |= Pattern</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="bitopera_8h.html#0ee42cf1f3a6fe62174996a063153c66">bitpatc</a>(Reg, Pattern)&nbsp;&nbsp;&nbsp;Reg &amp;= (~Pattern)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="bitopera_8h.html#ae3d4d65d1f43cc5efe644c638526cc5">bitpatt</a>(Reg, Pattern)&nbsp;&nbsp;&nbsp;Reg ^= Pattern</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="bitopera_8h.html#4026f973c84dcb5e8e3740c3c22d2a48">bittst</a>(Reg, BitNr)&nbsp;&nbsp;&nbsp;(Reg &amp; (1&lt;&lt;BitNr))</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="bitopera_8h.html#d633854703e8bd6d5718342a0631d86d">odd</a>(Reg)&nbsp;&nbsp;&nbsp;Quersumme(Reg) % 2</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="bitopera_8h.html#8a37bac2719b1508e2a7862046ec12f1">bar</a>(Reg, max, val)&nbsp;&nbsp;&nbsp;Reg = 0xFF&gt;&gt;(8-val/(max/8))</td></tr>
+
+</table>
+<hr><a name="_details"></a><h2>Ausführliche Beschreibung</h2>
+Stellt Makros für das Bitweise Manipulieren von Registern zur Verfügung. 
+<p>
+
+<p>
+Definiert in Datei <a class="el" href="bitopera_8h-source.html">bitopera.h</a>.<hr><h2>Makro-Dokumentation</h2>
+<a class="anchor" name="8a37bac2719b1508e2a7862046ec12f1"></a><!-- doxytag: member="bitopera.h::bar" ref="8a37bac2719b1508e2a7862046ec12f1" args="(Reg, max, val)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">#define bar          </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">Reg,         <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>max,         <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>val&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap>&nbsp;&nbsp;&nbsp;Reg = 0xFF&gt;&gt;(8-val/(max/8))</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definiert in Zeile <a class="el" href="bitopera_8h-source.html#l00051">51</a> der Datei <a class="el" href="bitopera_8h-source.html">bitopera.h</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="056d3c39b396946e6f39924ae287bb78"></a><!-- doxytag: member="bitopera.h::bitclr" ref="056d3c39b396946e6f39924ae287bb78" args="(Reg, BitNr)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">#define bitclr          </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">Reg,         <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>BitNr&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap>&nbsp;&nbsp;&nbsp;Reg &amp;= (~(1&lt;&lt;BitNr))</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definiert in Zeile <a class="el" href="bitopera_8h-source.html#l00027">27</a> der Datei <a class="el" href="bitopera_8h-source.html">bitopera.h</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="0ee42cf1f3a6fe62174996a063153c66"></a><!-- doxytag: member="bitopera.h::bitpatc" ref="0ee42cf1f3a6fe62174996a063153c66" args="(Reg, Pattern)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">#define bitpatc          </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">Reg,         <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>Pattern&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap>&nbsp;&nbsp;&nbsp;Reg &amp;= (~Pattern)</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definiert in Zeile <a class="el" href="bitopera_8h-source.html#l00031">31</a> der Datei <a class="el" href="bitopera_8h-source.html">bitopera.h</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="c2504918e76177c77c073f5c5c35dc6c"></a><!-- doxytag: member="bitopera.h::bitpats" ref="c2504918e76177c77c073f5c5c35dc6c" args="(Reg, Pattern)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">#define bitpats          </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">Reg,         <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>Pattern&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap>&nbsp;&nbsp;&nbsp;Reg |= Pattern</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definiert in Zeile <a class="el" href="bitopera_8h-source.html#l00030">30</a> der Datei <a class="el" href="bitopera_8h-source.html">bitopera.h</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="ae3d4d65d1f43cc5efe644c638526cc5"></a><!-- doxytag: member="bitopera.h::bitpatt" ref="ae3d4d65d1f43cc5efe644c638526cc5" args="(Reg, Pattern)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">#define bitpatt          </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">Reg,         <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>Pattern&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap>&nbsp;&nbsp;&nbsp;Reg ^= Pattern</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definiert in Zeile <a class="el" href="bitopera_8h-source.html#l00032">32</a> der Datei <a class="el" href="bitopera_8h-source.html">bitopera.h</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="0899dadf330c54fdbab1fe7a03b384ed"></a><!-- doxytag: member="bitopera.h::bitset" ref="0899dadf330c54fdbab1fe7a03b384ed" args="(Reg, BitNr)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">#define bitset          </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">Reg,         <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>BitNr&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap>&nbsp;&nbsp;&nbsp;Reg |= (1&lt;&lt;BitNr)</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definiert in Zeile <a class="el" href="bitopera_8h-source.html#l00026">26</a> der Datei <a class="el" href="bitopera_8h-source.html">bitopera.h</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="0faf883e09b8afc049d4ef2b438b5f99"></a><!-- doxytag: member="bitopera.h::bittgl" ref="0faf883e09b8afc049d4ef2b438b5f99" args="(Reg, BitNr)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">#define bittgl          </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">Reg,         <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>BitNr&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap>&nbsp;&nbsp;&nbsp;Reg ^= (1&lt;&lt;BitNr)</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definiert in Zeile <a class="el" href="bitopera_8h-source.html#l00028">28</a> der Datei <a class="el" href="bitopera_8h-source.html">bitopera.h</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="4026f973c84dcb5e8e3740c3c22d2a48"></a><!-- doxytag: member="bitopera.h::bittst" ref="4026f973c84dcb5e8e3740c3c22d2a48" args="(Reg, BitNr)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">#define bittst          </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">Reg,         <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>BitNr&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap>&nbsp;&nbsp;&nbsp;(Reg &amp; (1&lt;&lt;BitNr))</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definiert in Zeile <a class="el" href="bitopera_8h-source.html#l00034">34</a> der Datei <a class="el" href="bitopera_8h-source.html">bitopera.h</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="d633854703e8bd6d5718342a0631d86d"></a><!-- doxytag: member="bitopera.h::odd" ref="d633854703e8bd6d5718342a0631d86d" args="(Reg)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">#define odd          </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">Reg&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap>&nbsp;&nbsp;&nbsp;Quersumme(Reg) % 2</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definiert in Zeile <a class="el" href="bitopera_8h-source.html#l00049">49</a> der Datei <a class="el" href="bitopera_8h-source.html">bitopera.h</a>.    </td>
+  </tr>
+</table>
+<hr size="1"><address style="align: right;"><small>Erzeugt am Fri Jan 4 00:09:21 2013 für Carme-Snake von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.4.5 </small></address>
+</body>
+</html>

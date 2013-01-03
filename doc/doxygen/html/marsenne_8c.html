@@ -1,0 +1,572 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1">
+<title>Carme-Snake: D:/Programming/C/Carme-Snake/marsenne.c-Dateireferenz</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Erzeugt von Doxygen 1.4.5 -->
+<div class="tabs">
+  <ul>
+    <li><a href="index.html"><span>Hauptseite</span></a></li>
+    <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+    <li id="current"><a href="files.html"><span>Dateien</span></a></li>
+    <li><a href="dirs.html"><span>Verzeichnisse</span></a></li>
+  </ul></div>
+<div class="tabs">
+  <ul>
+    <li><a href="files.html"><span>Auflistung&nbsp;der&nbsp;Dateien</span></a></li>
+    <li><a href="globals.html"><span>Datei-Elemente</span></a></li>
+  </ul></div>
+<div class="nav">
+<a class="el" href="dir_D_3A_2F.html">D:</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_D_3A_2FProgramming_2F.html">Programming</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_D_3A_2FProgramming_2FC_2F.html">C</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_D_3A_2FProgramming_2FC_2FCarme_2DSnake_2F.html">Carme-Snake</a></div>
+<h1>marsenne.c-Dateireferenz</h1>
+<p>
+<a href="marsenne_8c-source.html">gehe zum Quellcode dieser Datei</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Makrodefinitionen</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="marsenne_8c.html#8d9c307cb7f3c4a32822a51922d1ceaa">N</a>&nbsp;&nbsp;&nbsp;624</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="marsenne_8c.html#69691c7bdcc3ce6d5d8a1361f22d04ac">M</a>&nbsp;&nbsp;&nbsp;397</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="marsenne_8c.html#216e0a0e5c9a6737e8c62f3da2529705">MATRIX_A</a>&nbsp;&nbsp;&nbsp;0x9908b0dfUL</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="marsenne_8c.html#107eb05f5930a0d098c5d151e47cd171">UPPER_MASK</a>&nbsp;&nbsp;&nbsp;0x80000000UL</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="marsenne_8c.html#49f501d70ead6067038a15e19637c47c">LOWER_MASK</a>&nbsp;&nbsp;&nbsp;0x7fffffffUL</td></tr>
+
+<tr><td colspan="2"><br><h2>Funktionen</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="marsenne_8c.html#df413c61afdda8a3a7be3eb4f7e76ab0">init_genrand</a> (unsigned long s)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="marsenne_8c.html#a9a3dcb0c5e9b690845fee54052b3363">init_by_array</a> (unsigned long init_key[], int key_length)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">unsigned long&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="marsenne_8c.html#01df93db61b29f580e19a1754050be23">genrand_int32</a> (void)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">long&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="marsenne_8c.html#3ceca2fae5e6787922f547a33d4e8b0a">genrand_int31</a> (void)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="marsenne_8c.html#3c0f0424c02efbfcc66a835fa204e402">genrand_real1</a> (void)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="marsenne_8c.html#94a85eef98bce5c402ccabed3a4afc94">genrand_real2</a> (void)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="marsenne_8c.html#1d4f7117f10709cb70a84e451c6bd0a1">genrand_real3</a> (void)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="marsenne_8c.html#c12a225eb4b434f52778322b9e76c843">genrand_res53</a> (void)</td></tr>
+
+<tr><td colspan="2"><br><h2>Variablen</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static unsigned long&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="marsenne_8c.html#8391b38bfa8669255921f161c832587a">mt</a> [N]</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="marsenne_8c.html#19a04fafb5f9dd7e606920c3adacf8f0">mti</a> = N+1</td></tr>
+
+</table>
+<hr><h2>Makro-Dokumentation</h2>
+<a class="anchor" name="49f501d70ead6067038a15e19637c47c"></a><!-- doxytag: member="marsenne.c::LOWER_MASK" ref="49f501d70ead6067038a15e19637c47c" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">#define LOWER_MASK&nbsp;&nbsp;&nbsp;0x7fffffffUL          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definiert in Zeile <a class="el" href="marsenne_8c-source.html#l00049">49</a> der Datei <a class="el" href="marsenne_8c-source.html">marsenne.c</a>.
+<p>
+Wird benutzt von <a class="el" href="marsenne_8c-source.html#l00100">genrand_int32()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="69691c7bdcc3ce6d5d8a1361f22d04ac"></a><!-- doxytag: member="marsenne.c::M" ref="69691c7bdcc3ce6d5d8a1361f22d04ac" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">#define M&nbsp;&nbsp;&nbsp;397          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definiert in Zeile <a class="el" href="marsenne_8c-source.html#l00046">46</a> der Datei <a class="el" href="marsenne_8c-source.html">marsenne.c</a>.
+<p>
+Wird benutzt von <a class="el" href="marsenne_8c-source.html#l00100">genrand_int32()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="216e0a0e5c9a6737e8c62f3da2529705"></a><!-- doxytag: member="marsenne.c::MATRIX_A" ref="216e0a0e5c9a6737e8c62f3da2529705" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">#define MATRIX_A&nbsp;&nbsp;&nbsp;0x9908b0dfUL          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definiert in Zeile <a class="el" href="marsenne_8c-source.html#l00047">47</a> der Datei <a class="el" href="marsenne_8c-source.html">marsenne.c</a>.
+<p>
+Wird benutzt von <a class="el" href="marsenne_8c-source.html#l00100">genrand_int32()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="8d9c307cb7f3c4a32822a51922d1ceaa"></a><!-- doxytag: member="marsenne.c::N" ref="8d9c307cb7f3c4a32822a51922d1ceaa" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">#define N&nbsp;&nbsp;&nbsp;624          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definiert in Zeile <a class="el" href="marsenne_8c-source.html#l00045">45</a> der Datei <a class="el" href="marsenne_8c-source.html">marsenne.c</a>.
+<p>
+Wird benutzt von <a class="el" href="marsenne_8c-source.html#l00100">genrand_int32()</a>, <a class="el" href="marsenne_8c-source.html#l00074">init_by_array()</a> und <a class="el" href="marsenne_8c-source.html#l00055">init_genrand()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="107eb05f5930a0d098c5d151e47cd171"></a><!-- doxytag: member="marsenne.c::UPPER_MASK" ref="107eb05f5930a0d098c5d151e47cd171" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">#define UPPER_MASK&nbsp;&nbsp;&nbsp;0x80000000UL          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definiert in Zeile <a class="el" href="marsenne_8c-source.html#l00048">48</a> der Datei <a class="el" href="marsenne_8c-source.html">marsenne.c</a>.
+<p>
+Wird benutzt von <a class="el" href="marsenne_8c-source.html#l00100">genrand_int32()</a>.    </td>
+  </tr>
+</table>
+<hr><h2>Dokumentation der Funktionen</h2>
+<a class="anchor" name="3ceca2fae5e6787922f547a33d4e8b0a"></a><!-- doxytag: member="marsenne.c::genrand_int31" ref="3ceca2fae5e6787922f547a33d4e8b0a" args="(void)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">long genrand_int31           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">void&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definiert in Zeile <a class="el" href="marsenne_8c-source.html#l00138">138</a> der Datei <a class="el" href="marsenne_8c-source.html">marsenne.c</a>.
+<p>
+Benutzt <a class="el" href="marsenne_8c-source.html#l00100">genrand_int32()</a>.
+<p>
+Hier ist der Graph aller Aufrufe für diese Funktion:<p><center><img src="marsenne_8c_3ceca2fae5e6787922f547a33d4e8b0a_cgraph.png" border="0" usemap="#marsenne_8c_3ceca2fae5e6787922f547a33d4e8b0a_cgraph_map" alt=""></center>
+<map name="marsenne_8c_3ceca2fae5e6787922f547a33d4e8b0a_cgraph_map">
+<area href="marsenne_8c.html#01df93db61b29f580e19a1754050be23" shape="rect" coords="158,5,261,32" alt="">
+<area href="marsenne_8c.html#df413c61afdda8a3a7be3eb4f7e76ab0" shape="rect" coords="310,5,402,32" alt="">
+</map>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="01df93db61b29f580e19a1754050be23"></a><!-- doxytag: member="marsenne.c::genrand_int32" ref="01df93db61b29f580e19a1754050be23" args="(void)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">unsigned long genrand_int32           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">void&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definiert in Zeile <a class="el" href="marsenne_8c-source.html#l00100">100</a> der Datei <a class="el" href="marsenne_8c-source.html">marsenne.c</a>.
+<p>
+Benutzt <a class="el" href="marsenne_8c-source.html#l00055">init_genrand()</a>, <a class="el" href="marsenne_8c-source.html#l00049">LOWER_MASK</a>, <a class="el" href="marsenne_8c-source.html#l00046">M</a>, <a class="el" href="marsenne_8c-source.html#l00047">MATRIX_A</a>, <a class="el" href="marsenne_8c-source.html#l00051">mt</a>, <a class="el" href="marsenne_8c-source.html#l00052">mti</a>, <a class="el" href="marsenne_8c-source.html#l00045">N</a> und <a class="el" href="marsenne_8c-source.html#l00048">UPPER_MASK</a>.
+<p>
+Wird benutzt von <a class="el" href="marsenne_8c-source.html#l00138">genrand_int31()</a>, <a class="el" href="marsenne_8c-source.html#l00144">genrand_real1()</a>, <a class="el" href="marsenne_8c-source.html#l00151">genrand_real2()</a>, <a class="el" href="marsenne_8c-source.html#l00158">genrand_real3()</a> und <a class="el" href="marsenne_8c-source.html#l00165">genrand_res53()</a>.
+<p>
+Hier ist der Graph aller Aufrufe für diese Funktion:<p><center><img src="marsenne_8c_01df93db61b29f580e19a1754050be23_cgraph.png" border="0" usemap="#marsenne_8c_01df93db61b29f580e19a1754050be23_cgraph_map" alt=""></center>
+<map name="marsenne_8c_01df93db61b29f580e19a1754050be23_cgraph_map">
+<area href="marsenne_8c.html#df413c61afdda8a3a7be3eb4f7e76ab0" shape="rect" coords="158,5,250,32" alt="">
+</map>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="3c0f0424c02efbfcc66a835fa204e402"></a><!-- doxytag: member="marsenne.c::genrand_real1" ref="3c0f0424c02efbfcc66a835fa204e402" args="(void)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">double genrand_real1           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">void&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definiert in Zeile <a class="el" href="marsenne_8c-source.html#l00144">144</a> der Datei <a class="el" href="marsenne_8c-source.html">marsenne.c</a>.
+<p>
+Benutzt <a class="el" href="marsenne_8c-source.html#l00100">genrand_int32()</a>.
+<p>
+Hier ist der Graph aller Aufrufe für diese Funktion:<p><center><img src="marsenne_8c_3c0f0424c02efbfcc66a835fa204e402_cgraph.png" border="0" usemap="#marsenne_8c_3c0f0424c02efbfcc66a835fa204e402_cgraph_map" alt=""></center>
+<map name="marsenne_8c_3c0f0424c02efbfcc66a835fa204e402_cgraph_map">
+<area href="marsenne_8c.html#01df93db61b29f580e19a1754050be23" shape="rect" coords="158,5,261,32" alt="">
+<area href="marsenne_8c.html#df413c61afdda8a3a7be3eb4f7e76ab0" shape="rect" coords="310,5,402,32" alt="">
+</map>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="94a85eef98bce5c402ccabed3a4afc94"></a><!-- doxytag: member="marsenne.c::genrand_real2" ref="94a85eef98bce5c402ccabed3a4afc94" args="(void)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">double genrand_real2           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">void&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definiert in Zeile <a class="el" href="marsenne_8c-source.html#l00151">151</a> der Datei <a class="el" href="marsenne_8c-source.html">marsenne.c</a>.
+<p>
+Benutzt <a class="el" href="marsenne_8c-source.html#l00100">genrand_int32()</a>.
+<p>
+Hier ist der Graph aller Aufrufe für diese Funktion:<p><center><img src="marsenne_8c_94a85eef98bce5c402ccabed3a4afc94_cgraph.png" border="0" usemap="#marsenne_8c_94a85eef98bce5c402ccabed3a4afc94_cgraph_map" alt=""></center>
+<map name="marsenne_8c_94a85eef98bce5c402ccabed3a4afc94_cgraph_map">
+<area href="marsenne_8c.html#01df93db61b29f580e19a1754050be23" shape="rect" coords="158,5,261,32" alt="">
+<area href="marsenne_8c.html#df413c61afdda8a3a7be3eb4f7e76ab0" shape="rect" coords="310,5,402,32" alt="">
+</map>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="1d4f7117f10709cb70a84e451c6bd0a1"></a><!-- doxytag: member="marsenne.c::genrand_real3" ref="1d4f7117f10709cb70a84e451c6bd0a1" args="(void)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">double genrand_real3           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">void&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definiert in Zeile <a class="el" href="marsenne_8c-source.html#l00158">158</a> der Datei <a class="el" href="marsenne_8c-source.html">marsenne.c</a>.
+<p>
+Benutzt <a class="el" href="marsenne_8c-source.html#l00100">genrand_int32()</a>.
+<p>
+Hier ist der Graph aller Aufrufe für diese Funktion:<p><center><img src="marsenne_8c_1d4f7117f10709cb70a84e451c6bd0a1_cgraph.png" border="0" usemap="#marsenne_8c_1d4f7117f10709cb70a84e451c6bd0a1_cgraph_map" alt=""></center>
+<map name="marsenne_8c_1d4f7117f10709cb70a84e451c6bd0a1_cgraph_map">
+<area href="marsenne_8c.html#01df93db61b29f580e19a1754050be23" shape="rect" coords="158,5,261,32" alt="">
+<area href="marsenne_8c.html#df413c61afdda8a3a7be3eb4f7e76ab0" shape="rect" coords="310,5,402,32" alt="">
+</map>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="c12a225eb4b434f52778322b9e76c843"></a><!-- doxytag: member="marsenne.c::genrand_res53" ref="c12a225eb4b434f52778322b9e76c843" args="(void)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">double genrand_res53           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">void&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definiert in Zeile <a class="el" href="marsenne_8c-source.html#l00165">165</a> der Datei <a class="el" href="marsenne_8c-source.html">marsenne.c</a>.
+<p>
+Benutzt <a class="el" href="marsenne_8c-source.html#l00100">genrand_int32()</a>.
+<p>
+Hier ist der Graph aller Aufrufe für diese Funktion:<p><center><img src="marsenne_8c_c12a225eb4b434f52778322b9e76c843_cgraph.png" border="0" usemap="#marsenne_8c_c12a225eb4b434f52778322b9e76c843_cgraph_map" alt=""></center>
+<map name="marsenne_8c_c12a225eb4b434f52778322b9e76c843_cgraph_map">
+<area href="marsenne_8c.html#01df93db61b29f580e19a1754050be23" shape="rect" coords="161,5,263,32" alt="">
+<area href="marsenne_8c.html#df413c61afdda8a3a7be3eb4f7e76ab0" shape="rect" coords="313,5,405,32" alt="">
+</map>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="a9a3dcb0c5e9b690845fee54052b3363"></a><!-- doxytag: member="marsenne.c::init_by_array" ref="a9a3dcb0c5e9b690845fee54052b3363" args="(unsigned long init_key[], int key_length)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">void init_by_array           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">unsigned long&nbsp;</td>
+          <td class="mdname" nowrap> <em>init_key</em>[], </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>int&nbsp;</td>
+          <td class="mdname" nowrap> <em>key_length</em></td>
+        </tr>
+        <tr>
+          <td class="md"></td>
+          <td class="md">)&nbsp;</td>
+          <td class="md" colspan="2"></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definiert in Zeile <a class="el" href="marsenne_8c-source.html#l00074">74</a> der Datei <a class="el" href="marsenne_8c-source.html">marsenne.c</a>.
+<p>
+Benutzt <a class="el" href="marsenne_8c-source.html#l00055">init_genrand()</a>, <a class="el" href="marsenne_8c-source.html#l00051">mt</a> und <a class="el" href="marsenne_8c-source.html#l00045">N</a>.
+<p>
+Hier ist der Graph aller Aufrufe für diese Funktion:<p><center><img src="marsenne_8c_a9a3dcb0c5e9b690845fee54052b3363_cgraph.png" border="0" usemap="#marsenne_8c_a9a3dcb0c5e9b690845fee54052b3363_cgraph_map" alt=""></center>
+<map name="marsenne_8c_a9a3dcb0c5e9b690845fee54052b3363_cgraph_map">
+<area href="marsenne_8c.html#df413c61afdda8a3a7be3eb4f7e76ab0" shape="rect" coords="150,5,242,32" alt="">
+</map>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="df413c61afdda8a3a7be3eb4f7e76ab0"></a><!-- doxytag: member="marsenne.c::init_genrand" ref="df413c61afdda8a3a7be3eb4f7e76ab0" args="(unsigned long s)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">void init_genrand           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">unsigned long&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap> <em>s</em>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definiert in Zeile <a class="el" href="marsenne_8c-source.html#l00055">55</a> der Datei <a class="el" href="marsenne_8c-source.html">marsenne.c</a>.
+<p>
+Benutzt <a class="el" href="marsenne_8c-source.html#l00051">mt</a>, <a class="el" href="marsenne_8c-source.html#l00052">mti</a> und <a class="el" href="marsenne_8c-source.html#l00045">N</a>.
+<p>
+Wird benutzt von <a class="el" href="marsenne_8c-source.html#l00100">genrand_int32()</a> und <a class="el" href="marsenne_8c-source.html#l00074">init_by_array()</a>.    </td>
+  </tr>
+</table>
+<hr><h2>Variablen-Dokumentation</h2>
+<a class="anchor" name="8391b38bfa8669255921f161c832587a"></a><!-- doxytag: member="marsenne.c::mt" ref="8391b38bfa8669255921f161c832587a" args="[N]" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">unsigned long <a class="el" href="marsenne_8c.html#8391b38bfa8669255921f161c832587a">mt</a>[N]<code> [static]</code>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definiert in Zeile <a class="el" href="marsenne_8c-source.html#l00051">51</a> der Datei <a class="el" href="marsenne_8c-source.html">marsenne.c</a>.
+<p>
+Wird benutzt von <a class="el" href="marsenne_8c-source.html#l00100">genrand_int32()</a>, <a class="el" href="marsenne_8c-source.html#l00074">init_by_array()</a> und <a class="el" href="marsenne_8c-source.html#l00055">init_genrand()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="19a04fafb5f9dd7e606920c3adacf8f0"></a><!-- doxytag: member="marsenne.c::mti" ref="19a04fafb5f9dd7e606920c3adacf8f0" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">int <a class="el" href="marsenne_8c.html#19a04fafb5f9dd7e606920c3adacf8f0">mti</a> = N+1<code> [static]</code>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definiert in Zeile <a class="el" href="marsenne_8c-source.html#l00052">52</a> der Datei <a class="el" href="marsenne_8c-source.html">marsenne.c</a>.
+<p>
+Wird benutzt von <a class="el" href="marsenne_8c-source.html#l00100">genrand_int32()</a> und <a class="el" href="marsenne_8c-source.html#l00055">init_genrand()</a>.    </td>
+  </tr>
+</table>
+<hr size="1"><address style="align: right;"><small>Erzeugt am Fri Jan 4 00:09:21 2013 für Carme-Snake von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.4.5 </small></address>
+</body>
+</html>

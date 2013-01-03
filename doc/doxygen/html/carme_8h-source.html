@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1">
+<title>Carme-Snake: D:/Programming/C/Carme-Snake/carme.h Quellcode</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Erzeugt von Doxygen 1.4.5 -->
+<div class="tabs">
+  <ul>
+    <li><a href="index.html"><span>Hauptseite</span></a></li>
+    <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+    <li id="current"><a href="files.html"><span>Dateien</span></a></li>
+    <li><a href="dirs.html"><span>Verzeichnisse</span></a></li>
+  </ul></div>
+<div class="tabs">
+  <ul>
+    <li><a href="files.html"><span>Auflistung&nbsp;der&nbsp;Dateien</span></a></li>
+    <li><a href="globals.html"><span>Datei-Elemente</span></a></li>
+  </ul></div>
+<div class="nav">
+<a class="el" href="dir_D_3A_2F.html">D:</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_D_3A_2FProgramming_2F.html">Programming</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_D_3A_2FProgramming_2FC_2F.html">C</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_D_3A_2FProgramming_2FC_2FCarme_2DSnake_2F.html">Carme-Snake</a></div>
+<h1>carme.h</h1><a href="carme_8h.html">gehe zur Dokumentation dieser Datei</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 
+<a name="l00007"></a>00007 <span class="preprocessor">#ifndef CARME_H_</span>
+<a name="l00008"></a>00008 <span class="preprocessor"></span><span class="preprocessor">#define CARME_H_</span>
+<a name="l00009"></a>00009 <span class="preprocessor"></span>
+<a name="l00010"></a><a class="code" href="carme_8h.html#ff4ca8f2281a0016adbf4ad19324c2d4">00010</a> <span class="preprocessor">#define vulp (volatile unsigned long *)</span>
+<a name="l00011"></a><a class="code" href="carme_8h.html#9be7e780a48d27d461a91c322cd8a24e">00011</a> <span class="preprocessor"></span><span class="preprocessor">#define cvp(x) (vulp(x))</span>
+<a name="l00012"></a><a class="code" href="carme_8h.html#0511bbd4df6d45157f21977ccf1cc793">00012</a> <span class="preprocessor"></span><span class="preprocessor">#define uvp(x) (*cvp(x))</span>
+<a name="l00013"></a>00013 <span class="preprocessor"></span>
+<a name="l00014"></a>00014 
+<a name="l00015"></a><a class="code" href="carme_8h.html#dcfe10e26d35a72336b50c44e13cd691">00015</a> <span class="preprocessor">#define GPLR3 uvp(0x40100000)</span>
+<a name="l00016"></a>00016 <span class="preprocessor"></span>
+<a name="l00017"></a>00017 <span class="comment">// UART</span>
+<a name="l00018"></a><a class="code" href="carme_8h.html#a16d491df824aa80d952d3690bdd524d">00018</a> <span class="preprocessor">#define FFRBR uvp(0x40100000)</span>
+<a name="l00019"></a><a class="code" href="carme_8h.html#ddc152b3ef77123ef33ce99787ef2755">00019</a> <span class="preprocessor"></span><span class="preprocessor">#define FFTHR uvp(0x40100000)</span>
+<a name="l00020"></a><a class="code" href="carme_8h.html#4d16dc22e8645c385fc2719e16935eba">00020</a> <span class="preprocessor"></span><span class="preprocessor">#define FFIER uvp(0x40100004)</span>
+<a name="l00021"></a><a class="code" href="carme_8h.html#2053f7588c44e0d3ca3e7ef0edf5a906">00021</a> <span class="preprocessor"></span><span class="preprocessor">#define FFDLL uvp(0x40100000)</span>
+<a name="l00022"></a><a class="code" href="carme_8h.html#6acd4cc17304e7534e475e95f58cb265">00022</a> <span class="preprocessor"></span><span class="preprocessor">#define FFDLH uvp(0x40100004)</span>
+<a name="l00023"></a><a class="code" href="carme_8h.html#4fe935f16e17d22bc0c067d5ffe0720f">00023</a> <span class="preprocessor"></span><span class="preprocessor">#define FFFCR uvp(0x40100008)</span>
+<a name="l00024"></a><a class="code" href="carme_8h.html#f96bc82d65280ef4220579e15115073b">00024</a> <span class="preprocessor"></span><span class="preprocessor">#define FFLCR uvp(0x4010000C)</span>
+<a name="l00025"></a><a class="code" href="carme_8h.html#ee5a16cf1e211058f54dc2e340c04028">00025</a> <span class="preprocessor"></span><span class="preprocessor">#define FFMCR uvp(0x40100010)</span>
+<a name="l00026"></a><a class="code" href="carme_8h.html#3b3933fd87774f03d881f51dea7f5d1f">00026</a> <span class="preprocessor"></span><span class="preprocessor">#define FFLSR uvp(0x40100014)</span>
+<a name="l00027"></a><a class="code" href="carme_8h.html#ba95583e1e5fe79e6e148cf47edae708">00027</a> <span class="preprocessor"></span><span class="preprocessor">#define FFISR uvp(0x40100020)</span>
+<a name="l00028"></a><a class="code" href="carme_8h.html#c45c3d2eb8d7d52c46af5d597ef4ed24">00028</a> <span class="preprocessor"></span><span class="preprocessor">#define FFABR uvp(0x40100028)</span>
+<a name="l00029"></a>00029 <span class="preprocessor"></span>
+<a name="l00030"></a><a class="code" href="carme_8h.html#0fa0319508754db89c6a11c2016bf75b">00030</a> <span class="preprocessor">#define GPDR1 uvp(0x40E00010)</span>
+<a name="l00031"></a><a class="code" href="carme_8h.html#06c6a56bf0210ef112691efa46c792b9">00031</a> <span class="preprocessor"></span><span class="preprocessor">#define GAFR1_L uvp(0x40E0005C)</span>
+<a name="l00032"></a><a class="code" href="carme_8h.html#1c6c7a31e80e6a3dd5bb81098b85a48a">00032</a> <span class="preprocessor"></span><span class="preprocessor">#define CKEN uvp(0x41300004)</span>
+<a name="l00033"></a>00033 <span class="preprocessor"></span> <span class="comment">// Interröpt</span>
+<a name="l00034"></a><a class="code" href="carme_8h.html#7f4cee87719c9e871c64703024b6832a">00034</a> <span class="preprocessor">#define ICMR uvp(0x40D00004)</span>
+<a name="l00035"></a><a class="code" href="carme_8h.html#b2bb319f07634a31fb0dc06ea5b90dbf">00035</a> <span class="preprocessor"></span><span class="preprocessor">#define ICLR uvp(0x40D00008)</span>
+<a name="l00036"></a><a class="code" href="carme_8h.html#179d6bc1b67444bc294d1121d33a9d52">00036</a> <span class="preprocessor"></span><span class="preprocessor">#define IPR0 uvp(0x40D0001C)</span>
+<a name="l00037"></a><a class="code" href="carme_8h.html#f9bf3badba5b46f2ac67ac25b3316e12">00037</a> <span class="preprocessor"></span><span class="preprocessor">#define IPR1 uvp(0x40D00020)</span>
+<a name="l00038"></a><a class="code" href="carme_8h.html#e6c99582f45e2180a516cf8217b0b146">00038</a> <span class="preprocessor"></span><span class="preprocessor">#define ICHP uvp(0x40D00018)</span>
+<a name="l00039"></a>00039 <span class="preprocessor"></span>
+<a name="l00040"></a>00040 <span class="comment">// Täimer</span>
+<a name="l00041"></a><a class="code" href="carme_8h.html#aafa2c06a3dec4e22700d154f7a77e75">00041</a> <span class="preprocessor">#define OSMR0 uvp(0x40A00000)</span>
+<a name="l00042"></a><a class="code" href="carme_8h.html#6b2d3526a4a412123df3865a33b8fe4d">00042</a> <span class="preprocessor"></span><span class="preprocessor">#define OSCR0 uvp(0x40A00010)</span>
+<a name="l00043"></a><a class="code" href="carme_8h.html#717be171a9e264035ccd42a2be8352e0">00043</a> <span class="preprocessor"></span><span class="preprocessor">#define OIER  uvp(0x40A0001C)</span>
+<a name="l00044"></a><a class="code" href="carme_8h.html#edcb422528a620fde28a4820634017e2">00044</a> <span class="preprocessor"></span><span class="preprocessor">#define OSSR  uvp(0x40A00014)</span>
+<a name="l00045"></a>00045 <span class="preprocessor"></span>
+<a name="l00046"></a>00046 
+<a name="l00047"></a><a class="code" href="carme_8h.html#eacd68979feb5e3a38ee260978be5399">00047</a> <span class="preprocessor">#define TASTER GPLR3</span>
+<a name="l00048"></a><a class="code" href="carme_8h.html#2c6bb4ff6b43ad93fb26c2894b14ae43">00048</a> <span class="preprocessor"></span><span class="preprocessor">#define LEDS uvp(0x0C003000)</span>
+<a name="l00049"></a>00049 <span class="preprocessor"></span>
+<a name="l00050"></a><a class="code" href="carme_8h.html#a48788bd63a0384007cd7d089af6c610">00050</a> <span class="preprocessor">#define T0 (1&lt;&lt;3)</span>
+<a name="l00051"></a><a class="code" href="carme_8h.html#ce499dea30cfce118f4fe85da0227e83">00051</a> <span class="preprocessor"></span><span class="preprocessor">#define T1 (1&lt;&lt;5)</span>
+<a name="l00052"></a><a class="code" href="carme_8h.html#71d2c46af01feeea54a0f541243e297b">00052</a> <span class="preprocessor"></span><span class="preprocessor">#define T2 (1&lt;&lt;6)</span>
+<a name="l00053"></a><a class="code" href="carme_8h.html#54b02ae91c8c6b0aac069c84b9f78178">00053</a> <span class="preprocessor"></span><span class="preprocessor">#define T3 (1&lt;&lt;7)</span>
+<a name="l00054"></a>00054 <span class="preprocessor"></span>
+<a name="l00055"></a><a class="code" href="carme_8h.html#9b2571fa925a02f94028dcc9ec129866">00055</a> <span class="preprocessor">#define L0 (1&lt;&lt;0)</span>
+<a name="l00056"></a><a class="code" href="carme_8h.html#9ec4c0afd450ceac7adb81c3bcfc9732">00056</a> <span class="preprocessor"></span><span class="preprocessor">#define L1 (1&lt;&lt;1)</span>
+<a name="l00057"></a><a class="code" href="carme_8h.html#7e6aa2d53f6ee2b1a34b017fa403cb76">00057</a> <span class="preprocessor"></span><span class="preprocessor">#define L2 (1&lt;&lt;2)</span>
+<a name="l00058"></a><a class="code" href="carme_8h.html#842ce6eb510f7e7047da883915ec90e0">00058</a> <span class="preprocessor"></span><span class="preprocessor">#define L3 (1&lt;&lt;3)</span>
+<a name="l00059"></a>00059 <span class="preprocessor"></span>
+<a name="l00060"></a>00060 <span class="preprocessor">#endif </span><span class="comment">/* CARME_H_ */</span>
+</pre></div><hr size="1"><address style="align: right;"><small>Erzeugt am Fri Jan 4 00:09:21 2013 für Carme-Snake von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.4.5 </small></address>
+</body>
+</html>
