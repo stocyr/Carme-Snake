@@ -32,8 +32,8 @@
  */
 
 /* Makros*/
-#define SNAKE_BUFFER		100		///< Maximal mögliche Länge der Schlage im Ringbuffer
-#define INITIAL_SIZE		4		///< Lönge der Schlange bei Begin des Spiels
+#define SNAKE_BUFFER		100		///< Maximal mögliche Länge der Schlage im Ringbuffer.
+#define INITIAL_SIZE		4		///< Lönge der Schlange bei Begin des Spiels.
 
 /* Enumerations */
 /**
@@ -43,7 +43,7 @@
  */
 enum direction {RIGHT = 'r', UP = 'u', LEFT = 'l', DOWN = 'd'};
 /**
- * Dieser Enumerator wird von der Funktion <step_forward>"()" gebraucht.
+ * Dieser Enumerator wird von der Funktion 'step_forward' gebraucht.
  * Sie signalisiert damit, was passiert ist, nachdem die Schlange einen Schritt vorwärts gemacht hat.
  * Entweder passierte nicht, die Schlange schnappte sich ein Futter oder sie kollidierte mit sich selbst oder der Wand.
  */
@@ -75,13 +75,13 @@ extern location field_size;
 extern int level;
 
 /* function prototypes for asm_soubrutines */
-extern void init_counter();		///< initialisiert den Timer auf Hardwarestufe
-extern void init_uart();		///< initialisiert die UART Schnittstelle auf Hardwarestufe
-extern void start_timer();		///< startet den Timer auf Hardwarestufe
+extern void init_counter();		///< Initialisiert den Timer auf Hardwarestufe.
+extern void init_uart();		///< Initialisiert die UART Schnittstelle auf Hardwarestufe.
+extern void start_timer();		///< Startet den Timer auf Hardwarestufe.
 
-extern void enable_interrupts();	///< schaltet Interrupts auf Hardwarestufe ein
-extern void disable_interrupts();	///< schaltet Interrupts auf Hardwarestufe aus
-extern void interrupt_handler();	///< Interrupt handler, der UART- und Timerinterrupt behandelt
-extern int get_interrupt_state();	///< liefert zurück, ob Interrupts eingeschaltet sind oder nicht
+extern void enable_interrupts();	///< Schaltet Interrupts auf Hardwarestufe ein.
+extern void disable_interrupts();	///< Schaltet Interrupts auf Hardwarestufe aus.
+extern void interrupt_handler();	///< Interrupt handler, der UART- und Timerinterrupt behandelt.
+extern int get_interrupt_state();	///< Liefert zurück, ob Interrupts eingeschaltet sind oder nicht.
 
 #endif
