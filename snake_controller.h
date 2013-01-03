@@ -26,7 +26,7 @@
 /*****************************************************************************/
 /**
  * \file snake_controller.h
- * Enthält globale Variablen für das Modul 'snake_controller'.
+ * Enthält Prototypen für das Modul 'snake_controller'.
  */
 
 #include "main.h"

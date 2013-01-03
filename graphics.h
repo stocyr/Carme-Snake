@@ -25,34 +25,28 @@
 /*****************************************************************************/
 /**
  * \file graphics.h
- * Enthält Makros und Prototypen, die für die Grafik wichtig sind.
+ * Enthält Makros und Prototypen für das Modul 'graphics.
  */
 
 #include <GUI.h>
 
 #include "main.h"
 
-/* Makkros */
-#define BACKCOLOR GUI_BLUE
-#define SNAKECOLOR GUI_BLACK
-#define FOODCOLOR GUI_RED
-#define SNAKERAD 3
-#define ELEMENT 5
-#define PLAYGROUND_X_MAX	64
-#define PLAYGROUND_Y_MAX	48
-#define PLAYGROUND_TO_LCD(x) (x*ELEMENT+ELEMENT/2)
+/* Makros */
+#define BACKCOLOR GUI_BLUE			///< Hintergrundfarbe des Spielfeldes
+#define SNAKECOLOR GUI_BLACK		///< Farbe der Schlange
+#define FOODCOLOR GUI_RED			///< Farbe des Futters
+#define SNAKERAD 3					///< Radius der Schlangenglieder
+#define ELEMENT 5					///< Rasterbreite eines Schlangengliedes oder Futters in Pizel
+#define PLAYGROUND_X_MAX	64		///< Breite des Spielfeldes in Rastern
+#define PLAYGROUND_Y_MAX	48		///< Höhe des Spielfeldes in Rastern
+#define PLAYGROUND_TO_LCD(x) (x*ELEMENT+ELEMENT/2)	///< Umrechnungsmakrofunktion für Rasterposition -> Pixelposition
 
-/* Globale Variablen */
-
+/* prototypes */
 void init_graphics();
-
 void draw_snake_head();
-
 void clear_snake_tail();
-
 void draw_field();
-
-
 void draw_food();
 
 #endif
