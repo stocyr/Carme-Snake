@@ -39,7 +39,9 @@
  * Globale Variable, welche vom Interrupthandler über UART aktualisiert wird.
  * Die Variable ist das Interface zur UART Schnittstelle. Sie enthält die Richtung,
  * in die die Schlange steuern soll. Wird per PC Tastatur gesteuert und dann per
- * UART zum CARME Kit gesendet.
+ * UART zum CARME Kit gesendet. <p>
+ * Bevor überhaupt eine Taste gedrückt wurde hat die Variable den Wert '?', damit
+ * man erkennen kann, wenn dann erstmals ein r, o, l oder u hereinkommt.
  */
 volatile enum direction snake_direction = '?';
 /**
@@ -51,12 +53,6 @@ volatile int timer_irq_flag = 0;
 
 location food;			///< Enthält die Position des Futters
 int level;				///< Enthält den Level des Spiels
-
-
-void init_game(enum direction init_dir)
-{
-
-}
 
 int randomize()
 {
@@ -92,6 +88,12 @@ location randomize_food()
 	return food;
 }
 
+/**
+ * kurzbeschreibung.
+ * lange beschreibung.
+ * @param ms Wieviele Millisekunden gewartet werden soll
+ * @return: nix
+ */
 void delay(int ms)
 {
 
