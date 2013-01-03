@@ -23,6 +23,14 @@
 /*****************************************************************************/
 /*  n00bSoft                                                                 */
 /*****************************************************************************/
+/**
+ * \file main.h
+ * Enthält Makros, Structs und gloale Variablen des Projekts.
+ * Diese Datei enthält Enumeratoren, Strukturen, Makros und Variablen,
+ * welche allgemein für das Projekt wichtig sind. Ausserdem enthält das
+ * Interface zu den Assemblerroutinen.
+ */
+
 /* Makros*/
 #define SNAKE_BUFFER		100		// max. Grösse für Schlang
 #define INITIAL_SIZE		4
