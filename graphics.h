@@ -23,6 +23,11 @@
 /*****************************************************************************/
 /*  n00bSoft                                                                 */
 /*****************************************************************************/
+/**
+ * \file graphics.h
+ * Enthält Makros und Prototypen, die für die Grafik wichtig sind.
+ */
+
 #include <GUI.h>
 
 #include "main.h"

@@ -21,6 +21,12 @@
 /*****************************************************************************/
 /*  n00bSoft                                                                 */
 /*****************************************************************************/
+/**
+ * \file snake_controller.c
+ * Steuert das Verhalten der Schlange.
+ * Das Zeichnen der Schlange ist aber Sache des Moduls 'graphics'.
+ * Und der Spielablauf wird im Modul 'main' gesteuert.
+ */
 
 #include "main.h"
 #include "graphics.h"

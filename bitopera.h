@@ -15,6 +15,11 @@
     Version:    1.5
 
 *******************************************************************************/
+/**
+ * \file bitopera.h
+ * Stellt Makros für das Bitweise Manipulieren von Registern zur Verfügung
+ *
+ */
 #ifndef _BITOPERA_
 #define _BITOPERA_
 

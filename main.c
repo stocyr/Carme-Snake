@@ -20,7 +20,11 @@
 /*****************************************************************************/
 /*  n00bSoft                                                                 */
 /*****************************************************************************/
-
+/**
+ * \file main.c
+ * Hauptdatei des Projekts.
+ * Diese Datei enthält die spielsteuernden Funktionen.
+ */
 
 #include "main.h"
 #include "graphics.h"

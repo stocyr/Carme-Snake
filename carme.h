@@ -1,8 +1,7 @@
-/*
- * carme.h
+/**
+ * \file carme.h
+ * Stellt Makros mit H/W Adressen für das CARME Kit zur Verfügung
  *
- *  Created on: 04.05.2012
- *      Author: cyril
  */
 
 #ifndef CARME_H_
