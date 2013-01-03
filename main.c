@@ -35,7 +35,7 @@
  *
  * <img src="../../DFD.jpg">
  *
- * @author Cyril Stoller <br> Marcel Bärtschi
+ * @author Cyril Stoller <br> Marcel Bärtschi <br> Peter Ambühl
  */
 
 #include "main.h"
