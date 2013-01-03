@@ -132,7 +132,7 @@ void delay(int ms)
 
 /**
  * Stellt einen gespeicherten Interruptzustand wieder her.
- * @param gibt den Zustand an, der wiederhergestellt werden soll
+ * @param old_state gibt den Zustand an, der wiederhergestellt werden soll
  */
 void restore_interruptstate(int old_state)
 {

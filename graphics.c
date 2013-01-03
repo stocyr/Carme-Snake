@@ -42,7 +42,7 @@ void init_graphics(void)
 
 /**
  * Zeichnet ein Snake-Glied.
- * @param pos gibt die Rasterposition an, an der gezeichnet werden soll
+ * @param head gibt die Rasterposition an, an der gezeichnet werden soll
  */
 void draw_snake_head(location head)
 {
@@ -52,7 +52,7 @@ void draw_snake_head(location head)
 
 /**
  * Löscht ein Snake-Glied.
- * @param pos gibt die Rasterposition an, an der ein Snake-Glied gelöscht werden soll
+ * @param tail gibt die Rasterposition an, an der ein Snake-Glied gelöscht werden soll
  */
 void clear_snake_tail(location tail)
 {
@@ -63,7 +63,7 @@ void clear_snake_tail(location tail)
 
 /**
  * Zeichnet das Spielfeld.
- * Die Hintergrundfarbe ist mit Makros in der Datei \file graphics.h definiert.
+ * Die Hintergrundfarbe ist mit Makros in der Datei graphics.h definiert.
  */
 void draw_field(void)
 {
@@ -74,7 +74,7 @@ void draw_field(void)
 
 /**
  * Zeichnet Futter.
- * @param pos gibt die Rasterposition an, an der gezeichnet werden soll
+ * @param food gibt die Rasterposition an, an der gezeichnet werden soll
  */
 void draw_food(location food)
 {
