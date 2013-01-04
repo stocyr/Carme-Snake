@@ -60,6 +60,22 @@ Dieser Graph zeigt, welche Datei direkt oder indirekt diese Datei enthält:<p><ce
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="snake__controller_8h.html#355629f5f037edd2e3a7face80a52886">init_snake</a> ()</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialisiert den Ringbuffer der Schlange.  <a href="#355629f5f037edd2e3a7face80a52886"></a><br></td></tr>
+<tr><td colspan="2"><br><h2>Variablen</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="structlocation.html">location</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="snake__controller_8h.html#2698edfe7456402e4dd3bb4fbd3ecdf5">snake</a> [SNAKE_BUFFER]</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Diese Variable ist ein Ringbuffer, der alle Positionen der Schlange enthält.  <a href="#2698edfe7456402e4dd3bb4fbd3ecdf5"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="snake__controller_8h.html#96e89a298e0a9f469b9ae458d6afae9f">head</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Head des Ringbuffers 'snake[]'.  <a href="#96e89a298e0a9f469b9ae458d6afae9f"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="snake__controller_8h.html#7aea2552dfe7eb84b9443b6fc9ba6e01">tail</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Tail des Ringbuffers 'snake[]'.  <a href="#7aea2552dfe7eb84b9443b6fc9ba6e01"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="snake__controller_8h.html#f7bd60b75b29d79b660a2859395c1a24">size</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Länge der Schlange im Ringbuffer 'snake[]'.  <a href="#f7bd60b75b29d79b660a2859395c1a24"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="snake__controller_8h.html#1b34c77f48cdbfd8120965c5e8183b44">startup_size</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Enthält die Länge der Schlange während dem Aufstarten.  <a href="#1b34c77f48cdbfd8120965c5e8183b44"></a><br></td></tr>
 </table>
 <hr><a name="_details"></a><h2>Ausführliche Beschreibung</h2>
 Enthält Prototypen für das Modul 'snake_controller'. 
@@ -331,7 +347,151 @@ Benutzt <a class="el" href="snake__controller_8c-source.html#l00041">head</a>, <
 Wird benutzt von <a class="el" href="main_8c-source.html#l00167">main()</a>.    </td>
   </tr>
 </table>
-<hr size="1"><address style="align: right;"><small>Erzeugt am Fri Jan 4 00:18:15 2013 für Carme-Snake von&nbsp;
+<hr><h2>Variablen-Dokumentation</h2>
+<a class="anchor" name="96e89a298e0a9f469b9ae458d6afae9f"></a><!-- doxytag: member="snake_controller.h::head" ref="96e89a298e0a9f469b9ae458d6afae9f" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">int <a class="el" href="snake__controller_8h.html#96e89a298e0a9f469b9ae458d6afae9f">head</a>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Head des Ringbuffers 'snake[]'. 
+<p>
+
+<p>
+Definiert in Zeile <a class="el" href="snake__controller_8c-source.html#l00041">41</a> der Datei <a class="el" href="snake__controller_8c-source.html">snake_controller.c</a>.
+<p>
+Wird benutzt von <a class="el" href="snake__controller_8c-source.html#l00062">step_forward()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="f7bd60b75b29d79b660a2859395c1a24"></a><!-- doxytag: member="snake_controller.h::size" ref="f7bd60b75b29d79b660a2859395c1a24" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">int <a class="el" href="snake__controller_8h.html#f7bd60b75b29d79b660a2859395c1a24">size</a>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Länge der Schlange im Ringbuffer 'snake[]'. 
+<p>
+
+<p>
+Definiert in Zeile <a class="el" href="snake__controller_8c-source.html#l00043">43</a> der Datei <a class="el" href="snake__controller_8c-source.html">snake_controller.c</a>.
+<p>
+Wird benutzt von <a class="el" href="snake__controller_8c-source.html#l00192">check_initial_state()</a>, <a class="el" href="snake__controller_8c-source.html#l00158">check_snake_collision()</a> und <a class="el" href="snake__controller_8c-source.html#l00201">init_snake()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="2698edfe7456402e4dd3bb4fbd3ecdf5"></a><!-- doxytag: member="snake_controller.h::snake" ref="2698edfe7456402e4dd3bb4fbd3ecdf5" args="[SNAKE_BUFFER]" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top"><a class="el" href="structlocation.html">location</a> <a class="el" href="snake__controller_8h.html#2698edfe7456402e4dd3bb4fbd3ecdf5">snake</a>[SNAKE_BUFFER]          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Diese Variable ist ein Ringbuffer, der alle Positionen der Schlange enthält. 
+<p>
+Die Variablen 'head', 'tail' und 'size' gehören auch dazu. 
+<p>
+Definiert in Zeile <a class="el" href="snake__controller_8c-source.html#l00039">39</a> der Datei <a class="el" href="snake__controller_8c-source.html">snake_controller.c</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="1b34c77f48cdbfd8120965c5e8183b44"></a><!-- doxytag: member="snake_controller.h::startup_size" ref="1b34c77f48cdbfd8120965c5e8183b44" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">int <a class="el" href="snake__controller_8h.html#1b34c77f48cdbfd8120965c5e8183b44">startup_size</a>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Enthält die Länge der Schlange während dem Aufstarten. 
+<p>
+Die Schlange beginnt als einzelnes Glied und wächst dann in die Richtung, in die der Spieler das erste Mal gedrückt hat. Diese wachsende Länge wird mit dieser Variable gespeichert. Schlussendlich ist dann nur noch die variable 'size' des Ringbuffers dafür zuständig. 
+<p>
+Definiert in Zeile <a class="el" href="snake__controller_8c-source.html#l00051">51</a> der Datei <a class="el" href="snake__controller_8c-source.html">snake_controller.c</a>.
+<p>
+Wird benutzt von <a class="el" href="snake__controller_8c-source.html#l00192">check_initial_state()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="7aea2552dfe7eb84b9443b6fc9ba6e01"></a><!-- doxytag: member="snake_controller.h::tail" ref="7aea2552dfe7eb84b9443b6fc9ba6e01" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">int <a class="el" href="snake__controller_8h.html#7aea2552dfe7eb84b9443b6fc9ba6e01">tail</a>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Tail des Ringbuffers 'snake[]'. 
+<p>
+
+<p>
+Definiert in Zeile <a class="el" href="snake__controller_8c-source.html#l00042">42</a> der Datei <a class="el" href="snake__controller_8c-source.html">snake_controller.c</a>.
+<p>
+Wird benutzt von <a class="el" href="snake__controller_8c-source.html#l00158">check_snake_collision()</a> und <a class="el" href="snake__controller_8c-source.html#l00201">init_snake()</a>.    </td>
+  </tr>
+</table>
+<hr size="1"><address style="align: right;"><small>Erzeugt am Fri Jan 4 10:01:13 2013 für Carme-Snake von&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.4.5 </small></address>
 </body>
