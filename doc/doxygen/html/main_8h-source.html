@@ -64,27 +64,21 @@
 <a name="l00065"></a>00065 <span class="keyword">extern</span> <span class="keyword">volatile</span> <span class="keyword">enum</span> <a class="code" href="main_8h.html#ef72c37be9d1b9e6e5bbd6ef09448abe">direction</a> <a class="code" href="main_8c.html#3d2fed6a3c8ed6c54d7637e4be95ffd2">snake_direction</a>;
 <a name="l00066"></a>00066 <span class="keyword">extern</span> <span class="keyword">volatile</span> <span class="keywordtype">int</span> <a class="code" href="main_8c.html#5eaa52de26924e9dfcc728d688edc25c">timer_irq_flag</a>;
 <a name="l00067"></a>00067 
-<a name="l00068"></a>00068 <span class="keyword">extern</span> <a class="code" href="structlocation.html">location</a> <a class="code" href="main_8h.html#2698edfe7456402e4dd3bb4fbd3ecdf5">snake</a>[<a class="code" href="main_8h.html#e9ce1ae38621389b25a2ca89a712e0c6">SNAKE_BUFFER</a>];
-<a name="l00069"></a>00069 <span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="main_8h.html#96e89a298e0a9f469b9ae458d6afae9f">head</a>;
-<a name="l00070"></a>00070 <span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="main_8h.html#7aea2552dfe7eb84b9443b6fc9ba6e01">tail</a>;
-<a name="l00071"></a>00071 <span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="main_8h.html#f7bd60b75b29d79b660a2859395c1a24">size</a>;
-<a name="l00072"></a>00072 
-<a name="l00073"></a>00073 <span class="keyword">extern</span> <a class="code" href="structlocation.html">location</a> <a class="code" href="main_8c.html#62506be34d574da4a0d158a67253ea99">food</a>;
-<a name="l00074"></a>00074 <span class="keyword">extern</span> <a class="code" href="structlocation.html">location</a> <a class="code" href="main_8h.html#af321cad1300fe1125cd0cfda21120df">field_size</a>;
-<a name="l00075"></a>00075 <span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="main_8c.html#c9e9a848920877e76685b2e4e76de38d">level</a>;
-<a name="l00076"></a>00076 
-<a name="l00077"></a>00077 <span class="comment">/* function prototypes for asm_soubrutines */</span>
-<a name="l00078"></a>00078 <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="main_8h.html#73ecd992119001f6600418d8295d343f">init_counter</a>();             
-<a name="l00079"></a>00079 <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="main_8h.html#65c566f7a512164c4a80c8966aed957d">init_uart</a>();                
-<a name="l00080"></a>00080 <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="main_8h.html#8b19c091a06f204875a40fbd053acc24">start_timer</a>();              
-<a name="l00081"></a>00081 
-<a name="l00082"></a>00082 <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="main_8h.html#530819fc5e18e6a7c179ae90d1e9448a">enable_interrupts</a>();        
-<a name="l00083"></a>00083 <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="main_8h.html#46348a598e447edb204877cdae260c27">disable_interrupts</a>();       
-<a name="l00084"></a>00084 <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="main_8h.html#25165e286cbf7b2ba88ecb29a1fc9d0b">interrupt_handler</a>();        
-<a name="l00085"></a>00085 <span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="main_8h.html#15b5cfb2d22ffa967b65516f9c433ecc">get_interrupt_state</a>();       
-<a name="l00086"></a>00086 
-<a name="l00087"></a>00087 <span class="preprocessor">#endif</span>
-</pre></div><hr size="1"><address style="align: right;"><small>Erzeugt am Fri Jan 4 00:18:15 2013 für Carme-Snake von&nbsp;
+<a name="l00068"></a>00068 <span class="keyword">extern</span> <a class="code" href="structlocation.html">location</a> <a class="code" href="main_8c.html#62506be34d574da4a0d158a67253ea99">food</a>;
+<a name="l00069"></a>00069 <span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="main_8c.html#c9e9a848920877e76685b2e4e76de38d">level</a>;
+<a name="l00070"></a>00070 
+<a name="l00071"></a>00071 <span class="comment">/* function prototypes for asm_soubrutines */</span>
+<a name="l00072"></a>00072 <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="main_8h.html#73ecd992119001f6600418d8295d343f">init_counter</a>();             
+<a name="l00073"></a>00073 <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="main_8h.html#65c566f7a512164c4a80c8966aed957d">init_uart</a>();                
+<a name="l00074"></a>00074 <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="main_8h.html#8b19c091a06f204875a40fbd053acc24">start_timer</a>();              
+<a name="l00075"></a>00075 
+<a name="l00076"></a>00076 <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="main_8h.html#530819fc5e18e6a7c179ae90d1e9448a">enable_interrupts</a>();        
+<a name="l00077"></a>00077 <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="main_8h.html#46348a598e447edb204877cdae260c27">disable_interrupts</a>();       
+<a name="l00078"></a>00078 <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="main_8h.html#25165e286cbf7b2ba88ecb29a1fc9d0b">interrupt_handler</a>();        
+<a name="l00079"></a>00079 <span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="main_8h.html#15b5cfb2d22ffa967b65516f9c433ecc">get_interrupt_state</a>();       
+<a name="l00080"></a>00080 
+<a name="l00081"></a>00081 <span class="preprocessor">#endif</span>
+</pre></div><hr size="1"><address style="align: right;"><small>Erzeugt am Fri Jan 4 10:01:13 2013 für Carme-Snake von&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.4.5 </small></address>
 </body>

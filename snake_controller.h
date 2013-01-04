@@ -31,6 +31,14 @@
 
 #include "main.h"
 
+/* global variables */
+extern location snake[SNAKE_BUFFER];
+extern int head;
+extern int tail;
+extern int size;
+
+extern int startup_size;
+
 /* prototypes */
 enum result step_forward(int initial);
 void eat(location food);

@@ -65,13 +65,7 @@ typedef struct location {
 extern volatile enum direction snake_direction;
 extern volatile int timer_irq_flag;
 
-extern location snake[SNAKE_BUFFER];
-extern int head;
-extern int tail;
-extern int size;
-
 extern location food;
-extern location field_size;
 extern int level;
 
 /* function prototypes for asm_soubrutines */
