@@ -86,6 +86,153 @@ STR r1, [r0]
 LDMFD 	sp!, {r0-r1, pc}^ 		@ restore context, return
 
 
+
+
+# uart ralphrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrralph
+#
+#
+#
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+init_uart_ralph:
+@Clock = Clock | (1 << 6);
+
+LDR r0, =CKEN
+LDR r1, [r0]
+ORR r1, #(1<<6)
+STR r1, [r0]
+
+@LineControl &= ~(1<<7); /*DABL auf 0*/
+LDR r0, =FFLCR
+LDR r1, [r0]
+BIC r1, #(1<<7)
+STR r1, [r0]
+
+@InerruptEnable &= ~(1 << 6); /*UUE Bit auf 0*/
+LDR r0, =FFIER
+LDR r1, [r0]
+BIC r1, #(1<<6)
+STR r1, [r0]
+
+@LineControl = 0; /*LineControl alles auf 0*/
+
+@LineControl |= (1 << 7); /*DABL auf 1*/
+
+LDR r0, =FFLCR
+MOV r1, #0x0
+ORR r1, #(1<<7)
+STR r1, [r0]
+
+@DivisorLatchLow = 96 & 0xFF; /*Divisor auf 0096 setzen*/
+
+LDR r0, =FFDLL
+LDR r1, [r0]
+MOV r1, #(96 & 0xFF)
+STR r1, [r0]
+
+@DivisorLatchHigh = (96 >> 8) & 0xFF;/*Divisor auf 0096, also hier 00*/
+
+LDR r0, =FFDLH
+LDR r1, [r0]
+MOV r1, #(96>>8)
+AND r1, #0xFF
+STR r1, [r0]
+
+@LineControl = 0;
+LDR r0, =FFLCR
+MOV r1, #0x0
+STR r1, [r0]
+
+@FIFOControl &= ~(1<<0); /*FIFO ausschalten (bit 1 auf 0), auch FIFOControl = 0; mˆglich*/
+
+LDR r0, =FFFCR
+LDR r1, [r0]
+BIC r1, #(1<<0)
+STR r1, [r0]
+
+@LineControl |= (1<<0);
+
+/*Word Length Select auf 8bit (0b11)*/
+
+@LineControl |= (1<<1);
+
+/*Word Length Select auf 8bit (0b11)*/
+
+LDR r0, =FFLCR
+LDR r1, [r0]
+ORR r1, #(1<<0)
+ORR r1, #(1<<1)
+STR r1, [r0]
+
+@ModemControl = 0;
+
+/*Modem Steuerleitung ausschalten*/
+
+LDR r0, =FFMCR
+MOV r1, #0x0
+STR r1, [r0]
+
+@InfraredSelection = 0; /*Infrarot ausschalten*/
+
+LDR r0, =FFISR
+STR r1, [r0]
+
+@AutoBaudrate |= (1<<0);
+
+/*Auto Baudrate ausschalten*/
+
+LDR r0, =FFABR
+LDR r1, [r0]
+ORR r1, #(1<<0)
+STR r1, [r0]
+
+@GpioPinDirectionRegister &= ~(1<<2); /*als input definiert*/
+
+@GpioPinDirectionRegister |= (1<<7);
+
+/*als output definiert*/
+
+LDR r0, =GPDR1
+LDR r1, [r0]
+BIC r1, #(1<<2)
+ORR r1, #(1<<7)
+STR r1, [r0]
+
+@GpioAlternateFunctionSelect |= (1<<4);
+
+@GpioAlternateFunctionSelect |= (1<<15);
+
+@GpioAlternateFunctionSelect &= ~(1<<14);
+
+LDR r0, =GAFR1_L
+LDR r1, [r0]
+ORR r1, #(1<<4)
+ORR r1, #(1<<15)
+BIC r1, #(1<<14)
+STR r1, [r0]
+
+@InterruptEnable |= (1 << 6); /*UUE Bit auf 1*/
+
+LDR r0, =FFIER
+LDR r1, [r0]
+ORR r1, #(1<<6)
+STR r1, [r0]
+MOV pc,lr
+
+
+
+/*****************************************************************************/
+
+/*  Ende        : SerielleSchnittstelleInit
+
+                        */
+
+/*****************************************************************************/
+
+
+
+
+
 init_uart:
 STMFD 	sp!, {r0-r3, lr} 		@ save context
 
@@ -196,33 +343,20 @@ STR r2,[r1]
 
 LDMFD 	sp!, {r0-r3, pc}^ 		@ restore context, return
 
+
+
 interrupt_handler:
 #ICHP enthält die ID der interruptauslösenden Quelle
 SUB lr, lr, #4 						@ adjust link register for return address
 STMFD 	sp!, {r0-r1, r12, lr} 		@ save context
 
-# kommt der Interrupt vom Timer?
+
+# kommt der interupt von UART?
 LDR r0,=ICHP
 LDR r1,[r0]
-TST	r1,#(1<<26)					@ Timer Interrupt ID = 26
-BNE no_timer_irq				@ step over if NO timer irq was thrown
-
-# OSCR auf 0 setzen wenn Interrupt ausgelöst wurde
-LDR r0,=OSCR
-MOV r1,#0
-STR r1,[r0]
-
-# Timer flag (wird in C-Funktionen genutzt) setzen
-LDR r0,=timer_irq_flag
-MOV r1,#1
-STR r1,[r0]
-
-B end_interrupt_handler
-
-no_timer_irq:
-# kommt der interupt von UART?
-
-TST r1,#(1<<22)					@ UART Interrupt ID = |FFUART Id = 22 | BTUART ID = 23 | STUART ID = 24 |
+MOV r1,r1, LSR #16
+AND r1, r1, #63
+CMP r1,#22					@ UART Interrupt ID = |FFUART Id = 22 | BTUART ID = 23 | STUART ID = 24 |
 BNE no_uart_interrupt
 # UART Verarbeitung: je nach erhaltenem Zeichen wird die Variable snake_direction anders gesetzt.
 
@@ -278,13 +412,32 @@ b end_switch
 # Variable speichern
 end_switch:
 
-
 data_not_ready:
-
 
 B end_interrupt_handler
 
 no_uart_interrupt:
+# kommt der Interrupt vom Timer?
+LDR r0,=ICHP
+LDR r1,[r0]
+MOV r1,r1, LSR #16
+AND r1, r1, #63
+CMP r1,#26				@ Timer Interrupt ID = 26
+BNE no_timer_irq				@ step over if NO timer irq was thrown
+
+# OSCR auf 0 setzen wenn Interrupt ausgelöst wurde
+LDR r0,=OSCR
+MOV r1,#0
+STR r1,[r0]
+
+# Timer flag (wird in C-Funktionen genutzt) setzen
+LDR r0,=timer_irq_flag
+MOV r1,#1
+STR r1,[r0]
+
+B end_interrupt_handler
+
+no_timer_irq:
 # hier kommen evtl. weitere interrupt ID's
 
 # END

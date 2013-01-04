@@ -170,7 +170,7 @@ int main()
     int game_over = 0;
 
 	init_graphics();		//Function um Grafik Lib zu initialisieren, gibt evtl später mal Errorcode zurück...
-    init_counter();
+ //   init_counter();
     init_uart();
     init_counter();
 
