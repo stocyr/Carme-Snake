@@ -33,7 +33,7 @@
  * Das Spiel wird auf dem LCD der CARME Kits angezeigt, die Bedienung erfolgt über die Pfeiltasten an einem PC. <br>
  * Das Interface PC <-> CARME erfolgt per RS232 auf den UART1 Port des CARME Kits. <br>
  *
- * <img src="../../DFD.jpg">
+ * <img src="../../DFD_v2.png">
  *
  * @author Cyril Stoller <br> Marcel Bärtschi <br> Peter Ambühl
  */
