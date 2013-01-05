@@ -94,7 +94,7 @@ LDMFD 	sp!, {r0-r1, pc}^ 		@ restore context, return
 #
 # ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-init_uart_ralph:
+init_uart:
 @Clock = Clock | (1 << 6);
 
 LDR r0, =CKEN
@@ -233,7 +233,7 @@ MOV pc,lr
 
 
 
-init_uart:
+init_uart_original:
 STMFD 	sp!, {r0-r3, lr} 		@ save context
 
 # UART initialisieren:
@@ -357,7 +357,7 @@ LDR r1,[r0]
 MOV r1,r1, LSR #16
 AND r1, r1, #63
 CMP r1,#22					@ UART Interrupt ID = |FFUART Id = 22 | BTUART ID = 23 | STUART ID = 24 |
-BNE no_uart_interrupt
+# BNE no_uart_interrupt <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< einkomentieren wenn Interrupt, nicht pollen
 # UART Verarbeitung: je nach erhaltenem Zeichen wird die Variable snake_direction anders gesetzt.
 
 # FFLCR &= ~(1<<7);	// DLAB löschen
@@ -370,7 +370,7 @@ STR r1,[r0]
 LDR r0,=FFLSR
 LDR r1,[r0]
 TST r1,#(1<<0)
-# BNE data_not_ready
+# BNE data_not_ready Weis nicht ob notwendig <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< einkomentieren wenn Interrupt, nicht pollen
 # Daten bereit -> Richtung einlesen
 LDR r0,=FFRBR
 LDR r1,[r0]
@@ -414,7 +414,7 @@ end_switch:
 
 data_not_ready:
 
-B end_interrupt_handler
+# B end_interrupt_handler <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< einkomentieren wenn Interrupt, nicht pollen
 
 no_uart_interrupt:
 # kommt der Interrupt vom Timer?
