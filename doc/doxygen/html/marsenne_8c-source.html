@@ -61,135 +61,134 @@
 <a name="l00040"></a>00040 <span class="comment">   http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/emt.html</span>
 <a name="l00041"></a>00041 <span class="comment">   email: m-mat @ math.sci.hiroshima-u.ac.jp (remove space)</span>
 <a name="l00042"></a>00042 <span class="comment">*/</span>
-<a name="l00043"></a>00043 
-<a name="l00044"></a>00044 <span class="comment">/* Period parameters */</span>
-<a name="l00045"></a><a class="code" href="marsenne_8c.html#8d9c307cb7f3c4a32822a51922d1ceaa">00045</a> <span class="preprocessor">#define N 624</span>
-<a name="l00046"></a><a class="code" href="marsenne_8c.html#69691c7bdcc3ce6d5d8a1361f22d04ac">00046</a> <span class="preprocessor"></span><span class="preprocessor">#define M 397</span>
-<a name="l00047"></a><a class="code" href="marsenne_8c.html#216e0a0e5c9a6737e8c62f3da2529705">00047</a> <span class="preprocessor"></span><span class="preprocessor">#define MATRIX_A 0x9908b0dfUL   </span><span class="comment">/* constant vector a */</span>
-<a name="l00048"></a><a class="code" href="marsenne_8c.html#107eb05f5930a0d098c5d151e47cd171">00048</a> <span class="preprocessor">#define UPPER_MASK 0x80000000UL </span><span class="comment">/* most significant w-r bits */</span>
-<a name="l00049"></a><a class="code" href="marsenne_8c.html#49f501d70ead6067038a15e19637c47c">00049</a> <span class="preprocessor">#define LOWER_MASK 0x7fffffffUL </span><span class="comment">/* least significant r bits */</span>
-<a name="l00050"></a>00050 
-<a name="l00051"></a><a class="code" href="marsenne_8c.html#8391b38bfa8669255921f161c832587a">00051</a> <span class="keyword">static</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <a class="code" href="marsenne_8c.html#8391b38bfa8669255921f161c832587a">mt</a>[<a class="code" href="marsenne_8c.html#8d9c307cb7f3c4a32822a51922d1ceaa">N</a>]; <span class="comment">/* the array for the state vector  */</span>
-<a name="l00052"></a><a class="code" href="marsenne_8c.html#19a04fafb5f9dd7e606920c3adacf8f0">00052</a> <span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code" href="marsenne_8c.html#19a04fafb5f9dd7e606920c3adacf8f0">mti</a>=<a class="code" href="marsenne_8c.html#8d9c307cb7f3c4a32822a51922d1ceaa">N</a>+1; <span class="comment">/* mti==N+1 means mt[N] is not initialized */</span>
-<a name="l00053"></a>00053 
-<a name="l00054"></a>00054 <span class="comment">/* initializes mt[N] with a seed */</span>
-<a name="l00055"></a><a class="code" href="marsenne_8h.html#df413c61afdda8a3a7be3eb4f7e76ab0">00055</a> <span class="keywordtype">void</span> <a class="code" href="marsenne_8c.html#df413c61afdda8a3a7be3eb4f7e76ab0">init_genrand</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> s)
-<a name="l00056"></a>00056 {
-<a name="l00057"></a>00057     <a class="code" href="marsenne_8c.html#8391b38bfa8669255921f161c832587a">mt</a>[0]= s &amp; 0xffffffffUL;
-<a name="l00058"></a>00058     <span class="keywordflow">for</span> (<a class="code" href="marsenne_8c.html#19a04fafb5f9dd7e606920c3adacf8f0">mti</a>=1; <a class="code" href="marsenne_8c.html#19a04fafb5f9dd7e606920c3adacf8f0">mti</a>&lt;<a class="code" href="marsenne_8c.html#8d9c307cb7f3c4a32822a51922d1ceaa">N</a>; <a class="code" href="marsenne_8c.html#19a04fafb5f9dd7e606920c3adacf8f0">mti</a>++) {
-<a name="l00059"></a>00059         <a class="code" href="marsenne_8c.html#8391b38bfa8669255921f161c832587a">mt</a>[<a class="code" href="marsenne_8c.html#19a04fafb5f9dd7e606920c3adacf8f0">mti</a>] =
-<a name="l00060"></a>00060             (1812433253UL * (<a class="code" href="marsenne_8c.html#8391b38bfa8669255921f161c832587a">mt</a>[<a class="code" href="marsenne_8c.html#19a04fafb5f9dd7e606920c3adacf8f0">mti</a>-1] ^ (<a class="code" href="marsenne_8c.html#8391b38bfa8669255921f161c832587a">mt</a>[<a class="code" href="marsenne_8c.html#19a04fafb5f9dd7e606920c3adacf8f0">mti</a>-1] &gt;&gt; 30)) + <a class="code" href="marsenne_8c.html#19a04fafb5f9dd7e606920c3adacf8f0">mti</a>);
-<a name="l00061"></a>00061         <span class="comment">/* See Knuth TAOCP Vol2. 3rd Ed. P.106 for multiplier. */</span>
-<a name="l00062"></a>00062         <span class="comment">/* In the previous versions, MSBs of the seed affect   */</span>
-<a name="l00063"></a>00063         <span class="comment">/* only MSBs of the array mt[].                        */</span>
-<a name="l00064"></a>00064         <span class="comment">/* 2002/01/09 modified by Makoto Matsumoto             */</span>
-<a name="l00065"></a>00065         <a class="code" href="marsenne_8c.html#8391b38bfa8669255921f161c832587a">mt</a>[<a class="code" href="marsenne_8c.html#19a04fafb5f9dd7e606920c3adacf8f0">mti</a>] &amp;= 0xffffffffUL;
-<a name="l00066"></a>00066         <span class="comment">/* for &gt;32 bit machines */</span>
-<a name="l00067"></a>00067     }
-<a name="l00068"></a>00068 }
-<a name="l00069"></a>00069 
-<a name="l00070"></a>00070 <span class="comment">/* initialize by an array with array-length */</span>
-<a name="l00071"></a>00071 <span class="comment">/* init_key is the array for initializing keys */</span>
-<a name="l00072"></a>00072 <span class="comment">/* key_length is its length */</span>
-<a name="l00073"></a>00073 <span class="comment">/* slight change for C++, 2004/2/26 */</span>
-<a name="l00074"></a><a class="code" href="marsenne_8h.html#a9a3dcb0c5e9b690845fee54052b3363">00074</a> <span class="keywordtype">void</span> <a class="code" href="marsenne_8c.html#a9a3dcb0c5e9b690845fee54052b3363">init_by_array</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> init_key[], <span class="keywordtype">int</span> key_length)
-<a name="l00075"></a>00075 {
-<a name="l00076"></a>00076     <span class="keywordtype">int</span> i, j, k;
-<a name="l00077"></a>00077     <a class="code" href="marsenne_8c.html#df413c61afdda8a3a7be3eb4f7e76ab0">init_genrand</a>(19650218UL);
-<a name="l00078"></a>00078     i=1; j=0;
-<a name="l00079"></a>00079     k = (<a class="code" href="marsenne_8c.html#8d9c307cb7f3c4a32822a51922d1ceaa">N</a>&gt;key_length ? <a class="code" href="marsenne_8c.html#8d9c307cb7f3c4a32822a51922d1ceaa">N</a> : key_length);
-<a name="l00080"></a>00080     <span class="keywordflow">for</span> (; k; k--) {
-<a name="l00081"></a>00081         <a class="code" href="marsenne_8c.html#8391b38bfa8669255921f161c832587a">mt</a>[i] = (<a class="code" href="marsenne_8c.html#8391b38bfa8669255921f161c832587a">mt</a>[i] ^ ((<a class="code" href="marsenne_8c.html#8391b38bfa8669255921f161c832587a">mt</a>[i-1] ^ (<a class="code" href="marsenne_8c.html#8391b38bfa8669255921f161c832587a">mt</a>[i-1] &gt;&gt; 30)) * 1664525UL))
-<a name="l00082"></a>00082           + init_key[j] + j; <span class="comment">/* non linear */</span>
-<a name="l00083"></a>00083         <a class="code" href="marsenne_8c.html#8391b38bfa8669255921f161c832587a">mt</a>[i] &amp;= 0xffffffffUL; <span class="comment">/* for WORDSIZE &gt; 32 machines */</span>
-<a name="l00084"></a>00084         i++; j++;
-<a name="l00085"></a>00085         <span class="keywordflow">if</span> (i&gt;=<a class="code" href="marsenne_8c.html#8d9c307cb7f3c4a32822a51922d1ceaa">N</a>) { <a class="code" href="marsenne_8c.html#8391b38bfa8669255921f161c832587a">mt</a>[0] = <a class="code" href="marsenne_8c.html#8391b38bfa8669255921f161c832587a">mt</a>[<a class="code" href="marsenne_8c.html#8d9c307cb7f3c4a32822a51922d1ceaa">N</a>-1]; i=1; }
-<a name="l00086"></a>00086         <span class="keywordflow">if</span> (j&gt;=key_length) j=0;
-<a name="l00087"></a>00087     }
-<a name="l00088"></a>00088     <span class="keywordflow">for</span> (k=<a class="code" href="marsenne_8c.html#8d9c307cb7f3c4a32822a51922d1ceaa">N</a>-1; k; k--) {
-<a name="l00089"></a>00089         <a class="code" href="marsenne_8c.html#8391b38bfa8669255921f161c832587a">mt</a>[i] = (<a class="code" href="marsenne_8c.html#8391b38bfa8669255921f161c832587a">mt</a>[i] ^ ((<a class="code" href="marsenne_8c.html#8391b38bfa8669255921f161c832587a">mt</a>[i-1] ^ (<a class="code" href="marsenne_8c.html#8391b38bfa8669255921f161c832587a">mt</a>[i-1] &gt;&gt; 30)) * 1566083941UL))
-<a name="l00090"></a>00090           - i; <span class="comment">/* non linear */</span>
-<a name="l00091"></a>00091         <a class="code" href="marsenne_8c.html#8391b38bfa8669255921f161c832587a">mt</a>[i] &amp;= 0xffffffffUL; <span class="comment">/* for WORDSIZE &gt; 32 machines */</span>
-<a name="l00092"></a>00092         i++;
-<a name="l00093"></a>00093         <span class="keywordflow">if</span> (i&gt;=<a class="code" href="marsenne_8c.html#8d9c307cb7f3c4a32822a51922d1ceaa">N</a>) { <a class="code" href="marsenne_8c.html#8391b38bfa8669255921f161c832587a">mt</a>[0] = <a class="code" href="marsenne_8c.html#8391b38bfa8669255921f161c832587a">mt</a>[<a class="code" href="marsenne_8c.html#8d9c307cb7f3c4a32822a51922d1ceaa">N</a>-1]; i=1; }
-<a name="l00094"></a>00094     }
-<a name="l00095"></a>00095 
-<a name="l00096"></a>00096     <a class="code" href="marsenne_8c.html#8391b38bfa8669255921f161c832587a">mt</a>[0] = 0x80000000UL; <span class="comment">/* MSB is 1; assuring non-zero initial array */</span>
-<a name="l00097"></a>00097 }
-<a name="l00098"></a>00098 
-<a name="l00099"></a>00099 <span class="comment">/* generates a random number on [0,0xffffffff]-interval */</span>
-<a name="l00100"></a><a class="code" href="marsenne_8h.html#01df93db61b29f580e19a1754050be23">00100</a> <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <a class="code" href="marsenne_8c.html#01df93db61b29f580e19a1754050be23">genrand_int32</a>(<span class="keywordtype">void</span>)
-<a name="l00101"></a>00101 {
-<a name="l00102"></a>00102     <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> y;
-<a name="l00103"></a>00103     <span class="keyword">static</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> mag01[2]={0x0UL, <a class="code" href="marsenne_8c.html#216e0a0e5c9a6737e8c62f3da2529705">MATRIX_A</a>};
-<a name="l00104"></a>00104     <span class="comment">/* mag01[x] = x * MATRIX_A  for x=0,1 */</span>
-<a name="l00105"></a>00105 
-<a name="l00106"></a>00106     <span class="keywordflow">if</span> (<a class="code" href="marsenne_8c.html#19a04fafb5f9dd7e606920c3adacf8f0">mti</a> &gt;= <a class="code" href="marsenne_8c.html#8d9c307cb7f3c4a32822a51922d1ceaa">N</a>) { <span class="comment">/* generate N words at one time */</span>
-<a name="l00107"></a>00107         <span class="keywordtype">int</span> kk;
-<a name="l00108"></a>00108 
-<a name="l00109"></a>00109         <span class="keywordflow">if</span> (<a class="code" href="marsenne_8c.html#19a04fafb5f9dd7e606920c3adacf8f0">mti</a> == <a class="code" href="marsenne_8c.html#8d9c307cb7f3c4a32822a51922d1ceaa">N</a>+1)   <span class="comment">/* if init_genrand() has not been called, */</span>
-<a name="l00110"></a>00110             <a class="code" href="marsenne_8c.html#df413c61afdda8a3a7be3eb4f7e76ab0">init_genrand</a>(5489UL); <span class="comment">/* a default initial seed is used */</span>
+<a name="l00050"></a>00050 <span class="comment">/* Period parameters */</span>
+<a name="l00051"></a><a class="code" href="marsenne_8c.html#8d9c307cb7f3c4a32822a51922d1ceaa">00051</a> <span class="preprocessor">#define N 624</span>
+<a name="l00052"></a><a class="code" href="marsenne_8c.html#69691c7bdcc3ce6d5d8a1361f22d04ac">00052</a> <span class="preprocessor"></span><span class="preprocessor">#define M 397</span>
+<a name="l00053"></a><a class="code" href="marsenne_8c.html#216e0a0e5c9a6737e8c62f3da2529705">00053</a> <span class="preprocessor"></span><span class="preprocessor">#define MATRIX_A 0x9908b0dfUL   </span><span class="comment">/* constant vector a */</span>
+<a name="l00054"></a><a class="code" href="marsenne_8c.html#107eb05f5930a0d098c5d151e47cd171">00054</a> <span class="preprocessor">#define UPPER_MASK 0x80000000UL </span><span class="comment">/* most significant w-r bits */</span>
+<a name="l00055"></a><a class="code" href="marsenne_8c.html#49f501d70ead6067038a15e19637c47c">00055</a> <span class="preprocessor">#define LOWER_MASK 0x7fffffffUL </span><span class="comment">/* least significant r bits */</span>
+<a name="l00056"></a>00056 
+<a name="l00057"></a><a class="code" href="marsenne_8c.html#8391b38bfa8669255921f161c832587a">00057</a> <span class="keyword">static</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <a class="code" href="marsenne_8c.html#8391b38bfa8669255921f161c832587a">mt</a>[<a class="code" href="marsenne_8c.html#8d9c307cb7f3c4a32822a51922d1ceaa">N</a>]; <span class="comment">/* the array for the state vector  */</span>
+<a name="l00058"></a><a class="code" href="marsenne_8c.html#19a04fafb5f9dd7e606920c3adacf8f0">00058</a> <span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code" href="marsenne_8c.html#19a04fafb5f9dd7e606920c3adacf8f0">mti</a>=<a class="code" href="marsenne_8c.html#8d9c307cb7f3c4a32822a51922d1ceaa">N</a>+1; <span class="comment">/* mti==N+1 means mt[N] is not initialized */</span>
+<a name="l00059"></a>00059 
+<a name="l00060"></a>00060 <span class="comment">/* initializes mt[N] with a seed */</span>
+<a name="l00061"></a><a class="code" href="marsenne_8h.html#df413c61afdda8a3a7be3eb4f7e76ab0">00061</a> <span class="keywordtype">void</span> <a class="code" href="marsenne_8c.html#df413c61afdda8a3a7be3eb4f7e76ab0">init_genrand</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> s)
+<a name="l00062"></a>00062 {
+<a name="l00063"></a>00063     <a class="code" href="marsenne_8c.html#8391b38bfa8669255921f161c832587a">mt</a>[0]= s &amp; 0xffffffffUL;
+<a name="l00064"></a>00064     <span class="keywordflow">for</span> (<a class="code" href="marsenne_8c.html#19a04fafb5f9dd7e606920c3adacf8f0">mti</a>=1; <a class="code" href="marsenne_8c.html#19a04fafb5f9dd7e606920c3adacf8f0">mti</a>&lt;<a class="code" href="marsenne_8c.html#8d9c307cb7f3c4a32822a51922d1ceaa">N</a>; <a class="code" href="marsenne_8c.html#19a04fafb5f9dd7e606920c3adacf8f0">mti</a>++) {
+<a name="l00065"></a>00065         <a class="code" href="marsenne_8c.html#8391b38bfa8669255921f161c832587a">mt</a>[<a class="code" href="marsenne_8c.html#19a04fafb5f9dd7e606920c3adacf8f0">mti</a>] =
+<a name="l00066"></a>00066             (1812433253UL * (<a class="code" href="marsenne_8c.html#8391b38bfa8669255921f161c832587a">mt</a>[<a class="code" href="marsenne_8c.html#19a04fafb5f9dd7e606920c3adacf8f0">mti</a>-1] ^ (<a class="code" href="marsenne_8c.html#8391b38bfa8669255921f161c832587a">mt</a>[<a class="code" href="marsenne_8c.html#19a04fafb5f9dd7e606920c3adacf8f0">mti</a>-1] &gt;&gt; 30)) + <a class="code" href="marsenne_8c.html#19a04fafb5f9dd7e606920c3adacf8f0">mti</a>);
+<a name="l00067"></a>00067         <span class="comment">/* See Knuth TAOCP Vol2. 3rd Ed. P.106 for multiplier. */</span>
+<a name="l00068"></a>00068         <span class="comment">/* In the previous versions, MSBs of the seed affect   */</span>
+<a name="l00069"></a>00069         <span class="comment">/* only MSBs of the array mt[].                        */</span>
+<a name="l00070"></a>00070         <span class="comment">/* 2002/01/09 modified by Makoto Matsumoto             */</span>
+<a name="l00071"></a>00071         <a class="code" href="marsenne_8c.html#8391b38bfa8669255921f161c832587a">mt</a>[<a class="code" href="marsenne_8c.html#19a04fafb5f9dd7e606920c3adacf8f0">mti</a>] &amp;= 0xffffffffUL;
+<a name="l00072"></a>00072         <span class="comment">/* for &gt;32 bit machines */</span>
+<a name="l00073"></a>00073     }
+<a name="l00074"></a>00074 }
+<a name="l00075"></a>00075 
+<a name="l00076"></a>00076 <span class="comment">/* initialize by an array with array-length */</span>
+<a name="l00077"></a>00077 <span class="comment">/* init_key is the array for initializing keys */</span>
+<a name="l00078"></a>00078 <span class="comment">/* key_length is its length */</span>
+<a name="l00079"></a>00079 <span class="comment">/* slight change for C++, 2004/2/26 */</span>
+<a name="l00080"></a><a class="code" href="marsenne_8h.html#a9a3dcb0c5e9b690845fee54052b3363">00080</a> <span class="keywordtype">void</span> <a class="code" href="marsenne_8c.html#a9a3dcb0c5e9b690845fee54052b3363">init_by_array</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> init_key[], <span class="keywordtype">int</span> key_length)
+<a name="l00081"></a>00081 {
+<a name="l00082"></a>00082     <span class="keywordtype">int</span> i, j, k;
+<a name="l00083"></a>00083     <a class="code" href="marsenne_8c.html#df413c61afdda8a3a7be3eb4f7e76ab0">init_genrand</a>(19650218UL);
+<a name="l00084"></a>00084     i=1; j=0;
+<a name="l00085"></a>00085     k = (<a class="code" href="marsenne_8c.html#8d9c307cb7f3c4a32822a51922d1ceaa">N</a>&gt;key_length ? <a class="code" href="marsenne_8c.html#8d9c307cb7f3c4a32822a51922d1ceaa">N</a> : key_length);
+<a name="l00086"></a>00086     <span class="keywordflow">for</span> (; k; k--) {
+<a name="l00087"></a>00087         <a class="code" href="marsenne_8c.html#8391b38bfa8669255921f161c832587a">mt</a>[i] = (<a class="code" href="marsenne_8c.html#8391b38bfa8669255921f161c832587a">mt</a>[i] ^ ((<a class="code" href="marsenne_8c.html#8391b38bfa8669255921f161c832587a">mt</a>[i-1] ^ (<a class="code" href="marsenne_8c.html#8391b38bfa8669255921f161c832587a">mt</a>[i-1] &gt;&gt; 30)) * 1664525UL))
+<a name="l00088"></a>00088           + init_key[j] + j; <span class="comment">/* non linear */</span>
+<a name="l00089"></a>00089         <a class="code" href="marsenne_8c.html#8391b38bfa8669255921f161c832587a">mt</a>[i] &amp;= 0xffffffffUL; <span class="comment">/* for WORDSIZE &gt; 32 machines */</span>
+<a name="l00090"></a>00090         i++; j++;
+<a name="l00091"></a>00091         <span class="keywordflow">if</span> (i&gt;=<a class="code" href="marsenne_8c.html#8d9c307cb7f3c4a32822a51922d1ceaa">N</a>) { <a class="code" href="marsenne_8c.html#8391b38bfa8669255921f161c832587a">mt</a>[0] = <a class="code" href="marsenne_8c.html#8391b38bfa8669255921f161c832587a">mt</a>[<a class="code" href="marsenne_8c.html#8d9c307cb7f3c4a32822a51922d1ceaa">N</a>-1]; i=1; }
+<a name="l00092"></a>00092         <span class="keywordflow">if</span> (j&gt;=key_length) j=0;
+<a name="l00093"></a>00093     }
+<a name="l00094"></a>00094     <span class="keywordflow">for</span> (k=<a class="code" href="marsenne_8c.html#8d9c307cb7f3c4a32822a51922d1ceaa">N</a>-1; k; k--) {
+<a name="l00095"></a>00095         <a class="code" href="marsenne_8c.html#8391b38bfa8669255921f161c832587a">mt</a>[i] = (<a class="code" href="marsenne_8c.html#8391b38bfa8669255921f161c832587a">mt</a>[i] ^ ((<a class="code" href="marsenne_8c.html#8391b38bfa8669255921f161c832587a">mt</a>[i-1] ^ (<a class="code" href="marsenne_8c.html#8391b38bfa8669255921f161c832587a">mt</a>[i-1] &gt;&gt; 30)) * 1566083941UL))
+<a name="l00096"></a>00096           - i; <span class="comment">/* non linear */</span>
+<a name="l00097"></a>00097         <a class="code" href="marsenne_8c.html#8391b38bfa8669255921f161c832587a">mt</a>[i] &amp;= 0xffffffffUL; <span class="comment">/* for WORDSIZE &gt; 32 machines */</span>
+<a name="l00098"></a>00098         i++;
+<a name="l00099"></a>00099         <span class="keywordflow">if</span> (i&gt;=<a class="code" href="marsenne_8c.html#8d9c307cb7f3c4a32822a51922d1ceaa">N</a>) { <a class="code" href="marsenne_8c.html#8391b38bfa8669255921f161c832587a">mt</a>[0] = <a class="code" href="marsenne_8c.html#8391b38bfa8669255921f161c832587a">mt</a>[<a class="code" href="marsenne_8c.html#8d9c307cb7f3c4a32822a51922d1ceaa">N</a>-1]; i=1; }
+<a name="l00100"></a>00100     }
+<a name="l00101"></a>00101 
+<a name="l00102"></a>00102     <a class="code" href="marsenne_8c.html#8391b38bfa8669255921f161c832587a">mt</a>[0] = 0x80000000UL; <span class="comment">/* MSB is 1; assuring non-zero initial array */</span>
+<a name="l00103"></a>00103 }
+<a name="l00104"></a>00104 
+<a name="l00105"></a>00105 <span class="comment">/* generates a random number on [0,0xffffffff]-interval */</span>
+<a name="l00106"></a><a class="code" href="marsenne_8h.html#01df93db61b29f580e19a1754050be23">00106</a> <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <a class="code" href="marsenne_8c.html#01df93db61b29f580e19a1754050be23">genrand_int32</a>(<span class="keywordtype">void</span>)
+<a name="l00107"></a>00107 {
+<a name="l00108"></a>00108     <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> y;
+<a name="l00109"></a>00109     <span class="keyword">static</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> mag01[2]={0x0UL, <a class="code" href="marsenne_8c.html#216e0a0e5c9a6737e8c62f3da2529705">MATRIX_A</a>};
+<a name="l00110"></a>00110     <span class="comment">/* mag01[x] = x * MATRIX_A  for x=0,1 */</span>
 <a name="l00111"></a>00111 
-<a name="l00112"></a>00112         <span class="keywordflow">for</span> (kk=0;kk&lt;<a class="code" href="marsenne_8c.html#8d9c307cb7f3c4a32822a51922d1ceaa">N</a>-<a class="code" href="marsenne_8c.html#69691c7bdcc3ce6d5d8a1361f22d04ac">M</a>;kk++) {
-<a name="l00113"></a>00113             y = (<a class="code" href="marsenne_8c.html#8391b38bfa8669255921f161c832587a">mt</a>[kk]&amp;<a class="code" href="marsenne_8c.html#107eb05f5930a0d098c5d151e47cd171">UPPER_MASK</a>)|(<a class="code" href="marsenne_8c.html#8391b38bfa8669255921f161c832587a">mt</a>[kk+1]&amp;<a class="code" href="marsenne_8c.html#49f501d70ead6067038a15e19637c47c">LOWER_MASK</a>);
-<a name="l00114"></a>00114             <a class="code" href="marsenne_8c.html#8391b38bfa8669255921f161c832587a">mt</a>[kk] = <a class="code" href="marsenne_8c.html#8391b38bfa8669255921f161c832587a">mt</a>[kk+<a class="code" href="marsenne_8c.html#69691c7bdcc3ce6d5d8a1361f22d04ac">M</a>] ^ (y &gt;&gt; 1) ^ mag01[y &amp; 0x1UL];
-<a name="l00115"></a>00115         }
-<a name="l00116"></a>00116         <span class="keywordflow">for</span> (;kk&lt;<a class="code" href="marsenne_8c.html#8d9c307cb7f3c4a32822a51922d1ceaa">N</a>-1;kk++) {
-<a name="l00117"></a>00117             y = (<a class="code" href="marsenne_8c.html#8391b38bfa8669255921f161c832587a">mt</a>[kk]&amp;<a class="code" href="marsenne_8c.html#107eb05f5930a0d098c5d151e47cd171">UPPER_MASK</a>)|(<a class="code" href="marsenne_8c.html#8391b38bfa8669255921f161c832587a">mt</a>[kk+1]&amp;<a class="code" href="marsenne_8c.html#49f501d70ead6067038a15e19637c47c">LOWER_MASK</a>);
-<a name="l00118"></a>00118             <a class="code" href="marsenne_8c.html#8391b38bfa8669255921f161c832587a">mt</a>[kk] = <a class="code" href="marsenne_8c.html#8391b38bfa8669255921f161c832587a">mt</a>[kk+(<a class="code" href="marsenne_8c.html#69691c7bdcc3ce6d5d8a1361f22d04ac">M</a>-<a class="code" href="marsenne_8c.html#8d9c307cb7f3c4a32822a51922d1ceaa">N</a>)] ^ (y &gt;&gt; 1) ^ mag01[y &amp; 0x1UL];
-<a name="l00119"></a>00119         }
-<a name="l00120"></a>00120         y = (<a class="code" href="marsenne_8c.html#8391b38bfa8669255921f161c832587a">mt</a>[<a class="code" href="marsenne_8c.html#8d9c307cb7f3c4a32822a51922d1ceaa">N</a>-1]&amp;<a class="code" href="marsenne_8c.html#107eb05f5930a0d098c5d151e47cd171">UPPER_MASK</a>)|(<a class="code" href="marsenne_8c.html#8391b38bfa8669255921f161c832587a">mt</a>[0]&amp;<a class="code" href="marsenne_8c.html#49f501d70ead6067038a15e19637c47c">LOWER_MASK</a>);
-<a name="l00121"></a>00121         <a class="code" href="marsenne_8c.html#8391b38bfa8669255921f161c832587a">mt</a>[<a class="code" href="marsenne_8c.html#8d9c307cb7f3c4a32822a51922d1ceaa">N</a>-1] = <a class="code" href="marsenne_8c.html#8391b38bfa8669255921f161c832587a">mt</a>[<a class="code" href="marsenne_8c.html#69691c7bdcc3ce6d5d8a1361f22d04ac">M</a>-1] ^ (y &gt;&gt; 1) ^ mag01[y &amp; 0x1UL];
-<a name="l00122"></a>00122 
-<a name="l00123"></a>00123         <a class="code" href="marsenne_8c.html#19a04fafb5f9dd7e606920c3adacf8f0">mti</a> = 0;
-<a name="l00124"></a>00124     }
-<a name="l00125"></a>00125 
-<a name="l00126"></a>00126     y = <a class="code" href="marsenne_8c.html#8391b38bfa8669255921f161c832587a">mt</a>[<a class="code" href="marsenne_8c.html#19a04fafb5f9dd7e606920c3adacf8f0">mti</a>++];
-<a name="l00127"></a>00127 
-<a name="l00128"></a>00128     <span class="comment">/* Tempering */</span>
-<a name="l00129"></a>00129     y ^= (y &gt;&gt; 11);
-<a name="l00130"></a>00130     y ^= (y &lt;&lt; 7) &amp; 0x9d2c5680UL;
-<a name="l00131"></a>00131     y ^= (y &lt;&lt; 15) &amp; 0xefc60000UL;
-<a name="l00132"></a>00132     y ^= (y &gt;&gt; 18);
+<a name="l00112"></a>00112     <span class="keywordflow">if</span> (<a class="code" href="marsenne_8c.html#19a04fafb5f9dd7e606920c3adacf8f0">mti</a> &gt;= <a class="code" href="marsenne_8c.html#8d9c307cb7f3c4a32822a51922d1ceaa">N</a>) { <span class="comment">/* generate N words at one time */</span>
+<a name="l00113"></a>00113         <span class="keywordtype">int</span> kk;
+<a name="l00114"></a>00114 
+<a name="l00115"></a>00115         <span class="keywordflow">if</span> (<a class="code" href="marsenne_8c.html#19a04fafb5f9dd7e606920c3adacf8f0">mti</a> == <a class="code" href="marsenne_8c.html#8d9c307cb7f3c4a32822a51922d1ceaa">N</a>+1)   <span class="comment">/* if init_genrand() has not been called, */</span>
+<a name="l00116"></a>00116             <a class="code" href="marsenne_8c.html#df413c61afdda8a3a7be3eb4f7e76ab0">init_genrand</a>(5489UL); <span class="comment">/* a default initial seed is used */</span>
+<a name="l00117"></a>00117 
+<a name="l00118"></a>00118         <span class="keywordflow">for</span> (kk=0;kk&lt;<a class="code" href="marsenne_8c.html#8d9c307cb7f3c4a32822a51922d1ceaa">N</a>-<a class="code" href="marsenne_8c.html#69691c7bdcc3ce6d5d8a1361f22d04ac">M</a>;kk++) {
+<a name="l00119"></a>00119             y = (<a class="code" href="marsenne_8c.html#8391b38bfa8669255921f161c832587a">mt</a>[kk]&amp;<a class="code" href="marsenne_8c.html#107eb05f5930a0d098c5d151e47cd171">UPPER_MASK</a>)|(<a class="code" href="marsenne_8c.html#8391b38bfa8669255921f161c832587a">mt</a>[kk+1]&amp;<a class="code" href="marsenne_8c.html#49f501d70ead6067038a15e19637c47c">LOWER_MASK</a>);
+<a name="l00120"></a>00120             <a class="code" href="marsenne_8c.html#8391b38bfa8669255921f161c832587a">mt</a>[kk] = <a class="code" href="marsenne_8c.html#8391b38bfa8669255921f161c832587a">mt</a>[kk+<a class="code" href="marsenne_8c.html#69691c7bdcc3ce6d5d8a1361f22d04ac">M</a>] ^ (y &gt;&gt; 1) ^ mag01[y &amp; 0x1UL];
+<a name="l00121"></a>00121         }
+<a name="l00122"></a>00122         <span class="keywordflow">for</span> (;kk&lt;<a class="code" href="marsenne_8c.html#8d9c307cb7f3c4a32822a51922d1ceaa">N</a>-1;kk++) {
+<a name="l00123"></a>00123             y = (<a class="code" href="marsenne_8c.html#8391b38bfa8669255921f161c832587a">mt</a>[kk]&amp;<a class="code" href="marsenne_8c.html#107eb05f5930a0d098c5d151e47cd171">UPPER_MASK</a>)|(<a class="code" href="marsenne_8c.html#8391b38bfa8669255921f161c832587a">mt</a>[kk+1]&amp;<a class="code" href="marsenne_8c.html#49f501d70ead6067038a15e19637c47c">LOWER_MASK</a>);
+<a name="l00124"></a>00124             <a class="code" href="marsenne_8c.html#8391b38bfa8669255921f161c832587a">mt</a>[kk] = <a class="code" href="marsenne_8c.html#8391b38bfa8669255921f161c832587a">mt</a>[kk+(<a class="code" href="marsenne_8c.html#69691c7bdcc3ce6d5d8a1361f22d04ac">M</a>-<a class="code" href="marsenne_8c.html#8d9c307cb7f3c4a32822a51922d1ceaa">N</a>)] ^ (y &gt;&gt; 1) ^ mag01[y &amp; 0x1UL];
+<a name="l00125"></a>00125         }
+<a name="l00126"></a>00126         y = (<a class="code" href="marsenne_8c.html#8391b38bfa8669255921f161c832587a">mt</a>[<a class="code" href="marsenne_8c.html#8d9c307cb7f3c4a32822a51922d1ceaa">N</a>-1]&amp;<a class="code" href="marsenne_8c.html#107eb05f5930a0d098c5d151e47cd171">UPPER_MASK</a>)|(<a class="code" href="marsenne_8c.html#8391b38bfa8669255921f161c832587a">mt</a>[0]&amp;<a class="code" href="marsenne_8c.html#49f501d70ead6067038a15e19637c47c">LOWER_MASK</a>);
+<a name="l00127"></a>00127         <a class="code" href="marsenne_8c.html#8391b38bfa8669255921f161c832587a">mt</a>[<a class="code" href="marsenne_8c.html#8d9c307cb7f3c4a32822a51922d1ceaa">N</a>-1] = <a class="code" href="marsenne_8c.html#8391b38bfa8669255921f161c832587a">mt</a>[<a class="code" href="marsenne_8c.html#69691c7bdcc3ce6d5d8a1361f22d04ac">M</a>-1] ^ (y &gt;&gt; 1) ^ mag01[y &amp; 0x1UL];
+<a name="l00128"></a>00128 
+<a name="l00129"></a>00129         <a class="code" href="marsenne_8c.html#19a04fafb5f9dd7e606920c3adacf8f0">mti</a> = 0;
+<a name="l00130"></a>00130     }
+<a name="l00131"></a>00131 
+<a name="l00132"></a>00132     y = <a class="code" href="marsenne_8c.html#8391b38bfa8669255921f161c832587a">mt</a>[<a class="code" href="marsenne_8c.html#19a04fafb5f9dd7e606920c3adacf8f0">mti</a>++];
 <a name="l00133"></a>00133 
-<a name="l00134"></a>00134     <span class="keywordflow">return</span> y;
-<a name="l00135"></a>00135 }
-<a name="l00136"></a>00136 
-<a name="l00137"></a>00137 <span class="comment">/* generates a random number on [0,0x7fffffff]-interval */</span>
-<a name="l00138"></a><a class="code" href="marsenne_8c.html#3ceca2fae5e6787922f547a33d4e8b0a">00138</a> <span class="keywordtype">long</span> <a class="code" href="marsenne_8c.html#3ceca2fae5e6787922f547a33d4e8b0a">genrand_int31</a>(<span class="keywordtype">void</span>)
-<a name="l00139"></a>00139 {
-<a name="l00140"></a>00140     <span class="keywordflow">return</span> (<span class="keywordtype">long</span>)(<a class="code" href="marsenne_8c.html#01df93db61b29f580e19a1754050be23">genrand_int32</a>()&gt;&gt;1);
+<a name="l00134"></a>00134     <span class="comment">/* Tempering */</span>
+<a name="l00135"></a>00135     y ^= (y &gt;&gt; 11);
+<a name="l00136"></a>00136     y ^= (y &lt;&lt; 7) &amp; 0x9d2c5680UL;
+<a name="l00137"></a>00137     y ^= (y &lt;&lt; 15) &amp; 0xefc60000UL;
+<a name="l00138"></a>00138     y ^= (y &gt;&gt; 18);
+<a name="l00139"></a>00139 
+<a name="l00140"></a>00140     <span class="keywordflow">return</span> y;
 <a name="l00141"></a>00141 }
 <a name="l00142"></a>00142 
-<a name="l00143"></a>00143 <span class="comment">/* generates a random number on [0,1]-real-interval */</span>
-<a name="l00144"></a><a class="code" href="marsenne_8c.html#3c0f0424c02efbfcc66a835fa204e402">00144</a> <span class="keywordtype">double</span> <a class="code" href="marsenne_8c.html#3c0f0424c02efbfcc66a835fa204e402">genrand_real1</a>(<span class="keywordtype">void</span>)
+<a name="l00143"></a>00143 <span class="comment">/* generates a random number on [0,0x7fffffff]-interval */</span>
+<a name="l00144"></a><a class="code" href="marsenne_8c.html#3ceca2fae5e6787922f547a33d4e8b0a">00144</a> <span class="keywordtype">long</span> <a class="code" href="marsenne_8c.html#3ceca2fae5e6787922f547a33d4e8b0a">genrand_int31</a>(<span class="keywordtype">void</span>)
 <a name="l00145"></a>00145 {
-<a name="l00146"></a>00146     <span class="keywordflow">return</span> <a class="code" href="marsenne_8c.html#01df93db61b29f580e19a1754050be23">genrand_int32</a>()*(1.0/4294967295.0);
-<a name="l00147"></a>00147     <span class="comment">/* divided by 2^32-1 */</span>
-<a name="l00148"></a>00148 }
-<a name="l00149"></a>00149 
-<a name="l00150"></a>00150 <span class="comment">/* generates a random number on [0,1)-real-interval */</span>
-<a name="l00151"></a><a class="code" href="marsenne_8h.html#94a85eef98bce5c402ccabed3a4afc94">00151</a> <span class="keywordtype">double</span> <a class="code" href="marsenne_8c.html#94a85eef98bce5c402ccabed3a4afc94">genrand_real2</a>(<span class="keywordtype">void</span>)
-<a name="l00152"></a>00152 {
-<a name="l00153"></a>00153     <span class="keywordflow">return</span> <a class="code" href="marsenne_8c.html#01df93db61b29f580e19a1754050be23">genrand_int32</a>()*(1.0/4294967296.0);
-<a name="l00154"></a>00154     <span class="comment">/* divided by 2^32 */</span>
-<a name="l00155"></a>00155 }
-<a name="l00156"></a>00156 
-<a name="l00157"></a>00157 <span class="comment">/* generates a random number on (0,1)-real-interval */</span>
-<a name="l00158"></a><a class="code" href="marsenne_8c.html#1d4f7117f10709cb70a84e451c6bd0a1">00158</a> <span class="keywordtype">double</span> <a class="code" href="marsenne_8c.html#1d4f7117f10709cb70a84e451c6bd0a1">genrand_real3</a>(<span class="keywordtype">void</span>)
-<a name="l00159"></a>00159 {
-<a name="l00160"></a>00160     <span class="keywordflow">return</span> (((<span class="keywordtype">double</span>)<a class="code" href="marsenne_8c.html#01df93db61b29f580e19a1754050be23">genrand_int32</a>()) + 0.5)*(1.0/4294967296.0);
-<a name="l00161"></a>00161     <span class="comment">/* divided by 2^32 */</span>
-<a name="l00162"></a>00162 }
-<a name="l00163"></a>00163 
-<a name="l00164"></a>00164 <span class="comment">/* generates a random number on [0,1) with 53-bit resolution*/</span>
-<a name="l00165"></a><a class="code" href="marsenne_8c.html#c12a225eb4b434f52778322b9e76c843">00165</a> <span class="keywordtype">double</span> <a class="code" href="marsenne_8c.html#c12a225eb4b434f52778322b9e76c843">genrand_res53</a>(<span class="keywordtype">void</span>)
-<a name="l00166"></a>00166 {
-<a name="l00167"></a>00167     <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> a=<a class="code" href="marsenne_8c.html#01df93db61b29f580e19a1754050be23">genrand_int32</a>()&gt;&gt;5, b=<a class="code" href="marsenne_8c.html#01df93db61b29f580e19a1754050be23">genrand_int32</a>()&gt;&gt;6;
-<a name="l00168"></a>00168     <span class="keywordflow">return</span>(a*67108864.0+b)*(1.0/9007199254740992.0);
-<a name="l00169"></a>00169 }
-<a name="l00170"></a>00170 <span class="comment">/* These real versions are due to Isaku Wada, 2002/01/09 added */</span>
-</pre></div><hr size="1"><address style="align: right;"><small>Erzeugt am Fri Jan 4 10:01:13 2013 für Carme-Snake von&nbsp;
+<a name="l00146"></a>00146     <span class="keywordflow">return</span> (<span class="keywordtype">long</span>)(<a class="code" href="marsenne_8c.html#01df93db61b29f580e19a1754050be23">genrand_int32</a>()&gt;&gt;1);
+<a name="l00147"></a>00147 }
+<a name="l00148"></a>00148 
+<a name="l00149"></a>00149 <span class="comment">/* generates a random number on [0,1]-real-interval */</span>
+<a name="l00150"></a><a class="code" href="marsenne_8c.html#3c0f0424c02efbfcc66a835fa204e402">00150</a> <span class="keywordtype">double</span> <a class="code" href="marsenne_8c.html#3c0f0424c02efbfcc66a835fa204e402">genrand_real1</a>(<span class="keywordtype">void</span>)
+<a name="l00151"></a>00151 {
+<a name="l00152"></a>00152     <span class="keywordflow">return</span> <a class="code" href="marsenne_8c.html#01df93db61b29f580e19a1754050be23">genrand_int32</a>()*(1.0/4294967295.0);
+<a name="l00153"></a>00153     <span class="comment">/* divided by 2^32-1 */</span>
+<a name="l00154"></a>00154 }
+<a name="l00155"></a>00155 
+<a name="l00156"></a>00156 <span class="comment">/* generates a random number on [0,1)-real-interval */</span>
+<a name="l00157"></a><a class="code" href="marsenne_8h.html#94a85eef98bce5c402ccabed3a4afc94">00157</a> <span class="keywordtype">double</span> <a class="code" href="marsenne_8c.html#94a85eef98bce5c402ccabed3a4afc94">genrand_real2</a>(<span class="keywordtype">void</span>)
+<a name="l00158"></a>00158 {
+<a name="l00159"></a>00159     <span class="keywordflow">return</span> <a class="code" href="marsenne_8c.html#01df93db61b29f580e19a1754050be23">genrand_int32</a>()*(1.0/4294967296.0);
+<a name="l00160"></a>00160     <span class="comment">/* divided by 2^32 */</span>
+<a name="l00161"></a>00161 }
+<a name="l00162"></a>00162 
+<a name="l00163"></a>00163 <span class="comment">/* generates a random number on (0,1)-real-interval */</span>
+<a name="l00164"></a><a class="code" href="marsenne_8c.html#1d4f7117f10709cb70a84e451c6bd0a1">00164</a> <span class="keywordtype">double</span> <a class="code" href="marsenne_8c.html#1d4f7117f10709cb70a84e451c6bd0a1">genrand_real3</a>(<span class="keywordtype">void</span>)
+<a name="l00165"></a>00165 {
+<a name="l00166"></a>00166     <span class="keywordflow">return</span> (((<span class="keywordtype">double</span>)<a class="code" href="marsenne_8c.html#01df93db61b29f580e19a1754050be23">genrand_int32</a>()) + 0.5)*(1.0/4294967296.0);
+<a name="l00167"></a>00167     <span class="comment">/* divided by 2^32 */</span>
+<a name="l00168"></a>00168 }
+<a name="l00169"></a>00169 
+<a name="l00170"></a>00170 <span class="comment">/* generates a random number on [0,1) with 53-bit resolution*/</span>
+<a name="l00171"></a><a class="code" href="marsenne_8c.html#c12a225eb4b434f52778322b9e76c843">00171</a> <span class="keywordtype">double</span> <a class="code" href="marsenne_8c.html#c12a225eb4b434f52778322b9e76c843">genrand_res53</a>(<span class="keywordtype">void</span>)
+<a name="l00172"></a>00172 {
+<a name="l00173"></a>00173     <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> a=<a class="code" href="marsenne_8c.html#01df93db61b29f580e19a1754050be23">genrand_int32</a>()&gt;&gt;5, b=<a class="code" href="marsenne_8c.html#01df93db61b29f580e19a1754050be23">genrand_int32</a>()&gt;&gt;6;
+<a name="l00174"></a>00174     <span class="keywordflow">return</span>(a*67108864.0+b)*(1.0/9007199254740992.0);
+<a name="l00175"></a>00175 }
+<a name="l00176"></a>00176 <span class="comment">/* These real versions are due to Isaku Wada, 2002/01/09 added */</span>
+</pre></div><hr size="1"><address style="align: right;"><small>Erzeugt am Tue Jan 8 17:54:31 2013 für Carme-Snake von&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.4.5 </small></address>
 </body>

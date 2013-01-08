@@ -40,6 +40,12 @@
    http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/emt.html
    email: m-mat @ math.sci.hiroshima-u.ac.jp (remove space)
 */
+/**
+ * \file marsenne.c
+ * Pseudozufallszahlgenerator.
+ * Diese Datei enthält einen Random Number Generator nach dem Algorithmus "Marsenne Twister".
+ * Sie wurde hier heruntergeladen: http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/emt.html .
+ */
 
 /* Period parameters */
 #define N 624
