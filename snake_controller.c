@@ -46,7 +46,11 @@ int size = 0;	///< Länge der Schlange im Ringbuffer 'snake[]'.
 /**
  * Geht mit der Schlange einen Schritt in die eingeschlagene Richtung weiter.
  * Prüft dabei, ob entweder auf Futter gestossen wurde, oder ob eine Kollision
- * vorliegt.
+ * vorliegt. <br>
+ *
+ * Flowchart:
+ * <img src="../../step_forward_Flowchart.png">
+ *
  * @return gibt das Ergebnis dieses Schrittes zurück:
  * Entweder passierte gar nichts, die Schlange traf auf Futter oder es gab eine
  * Kollision
