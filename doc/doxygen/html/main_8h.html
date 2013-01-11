@@ -11,6 +11,7 @@
     <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
     <li id="current"><a href="files.html"><span>Dateien</span></a></li>
     <li><a href="dirs.html"><span>Verzeichnisse</span></a></li>
+    <li><a href="pages.html"><span>Zusätzliche&nbsp;Informationen</span></a></li>
   </ul></div>
 <div class="tabs">
   <ul>
@@ -45,7 +46,7 @@ Dieser Graph zeigt, welche Datei direkt oder indirekt diese Datei enthält:<p><ce
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Maximal mögliche Länge der Schlage im Ringbuffer.  <a href="#e9ce1ae38621389b25a2ca89a712e0c6"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8h.html#74f9f9e6d298c116b1f0a076b82847a7">INITIAL_SIZE</a>&nbsp;&nbsp;&nbsp;4</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Lönge der Schlange bei Begin des Spiels.  <a href="#74f9f9e6d298c116b1f0a076b82847a7"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Länge der Schlange bei Begin des Spiels.  <a href="#74f9f9e6d298c116b1f0a076b82847a7"></a><br></td></tr>
 <tr><td colspan="2"><br><h2>Typdefinitionen</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">typedef <a class="el" href="structlocation.html">location</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8h.html#d5189de027922f81005951e6efe0efd5">location</a></td></tr>
 
@@ -57,7 +58,7 @@ Dieser Graph zeigt, welche Datei direkt oder indirekt diese Datei enthält:<p><ce
 <a class="el" href="main_8h.html#ef72c37be9d1b9e6e5bbd6ef09448abec4e0e4e3118472beeb2ae75827450f1f">DOWN</a> =  'd'
  }</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Dieser Enumerator dient zur Aufschlüsselung der Zeichen von der UART Schnittstelle.  <a href="main_8h.html#ef72c37be9d1b9e6e5bbd6ef09448abe">Mehr ...</a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Dieser Enumerator dient zur Aufschlüsselung der Zeichen von der UART1 Schnittstelle.  <a href="main_8h.html#ef72c37be9d1b9e6e5bbd6ef09448abe">Mehr ...</a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8h.html#b4a88417b3d0170d754c647c30b7216a">result</a> { <a class="el" href="main_8h.html#b4a88417b3d0170d754c647c30b7216a8697250efc73639dd2a6e7da243ac68b">NOTHING</a>, 
 <a class="el" href="main_8h.html#b4a88417b3d0170d754c647c30b7216acc9284597026dcc021735c0970ca0c93">FOOD</a>, 
 <a class="el" href="main_8h.html#b4a88417b3d0170d754c647c30b7216afc3ca10632f0c7aa3aaea07a234377db">COLLISION</a>
@@ -70,10 +71,13 @@ Dieser Graph zeigt, welche Datei direkt oder indirekt diese Datei enthält:<p><ce
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialisiert den Timer auf Hardwarestufe.  <a href="#73ecd992119001f6600418d8295d343f"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8h.html#65c566f7a512164c4a80c8966aed957d">init_uart</a> ()</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialisiert die UART Schnittstelle auf Hardwarestufe.  <a href="#65c566f7a512164c4a80c8966aed957d"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialisiert die UART1 Schnittstelle auf Hardwarestufe.  <a href="#65c566f7a512164c4a80c8966aed957d"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8h.html#8b19c091a06f204875a40fbd053acc24">start_timer</a> ()</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Startet den Timer auf Hardwarestufe.  <a href="#8b19c091a06f204875a40fbd053acc24"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8h.html#71fbd14f6ccf4b435a41ae2bae104568">write_byte</a> (char byte)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Schreibt ein Byte über die UART1 Schnittstelle.  <a href="#71fbd14f6ccf4b435a41ae2bae104568"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8h.html#530819fc5e18e6a7c179ae90d1e9448a">enable_interrupts</a> ()</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Schaltet Interrupts auf Hardwarestufe ein.  <a href="#530819fc5e18e6a7c179ae90d1e9448a"></a><br></td></tr>
@@ -89,16 +93,16 @@ Dieser Graph zeigt, welche Datei direkt oder indirekt diese Datei enthält:<p><ce
 <tr><td colspan="2"><br><h2>Variablen</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">volatile enum <a class="el" href="main_8h.html#ef72c37be9d1b9e6e5bbd6ef09448abe">direction</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8h.html#3d2fed6a3c8ed6c54d7637e4be95ffd2">snake_direction</a></td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Globale Variable, welche vom Interrupthandler über UART aktualisiert wird.  <a href="#3d2fed6a3c8ed6c54d7637e4be95ffd2"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Globale Variable, welche vom Interrupthandler über UART1 aktualisiert wird.  <a href="#3d2fed6a3c8ed6c54d7637e4be95ffd2"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">volatile int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8h.html#5eaa52de26924e9dfcc728d688edc25c">timer_irq_flag</a></td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Globale Variable, welche vom Interrupthandler über den Timer gesetzt wird.  <a href="#5eaa52de26924e9dfcc728d688edc25c"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="structlocation.html">location</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8h.html#62506be34d574da4a0d158a67253ea99">food</a></td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Enthält die Position des Futters.  <a href="#62506be34d574da4a0d158a67253ea99"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8h.html#c9e9a848920877e76685b2e4e76de38d">level</a></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8h.html#1b34c77f48cdbfd8120965c5e8183b44">startup_size</a></td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Enthält den Level des Spiels.  <a href="#c9e9a848920877e76685b2e4e76de38d"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Enthält die Länge der Schlange während dem Aufstarten.  <a href="#1b34c77f48cdbfd8120965c5e8183b44"></a><br></td></tr>
 </table>
 <hr><a name="_details"></a><h2>Ausführliche Beschreibung</h2>
 Enthält Makros, Structs und gloale Variablen des Projekts. 
@@ -126,11 +130,13 @@ Definiert in Datei <a class="el" href="main_8h-source.html">main.h</a>.<hr><h2>M
     <td>
 
 <p>
-Lönge der Schlange bei Begin des Spiels. 
+Länge der Schlange bei Begin des Spiels. 
 <p>
 
 <p>
-Definiert in Zeile <a class="el" href="main_8h-source.html#l00036">36</a> der Datei <a class="el" href="main_8h-source.html">main.h</a>.    </td>
+Definiert in Zeile <a class="el" href="main_8h-source.html#l00036">36</a> der Datei <a class="el" href="main_8h-source.html">main.h</a>.
+<p>
+Wird benutzt von <a class="el" href="main_8c-source.html#l00191">init_level()</a>.    </td>
   </tr>
 </table>
 <a class="anchor" name="e9ce1ae38621389b25a2ca89a712e0c6"></a><!-- doxytag: member="main.h::SNAKE_BUFFER" ref="e9ce1ae38621389b25a2ca89a712e0c6" args="" --><p>
@@ -159,7 +165,7 @@ Maximal mögliche Länge der Schlage im Ringbuffer.
 <p>
 Definiert in Zeile <a class="el" href="main_8h-source.html#l00035">35</a> der Datei <a class="el" href="main_8h-source.html">main.h</a>.
 <p>
-Wird benutzt von <a class="el" href="snake__controller_8c-source.html#l00158">check_snake_collision()</a>.    </td>
+Wird benutzt von <a class="el" href="snake__controller_8c-source.html#l00157">check_snake_collision()</a>.    </td>
   </tr>
 </table>
 <hr><h2>Dokumentation der benutzerdefinierten Typen</h2>
@@ -209,7 +215,7 @@ Sie kann Pixelkoordinaten *oder* Rasterkoordinaten enthalten!     </td>
     <td>
 
 <p>
-Dieser Enumerator dient zur Aufschlüsselung der Zeichen von der UART Schnittstelle. 
+Dieser Enumerator dient zur Aufschlüsselung der Zeichen von der UART1 Schnittstelle. 
 <p>
 Er definiert dadurch auch gleich das Protokoll: Je nachdem, welches Zeichen von der Schnittstelle ankommt, wird es als die jeweilige Richtung interpretiert. <dl compact><dt><b>Aufzählungswerte: </b></dt><dd>
 <table border="0" cellspacing="2" cellpadding="0">
@@ -294,7 +300,7 @@ Schaltet Interrupts auf Hardwarestufe aus.
 <p>
 
 <p>
-Wird benutzt von <a class="el" href="main_8c-source.html#l00167">main()</a>.    </td>
+Wird benutzt von <a class="el" href="main_8c-source.html#l00191">init_level()</a> und <a class="el" href="main_8c-source.html#l00212">main()</a>.    </td>
   </tr>
 </table>
 <a class="anchor" name="530819fc5e18e6a7c179ae90d1e9448a"></a><!-- doxytag: member="main.h::enable_interrupts" ref="530819fc5e18e6a7c179ae90d1e9448a" args="()" --><p>
@@ -325,7 +331,7 @@ Schaltet Interrupts auf Hardwarestufe ein.
 <p>
 
 <p>
-Wird benutzt von <a class="el" href="main_8c-source.html#l00167">main()</a> und <a class="el" href="main_8c-source.html#l00149">restore_interruptstate()</a>.    </td>
+Wird benutzt von <a class="el" href="main_8c-source.html#l00191">init_level()</a>, <a class="el" href="main_8c-source.html#l00212">main()</a> und <a class="el" href="main_8c-source.html#l00160">restore_interruptstate()</a>.    </td>
   </tr>
 </table>
 <a class="anchor" name="15b5cfb2d22ffa967b65516f9c433ecc"></a><!-- doxytag: member="main.h::get_interrupt_state" ref="15b5cfb2d22ffa967b65516f9c433ecc" args="()" --><p>
@@ -385,7 +391,7 @@ Initialisiert den Timer auf Hardwarestufe.
 <p>
 
 <p>
-Wird benutzt von <a class="el" href="main_8c-source.html#l00167">main()</a>.    </td>
+Wird benutzt von <a class="el" href="main_8c-source.html#l00212">main()</a>.    </td>
   </tr>
 </table>
 <a class="anchor" name="65c566f7a512164c4a80c8966aed957d"></a><!-- doxytag: member="main.h::init_uart" ref="65c566f7a512164c4a80c8966aed957d" args="()" --><p>
@@ -412,11 +418,11 @@ Wird benutzt von <a class="el" href="main_8c-source.html#l00167">main()</a>.    
     <td>
 
 <p>
-Initialisiert die UART Schnittstelle auf Hardwarestufe. 
+Initialisiert die UART1 Schnittstelle auf Hardwarestufe. 
 <p>
 
 <p>
-Wird benutzt von <a class="el" href="main_8c-source.html#l00167">main()</a>.    </td>
+Wird benutzt von <a class="el" href="main_8c-source.html#l00212">main()</a>.    </td>
   </tr>
 </table>
 <a class="anchor" name="25165e286cbf7b2ba88ecb29a1fc9d0b"></a><!-- doxytag: member="main.h::interrupt_handler" ref="25165e286cbf7b2ba88ecb29a1fc9d0b" args="()" --><p>
@@ -476,7 +482,39 @@ Startet den Timer auf Hardwarestufe.
 <p>
 
 <p>
-Wird benutzt von <a class="el" href="main_8c-source.html#l00129">delay()</a>.    </td>
+Wird benutzt von <a class="el" href="main_8c-source.html#l00140">delay()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="71fbd14f6ccf4b435a41ae2bae104568"></a><!-- doxytag: member="main.h::write_byte" ref="71fbd14f6ccf4b435a41ae2bae104568" args="(char byte)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">void write_byte           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">char&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap> <em>byte</em>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Schreibt ein Byte über die UART1 Schnittstelle. 
+<p>
+
+<p>
+Wird benutzt von <a class="el" href="main_8c-source.html#l00212">main()</a>.    </td>
   </tr>
 </table>
 <hr><h2>Variablen-Dokumentation</h2>
@@ -504,38 +542,9 @@ Enthält die Position des Futters.
 <p>
 
 <p>
-Definiert in Zeile <a class="el" href="main_8c-source.html#l00066">66</a> der Datei <a class="el" href="main_8c-source.html">main.c</a>.
+Definiert in Zeile <a class="el" href="main_8c-source.html#l00079">79</a> der Datei <a class="el" href="main_8c-source.html">main.c</a>.
 <p>
-Wird benutzt von <a class="el" href="snake__controller_8c-source.html#l00181">check_food_collision()</a>.    </td>
-  </tr>
-</table>
-<a class="anchor" name="c9e9a848920877e76685b2e4e76de38d"></a><!-- doxytag: member="main.h::level" ref="c9e9a848920877e76685b2e4e76de38d" args="" --><p>
-<table class="mdTable" cellpadding="2" cellspacing="0">
-  <tr>
-    <td class="mdRow">
-      <table cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td class="md" nowrap valign="top">int <a class="el" href="main_8h.html#c9e9a848920877e76685b2e4e76de38d">level</a>          </td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-</table>
-<table cellspacing="5" cellpadding="0" border="0">
-  <tr>
-    <td>
-      &nbsp;
-    </td>
-    <td>
-
-<p>
-Enthält den Level des Spiels. 
-<p>
-
-<p>
-Definiert in Zeile <a class="el" href="main_8c-source.html#l00067">67</a> der Datei <a class="el" href="main_8c-source.html">main.c</a>.
-<p>
-Wird benutzt von <a class="el" href="main_8c-source.html#l00167">main()</a>.    </td>
+Wird benutzt von <a class="el" href="snake__controller_8c-source.html#l00180">check_food_collision()</a>.    </td>
   </tr>
 </table>
 <a class="anchor" name="3d2fed6a3c8ed6c54d7637e4be95ffd2"></a><!-- doxytag: member="main.h::snake_direction" ref="3d2fed6a3c8ed6c54d7637e4be95ffd2" args="" --><p>
@@ -558,14 +567,43 @@ Wird benutzt von <a class="el" href="main_8c-source.html#l00167">main()</a>.    
     <td>
 
 <p>
-Globale Variable, welche vom Interrupthandler über UART aktualisiert wird. 
+Globale Variable, welche vom Interrupthandler über UART1 aktualisiert wird. 
 <p>
-Die Variable ist das Interface zur UART Schnittstelle. Sie enthält die Richtung, in die die Schlange steuern soll. Wird per PC Tastatur gesteuert und dann per UART zum CARME Kit gesendet.<p>
+Die Variable ist das Interface zur UART1 Schnittstelle. Sie enthält die Richtung, in die die Schlange steuern soll. Wird per PC Tastatur gesteuert und dann per UART zum CARME Kit gesendet.<p>
 Bevor überhaupt eine Taste gedrückt wurde hat die Variable den Wert '?', damit man erkennen kann, wenn dann erstmals ein r, o, l oder u hereinkommt. 
 <p>
-Definiert in Zeile <a class="el" href="main_8c-source.html#l00058">58</a> der Datei <a class="el" href="main_8c-source.html">main.c</a>.
+Definiert in Zeile <a class="el" href="main_8c-source.html#l00062">62</a> der Datei <a class="el" href="main_8c-source.html">main.c</a>.
 <p>
-Wird benutzt von <a class="el" href="main_8c-source.html#l00167">main()</a> und <a class="el" href="snake__controller_8c-source.html#l00062">step_forward()</a>.    </td>
+Wird benutzt von <a class="el" href="main_8c-source.html#l00212">main()</a> und <a class="el" href="snake__controller_8c-source.html#l00058">step_forward()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="1b34c77f48cdbfd8120965c5e8183b44"></a><!-- doxytag: member="main.h::startup_size" ref="1b34c77f48cdbfd8120965c5e8183b44" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">int <a class="el" href="main_8h.html#1b34c77f48cdbfd8120965c5e8183b44">startup_size</a>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Enthält die Länge der Schlange während dem Aufstarten. 
+<p>
+Die Schlange beginnt als einzelnes Glied und wächst dann in die Richtung, in die der Spieler das erste Mal gedrückt hat. Diese wachsende Länge wird mit dieser Variable gespeichert. Schlussendlich ist dann nur noch die variable 'size' des Ringbuffers dafür zuständig. 
+<p>
+Definiert in Zeile <a class="el" href="main_8c-source.html#l00077">77</a> der Datei <a class="el" href="main_8c-source.html">main.c</a>.
+<p>
+Wird benutzt von <a class="el" href="snake__controller_8c-source.html#l00191">check_initial_state()</a> und <a class="el" href="main_8c-source.html#l00191">init_level()</a>.    </td>
   </tr>
 </table>
 <a class="anchor" name="5eaa52de26924e9dfcc728d688edc25c"></a><!-- doxytag: member="main.h::timer_irq_flag" ref="5eaa52de26924e9dfcc728d688edc25c" args="" --><p>
@@ -592,12 +630,12 @@ Globale Variable, welche vom Interrupthandler über den Timer gesetzt wird.
 <p>
 Alle 1ms wird das Flag vom Interrupt des Timers gesetzt. Damit werden genaue Zeitverzögerungen möglich. 
 <p>
-Definiert in Zeile <a class="el" href="main_8c-source.html#l00064">64</a> der Datei <a class="el" href="main_8c-source.html">main.c</a>.
+Definiert in Zeile <a class="el" href="main_8c-source.html#l00068">68</a> der Datei <a class="el" href="main_8c-source.html">main.c</a>.
 <p>
-Wird benutzt von <a class="el" href="main_8c-source.html#l00129">delay()</a>.    </td>
+Wird benutzt von <a class="el" href="main_8c-source.html#l00140">delay()</a>.    </td>
   </tr>
 </table>
-<hr size="1"><address style="align: right;"><small>Erzeugt am Tue Jan 8 17:54:31 2013 für Carme-Snake von&nbsp;
+<hr size="1"><address style="align: right;"><small>Erzeugt am Sat Jan 12 00:57:02 2013 für Carme-Snake von&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.4.5 </small></address>
 </body>

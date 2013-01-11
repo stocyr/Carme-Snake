@@ -11,6 +11,7 @@
     <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
     <li id="current"><a href="files.html"><span>Dateien</span></a></li>
     <li><a href="dirs.html"><span>Verzeichnisse</span></a></li>
+    <li><a href="pages.html"><span>Zusätzliche&nbsp;Informationen</span></a></li>
   </ul></div>
 <div class="tabs">
   <ul>
@@ -51,16 +52,16 @@ Dieser Graph zeigt, welche Datei direkt oder indirekt diese Datei enthält:<p><ce
 <tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="graphics_8h.html#d3dab3964c2b890e9bc1f0790892b18c">FOODCOLOR</a>&nbsp;&nbsp;&nbsp;GUI_RED</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Farbe des Futters.  <a href="#d3dab3964c2b890e9bc1f0790892b18c"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="graphics_8h.html#51be9c35552c1297c4c64bed085de60f">SNAKERAD</a>&nbsp;&nbsp;&nbsp;3</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="graphics_8h.html#51be9c35552c1297c4c64bed085de60f">SNAKERAD</a>&nbsp;&nbsp;&nbsp;5</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Radius der Schlangenglieder.  <a href="#51be9c35552c1297c4c64bed085de60f"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="graphics_8h.html#88be69b0577a14f4fa3bbfa0ff17a41d">ELEMENT</a>&nbsp;&nbsp;&nbsp;5</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="graphics_8h.html#88be69b0577a14f4fa3bbfa0ff17a41d">ELEMENT</a>&nbsp;&nbsp;&nbsp;10</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Rasterbreite eines Schlangengliedes oder Futters in Pixel.  <a href="#88be69b0577a14f4fa3bbfa0ff17a41d"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="graphics_8h.html#f09dc2a84e4502401e8f58c2e5e9f3d4">PLAYGROUND_X_MAX</a>&nbsp;&nbsp;&nbsp;64</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="graphics_8h.html#f09dc2a84e4502401e8f58c2e5e9f3d4">PLAYGROUND_X_MAX</a>&nbsp;&nbsp;&nbsp;32</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Breite des Spielfeldes in Rastern.  <a href="#f09dc2a84e4502401e8f58c2e5e9f3d4"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="graphics_8h.html#6d0fa46c381dcb823c09d0e3c0411baf">PLAYGROUND_Y_MAX</a>&nbsp;&nbsp;&nbsp;48</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="graphics_8h.html#6d0fa46c381dcb823c09d0e3c0411baf">PLAYGROUND_Y_MAX</a>&nbsp;&nbsp;&nbsp;24</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Höhe des Spielfeldes in Rastern.  <a href="#6d0fa46c381dcb823c09d0e3c0411baf"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="graphics_8h.html#178fb4a8a4e6eaa0f2aa54693f80cab7">PLAYGROUND_TO_LCD</a>(x)&nbsp;&nbsp;&nbsp;(x*ELEMENT+ELEMENT/2)</td></tr>
@@ -121,7 +122,7 @@ Wird benutzt von <a class="el" href="graphics_8c-source.html#l00057">clear_snake
     <td class="mdRow">
       <table cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td class="md" nowrap valign="top">#define ELEMENT&nbsp;&nbsp;&nbsp;5          </td>
+          <td class="md" nowrap valign="top">#define ELEMENT&nbsp;&nbsp;&nbsp;10          </td>
         </tr>
       </table>
     </td>
@@ -211,7 +212,7 @@ Wird benutzt von <a class="el" href="graphics_8c-source.html#l00057">clear_snake
     <td class="mdRow">
       <table cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td class="md" nowrap valign="top">#define PLAYGROUND_X_MAX&nbsp;&nbsp;&nbsp;64          </td>
+          <td class="md" nowrap valign="top">#define PLAYGROUND_X_MAX&nbsp;&nbsp;&nbsp;32          </td>
         </tr>
       </table>
     </td>
@@ -231,7 +232,7 @@ Breite des Spielfeldes in Rastern.
 <p>
 Definiert in Zeile <a class="el" href="graphics_8h-source.html#l00041">41</a> der Datei <a class="el" href="graphics_8h-source.html">graphics.h</a>.
 <p>
-Wird benutzt von <a class="el" href="snake__controller_8c-source.html#l00136">check_wall_collision()</a>, <a class="el" href="snake__controller_8c-source.html#l00201">init_snake()</a> und <a class="el" href="main_8c-source.html#l00090">randomize_location()</a>.    </td>
+Wird benutzt von <a class="el" href="snake__controller_8c-source.html#l00135">check_wall_collision()</a>, <a class="el" href="snake__controller_8c-source.html#l00200">init_snake()</a> und <a class="el" href="main_8c-source.html#l00106">randomize_location()</a>.    </td>
   </tr>
 </table>
 <a class="anchor" name="6d0fa46c381dcb823c09d0e3c0411baf"></a><!-- doxytag: member="graphics.h::PLAYGROUND_Y_MAX" ref="6d0fa46c381dcb823c09d0e3c0411baf" args="" --><p>
@@ -240,7 +241,7 @@ Wird benutzt von <a class="el" href="snake__controller_8c-source.html#l00136">ch
     <td class="mdRow">
       <table cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td class="md" nowrap valign="top">#define PLAYGROUND_Y_MAX&nbsp;&nbsp;&nbsp;48          </td>
+          <td class="md" nowrap valign="top">#define PLAYGROUND_Y_MAX&nbsp;&nbsp;&nbsp;24          </td>
         </tr>
       </table>
     </td>
@@ -260,7 +261,7 @@ Höhe des Spielfeldes in Rastern.
 <p>
 Definiert in Zeile <a class="el" href="graphics_8h-source.html#l00042">42</a> der Datei <a class="el" href="graphics_8h-source.html">graphics.h</a>.
 <p>
-Wird benutzt von <a class="el" href="snake__controller_8c-source.html#l00136">check_wall_collision()</a>, <a class="el" href="snake__controller_8c-source.html#l00201">init_snake()</a> und <a class="el" href="main_8c-source.html#l00090">randomize_location()</a>.    </td>
+Wird benutzt von <a class="el" href="snake__controller_8c-source.html#l00135">check_wall_collision()</a>, <a class="el" href="snake__controller_8c-source.html#l00200">init_snake()</a> und <a class="el" href="main_8c-source.html#l00106">randomize_location()</a>.    </td>
   </tr>
 </table>
 <a class="anchor" name="7adb1eb9e41a429c4247d7a4635e509d"></a><!-- doxytag: member="graphics.h::SNAKECOLOR" ref="7adb1eb9e41a429c4247d7a4635e509d" args="" --><p>
@@ -298,7 +299,7 @@ Wird benutzt von <a class="el" href="graphics_8c-source.html#l00047">draw_snake_
     <td class="mdRow">
       <table cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td class="md" nowrap valign="top">#define SNAKERAD&nbsp;&nbsp;&nbsp;3          </td>
+          <td class="md" nowrap valign="top">#define SNAKERAD&nbsp;&nbsp;&nbsp;5          </td>
         </tr>
       </table>
     </td>
@@ -382,7 +383,7 @@ Definiert in Zeile <a class="el" href="graphics_8c-source.html#l00068">68</a> de
 <p>
 Benutzt <a class="el" href="graphics_8h-source.html#l00036">BACKCOLOR</a>.
 <p>
-Wird benutzt von <a class="el" href="main_8c-source.html#l00167">main()</a>.    </td>
+Wird benutzt von <a class="el" href="main_8c-source.html#l00191">init_level()</a>.    </td>
   </tr>
 </table>
 <a class="anchor" name="e0fd65274dd1d6156fb302ca16440f9e"></a><!-- doxytag: member="graphics.h::draw_food" ref="e0fd65274dd1d6156fb302ca16440f9e" args="()" --><p>
@@ -469,10 +470,10 @@ Initialisiert die GUI Funktionen der mitgelieferten CARME GUI Library.
 <p>
 Definiert in Zeile <a class="el" href="graphics_8c-source.html#l00037">37</a> der Datei <a class="el" href="graphics_8c-source.html">graphics.c</a>.
 <p>
-Wird benutzt von <a class="el" href="main_8c-source.html#l00167">main()</a>.    </td>
+Wird benutzt von <a class="el" href="main_8c-source.html#l00212">main()</a>.    </td>
   </tr>
 </table>
-<hr size="1"><address style="align: right;"><small>Erzeugt am Tue Jan 8 17:54:31 2013 für Carme-Snake von&nbsp;
+<hr size="1"><address style="align: right;"><small>Erzeugt am Sat Jan 12 00:57:00 2013 für Carme-Snake von&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.4.5 </small></address>
 </body>

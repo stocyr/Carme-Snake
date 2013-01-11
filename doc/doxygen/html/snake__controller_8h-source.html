@@ -11,6 +11,7 @@
     <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
     <li id="current"><a href="files.html"><span>Dateien</span></a></li>
     <li><a href="dirs.html"><span>Verzeichnisse</span></a></li>
+    <li><a href="pages.html"><span>Zusätzliche&nbsp;Informationen</span></a></li>
   </ul></div>
 <div class="tabs">
   <ul>
@@ -48,24 +49,19 @@
 <a name="l00032"></a>00032 <span class="preprocessor">#include "<a class="code" href="main_8h.html">main.h</a>"</span>
 <a name="l00033"></a>00033 
 <a name="l00034"></a>00034 <span class="comment">/* global variables */</span>
-<a name="l00035"></a>00035 <span class="keyword">extern</span> <a class="code" href="structlocation.html">location</a> <a class="code" href="snake__controller_8c.html#2698edfe7456402e4dd3bb4fbd3ecdf5">snake</a>[<a class="code" href="main_8h.html#e9ce1ae38621389b25a2ca89a712e0c6">SNAKE_BUFFER</a>];
-<a name="l00036"></a>00036 <span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="snake__controller_8c.html#96e89a298e0a9f469b9ae458d6afae9f">head</a>;
-<a name="l00037"></a>00037 <span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="snake__controller_8c.html#7aea2552dfe7eb84b9443b6fc9ba6e01">tail</a>;
-<a name="l00038"></a>00038 <span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="snake__controller_8c.html#f7bd60b75b29d79b660a2859395c1a24">size</a>;
-<a name="l00039"></a>00039 
-<a name="l00040"></a>00040 <span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="snake__controller_8c.html#1b34c77f48cdbfd8120965c5e8183b44">startup_size</a>;
-<a name="l00041"></a>00041 
-<a name="l00042"></a>00042 <span class="comment">/* prototypes */</span>
-<a name="l00043"></a>00043 <span class="keyword">enum</span> <a class="code" href="main_8h.html#b4a88417b3d0170d754c647c30b7216a">result</a> <a class="code" href="snake__controller_8c.html#76b1b7c11a5738ad98be821ff7794746">step_forward</a>(<span class="keywordtype">int</span> initial);
-<a name="l00044"></a>00044 <span class="keywordtype">void</span> <a class="code" href="snake__controller_8h.html#c97e63646a89e9a5389ef787e53a4def">eat</a>(<a class="code" href="structlocation.html">location</a> <a class="code" href="main_8c.html#62506be34d574da4a0d158a67253ea99">food</a>);
-<a name="l00045"></a>00045 <span class="keywordtype">int</span> <a class="code" href="snake__controller_8c.html#7f3c14cfdced867695b912963359919b">check_wall_collision</a>(<a class="code" href="structlocation.html">location</a> pos);
-<a name="l00046"></a>00046 <span class="keywordtype">int</span> <a class="code" href="snake__controller_8c.html#11b36c942c439cf925cbb52400cf50f1">check_snake_collision</a>(<a class="code" href="structlocation.html">location</a> pos);
-<a name="l00047"></a>00047 <span class="keywordtype">int</span> <a class="code" href="snake__controller_8c.html#95b62a914c274c05229dd2fc42619b42">check_food_collision</a>(<a class="code" href="structlocation.html">location</a> pos);
-<a name="l00048"></a>00048 <span class="keywordtype">int</span> <a class="code" href="snake__controller_8c.html#303880b3d5c20688e6ca9efc8c285eb7">check_initial_state</a>();
-<a name="l00049"></a>00049 <span class="keywordtype">void</span> <a class="code" href="snake__controller_8c.html#355629f5f037edd2e3a7face80a52886">init_snake</a>();
-<a name="l00050"></a>00050 
-<a name="l00051"></a>00051 <span class="preprocessor">#endif</span>
-</pre></div><hr size="1"><address style="align: right;"><small>Erzeugt am Tue Jan 8 17:54:31 2013 für Carme-Snake von&nbsp;
+<a name="l00035"></a>00035 <span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="snake__controller_8c.html#f7bd60b75b29d79b660a2859395c1a24">size</a>;
+<a name="l00036"></a>00036 
+<a name="l00037"></a>00037 <span class="comment">/* prototypes */</span>
+<a name="l00038"></a>00038 <span class="keyword">enum</span> <a class="code" href="main_8h.html#b4a88417b3d0170d754c647c30b7216a">result</a> <a class="code" href="snake__controller_8c.html#76b1b7c11a5738ad98be821ff7794746">step_forward</a>(<span class="keywordtype">int</span> initial);
+<a name="l00039"></a>00039 <span class="keywordtype">void</span> <a class="code" href="snake__controller_8h.html#c97e63646a89e9a5389ef787e53a4def">eat</a>(<a class="code" href="structlocation.html">location</a> <a class="code" href="main_8c.html#62506be34d574da4a0d158a67253ea99">food</a>);
+<a name="l00040"></a>00040 <span class="keywordtype">int</span> <a class="code" href="snake__controller_8c.html#7f3c14cfdced867695b912963359919b">check_wall_collision</a>(<a class="code" href="structlocation.html">location</a> pos);
+<a name="l00041"></a>00041 <span class="keywordtype">int</span> <a class="code" href="snake__controller_8c.html#11b36c942c439cf925cbb52400cf50f1">check_snake_collision</a>(<a class="code" href="structlocation.html">location</a> pos);
+<a name="l00042"></a>00042 <span class="keywordtype">int</span> <a class="code" href="snake__controller_8c.html#95b62a914c274c05229dd2fc42619b42">check_food_collision</a>(<a class="code" href="structlocation.html">location</a> pos);
+<a name="l00043"></a>00043 <span class="keywordtype">int</span> <a class="code" href="snake__controller_8c.html#303880b3d5c20688e6ca9efc8c285eb7">check_initial_state</a>();
+<a name="l00044"></a>00044 <span class="keywordtype">void</span> <a class="code" href="snake__controller_8c.html#355629f5f037edd2e3a7face80a52886">init_snake</a>();
+<a name="l00045"></a>00045 
+<a name="l00046"></a>00046 <span class="preprocessor">#endif</span>
+</pre></div><hr size="1"><address style="align: right;"><small>Erzeugt am Sat Jan 12 00:57:00 2013 für Carme-Snake von&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.4.5 </small></address>
 </body>

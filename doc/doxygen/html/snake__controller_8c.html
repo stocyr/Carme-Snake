@@ -11,6 +11,7 @@
     <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
     <li id="current"><a href="files.html"><span>Dateien</span></a></li>
     <li><a href="dirs.html"><span>Verzeichnisse</span></a></li>
+    <li><a href="pages.html"><span>Zusätzliche&nbsp;Informationen</span></a></li>
   </ul></div>
 <div class="tabs">
   <ul>
@@ -68,9 +69,6 @@ Include-Abhängigkeitsdiagramm für snake_controller.c:<p><center><img src="snake_
 <tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="snake__controller_8c.html#f7bd60b75b29d79b660a2859395c1a24">size</a> = 0</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Länge der Schlange im Ringbuffer 'snake[]'.  <a href="#f7bd60b75b29d79b660a2859395c1a24"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="snake__controller_8c.html#1b34c77f48cdbfd8120965c5e8183b44">startup_size</a> = INITIAL_SIZE</td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Enthält die Länge der Schlange während dem Aufstarten.  <a href="#1b34c77f48cdbfd8120965c5e8183b44"></a><br></td></tr>
 </table>
 <hr><a name="_details"></a><h2>Ausführliche Beschreibung</h2>
 Steuert das Verhalten der Schlange. 
@@ -113,9 +111,9 @@ Definiert in Datei <a class="el" href="snake__controller_8c-source.html">snake_c
 <dl compact><dt><b>Rückgabe:</b></dt><dd>liefert bei Kollision (= auf dem Futter) 1, sonst 0 </dd></dl>
 
 <p>
-Definiert in Zeile <a class="el" href="snake__controller_8c-source.html#l00181">181</a> der Datei <a class="el" href="snake__controller_8c-source.html">snake_controller.c</a>.
+Definiert in Zeile <a class="el" href="snake__controller_8c-source.html#l00180">180</a> der Datei <a class="el" href="snake__controller_8c-source.html">snake_controller.c</a>.
 <p>
-Benutzt <a class="el" href="main_8c-source.html#l00066">food</a>, <a class="el" href="main_8h-source.html#l00059">location::x</a> und <a class="el" href="main_8h-source.html#l00060">location::y</a>.    </td>
+Benutzt <a class="el" href="main_8c-source.html#l00079">food</a>, <a class="el" href="main_8h-source.html#l00059">location::x</a> und <a class="el" href="main_8h-source.html#l00060">location::y</a>.    </td>
   </tr>
 </table>
 <a class="anchor" name="303880b3d5c20688e6ca9efc8c285eb7"></a><!-- doxytag: member="snake_controller.c::check_initial_state" ref="303880b3d5c20688e6ca9efc8c285eb7" args="()" --><p>
@@ -147,11 +145,11 @@ Benutzt <a class="el" href="main_8c-source.html#l00066">food</a>, <a class="el" 
 Das heisst, sie hat noch nicht die volle Länge von 'INITIAL_SIZE' erreicht. <dl compact><dt><b>Rückgabe:</b></dt><dd>liefert 1, wenn noch im Aufstartmodus, sonst 0 </dd></dl>
 
 <p>
-Definiert in Zeile <a class="el" href="snake__controller_8c-source.html#l00192">192</a> der Datei <a class="el" href="snake__controller_8c-source.html">snake_controller.c</a>.
+Definiert in Zeile <a class="el" href="snake__controller_8c-source.html#l00191">191</a> der Datei <a class="el" href="snake__controller_8c-source.html">snake_controller.c</a>.
 <p>
-Benutzt <a class="el" href="snake__controller_8c-source.html#l00043">size</a> und <a class="el" href="snake__controller_8c-source.html#l00051">startup_size</a>.
+Benutzt <a class="el" href="snake__controller_8c-source.html#l00043">size</a> und <a class="el" href="main_8c-source.html#l00077">startup_size</a>.
 <p>
-Wird benutzt von <a class="el" href="main_8c-source.html#l00167">main()</a>.    </td>
+Wird benutzt von <a class="el" href="main_8c-source.html#l00212">main()</a>.    </td>
   </tr>
 </table>
 <a class="anchor" name="11b36c942c439cf925cbb52400cf50f1"></a><!-- doxytag: member="snake_controller.c::check_snake_collision" ref="11b36c942c439cf925cbb52400cf50f1" args="(location pos)" --><p>
@@ -189,11 +187,11 @@ Wird benutzt von <a class="el" href="main_8c-source.html#l00167">main()</a>.    
 <dl compact><dt><b>Rückgabe:</b></dt><dd>liefert bei Kollision (= auf der Schlange) 1, sonst 0 </dd></dl>
 
 <p>
-Definiert in Zeile <a class="el" href="snake__controller_8c-source.html#l00158">158</a> der Datei <a class="el" href="snake__controller_8c-source.html">snake_controller.c</a>.
+Definiert in Zeile <a class="el" href="snake__controller_8c-source.html#l00157">157</a> der Datei <a class="el" href="snake__controller_8c-source.html">snake_controller.c</a>.
 <p>
 Benutzt <a class="el" href="snake__controller_8c-source.html#l00043">size</a>, <a class="el" href="main_8h-source.html#l00035">SNAKE_BUFFER</a>, <a class="el" href="snake__controller_8c-source.html#l00042">tail</a>, <a class="el" href="main_8h-source.html#l00059">location::x</a> und <a class="el" href="main_8h-source.html#l00060">location::y</a>.
 <p>
-Wird benutzt von <a class="el" href="main_8c-source.html#l00111">randomize_food()</a>.    </td>
+Wird benutzt von <a class="el" href="main_8c-source.html#l00122">randomize_food()</a>.    </td>
   </tr>
 </table>
 <a class="anchor" name="7f3c14cfdced867695b912963359919b"></a><!-- doxytag: member="snake_controller.c::check_wall_collision" ref="7f3c14cfdced867695b912963359919b" args="(location pos)" --><p>
@@ -231,7 +229,7 @@ Wird benutzt von <a class="el" href="main_8c-source.html#l00111">randomize_food(
 <dl compact><dt><b>Rückgabe:</b></dt><dd>liefert bei Kollision (= ausserhalb) 1, sonst 0 </dd></dl>
 
 <p>
-Definiert in Zeile <a class="el" href="snake__controller_8c-source.html#l00136">136</a> der Datei <a class="el" href="snake__controller_8c-source.html">snake_controller.c</a>.
+Definiert in Zeile <a class="el" href="snake__controller_8c-source.html#l00135">135</a> der Datei <a class="el" href="snake__controller_8c-source.html">snake_controller.c</a>.
 <p>
 Benutzt <a class="el" href="graphics_8h-source.html#l00041">PLAYGROUND_X_MAX</a>, <a class="el" href="graphics_8h-source.html#l00042">PLAYGROUND_Y_MAX</a>, <a class="el" href="main_8h-source.html#l00059">location::x</a> und <a class="el" href="main_8h-source.html#l00060">location::y</a>.    </td>
   </tr>
@@ -264,11 +262,11 @@ Initialisiert den Ringbuffer der Schlange.
 <p>
 
 <p>
-Definiert in Zeile <a class="el" href="snake__controller_8c-source.html#l00201">201</a> der Datei <a class="el" href="snake__controller_8c-source.html">snake_controller.c</a>.
+Definiert in Zeile <a class="el" href="snake__controller_8c-source.html#l00200">200</a> der Datei <a class="el" href="snake__controller_8c-source.html">snake_controller.c</a>.
 <p>
-Benutzt <a class="el" href="graphics_8c-source.html#l00047">draw_snake_head()</a>, <a class="el" href="graphics_8h-source.html#l00041">PLAYGROUND_X_MAX</a>, <a class="el" href="graphics_8h-source.html#l00042">PLAYGROUND_Y_MAX</a>, <a class="el" href="snake__controller_8c-source.html#l00043">size</a>, <a class="el" href="snake__controller_8c-source.html#l00042">tail</a>, <a class="el" href="main_8h-source.html#l00059">location::x</a> und <a class="el" href="main_8h-source.html#l00060">location::y</a>.
+Benutzt <a class="el" href="graphics_8c-source.html#l00047">draw_snake_head()</a>, <a class="el" href="snake__controller_8c-source.html#l00041">head</a>, <a class="el" href="graphics_8h-source.html#l00041">PLAYGROUND_X_MAX</a>, <a class="el" href="graphics_8h-source.html#l00042">PLAYGROUND_Y_MAX</a>, <a class="el" href="snake__controller_8c-source.html#l00043">size</a>, <a class="el" href="snake__controller_8c-source.html#l00042">tail</a>, <a class="el" href="main_8h-source.html#l00059">location::x</a> und <a class="el" href="main_8h-source.html#l00060">location::y</a>.
 <p>
-Wird benutzt von <a class="el" href="main_8c-source.html#l00167">main()</a>.
+Wird benutzt von <a class="el" href="main_8c-source.html#l00191">init_level()</a>.
 <p>
 Hier ist der Graph aller Aufrufe für diese Funktion:<p><center><img src="snake__controller_8c_355629f5f037edd2e3a7face80a52886_cgraph.png" border="0" usemap="#snake__controller_8c_355629f5f037edd2e3a7face80a52886_cgraph_map" alt=""></center>
 <map name="snake__controller_8c_355629f5f037edd2e3a7face80a52886_cgraph_map">
@@ -304,14 +302,20 @@ Hier ist der Graph aller Aufrufe für diese Funktion:<p><center><img src="snake__
 <p>
 Geht mit der Schlange einen Schritt in die eingeschlagene Richtung weiter. 
 <p>
-Prüft dabei, ob entweder auf Futter gestossen wurde, oder ob eine Kollision vorliegt. <dl compact><dt><b>Rückgabe:</b></dt><dd>gibt das Ergebnis dieses Schrittes zurück: Entweder passierte gar nichts, die Schlange traf auf Futter oder es gab eine Kollision </dd></dl>
+Prüft dabei, ob entweder auf Futter gestossen wurde, oder ob eine Kollision vorliegt. <br>
+<p>
+Flowchart: <div align="center">
+<img src="../../step_forward_Flowchart.png" alt="step_forward_Flowchart.png">
+</div>
+<p>
+<dl compact><dt><b>Rückgabe:</b></dt><dd>gibt das Ergebnis dieses Schrittes zurück: Entweder passierte gar nichts, die Schlange traf auf Futter oder es gab eine Kollision </dd></dl>
 
 <p>
-Definiert in Zeile <a class="el" href="snake__controller_8c-source.html#l00062">62</a> der Datei <a class="el" href="snake__controller_8c-source.html">snake_controller.c</a>.
+Definiert in Zeile <a class="el" href="snake__controller_8c-source.html#l00058">58</a> der Datei <a class="el" href="snake__controller_8c-source.html">snake_controller.c</a>.
 <p>
-Benutzt <a class="el" href="snake__controller_8c-source.html#l00041">head</a>, <a class="el" href="main_8c-source.html#l00058">snake_direction</a>, <a class="el" href="main_8h-source.html#l00059">location::x</a> und <a class="el" href="main_8h-source.html#l00060">location::y</a>.
+Benutzt <a class="el" href="snake__controller_8c-source.html#l00041">head</a>, <a class="el" href="main_8c-source.html#l00062">snake_direction</a>, <a class="el" href="main_8h-source.html#l00059">location::x</a> und <a class="el" href="main_8h-source.html#l00060">location::y</a>.
 <p>
-Wird benutzt von <a class="el" href="main_8c-source.html#l00167">main()</a>.    </td>
+Wird benutzt von <a class="el" href="main_8c-source.html#l00212">main()</a>.    </td>
   </tr>
 </table>
 <hr><h2>Variablen-Dokumentation</h2>
@@ -321,7 +325,7 @@ Wird benutzt von <a class="el" href="main_8c-source.html#l00167">main()</a>.    
     <td class="mdRow">
       <table cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td class="md" nowrap valign="top">int <a class="el" href="snake__controller_8h.html#96e89a298e0a9f469b9ae458d6afae9f">head</a> = 0          </td>
+          <td class="md" nowrap valign="top">int <a class="el" href="snake__controller_8c.html#96e89a298e0a9f469b9ae458d6afae9f">head</a> = 0          </td>
         </tr>
       </table>
     </td>
@@ -341,7 +345,7 @@ Head des Ringbuffers 'snake[]'.
 <p>
 Definiert in Zeile <a class="el" href="snake__controller_8c-source.html#l00041">41</a> der Datei <a class="el" href="snake__controller_8c-source.html">snake_controller.c</a>.
 <p>
-Wird benutzt von <a class="el" href="snake__controller_8c-source.html#l00062">step_forward()</a>.    </td>
+Wird benutzt von <a class="el" href="snake__controller_8c-source.html#l00200">init_snake()</a> und <a class="el" href="snake__controller_8c-source.html#l00058">step_forward()</a>.    </td>
   </tr>
 </table>
 <a class="anchor" name="f7bd60b75b29d79b660a2859395c1a24"></a><!-- doxytag: member="snake_controller.c::size" ref="f7bd60b75b29d79b660a2859395c1a24" args="" --><p>
@@ -370,7 +374,7 @@ Länge der Schlange im Ringbuffer 'snake[]'.
 <p>
 Definiert in Zeile <a class="el" href="snake__controller_8c-source.html#l00043">43</a> der Datei <a class="el" href="snake__controller_8c-source.html">snake_controller.c</a>.
 <p>
-Wird benutzt von <a class="el" href="snake__controller_8c-source.html#l00192">check_initial_state()</a>, <a class="el" href="snake__controller_8c-source.html#l00158">check_snake_collision()</a> und <a class="el" href="snake__controller_8c-source.html#l00201">init_snake()</a>.    </td>
+Wird benutzt von <a class="el" href="snake__controller_8c-source.html#l00191">check_initial_state()</a>, <a class="el" href="snake__controller_8c-source.html#l00157">check_snake_collision()</a>, <a class="el" href="snake__controller_8c-source.html#l00200">init_snake()</a> und <a class="el" href="main_8c-source.html#l00212">main()</a>.    </td>
   </tr>
 </table>
 <a class="anchor" name="2698edfe7456402e4dd3bb4fbd3ecdf5"></a><!-- doxytag: member="snake_controller.c::snake" ref="2698edfe7456402e4dd3bb4fbd3ecdf5" args="[SNAKE_BUFFER]" --><p>
@@ -379,7 +383,7 @@ Wird benutzt von <a class="el" href="snake__controller_8c-source.html#l00192">ch
     <td class="mdRow">
       <table cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td class="md" nowrap valign="top"><a class="el" href="structlocation.html">location</a> <a class="el" href="snake__controller_8h.html#2698edfe7456402e4dd3bb4fbd3ecdf5">snake</a>[SNAKE_BUFFER]          </td>
+          <td class="md" nowrap valign="top"><a class="el" href="structlocation.html">location</a> <a class="el" href="snake__controller_8c.html#2698edfe7456402e4dd3bb4fbd3ecdf5">snake</a>[SNAKE_BUFFER]          </td>
         </tr>
       </table>
     </td>
@@ -400,42 +404,13 @@ Die Variablen 'head', 'tail' und 'size' gehören auch dazu.
 Definiert in Zeile <a class="el" href="snake__controller_8c-source.html#l00039">39</a> der Datei <a class="el" href="snake__controller_8c-source.html">snake_controller.c</a>.    </td>
   </tr>
 </table>
-<a class="anchor" name="1b34c77f48cdbfd8120965c5e8183b44"></a><!-- doxytag: member="snake_controller.c::startup_size" ref="1b34c77f48cdbfd8120965c5e8183b44" args="" --><p>
-<table class="mdTable" cellpadding="2" cellspacing="0">
-  <tr>
-    <td class="mdRow">
-      <table cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td class="md" nowrap valign="top">int <a class="el" href="snake__controller_8h.html#1b34c77f48cdbfd8120965c5e8183b44">startup_size</a> = INITIAL_SIZE          </td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-</table>
-<table cellspacing="5" cellpadding="0" border="0">
-  <tr>
-    <td>
-      &nbsp;
-    </td>
-    <td>
-
-<p>
-Enthält die Länge der Schlange während dem Aufstarten. 
-<p>
-Die Schlange beginnt als einzelnes Glied und wächst dann in die Richtung, in die der Spieler das erste Mal gedrückt hat. Diese wachsende Länge wird mit dieser Variable gespeichert. Schlussendlich ist dann nur noch die variable 'size' des Ringbuffers dafür zuständig. 
-<p>
-Definiert in Zeile <a class="el" href="snake__controller_8c-source.html#l00051">51</a> der Datei <a class="el" href="snake__controller_8c-source.html">snake_controller.c</a>.
-<p>
-Wird benutzt von <a class="el" href="snake__controller_8c-source.html#l00192">check_initial_state()</a>.    </td>
-  </tr>
-</table>
 <a class="anchor" name="7aea2552dfe7eb84b9443b6fc9ba6e01"></a><!-- doxytag: member="snake_controller.c::tail" ref="7aea2552dfe7eb84b9443b6fc9ba6e01" args="" --><p>
 <table class="mdTable" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
       <table cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td class="md" nowrap valign="top">int <a class="el" href="snake__controller_8h.html#7aea2552dfe7eb84b9443b6fc9ba6e01">tail</a> = 0          </td>
+          <td class="md" nowrap valign="top">int <a class="el" href="snake__controller_8c.html#7aea2552dfe7eb84b9443b6fc9ba6e01">tail</a> = 0          </td>
         </tr>
       </table>
     </td>
@@ -455,10 +430,10 @@ Tail des Ringbuffers 'snake[]'.
 <p>
 Definiert in Zeile <a class="el" href="snake__controller_8c-source.html#l00042">42</a> der Datei <a class="el" href="snake__controller_8c-source.html">snake_controller.c</a>.
 <p>
-Wird benutzt von <a class="el" href="snake__controller_8c-source.html#l00158">check_snake_collision()</a> und <a class="el" href="snake__controller_8c-source.html#l00201">init_snake()</a>.    </td>
+Wird benutzt von <a class="el" href="snake__controller_8c-source.html#l00157">check_snake_collision()</a> und <a class="el" href="snake__controller_8c-source.html#l00200">init_snake()</a>.    </td>
   </tr>
 </table>
-<hr size="1"><address style="align: right;"><small>Erzeugt am Tue Jan 8 17:54:31 2013 für Carme-Snake von&nbsp;
+<hr size="1"><address style="align: right;"><small>Erzeugt am Sat Jan 12 00:57:02 2013 für Carme-Snake von&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.4.5 </small></address>
 </body>
