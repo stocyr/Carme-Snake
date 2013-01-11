@@ -36,10 +36,10 @@
 #define BACKCOLOR GUI_BLUE			///< Hintergrundfarbe des Spielfeldes.
 #define SNAKECOLOR GUI_BLACK		///< Farbe der Schlange.
 #define FOODCOLOR GUI_RED			///< Farbe des Futters.
-#define SNAKERAD 3					///< Radius der Schlangenglieder.
-#define ELEMENT 5					///< Rasterbreite eines Schlangengliedes oder Futters in Pixel.
-#define PLAYGROUND_X_MAX	64		///< Breite des Spielfeldes in Rastern.
-#define PLAYGROUND_Y_MAX	48		///< Höhe des Spielfeldes in Rastern.
+#define SNAKERAD 5					///< Radius der Schlangenglieder.
+#define ELEMENT 10					///< Rasterbreite eines Schlangengliedes oder Futters in Pixel.
+#define PLAYGROUND_X_MAX	32		///< Breite des Spielfeldes in Rastern.
+#define PLAYGROUND_Y_MAX	24		///< Höhe des Spielfeldes in Rastern.
 #define PLAYGROUND_TO_LCD(x) (x*ELEMENT+ELEMENT/2)	///< Umrechnungsmakrofunktion für Rasterposition -> Pixelposition.
 
 /* prototypes */

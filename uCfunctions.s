@@ -27,6 +27,7 @@
 .global init_counter
 .global init_uart
 .global interrupt_handler
+.global write_byte
 .global enable_interrupts
 .global disable_interrupts
 .global get_interrupt_state
@@ -451,6 +452,31 @@ STR r1,[r0]
 # restore context, return
 LDMFD 	sp!, {r0-r1, r12, pc}^
 
+
+
+write_byte:
+STMFD 	sp!, {r0-r2, lr} 		@ save context
+# Parameter in r0 sichern
+MOV r0,r2
+
+# FFLCR &= ~(1<<7);	// DLAB löschen
+LDR r0,=FFLCR
+LDR r1,[r0]
+BIC r1,r1,#(1<<7)
+STR r1,[r0]
+
+# warten bis Ausgangsbuffer leer
+write_byte_while:
+LDR r0,=FFLSR
+LDR r1,[r0]
+TST r1,#(1<<5)
+# wenn Bit gesetzt: busy
+BEQ write_byte_while
+
+LDR r0,=FFTHR
+LDR r2,[r0]
+
+LDMFD 	sp!, {r0-r2, pc}^ 		@ restore context, return
 
 
 enable_interrupts:

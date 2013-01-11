@@ -33,11 +33,11 @@
 
 /* Makros*/
 #define SNAKE_BUFFER		100		///< Maximal mögliche Länge der Schlage im Ringbuffer.
-#define INITIAL_SIZE		4		///< Lönge der Schlange bei Begin des Spiels.
+#define INITIAL_SIZE		4		///< Länge der Schlange bei Begin des Spiels.
 
 /* Enumerations */
 /**
- * Dieser Enumerator dient zur Aufschlüsselung der Zeichen von der UART Schnittstelle.
+ * Dieser Enumerator dient zur Aufschlüsselung der Zeichen von der UART1 Schnittstelle.
  * Er definiert dadurch auch gleich das Protokoll: Je nachdem, welches Zeichen von der
  * Schnittstelle ankommt, wird es als die jeweilige Richtung interpretiert.
  */
@@ -66,12 +66,14 @@ extern volatile enum direction snake_direction;
 extern volatile int timer_irq_flag;
 
 extern location food;
-extern int level;
+extern int startup_size;
 
 /* function prototypes for asm_soubrutines */
 extern void init_counter();		///< Initialisiert den Timer auf Hardwarestufe.
-extern void init_uart();		///< Initialisiert die UART Schnittstelle auf Hardwarestufe.
+extern void init_uart();		///< Initialisiert die UART1 Schnittstelle auf Hardwarestufe.
 extern void start_timer();		///< Startet den Timer auf Hardwarestufe.
+
+extern void write_byte(char byte);	///< Schreibt ein Byte über die UART1 Schnittstelle.
 
 extern void enable_interrupts();	///< Schaltet Interrupts auf Hardwarestufe ein.
 extern void disable_interrupts();	///< Schaltet Interrupts auf Hardwarestufe aus.

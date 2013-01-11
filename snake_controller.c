@@ -41,14 +41,6 @@ location snake[SNAKE_BUFFER];
 int head = 0;	///< Head des Ringbuffers 'snake[]'.
 int tail = 0;	///< Tail des Ringbuffers 'snake[]'.
 int size = 0;	///< Länge der Schlange im Ringbuffer 'snake[]'.
-/**
- * Enthält die Länge der Schlange während dem Aufstarten.
- * Die Schlange beginnt als einzelnes Glied und wächst dann in die Richtung,
- * in die der Spieler das erste Mal gedrückt hat. Diese wachsende Länge wird
- * mit dieser Variable gespeichert. Schlussendlich ist dann nur noch die variable
- * 'size' des Ringbuffers dafür zuständig.
- */
-int startup_size = INITIAL_SIZE;
 
 
 /**
@@ -81,7 +73,7 @@ enum result step_forward(int initial)
 			break;
 		}
 
-	// wenn eine kollision passieren würde, kollisipon zurückliefern, nicht mehr fahren.
+	// wenn eine kollision passieren würde, kollision zurückliefern, nicht mehr fahren.
 	if(check_wall_collision(new_pos) || check_snake_collision(new_pos))
 	{
 		return COLLISION;
@@ -96,7 +88,20 @@ enum result step_forward(int initial)
 
 	if(initial)
 	{
+		// Länge steigt am Anfang von 1 bis auf startup_size
+		// (Schlange baut sich auf)
 		size++;
+	}
+	else
+	{
+		// Länge bleibt gleich. Tail löschen:
+		clear_snake_tail(snake[tail]);
+		// Tail nachrutschen
+		tail++;
+		tail %= SNAKE_BUFFER;
+
+		// bei nachgerutschtem Tail nochmal den Tail neu zeichnen (Ästhetik)
+		draw_snake_head(snake[tail]);
 	}
 
 	// wenn auf FOOD getroffen, FOOD zurückkliefern
@@ -113,18 +118,8 @@ enum result step_forward(int initial)
 		}
 		return FOOD;
 	}
-	else
-	{
-		if(!initial)
-		{
-			// länge bleibt gleich. Tail löschen:
-			clear_snake_tail(snake[tail]);
-			// tail nachrutschen
-			tail++;
-			tail %= SNAKE_BUFFER;
-		}
-		return NOTHING;
-	}
+
+	return NOTHING;
 }
 
 
