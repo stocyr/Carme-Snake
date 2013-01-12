@@ -96,17 +96,6 @@ enum result step_forward(int initial)
 		// (Schlange baut sich auf)
 		size++;
 	}
-	else
-	{
-		// Länge bleibt gleich. Tail löschen:
-		clear_snake_tail(snake[tail]);
-		// Tail nachrutschen
-		tail++;
-		tail %= SNAKE_BUFFER;
-
-		// bei nachgerutschtem Tail nochmal den Tail neu zeichnen (Ästhetik)
-		draw_snake_head(snake[tail]);
-	}
 
 	// wenn auf FOOD getroffen, FOOD zurückkliefern
 	if(check_food_collision(new_pos))
@@ -121,6 +110,20 @@ enum result step_forward(int initial)
 			size++;
 		}
 		return FOOD;
+	}
+	else
+	{
+		if(!initial)
+		{
+			// Länge bleibt gleich. Tail löschen:
+			clear_snake_tail(snake[tail]);
+			// Tail nachrutschen
+			tail++;
+			tail %= SNAKE_BUFFER;
+
+			// bei nachgerutschtem Tail nochmal den Tail neu zeichnen (Ästhetik)
+			draw_snake_head(snake[tail]);
+		}
 	}
 
 	return NOTHING;
