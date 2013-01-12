@@ -1,0 +1,3 @@
+base referer
+rect $game_8c-source.html 386,5 705,32
+rect $serport_8c-source.html 382,56 709,83

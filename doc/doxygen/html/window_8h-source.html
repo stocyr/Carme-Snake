@@ -1,0 +1,360 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1">
+<title>Carme-Snake: D:/Programming/C/Carme-Snake-Client/src/window.h Quellcode</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Erzeugt von Doxygen 1.4.5 -->
+<div class="tabs">
+  <ul>
+    <li><a href="index.html"><span>Hauptseite</span></a></li>
+    <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+    <li id="current"><a href="files.html"><span>Dateien</span></a></li>
+    <li><a href="dirs.html"><span>Verzeichnisse</span></a></li>
+    <li><a href="pages.html"><span>Zusätzliche&nbsp;Informationen</span></a></li>
+  </ul></div>
+<div class="tabs">
+  <ul>
+    <li><a href="files.html"><span>Auflistung&nbsp;der&nbsp;Dateien</span></a></li>
+    <li><a href="globals.html"><span>Datei-Elemente</span></a></li>
+  </ul></div>
+<div class="nav">
+<a class="el" href="dir_D_3A_2F.html">D:</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_D_3A_2FProgramming_2F.html">Programming</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_D_3A_2FProgramming_2FC_2F.html">C</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_D_3A_2FProgramming_2FC_2FCarme_2DSnake_2DClient_2F.html">Carme-Snake-Client</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_D_3A_2FProgramming_2FC_2FCarme_2DSnake_2DClient_2Fsrc_2F.html">src</a></div>
+<h1>window.h</h1><a href="window_8h.html">gehe zur Dokumentation dieser Datei</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#ifndef WINDOW_FUNCTIONS_H</span>
+<a name="l00002"></a>00002 <span class="preprocessor"></span><span class="preprocessor">#define WINDOW_FUNCTIONS_H</span>
+<a name="l00003"></a>00003 <span class="preprocessor"></span><span class="comment">/*****************************************************************************/</span>
+<a name="l00004"></a>00004 <span class="comment">/*  Header     : WindowFunctions                                Version 1.0  */</span>
+<a name="l00005"></a>00005 <span class="comment">/*****************************************************************************/</span>
+<a name="l00006"></a>00006 <span class="comment">/*                                                                           */</span>
+<a name="l00007"></a>00007 <span class="comment">/*  Function   : A collection of drawing and keyboard functions              */</span>
+<a name="l00008"></a>00008 <span class="comment">/*               An interface to the QT library                              */</span>
+<a name="l00009"></a>00009 <span class="comment">/*                                                                           */</span>
+<a name="l00010"></a>00010 <span class="comment">/*                                                                           */</span>
+<a name="l00011"></a>00011 <span class="comment">/*  Procedures : InitGraphic            Opens the graphic window             */</span>
+<a name="l00012"></a>00012 <span class="comment">/*               CloseGraphic           Closes the graphic window            */</span>
+<a name="l00013"></a>00013 <span class="comment">/*               SetAutoUpdate          Enables automatic update             */</span>
+<a name="l00014"></a>00014 <span class="comment">/*               ClearWindow            Clears the window                    */</span>
+<a name="l00015"></a>00015 <span class="comment">/*               SetDrawMode            Set hoe to draw (Transparent...)     */</span>
+<a name="l00016"></a>00016 <span class="comment">/*               DrawFilledCircle       draws a filled circle                */</span>
+<a name="l00017"></a>00017 <span class="comment">/*               DrawEmptyCircle        draws an empty circle                */</span>
+<a name="l00018"></a>00018 <span class="comment">/*               DrawFilledRectangle    Draws a filled rectangle             */</span>
+<a name="l00019"></a>00019 <span class="comment">/*               DrawEmptyRectangle     Draws an empty rectangle             */</span>
+<a name="l00020"></a>00020 <span class="comment">/*               DrawLine               Draws a line                         */</span>
+<a name="l00021"></a>00021 <span class="comment">/*               DrawPixel              Draws a single pixel/point           */</span>
+<a name="l00022"></a>00022 <span class="comment">/*               GetPixel               Gets Color of a pixel/point          */</span>
+<a name="l00023"></a>00023 <span class="comment">/*               DrawText               Draws a text                         */</span>
+<a name="l00024"></a>00024 <span class="comment">/*               SelectFont             Selects the font for text to draw    */</span>
+<a name="l00025"></a>00025 <span class="comment">/*               GetTextDimensions      Returns the space needed for text    */</span>
+<a name="l00026"></a>00026 <span class="comment">/*               GetKeyPress            Waits for a pressed key and returns it*/</span>
+<a name="l00027"></a>00027 <span class="comment">/*               IsKeyPressReady        Checks if key has been pressed       */</span>
+<a name="l00028"></a>00028 <span class="comment">/*               GetKeyEvent            Waits for a released or pressed      */</span>
+<a name="l00029"></a>00029 <span class="comment">/*               IsKeyEventReady        Checks if key has been pressed/released*/</span>
+<a name="l00030"></a>00030 <span class="comment">/*               GetMouseState          Get position and buttonstate of mouse*/</span>
+<a name="l00031"></a>00031 <span class="comment">/*               GetMouseEvent          Returns position of last mouseevent  */</span>
+<a name="l00032"></a>00032 <span class="comment">/*               WaitMs                 Waits the given time in ms           */</span>
+<a name="l00033"></a>00033 <span class="comment">/*                                                                           */</span>
+<a name="l00034"></a>00034 <span class="comment">/*  Advanced functions:                                                      */</span>
+<a name="l00035"></a>00035 <span class="comment">/*                                                                           */</span>
+<a name="l00036"></a>00036 <span class="comment">/*               CreateSubImage         Creates an copy of an image          */</span>
+<a name="l00037"></a>00037 <span class="comment">/*               CreateImage            Creates an Imagebuffer               */</span>
+<a name="l00038"></a>00038 <span class="comment">/*               LoadImage              Creates an Imagebuffer and Loads an Image*/</span>
+<a name="l00039"></a>00039 <span class="comment">/*               SaveImage              Saves an Imagebuffer to a file       */</span>
+<a name="l00040"></a>00040 <span class="comment">/*               DestroyImage           Releases an Imagebuffer              */</span>
+<a name="l00041"></a>00041 <span class="comment">/*               SetEditedImage         Selects buffer for future drawings   */</span>
+<a name="l00042"></a>00042 <span class="comment">/*               DrawImage              Draws the given imagebuffer          */</span>
+<a name="l00043"></a>00043 <span class="comment">/*               CopyToImage            Copies part of an image to another   */</span>
+<a name="l00044"></a>00044 <span class="comment">/*               GetImageSize           Delivers size of image               */</span>
+<a name="l00045"></a>00045 <span class="comment">/*               Rotate                 Rotates future drawings              */</span>
+<a name="l00046"></a>00046 <span class="comment">/*               Translate              Translates future drawings           */</span>
+<a name="l00047"></a>00047 <span class="comment">/*               Scale                  Scales future Drawings               */</span>
+<a name="l00048"></a>00048 <span class="comment">/*               ResetTransformations   Future drawings will be direct       */</span>
+<a name="l00049"></a>00049 <span class="comment">/*               GetPixelDataPointer    Gets pointer to Bitmap of an image   */</span>
+<a name="l00050"></a>00050 <span class="comment">/*               AddAlphaMask           Creates transparency mask for image  */</span>
+<a name="l00051"></a>00051 <span class="comment">/*                                                                           */</span>
+<a name="l00052"></a>00052 <span class="comment">/*               PlaySoundOnce          Plays a sound one time               */</span>
+<a name="l00053"></a>00053 <span class="comment">/*               PlaySoundContinuous    Plays a sound continuous             */</span>
+<a name="l00054"></a>00054 <span class="comment">/*               StopContinuousSound    Stops continuous soundplaying        */</span>
+<a name="l00055"></a>00055 <span class="comment">/*               StartContinuousSound   Restarts continuous soundplaying     */</span>
+<a name="l00056"></a>00056 <span class="comment">/*                                                                           */</span>
+<a name="l00057"></a>00057 <span class="comment">/*               OpenFileDialog         Opens universal file dialog          */</span>
+<a name="l00058"></a>00058 <span class="comment">/*               SimpleFileOpenDialog   Simple file load dialog              */</span>
+<a name="l00059"></a>00059 <span class="comment">/*               SimpleFileSaveDialog   Simple file save dialog              */</span>
+<a name="l00060"></a>00060 <span class="comment">/*                                                                           */</span>
+<a name="l00061"></a>00061 <span class="comment">/*  Very Advanced functions:                                                 */</span>
+<a name="l00062"></a>00062 <span class="comment">/*                                                                           */</span>
+<a name="l00063"></a>00063 <span class="comment">/*               SetQtOptions           Directly sets some Qt Flags          */</span>
+<a name="l00064"></a>00064 <span class="comment">/*                                                                           */</span>
+<a name="l00065"></a>00065 <span class="comment">/*               StartTimer             Starts a periodically functioncall   */</span>
+<a name="l00066"></a>00066 <span class="comment">/*               StopTimer              Stops the periodically functioncall  */</span>
+<a name="l00067"></a>00067 <span class="comment">/*                                                                           */</span>
+<a name="l00068"></a>00068 <span class="comment">/*               CreateThread           Multithreading support               */</span>
+<a name="l00069"></a>00069 <span class="comment">/*               Lock(void)             Multithreading synchronisation       */</span>
+<a name="l00070"></a>00070 <span class="comment">/*               Unlock(void)           Multithreading synchronisation       */</span>
+<a name="l00071"></a>00071 <span class="comment">/*                                                                           */</span>
+<a name="l00072"></a>00072 <span class="comment">/*  Author     : I. Oesch                                                    */</span>
+<a name="l00073"></a>00073 <span class="comment">/*                                                                           */</span>
+<a name="l00074"></a>00074 <span class="comment">/*  History    : 02.04.2002  IO Created                                      */</span>
+<a name="l00075"></a>00075 <span class="comment">/*               28.03.2004  IO Added cpp compatibility in header            */</span>
+<a name="l00076"></a>00076 <span class="comment">/*               29.03.2004  IO Changed char to unsigned char in ColorType   */</span>
+<a name="l00077"></a>00077 <span class="comment">/*               06.10.2010  IO Converted to QT as graphics library          */</span>
+<a name="l00078"></a>00078 <span class="comment">/*               04.03.2012  IO Added some more functions                    */</span>
+<a name="l00079"></a>00079 <span class="comment">/*                              (Sound, Qt Flags, Timer, Multithreading      */</span>
+<a name="l00080"></a>00080 <span class="comment">/*  File       : window.h                                                    */</span>
+<a name="l00081"></a>00081 <span class="comment">/*                                                                           */</span>
+<a name="l00082"></a>00082 <span class="comment">/*****************************************************************************/</span>
+<a name="l00083"></a>00083 <span class="comment">/* MagicSoft                                                                 */</span>
+<a name="l00084"></a>00084 <span class="comment">/*****************************************************************************/</span>
+<a name="l00085"></a>00085 
+<a name="l00086"></a>00086 
+<a name="l00087"></a>00087 <span class="comment">/* imports */</span>
+<a name="l00088"></a>00088 
+<a name="l00089"></a>00089 <span class="comment">/* module constant declaration  */</span>
+<a name="l00090"></a><a class="code" href="window_8h.html#465e6e6cd7c1263b7bbd43fb6331caac">00090</a> <span class="keyword">enum</span> <a class="code" href="window_8h.html#465e6e6cd7c1263b7bbd43fb6331caac">KeyCodes</a> {
+<a name="l00091"></a>00091    <a class="code" href="window_8h.html#465e6e6cd7c1263b7bbd43fb6331caac309a8db103074651fd5374b6e6d78473">W_KEY_CURSOR_UP</a>    = 0x0100,
+<a name="l00092"></a>00092    <a class="code" href="window_8h.html#465e6e6cd7c1263b7bbd43fb6331caac1c6a9d8af770a4f0c62178bae06a2dfb">W_KEY_CURSOR_DOWN</a>  = 0x0101,
+<a name="l00093"></a>00093    <a class="code" href="window_8h.html#465e6e6cd7c1263b7bbd43fb6331caac7f951ab140481c6496bdf338a077cec9">W_KEY_CURSOR_LEFT</a>  = 0x0102,
+<a name="l00094"></a>00094    <a class="code" href="window_8h.html#465e6e6cd7c1263b7bbd43fb6331caac1eddb153fdf37b72c1ef89a82170a0a0">W_KEY_CURSOR_RIGHT</a> = 0x0103,
+<a name="l00095"></a>00095 
+<a name="l00096"></a>00096    <a class="code" href="window_8h.html#465e6e6cd7c1263b7bbd43fb6331caacdf17c02374d424e7d55a3c66fed49074">W_KEY_F1</a>          = 0x0110,
+<a name="l00097"></a>00097    <a class="code" href="window_8h.html#465e6e6cd7c1263b7bbd43fb6331caac14ac76734da2dd9feafd84cb83896069">W_KEY_F2</a>          = 0x0111,
+<a name="l00098"></a>00098    <a class="code" href="window_8h.html#465e6e6cd7c1263b7bbd43fb6331caacf7b52a53f2ef1eb02e452a249904eaa0">W_KEY_F3</a>          = 0x0112,
+<a name="l00099"></a>00099    <a class="code" href="window_8h.html#465e6e6cd7c1263b7bbd43fb6331caac9bc7401a94ee9fea8aefc2c85a363b98">W_KEY_F4</a>          = 0x0113,
+<a name="l00100"></a>00100    <a class="code" href="window_8h.html#465e6e6cd7c1263b7bbd43fb6331caac629ee858d042790c988e567014940b11">W_KEY_F5</a>          = 0x0114,
+<a name="l00101"></a>00101    <a class="code" href="window_8h.html#465e6e6cd7c1263b7bbd43fb6331caac4f549475e215aeee027ac2a5fbae8dc5">W_KEY_F6</a>          = 0x0115,
+<a name="l00102"></a>00102    <a class="code" href="window_8h.html#465e6e6cd7c1263b7bbd43fb6331caac80a0879550595497d3f158a62d36e9bc">W_KEY_F7</a>          = 0x0116,
+<a name="l00103"></a>00103    <a class="code" href="window_8h.html#465e6e6cd7c1263b7bbd43fb6331caacb5a319bbf6dca123849a3c48ff6aa025">W_KEY_F8</a>          = 0x0117,
+<a name="l00104"></a>00104    <a class="code" href="window_8h.html#465e6e6cd7c1263b7bbd43fb6331caac99d00d34992797659a251f3e55bb413e">W_KEY_F9</a>          = 0x0118,
+<a name="l00105"></a>00105    <a class="code" href="window_8h.html#465e6e6cd7c1263b7bbd43fb6331caac8e694d9f874e37bac069aa30097ada89">W_KEY_F10</a>         = 0x0119,
+<a name="l00106"></a>00106    <a class="code" href="window_8h.html#465e6e6cd7c1263b7bbd43fb6331caac13146065a46a7f27b478491f3d36a71c">W_KEY_F11</a>         = 0x011A,
+<a name="l00107"></a>00107    <a class="code" href="window_8h.html#465e6e6cd7c1263b7bbd43fb6331caacf8bd66533b7a173c825411d97f665042">W_KEY_F12</a>         = 0x011B,
+<a name="l00108"></a>00108 
+<a name="l00109"></a>00109    <a class="code" href="window_8h.html#465e6e6cd7c1263b7bbd43fb6331caac31832cd86bcb07255eec7bb3b7cbd7b7">W_KEY_MODIFIER</a>    = 0x0200,
+<a name="l00110"></a>00110    <a class="code" href="window_8h.html#465e6e6cd7c1263b7bbd43fb6331caac602b27e07a8a98f17d3d918e3889f5d6">W_KEY_SHIFT</a>       = 0x0201,
+<a name="l00111"></a>00111    <a class="code" href="window_8h.html#465e6e6cd7c1263b7bbd43fb6331caac02b80ad40dc314d2a7757f275dfccb0a">W_KEY_CTRL</a>        = 0x0202,
+<a name="l00112"></a>00112    <a class="code" href="window_8h.html#465e6e6cd7c1263b7bbd43fb6331caac0564efaa78dd0406193103b0d6a89201">W_KEY_ALT</a>         = 0x0203,
+<a name="l00113"></a>00113    <a class="code" href="window_8h.html#465e6e6cd7c1263b7bbd43fb6331caac90900a3fdd7012fa164bb3179443d5e1">W_KEY_ALTCTRL</a>     = 0x0204,
+<a name="l00114"></a>00114    <a class="code" href="window_8h.html#465e6e6cd7c1263b7bbd43fb6331caac8d0bb2f674053c3dd5e00d9c45c8f3fc">W_KEY_META</a>        = 0x0205,
+<a name="l00115"></a>00115 
+<a name="l00116"></a>00116 
+<a name="l00117"></a>00117    <a class="code" href="window_8h.html#465e6e6cd7c1263b7bbd43fb6331caac626cb5da75590f67de8b8c8ab4072a4c">W_KEY_CLOSE_WINDOW</a> = 0x01FF,
+<a name="l00118"></a>00118    <a class="code" href="window_8h.html#465e6e6cd7c1263b7bbd43fb6331caacc32142ab0469f5adfb38c88d788854c3">W_KEY_OTHER</a>       = 0x0,
+<a name="l00119"></a>00119 
+<a name="l00120"></a>00120    <a class="code" href="window_8h.html#465e6e6cd7c1263b7bbd43fb6331caacfbef6a0aa8c931df6a39efcd20fbe776">W_KEY_RETURN</a>      = 13,
+<a name="l00121"></a>00121    <a class="code" href="window_8h.html#465e6e6cd7c1263b7bbd43fb6331caacb35076483d04aa7432013dea0debccb3">W_KEY_ESCAPE</a>      = 27,
+<a name="l00122"></a>00122    <a class="code" href="window_8h.html#465e6e6cd7c1263b7bbd43fb6331caac39819dbf272ee9e5f282441e9c0cf122">W_KEY_TAB</a>         =  9,
+<a name="l00123"></a>00123    <a class="code" href="window_8h.html#465e6e6cd7c1263b7bbd43fb6331caac4b2f8d631c4ed99cadda9c74bdeabc76">W_KEY_RELEASED</a>    =  0x2000,
+<a name="l00124"></a>00124    <a class="code" href="window_8h.html#465e6e6cd7c1263b7bbd43fb6331caacc4fdd6da9900d83fd0a8612f599d6de7">W_KEY_AUTOREPEAT</a>  =  0x1000
+<a name="l00125"></a>00125 };
+<a name="l00126"></a>00126 
+<a name="l00127"></a><a class="code" href="window_8h.html#4de643f0eae853f178d44e32d5958ea6">00127</a> <span class="keyword">enum</span> <a class="code" href="window_8h.html#4de643f0eae853f178d44e32d5958ea6">MouseButtonCodes</a> {
+<a name="l00128"></a>00128    <a class="code" href="window_8h.html#4de643f0eae853f178d44e32d5958ea642df63e3d0477c3e4153e0a9b595ae1c">W_BUTTON_NO_EVENT</a>     =  0x0000, <span class="comment">/* Nothing happend  */</span>
+<a name="l00129"></a>00129    <a class="code" href="window_8h.html#4de643f0eae853f178d44e32d5958ea624bce9a6720fea4b29fdc9584a63900c">W_BUTTON_NONE</a>         =  0x0000, <span class="comment">/* also nothing     */</span>
+<a name="l00130"></a>00130    <a class="code" href="window_8h.html#4de643f0eae853f178d44e32d5958ea6d9950d54c10bab3415d161037dc36d31">W_BUTTON_LEFT</a>         =  0x0001, <span class="comment">/* Left Button is or was pressed */</span>
+<a name="l00131"></a>00131    <a class="code" href="window_8h.html#4de643f0eae853f178d44e32d5958ea6b6c2bd7dbc379566f9bdfb1e02de4ccc">W_BUTTON_MIDDLE</a>       =  0x0002, <span class="comment">/* Middle Button is or was pressed */</span>
+<a name="l00132"></a>00132    <a class="code" href="window_8h.html#4de643f0eae853f178d44e32d5958ea6a29cf153771584bf9d58951f8a987409">W_BUTTON_RIGHT</a>        =  0x0004, <span class="comment">/* Right Button is or was pressed */</span>
+<a name="l00133"></a>00133    <a class="code" href="window_8h.html#4de643f0eae853f178d44e32d5958ea62922b5a484c24725c737a522d0027a8f">W_MOUSE_WHEEL_CHANGE</a>  =  0x0008, <span class="comment">/* Mousewheel has changed */</span>
+<a name="l00134"></a>00134    <a class="code" href="window_8h.html#4de643f0eae853f178d44e32d5958ea6783627ed3e8ec4244daef1e916ee5984">W_BUTTON_PRESSED</a>      =  0x1000, <span class="comment">/* Button was pressed */</span>
+<a name="l00135"></a>00135    <a class="code" href="window_8h.html#4de643f0eae853f178d44e32d5958ea68db6ac7b993a7d5b7242c631e640a8d8">W_BUTTON_RELEASED</a>     =  0x2000, <span class="comment">/* Button was released */</span>
+<a name="l00136"></a>00136    <a class="code" href="window_8h.html#4de643f0eae853f178d44e32d5958ea65b96713e56e7d18f43c20c00f993b2f7">W_BUTTON_DOUBLECLICK</a>  =  0x4000, <span class="comment">/* Button was double clicked */</span>
+<a name="l00137"></a>00137 
+<a name="l00138"></a>00138 };
+<a name="l00139"></a>00139 
+<a name="l00140"></a><a class="code" href="window_8h.html#4ec7c3c176fc2a1f63a70d96c90e7246">00140</a> <span class="keyword">enum</span> <a class="code" href="window_8h.html#4ec7c3c176fc2a1f63a70d96c90e7246">MouseWheelKindEnum</a> {
+<a name="l00141"></a>00141    <a class="code" href="window_8h.html#4ec7c3c176fc2a1f63a70d96c90e724652d3e35847fd5f3a5be4c52d8546176b">MW_NONE</a>       = 0x0000,
+<a name="l00142"></a>00142    <a class="code" href="window_8h.html#4ec7c3c176fc2a1f63a70d96c90e72467c4111bfadc049c59ee85b1ff4fad8f4">MW_VERTICAL</a>   = 0x0001, <span class="comment">/* Direction of wheele was up-down    */</span>
+<a name="l00143"></a>00143    <a class="code" href="window_8h.html#4ec7c3c176fc2a1f63a70d96c90e7246c1163a3fa9fb9d1ee502a3eca76d15ae">MW_HORIZONTAL</a> = 0x0002  <span class="comment">/* Direction of wheele was left-right */</span>
+<a name="l00144"></a>00144 };
+<a name="l00145"></a>00145 
+<a name="l00146"></a><a class="code" href="window_8h.html#0ca3a6077a861236d2f9aa6646d955b4">00146</a> <span class="keyword">enum</span> <a class="code" href="window_8h.html#0ca3a6077a861236d2f9aa6646d955b4">FontStyle</a> {
+<a name="l00147"></a>00147    <a class="code" href="window_8h.html#0ca3a6077a861236d2f9aa6646d955b4c8235eecfbd3dbc5649cf02515a71989">FONT_NORMAL</a> = 0,
+<a name="l00148"></a>00148    <a class="code" href="window_8h.html#0ca3a6077a861236d2f9aa6646d955b48eb964930ad7f6da082d77afed1c25be">FONT_BOLD</a>   = 1,
+<a name="l00149"></a>00149    <a class="code" href="window_8h.html#0ca3a6077a861236d2f9aa6646d955b413319651351d2190adb2e5320713b196">FONT_ITALIC</a> = 2,
+<a name="l00150"></a>00150    <a class="code" href="window_8h.html#0ca3a6077a861236d2f9aa6646d955b47fd29040add89347f45d0d1baa4f9748">FONT_BLACK</a>  = 4
+<a name="l00151"></a>00151 };
+<a name="l00152"></a>00152 
+<a name="l00153"></a><a class="code" href="window_8h.html#e6193a9c3c831099d1fe2ecc79c1c5f6">00153</a> <span class="keyword">enum</span> <a class="code" href="window_8h.html#e6193a9c3c831099d1fe2ecc79c1c5f6">MaskMode</a> {
+<a name="l00154"></a>00154    <a class="code" href="window_8h.html#e6193a9c3c831099d1fe2ecc79c1c5f6da734d12bdf9703bfa4b6d2903bda414">MSK_COLOR_IN</a>  = 0,   <span class="comment">/* Pixel matching Color will get transparent */</span>
+<a name="l00155"></a>00155    <a class="code" href="window_8h.html#e6193a9c3c831099d1fe2ecc79c1c5f68d5bd1787fc080cfef5544154c882b14">MSK_COLOR_OUT</a> = 1,   <span class="comment">/* Pixel not matching Color will get transparent */</span>
+<a name="l00156"></a>00156    <a class="code" href="window_8h.html#e6193a9c3c831099d1fe2ecc79c1c5f68b01fc04b9f4fff4d002c15d7e9085d0">MSK_AUTO</a> = 2         <span class="comment">/* Heuristic mask from border */</span>
+<a name="l00157"></a>00157 };
+<a name="l00158"></a>00158 
+<a name="l00159"></a><a class="code" href="window_8h.html#8b0cb3c15c3bcab61306b0628707203f">00159</a> <span class="keyword">enum</span> <a class="code" href="window_8h.html#8b0cb3c15c3bcab61306b0628707203f">DrawMode</a> {
+<a name="l00160"></a>00160    <a class="code" href="window_8h.html#8b0cb3c15c3bcab61306b0628707203fd373e32baaeda210e933cf12177377b2">DM_COPY</a>      = 100,   <span class="comment">/* Overwrite Destination (Ignore Transparency of source) */</span>
+<a name="l00161"></a>00161    <a class="code" href="window_8h.html#8b0cb3c15c3bcab61306b0628707203fd6e866d226f3db3cbc6c7c9b58346521">DM_COPYALPHA</a> = 101,   <span class="comment">/* Only copies the alphachannel to dest (Masks Dest with alpha from source)*/</span>
+<a name="l00162"></a>00162    <a class="code" href="window_8h.html#8b0cb3c15c3bcab61306b0628707203fddd7d7b92229d1e3bfb45ffa9bae402e">DM_OVER</a>      = 102,   <span class="comment">/* Using Alphachannel (Transparency) of source */</span>
+<a name="l00163"></a>00163    <a class="code" href="window_8h.html#8b0cb3c15c3bcab61306b0628707203f8d373e9488ce1cfc0271544e7cca8313">DM_MIX</a>       = 103,   <span class="comment">/* The source pixel is blended on top of the destination, with the alpha of the source pixel reduced by the alpha of the destination pixel.*/</span>
+<a name="l00164"></a>00164    <a class="code" href="window_8h.html#8b0cb3c15c3bcab61306b0628707203fa7bc3e8ed65a06d3affcc1ee6be88709">DM_XOR</a>       = 104,   <span class="comment">/* Subtracts the darker of the colors from the lighter. Painting with white inverts the destination color, whereas painting with black leaves the destination color unchanged. */</span>
+<a name="l00165"></a>00165    <a class="code" href="window_8h.html#8b0cb3c15c3bcab61306b0628707203f64b7fe7ab2895a6e272dbe1bd4464857">DM_MULTIPLY</a>  = 105    <span class="comment">/* Multiplies src with dst pixels */</span>
+<a name="l00166"></a>00166 };
+<a name="l00167"></a>00167 
+<a name="l00168"></a><a class="code" href="window_8h.html#fe03771073dd340bd447800090c21085">00168</a> <span class="keyword">enum</span> <a class="code" href="window_8h.html#fe03771073dd340bd447800090c21085">QTOptions</a> {                 <span class="comment">/* Qt Options, see Qt documentation for QPainter */</span>
+<a name="l00169"></a>00169     <a class="code" href="window_8h.html#fe03771073dd340bd447800090c210858e9f53216ac56f2219d48db344092638">Qt_BackgroundBrushColor</a> = 1, <span class="comment">/* Sets Color of background pixels while drawing */</span>
+<a name="l00170"></a>00170     <a class="code" href="window_8h.html#fe03771073dd340bd447800090c21085c5238ffa129b14d4b0bae91494a7cc85">Qt_BackgroundBrushStyle</a> = 2, <span class="comment">/* Sets Style of background pixels while drawing */</span>
+<a name="l00171"></a>00171     <a class="code" href="window_8h.html#fe03771073dd340bd447800090c21085f5eaf66930b1ebc589a42f13bbc2ffa5">Qt_BackgroundMode</a>       = 3, <span class="comment">/* Sets Style of background pixels while drawing */</span>
+<a name="l00172"></a>00172     <a class="code" href="window_8h.html#fe03771073dd340bd447800090c21085f34b6b7429bd61c6dccb02a01ad580e1">Qt_BrushStyle</a>           = 4, <span class="comment">/* Sets Style of area filling */</span>
+<a name="l00173"></a>00173     <a class="code" href="window_8h.html#fe03771073dd340bd447800090c21085a664876f920715ce37b93aa80a66e800">Qt_CompositionMode</a>      = 5, <span class="comment">/* Sets Composition mode */</span>
+<a name="l00174"></a>00174     <a class="code" href="window_8h.html#fe03771073dd340bd447800090c21085ccc000989681244f51201643b0ce576c">Qt_PenBrushStyle</a>        = 6, <span class="comment">/* Sets Style of line drawing */</span>
+<a name="l00175"></a>00175     <a class="code" href="window_8h.html#fe03771073dd340bd447800090c21085b81b502ff1709ec8b0b84a9b7f901005">Qt_PenCapStyle</a>          = 7, <span class="comment">/* Sets Style of line end drawing */</span>
+<a name="l00176"></a>00176     <a class="code" href="window_8h.html#fe03771073dd340bd447800090c21085103237de12c76c43be3d88473e058ca7">Qt_PenCosmetic</a>          = 8, <span class="comment">/* Sets Pen to exactly 1-Pixel size */</span>
+<a name="l00177"></a>00177     <a class="code" href="window_8h.html#fe03771073dd340bd447800090c2108588126867a51e47380a28f4eda5c893be">Qt_PenJoinStyle</a>         = 9, <span class="comment">/* Sets style of line joins */</span>
+<a name="l00178"></a>00178     <a class="code" href="window_8h.html#fe03771073dd340bd447800090c21085db06d003f2dfdc977a7c2e25b9675dc6">Qt_PenStyle</a>             = 10 <span class="comment">/* Sets Style of line drawing */</span>
+<a name="l00179"></a>00179 };
+<a name="l00180"></a>00180 
+<a name="l00181"></a><a class="code" href="window_8h.html#7c2a31d3a6f44c25a6b878a3e2ad8925">00181</a> <span class="keyword">enum</span> <a class="code" href="window_8h.html#7c2a31d3a6f44c25a6b878a3e2ad8925">ImageIDEnums</a> {<a class="code" href="window_8h.html#7c2a31d3a6f44c25a6b878a3e2ad8925f325c4502bcd9b7ced55eaf3e58c8d5c">ID_WINDOW</a> = -1};
+<a name="l00182"></a>00182 
+<a name="l00183"></a><a class="code" href="window_8h.html#e51843d72d0882910632cbe5e60ab923">00183</a> <span class="preprocessor">#define FULLSCREEN_SIZE -1</span>
+<a name="l00184"></a>00184 <span class="preprocessor"></span>
+<a name="l00185"></a><a class="code" href="window_8h.html#1f6b42493eb59aac399786ca8f3bfb28">00185</a> <span class="keyword">enum</span> <a class="code" href="window_8h.html#1f6b42493eb59aac399786ca8f3bfb28">FileDialogMode</a> {
+<a name="l00186"></a>00186    <a class="code" href="window_8h.html#1f6b42493eb59aac399786ca8f3bfb28d5f4059955a5a87695e1d4bda68183bf">FDM_FILE_LOAD</a> = 1,
+<a name="l00187"></a>00187    <a class="code" href="window_8h.html#1f6b42493eb59aac399786ca8f3bfb28e1eaa91d19ea1cf8e305978b1c34699b">FDM_FILE_SAVE</a> = 2,
+<a name="l00188"></a>00188    <a class="code" href="window_8h.html#1f6b42493eb59aac399786ca8f3bfb2835ac1f67f91c115dd5c56d88f9a191a7">FDM_DIRECTORY</a> = 3
+<a name="l00189"></a>00189 };
+<a name="l00190"></a>00190 
+<a name="l00191"></a><a class="code" href="window_8h.html#60d12800abe55a5b45b37d1bf9b02abe">00191</a> <span class="keyword">enum</span> <a class="code" href="window_8h.html#60d12800abe55a5b45b37d1bf9b02abe">FileDialogOptions</a> {
+<a name="l00192"></a>00192   <a class="code" href="window_8h.html#60d12800abe55a5b45b37d1bf9b02abe250c998b7b665f11dd6207c0bbfb1cba">FDO_USE_DEFAULT</a>           = 0x08000000,  <span class="comment">/* Just use default behavior for the used dialog */</span>
+<a name="l00193"></a>00193   <a class="code" href="window_8h.html#60d12800abe55a5b45b37d1bf9b02abee64471cc503229e2745a687704de5ad7">FDO_ShowDirsOnly</a>          = 0x00000001,  <span class="comment">/* Only show directories in the file dialog. By default both files and directories are shown. (Valid only in the Directory  file mode.)*/</span>
+<a name="l00194"></a>00194   <a class="code" href="window_8h.html#60d12800abe55a5b45b37d1bf9b02abe511374427914c20ba76ee31becedac44">FDO_DontResolveSymlinks</a>   = 0x00000002,  <span class="comment">/* Don't resolve symlinks in the file dialog. By default symlinks are resolved. */</span>
+<a name="l00195"></a>00195   <a class="code" href="window_8h.html#60d12800abe55a5b45b37d1bf9b02abefe840feb4454250fd434af13c02c8d6e">FDO_DontConfirmOverwrite</a>  = 0x00000004,  <span class="comment">/* Don't ask for confirmation if an existing file is selected. By default confirmation is requested.*/</span>
+<a name="l00196"></a>00196   <a class="code" href="window_8h.html#60d12800abe55a5b45b37d1bf9b02abe3b2dd1e3433761a7df07768c556903d2">FDO_DontUseNativeDialog</a>   = 0x00000010,  <span class="comment">/* Don't use the native file dialog. By default, the native file dialog is used unless you use a subclass of QFileDialog that contains the Q_OBJECT macro.*/</span>
+<a name="l00197"></a>00197   <a class="code" href="window_8h.html#60d12800abe55a5b45b37d1bf9b02abefb0d60ef7538383d39962543bd627a49">FDO_ReadOnly</a>              = 0x00000020,  <span class="comment">/* Indicates that the model is readonly.*/</span>
+<a name="l00198"></a>00198   <a class="code" href="window_8h.html#60d12800abe55a5b45b37d1bf9b02abe71dd61d24290c4409a9363c01f2dca12">FDO_HideNameFilterDetails</a> = 0x00000040,  <span class="comment">/* Indicates if the file name filter details are hidden or not.*/</span>
+<a name="l00199"></a>00199 };
+<a name="l00200"></a>00200 
+<a name="l00201"></a>00201 <span class="comment">/* module type declaration      */</span>
+<a name="l00202"></a>00202 
+<a name="l00203"></a><a class="code" href="struct_mouse_info.html">00203</a> <span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="struct_mouse_info.html">MouseInfo</a> {
+<a name="l00204"></a><a class="code" href="struct_mouse_info.html#fcc1feb639584b3018090f8dc1ec556d">00204</a>   <span class="keywordtype">int</span> <a class="code" href="struct_mouse_info.html#fcc1feb639584b3018090f8dc1ec556d">MousePosX</a>;       <span class="comment">/* X position of mouse (Current or when event happened */</span>
+<a name="l00205"></a><a class="code" href="struct_mouse_info.html#7ebe2dabf1ce21305935d3344a7bc517">00205</a>   <span class="keywordtype">int</span> <a class="code" href="struct_mouse_info.html#7ebe2dabf1ce21305935d3344a7bc517">MousePosY</a>;       <span class="comment">/* Y position of mouse (Current or when event happened */</span>
+<a name="l00206"></a><a class="code" href="struct_mouse_info.html#a47798b1565883b2c694ecff2f0864c7">00206</a>   <span class="keywordtype">int</span> <a class="code" href="struct_mouse_info.html#a47798b1565883b2c694ecff2f0864c7">ButtonState</a>;     <span class="comment">/* State or Event of mousebutton */</span>
+<a name="l00207"></a><a class="code" href="struct_mouse_info.html#2ee343f1925f4585f2e2cf2c3e28e6fc">00207</a>   <span class="keywordtype">int</span> <a class="code" href="struct_mouse_info.html#2ee343f1925f4585f2e2cf2c3e28e6fc">MouseWheelKind</a>;  <span class="comment">/* What kind of mouse wheel generated event (Horizontal or vertical) */</span>
+<a name="l00208"></a><a class="code" href="struct_mouse_info.html#f8d6643cba196511edd30e91fc92348d">00208</a>   <span class="keywordtype">int</span> <a class="code" href="struct_mouse_info.html#f8d6643cba196511edd30e91fc92348d">MouseWheelDelta</a>; <span class="comment">/* Number of increment the wheel has moved in 1/8 Degree */</span>
+<a name="l00209"></a>00209 } <a class="code" href="struct_mouse_info.html">MouseInfoType</a>;
+<a name="l00210"></a>00210 
+<a name="l00211"></a>00211 
+<a name="l00212"></a><a class="code" href="struct_color_type.html">00212</a> <span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="struct_color_type.html">ColorType</a> {
+<a name="l00213"></a><a class="code" href="struct_color_type.html#9594eec95be70e7b1710f730fdda33d9">00213</a>    <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> <a class="code" href="struct_color_type.html#9594eec95be70e7b1710f730fdda33d9">Blue</a>;
+<a name="l00214"></a><a class="code" href="struct_color_type.html#d382816a3cbeed082c9e216e7392eed1">00214</a>    <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> <a class="code" href="struct_color_type.html#d382816a3cbeed082c9e216e7392eed1">Green</a>;
+<a name="l00215"></a><a class="code" href="struct_color_type.html#ee38e4d5dd68c4e440825018d549cb47">00215</a>    <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> <a class="code" href="struct_color_type.html#ee38e4d5dd68c4e440825018d549cb47">Red</a>;
+<a name="l00216"></a><a class="code" href="struct_color_type.html#6132295fcf5570fb8b0a944ef322a598">00216</a>    <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> <a class="code" href="struct_color_type.html#6132295fcf5570fb8b0a944ef322a598">Alpha</a>;
+<a name="l00217"></a>00217 } <a class="code" href="struct_color_type.html">ColorType</a>;
+<a name="l00218"></a>00218 
+<a name="l00219"></a><a class="code" href="struct_text_dimension.html">00219</a> <span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="struct_text_dimension.html">TextDimension</a> {
+<a name="l00220"></a><a class="code" href="struct_text_dimension.html#ba2a9c6c8c77e03f83ef8bf543612275">00220</a>   <span class="keywordtype">int</span> <a class="code" href="struct_text_dimension.html#ba2a9c6c8c77e03f83ef8bf543612275">Length</a>;     <span class="comment">/* Length of Text in Pixel */</span>
+<a name="l00221"></a><a class="code" href="struct_text_dimension.html#48e53280f7934455bdc1444f225d94b9">00221</a>   <span class="keywordtype">int</span> <a class="code" href="struct_text_dimension.html#48e53280f7934455bdc1444f225d94b9">Overhang</a>;   <span class="comment">/* Extension to the left of starting point (possible with some italic fonts) */</span>
+<a name="l00222"></a><a class="code" href="struct_text_dimension.html#258f49887ef8d14ac268c92b02503aaa">00222</a>   <span class="keywordtype">int</span> <a class="code" href="struct_text_dimension.html#258f49887ef8d14ac268c92b02503aaa">Up</a>;         <span class="comment">/* Height from Baseline in Pixel */</span>
+<a name="l00223"></a><a class="code" href="struct_text_dimension.html#08a38277b0309070706f6652eeae9a53">00223</a>   <span class="keywordtype">int</span> <a class="code" href="struct_text_dimension.html#08a38277b0309070706f6652eeae9a53">Down</a>;       <span class="comment">/* Underlength from Baseline in Pixel (for Glyphes with underlength like gpqy) */</span>
+<a name="l00224"></a>00224 } <a class="code" href="struct_text_dimension.html">TextDimensionType</a>;
+<a name="l00225"></a>00225 
+<a name="l00226"></a>00226 
+<a name="l00227"></a>00227 <span class="comment">/* module data declaration      */</span>
+<a name="l00228"></a>00228 
+<a name="l00229"></a>00229 
+<a name="l00230"></a>00230 <span class="comment">/* Some predefined colors for convenience */</span>
+<a name="l00231"></a>00231 
+<a name="l00232"></a><a class="code" href="window_8h.html#5e27e8849ba2bf4ac71176a217d203c7">00232</a> <span class="keyword">static</span> <span class="keyword">const</span> <a class="code" href="struct_color_type.html">ColorType</a> <a class="code" href="window_8h.html#5e27e8849ba2bf4ac71176a217d203c7">COL_RED</a>         = {0x00, 0x00, 0xFF, 0xFF};
+<a name="l00233"></a><a class="code" href="window_8h.html#9c6ad5ad03eac289bdbb533d224e4833">00233</a> <span class="keyword">static</span> <span class="keyword">const</span> <a class="code" href="struct_color_type.html">ColorType</a> <a class="code" href="window_8h.html#9c6ad5ad03eac289bdbb533d224e4833">COL_GREEN</a>       = {0x00, 0xFF, 0x00, 0xFF};
+<a name="l00234"></a><a class="code" href="window_8h.html#4830ae504499296e0b85f6d8e1c30d1e">00234</a> <span class="keyword">static</span> <span class="keyword">const</span> <a class="code" href="struct_color_type.html">ColorType</a> <a class="code" href="window_8h.html#4830ae504499296e0b85f6d8e1c30d1e">COL_BLUE</a>        = {0xFF, 0x00, 0x00, 0xFF};
+<a name="l00235"></a><a class="code" href="window_8h.html#4e3509a3689770e59720247a6a35dcbd">00235</a> <span class="keyword">static</span> <span class="keyword">const</span> <a class="code" href="struct_color_type.html">ColorType</a> <a class="code" href="window_8h.html#4e3509a3689770e59720247a6a35dcbd">COL_YELLOW</a>      = {0x00, 0xFF, 0xFF, 0xFF};
+<a name="l00236"></a><a class="code" href="window_8h.html#56eca6d874ad1542307fd2e39d80b164">00236</a> <span class="keyword">static</span> <span class="keyword">const</span> <a class="code" href="struct_color_type.html">ColorType</a> <a class="code" href="window_8h.html#56eca6d874ad1542307fd2e39d80b164">COL_BROWN</a>       = {0x13, 0x45, 0x8B, 0xFF};
+<a name="l00237"></a><a class="code" href="window_8h.html#ac3af00c0ad4ebc9721d330f5f95e8c9">00237</a> <span class="keyword">static</span> <span class="keyword">const</span> <a class="code" href="struct_color_type.html">ColorType</a> <a class="code" href="window_8h.html#ac3af00c0ad4ebc9721d330f5f95e8c9">COL_ORANGE</a>      = {0x00, 0x8C, 0xFF, 0xFF};
+<a name="l00238"></a><a class="code" href="window_8h.html#960f91e19cc3d750785c9e7ce84777aa">00238</a> <span class="keyword">static</span> <span class="keyword">const</span> <a class="code" href="struct_color_type.html">ColorType</a> <a class="code" href="window_8h.html#960f91e19cc3d750785c9e7ce84777aa">COL_PURPLE</a>          = {0xC8, 0x14, 0xEB, 0xFF};
+<a name="l00239"></a>00239 
+<a name="l00240"></a><a class="code" href="window_8h.html#6891be73f1ca5d80c7b1486ddf2317e9">00240</a> <span class="keyword">static</span> <span class="keyword">const</span> <a class="code" href="struct_color_type.html">ColorType</a> <a class="code" href="window_8h.html#6891be73f1ca5d80c7b1486ddf2317e9">COL_GREY</a>        = {0x80, 0x80, 0x80, 0xFF};
+<a name="l00241"></a>00241 
+<a name="l00242"></a><a class="code" href="window_8h.html#e520e84140d74e812511efdc781769c7">00242</a> <span class="keyword">static</span> <span class="keyword">const</span> <a class="code" href="struct_color_type.html">ColorType</a> <a class="code" href="window_8h.html#e520e84140d74e812511efdc781769c7">COL_LIGHTRED</a>    = {0x80, 0x80, 0xFF, 0xFF};
+<a name="l00243"></a><a class="code" href="window_8h.html#48d4bda29035d3a9a5cace6cf951fa20">00243</a> <span class="keyword">static</span> <span class="keyword">const</span> <a class="code" href="struct_color_type.html">ColorType</a> <a class="code" href="window_8h.html#48d4bda29035d3a9a5cace6cf951fa20">COL_LIGHTGREEN</a>  = {0x80, 0xFF, 0x80, 0xFF};
+<a name="l00244"></a><a class="code" href="window_8h.html#064b4c955e4e65e7e33b7cda6a496edb">00244</a> <span class="keyword">static</span> <span class="keyword">const</span> <a class="code" href="struct_color_type.html">ColorType</a> <a class="code" href="window_8h.html#064b4c955e4e65e7e33b7cda6a496edb">COL_LIGHTBLUE</a>   = {0xFF, 0x80, 0x80, 0xFF};
+<a name="l00245"></a><a class="code" href="window_8h.html#6d0c7d93c1cf38840fe5c9d9d89c4307">00245</a> <span class="keyword">static</span> <span class="keyword">const</span> <a class="code" href="struct_color_type.html">ColorType</a> <a class="code" href="window_8h.html#6d0c7d93c1cf38840fe5c9d9d89c4307">COL_LIGHTYELLOW</a> = {0x80, 0xFF, 0xFF, 0xFF};
+<a name="l00246"></a><a class="code" href="window_8h.html#a9d141c3f736cb3b878f988761657f83">00246</a> <span class="keyword">static</span> <span class="keyword">const</span> <a class="code" href="struct_color_type.html">ColorType</a> <a class="code" href="window_8h.html#a9d141c3f736cb3b878f988761657f83">COL_WHITE</a>       = {0xFF, 0xFF, 0xFF, 0xFF};
+<a name="l00247"></a>00247 
+<a name="l00248"></a><a class="code" href="window_8h.html#a12bb59a339e409a309e2cd698272f5a">00248</a> <span class="keyword">static</span> <span class="keyword">const</span> <a class="code" href="struct_color_type.html">ColorType</a> <a class="code" href="window_8h.html#a12bb59a339e409a309e2cd698272f5a">COL_DARKRED</a>     = {0x80, 0x00, 0x00, 0xFF};
+<a name="l00249"></a><a class="code" href="window_8h.html#ca1ff092e1dc0a22d3a87ebe8c476227">00249</a> <span class="keyword">static</span> <span class="keyword">const</span> <a class="code" href="struct_color_type.html">ColorType</a> <a class="code" href="window_8h.html#ca1ff092e1dc0a22d3a87ebe8c476227">COL_DARKGREEN</a>   = {0x00, 0x80, 0x00, 0xFF};
+<a name="l00250"></a><a class="code" href="window_8h.html#bb98ff6c47ed04b7bc57dc45c2e97207">00250</a> <span class="keyword">static</span> <span class="keyword">const</span> <a class="code" href="struct_color_type.html">ColorType</a> <a class="code" href="window_8h.html#bb98ff6c47ed04b7bc57dc45c2e97207">COL_DARKBLUE</a>    = {0x80, 0x00, 0x00, 0xFF};
+<a name="l00251"></a><a class="code" href="window_8h.html#abefb6a21f9030b547348d7707646400">00251</a> <span class="keyword">static</span> <span class="keyword">const</span> <a class="code" href="struct_color_type.html">ColorType</a> <a class="code" href="window_8h.html#abefb6a21f9030b547348d7707646400">COL_DARKYELLOW</a>  = {0x00, 0x80, 0x80, 0xFF};
+<a name="l00252"></a><a class="code" href="window_8h.html#801e4c26bf936860d7e7d06a8c137376">00252</a> <span class="keyword">static</span> <span class="keyword">const</span> <a class="code" href="struct_color_type.html">ColorType</a> <a class="code" href="window_8h.html#801e4c26bf936860d7e7d06a8c137376">COL_BLACK</a>       = {0x00, 0x00, 0x00, 0xFF};
+<a name="l00253"></a>00253 
+<a name="l00254"></a><a class="code" href="window_8h.html#b2e60c75462da61deb12d7867f1bdc44">00254</a> <span class="keyword">static</span> <span class="keyword">const</span> <a class="code" href="struct_color_type.html">ColorType</a> <a class="code" href="window_8h.html#b2e60c75462da61deb12d7867f1bdc44">COL_TRANSPARENT</a> = {0x00, 0x00, 0x00, 0x00};
+<a name="l00255"></a>00255 
+<a name="l00256"></a>00256 <span class="comment">/* module procedure declaration */</span>
+<a name="l00257"></a>00257 
+<a name="l00258"></a>00258 <span class="preprocessor">#ifdef __cplusplus</span>
+<a name="l00259"></a>00259 <span class="preprocessor"></span><span class="keyword">extern</span> <span class="stringliteral">"C"</span> {
+<a name="l00260"></a>00260 <span class="preprocessor">#endif</span>
+<a name="l00261"></a>00261 <span class="preprocessor"></span><span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="window_8h.html#6ebefdada09f4c3a59beb3cc69eb9a32">InitGraphic</a> (<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y);
+<a name="l00262"></a>00262 <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="window_8h.html#b56c9ea857f0e04be959469612293e5b">CloseGraphic</a> (<span class="keywordtype">void</span>);
+<a name="l00263"></a>00263 <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="window_8h.html#8d903c166cdc797361d4c2240bc48436">SetAutoUpdate</a> (<span class="keywordtype">int</span> Mode);
+<a name="l00264"></a>00264 <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="window_8h.html#0f67ba558bb219f653641a619331a004">SetDrawMode</a>(<span class="keywordtype">int</span> Mode);
+<a name="l00265"></a>00265 <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="window_8h.html#41dfc0890d4bb0d7ec590857bce86b59">DrawFilledCircle</a>    (<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> Width, <span class="keywordtype">int</span> Height, <a class="code" href="struct_color_type.html">ColorType</a> Color, <span class="keywordtype">int</span> LineWidth);
+<a name="l00266"></a>00266 <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="window_8h.html#210fa895d317ef4af4b2a3d103801d09">DrawEmptyCircle</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> Width, <span class="keywordtype">int</span> Height, <a class="code" href="struct_color_type.html">ColorType</a> Color, <span class="keywordtype">int</span> LineWidth);
+<a name="l00267"></a>00267 <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="window_8h.html#da342c15c4003b26b1d22ee513c59260">DrawFilledRectangle</a> (<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> Width, <span class="keywordtype">int</span> Height, <a class="code" href="struct_color_type.html">ColorType</a> Color, <span class="keywordtype">int</span> LineWidth);
+<a name="l00268"></a>00268 <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="window_8h.html#116606ff0e5327866da71ed46ecb5aed">DrawEmptyRectangle</a> (<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> Width, <span class="keywordtype">int</span> Height, <a class="code" href="struct_color_type.html">ColorType</a> Color, <span class="keywordtype">int</span> LineWidth);
+<a name="l00269"></a>00269 <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="window_8h.html#525417298f6018eba75aa0cbfbd732fd">DrawLine</a> (<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> tox, <span class="keywordtype">int</span> toy, <a class="code" href="struct_color_type.html">ColorType</a> Color, <span class="keywordtype">int</span> LineWidth);
+<a name="l00270"></a>00270 <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="window_8h.html#0d9c7626826e1eff808ebfd4a6a861da">DrawFilledPolygon</a> (<span class="keywordtype">int</span> *Edges, <span class="keywordtype">int</span> NumberOfEdges, <a class="code" href="struct_color_type.html">ColorType</a> Color, <span class="keywordtype">int</span> LineWidth);
+<a name="l00271"></a>00271 <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="window_8h.html#8a2a83bc47b9c69b57429d7adc7d80aa">DrawPolyLine</a> (<span class="keywordtype">int</span> *Edges, <span class="keywordtype">int</span> NumberOfEdges, <a class="code" href="struct_color_type.html">ColorType</a> Color, <span class="keywordtype">int</span> LineWidth);
+<a name="l00272"></a>00272 <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="window_8h.html#87d7d5d541beb3401e20530485d169f8">DrawPixel</a> (<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <a class="code" href="struct_color_type.html">ColorType</a> Color);
+<a name="l00273"></a>00273 <span class="keyword">extern</span> <a class="code" href="struct_color_type.html">ColorType</a> <a class="code" href="window_8h.html#c8059344023a3c13afd96071117cbaee">GetPixel</a> (<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y);
+<a name="l00274"></a>00274 <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="window_8h.html#11c214049de28dbd97d389581817dc10">DrawTextXY</a> (<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <a class="code" href="struct_color_type.html">ColorType</a> Color, <span class="keyword">const</span> <span class="keywordtype">char</span> *Text);
+<a name="l00275"></a>00275 <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="window_8h.html#ddac38a95edf90171f28987319bc7ed7">SelectFont</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *FontName, <span class="keywordtype">int</span> Points, <span class="keyword">enum</span> <a class="code" href="window_8h.html#0ca3a6077a861236d2f9aa6646d955b4">FontStyle</a> Style);
+<a name="l00276"></a>00276 <span class="keyword">extern</span> <a class="code" href="struct_text_dimension.html">TextDimensionType</a> <a class="code" href="window_8h.html#0eb5b3963cf3e3cedc51240d216b90e6">GetTextDimensions</a> (<span class="keyword">const</span> <span class="keywordtype">char</span> *Text);
+<a name="l00277"></a>00277 <span class="comment">//extern int  GetKey (void);</span>
+<a name="l00278"></a>00278 <span class="keyword">extern</span> <span class="keywordtype">int</span>  <a class="code" href="window_8h.html#dc1cab7cbc26dfc76e52660a847a6b6a">GetKeyPress</a> (<span class="keywordtype">void</span>);
+<a name="l00279"></a>00279 <span class="keyword">extern</span> <span class="keywordtype">int</span>  <a class="code" href="window_8h.html#e33fd5635237e016423ac0dbea2e2732">GetKeyEvent</a> (<span class="keywordtype">void</span>);
+<a name="l00280"></a>00280 <span class="comment">//extern int  WaitForKeyEvent (void);</span>
+<a name="l00281"></a>00281 <span class="keyword">extern</span> <span class="keywordtype">int</span>  <a class="code" href="window_8h.html#124494536773a67abe6bb43d1eaf8dc0">IsKeyPressReady</a> (<span class="keywordtype">void</span>);
+<a name="l00282"></a>00282 <span class="keyword">extern</span> <span class="keywordtype">int</span>  <a class="code" href="window_8h.html#9084093f446b8621eb16ff0fca4217f0">IsKeyEventReady</a> (<span class="keywordtype">void</span>);
+<a name="l00283"></a>00283 <span class="keyword">extern</span> <a class="code" href="struct_mouse_info.html">MouseInfoType</a> <a class="code" href="window_8h.html#936c6f9a84fa043d5fa9fbc7a5ea63db">GetMouseState</a> (<span class="keywordtype">void</span>);
+<a name="l00284"></a>00284 <span class="keyword">extern</span> <a class="code" href="struct_mouse_info.html">MouseInfoType</a> <a class="code" href="window_8h.html#9f8f3000374f2b047495be235c67654e">GetMouseEvent</a> (<span class="keywordtype">void</span>);
+<a name="l00285"></a>00285 
+<a name="l00286"></a>00286 <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="window_8h.html#a55be8c13a9a5e4868fb701b084dc424">WaitMs</a> (<span class="keywordtype">int</span> Time);
+<a name="l00287"></a>00287 <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="window_8h.html#6b681f4e0a72f94c48925452ce2efd14">ClearWindow</a>(<span class="keywordtype">void</span>);
+<a name="l00288"></a>00288 
+<a name="l00289"></a>00289 <span class="keyword">extern</span> <span class="keywordtype">int</span>  <a class="code" href="window_8h.html#ddbd1fcc818058d397788cd6cd604761">CreateImage</a>(<span class="keywordtype">int</span> Width, <span class="keywordtype">int</span> Height);
+<a name="l00290"></a>00290 <span class="keyword">extern</span> <span class="keywordtype">int</span>  <a class="code" href="window_8h.html#813bca40379579206d086ab6ea5f5bc2">CreateSubImage</a>(<span class="keywordtype">int</span> SrcID, <span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> Width, <span class="keywordtype">int</span> Height);
+<a name="l00291"></a>00291 <span class="keyword">extern</span> <span class="keywordtype">int</span>  <a class="code" href="window_8h.html#dca045c39f1d4066d607137b3f969057">LoadImage</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *FileName);
+<a name="l00292"></a>00292 <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="window_8h.html#92626ab7175cd8f1f980b9f87ccd1415">SaveImage</a>(<span class="keywordtype">int</span> Id, <span class="keyword">const</span> <span class="keywordtype">char</span> *FileName, <span class="keyword">const</span> <span class="keywordtype">char</span> *Format, <span class="keywordtype">int</span> Quality);
+<a name="l00293"></a>00293 <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="window_8h.html#14ffa0895ce622a58ace7ac9018f0c85">DestroyImage</a>(<span class="keywordtype">int</span> ImageId);
+<a name="l00294"></a>00294 
+<a name="l00295"></a>00295 <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="window_8h.html#2971e932db27afe1385dd6708c507e25">SetEditedImage</a>(<span class="keywordtype">int</span> ImageId);
+<a name="l00296"></a>00296 <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="window_8h.html#db2c18f80ea1980118a3252b376defeb">DrawImage</a>(<span class="keywordtype">int</span> ImageId, <span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y);
+<a name="l00297"></a>00297 <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="window_8h.html#d8d95195a041de8fd14ef5c2710a860d">CopyToImage</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> Width, <span class="keywordtype">int</span> Height, <span class="keywordtype">int</span> ImageId);
+<a name="l00298"></a>00298 <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="window_8h.html#c67ff2e360db7ae40c8d3bbea5be4387">GetImageSize</a>(<span class="keywordtype">int</span> ImageId, <span class="keywordtype">int</span> *Width, <span class="keywordtype">int</span> *Height);
+<a name="l00299"></a>00299 <span class="keyword">extern</span> <a class="code" href="struct_color_type.html">ColorType</a> *<a class="code" href="window_8h.html#44b3c4053356d92bba5376b43da09149">GetPixelDataPointer</a>(<span class="keywordtype">int</span> ImageId, <span class="keywordtype">int</span> *Length);
+<a name="l00300"></a>00300 <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="window_8h.html#599b8b5d90c4f5a87ad68e17eeefef73">AddAlphaMask</a>(<span class="keywordtype">int</span> ImageId, <span class="keywordtype">int</span> Mode, <a class="code" href="struct_color_type.html">ColorType</a> Color);
+<a name="l00301"></a>00301 <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="window_8h.html#1daf5437dcbd04d1d378fa8adb7d0807">Rotate</a>(<span class="keywordtype">float</span> Angle);
+<a name="l00302"></a>00302 <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="window_8h.html#a88dc743d6cb5c620531b0a6ece17dac">Translate</a>(<span class="keywordtype">float</span> dx, <span class="keywordtype">float</span> dy);
+<a name="l00303"></a>00303 <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="window_8h.html#2adddf872527ebec41334190dc95c407">Scale</a>(<span class="keywordtype">float</span> Scalingx, <span class="keywordtype">float</span> Scalingy);
+<a name="l00304"></a>00304 <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="window_8h.html#37e9ded0215c16f0ea1332e7e65ef329">ResetTransformations</a>(<span class="keywordtype">void</span>);
+<a name="l00305"></a>00305 
+<a name="l00306"></a>00306 <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="window_8h.html#c2c5be6dedb027f2ba5676af23d766a9">SetQtOptions</a>(<span class="keyword">enum</span> <a class="code" href="window_8h.html#fe03771073dd340bd447800090c21085">QTOptions</a> Option, <span class="keywordtype">long</span> <span class="keywordtype">int</span> Value);
+<a name="l00307"></a>00307 
+<a name="l00308"></a>00308 <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="window_8h.html#8b47cdb978ab88453131c1cb1106e02a">PlaySoundOnce</a> (<span class="keyword">const</span> <span class="keywordtype">char</span> *FileName);
+<a name="l00309"></a>00309 <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="window_8h.html#dafc7e595d013a82e3f0870105a9eb6c">PlaySoundContinuous</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *FileName);
+<a name="l00310"></a>00310 <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="window_8h.html#276de4cc26d4abed558c0416c8be8fad">StopContinuousSound</a> (<span class="keywordtype">void</span>);
+<a name="l00311"></a>00311 <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="window_8h.html#baa0bc5e9858e3159852b2c76da2fa01">StartContinuousSound</a> (<span class="keywordtype">void</span>);
+<a name="l00312"></a>00312 
+<a name="l00313"></a>00313 <span class="keywordtype">void</span> <a class="code" href="window_8h.html#bcf0e0b72488608d797854c745d2ec65">StartTimer</a>(<span class="keywordtype">int</span> IntervalTime, <span class="keywordtype">void</span> *Parameter, <span class="keywordtype">void</span> (*Handler)(<span class="keywordtype">void</span> *));
+<a name="l00314"></a>00314 <span class="keywordtype">void</span> <a class="code" href="window_8h.html#70f10350ba3e9dab83cc660459d3ed02">StopTimer</a>(<span class="keywordtype">void</span>);
+<a name="l00315"></a>00315 
+<a name="l00316"></a>00316 <span class="keywordtype">void</span> <a class="code" href="window_8h.html#2765e48b43d5abf7445c22843d8aea4c">Lock</a>(<span class="keywordtype">void</span>);
+<a name="l00317"></a>00317 <span class="keywordtype">void</span> <a class="code" href="window_8h.html#c7d46eb486911172aeee00dac8d4e003">Unlock</a>(<span class="keywordtype">void</span>);
+<a name="l00318"></a>00318 <span class="keywordtype">int</span> <a class="code" href="window_8h.html#89eaa5149dfd5c9c218529b442182348">CreateThread</a>(<span class="keywordtype">void</span> *Parameter, <span class="keywordtype">void</span> (*Function)(<span class="keywordtype">void</span> *));
+<a name="l00319"></a>00319 
+<a name="l00320"></a>00320 <span class="keywordtype">int</span> <a class="code" href="window_8h.html#9b90073627f8265527576bc7b7dc1a50">OpenFileDialog</a>(<span class="keywordtype">int</span> Mode, <span class="keyword">const</span> <span class="keywordtype">char</span> *Title, <span class="keyword">const</span> <span class="keywordtype">char</span> *Directory, <span class="keyword">const</span> <span class="keywordtype">char</span> *Filter, <span class="keyword">const</span> <span class="keywordtype">char</span> *PreferredFilter, <span class="keywordtype">int</span> Options, <span class="keywordtype">char</span> *FilenameBuffer, <span class="keywordtype">int</span> MaxNameLength, <span class="keywordtype">char</span> *SelectedFilter, <span class="keywordtype">int</span> MaxFilterLength);
+<a name="l00321"></a><a class="code" href="window_8h.html#4d1de4b16ddee64ca5712bda7bbd510e">00321</a> <span class="preprocessor">#define SimpleFileOpenDialog(Title, NameBuffer, NameBufferLength) OpenFileDialog(FDM_FILE_LOAD, Title, "", "", "", FDO_USE_DEFAULT, NameBuffer, NameBufferLength, NULL, 0)</span>
+<a name="l00322"></a><a class="code" href="window_8h.html#69c70ced4598532b2fd336fd898548d5">00322</a> <span class="preprocessor"></span><span class="preprocessor">#define SimpleFileSaveDialog(Title, NameBuffer, NameBufferLength) OpenFileDialog(FDM_FILE_SAVE, Title, "", "", "", FDO_USE_DEFAULT, NameBuffer, NameBufferLength, NULL, 0)</span>
+<a name="l00323"></a>00323 <span class="preprocessor"></span>
+<a name="l00324"></a>00324 <span class="preprocessor">#ifdef __cplusplus</span>
+<a name="l00325"></a>00325 <span class="preprocessor"></span>}
+<a name="l00326"></a>00326 <span class="preprocessor">#endif</span>
+<a name="l00327"></a>00327 <span class="preprocessor"></span>
+<a name="l00328"></a>00328 
+<a name="l00329"></a>00329 <span class="comment">/*****************************************************************************/</span>
+<a name="l00330"></a>00330 <span class="comment">/*  End Header  : WindowFunctions                                            */</span>
+<a name="l00331"></a>00331 <span class="comment">/*****************************************************************************/</span>
+<a name="l00332"></a>00332 <span class="preprocessor">#endif</span>
+<a name="l00333"></a>00333 <span class="preprocessor"></span>
+</pre></div><hr size="1"><address style="align: right;"><small>Erzeugt am Sat Jan 12 02:25:17 2013 für Carme-Snake von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.4.5 </small></address>
+</body>
+</html>

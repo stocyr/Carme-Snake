@@ -1,0 +1,336 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1">
+<title>Carme-Snake: D:/Programming/C/Carme-Snake-Client/src/game.c-Dateireferenz</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Erzeugt von Doxygen 1.4.5 -->
+<div class="tabs">
+  <ul>
+    <li><a href="index.html"><span>Hauptseite</span></a></li>
+    <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+    <li id="current"><a href="files.html"><span>Dateien</span></a></li>
+    <li><a href="dirs.html"><span>Verzeichnisse</span></a></li>
+    <li><a href="pages.html"><span>Zusätzliche&nbsp;Informationen</span></a></li>
+  </ul></div>
+<div class="tabs">
+  <ul>
+    <li><a href="files.html"><span>Auflistung&nbsp;der&nbsp;Dateien</span></a></li>
+    <li><a href="globals.html"><span>Datei-Elemente</span></a></li>
+  </ul></div>
+<div class="nav">
+<a class="el" href="dir_D_3A_2F.html">D:</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_D_3A_2FProgramming_2F.html">Programming</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_D_3A_2FProgramming_2FC_2F.html">C</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_D_3A_2FProgramming_2FC_2FCarme_2DSnake_2DClient_2F.html">Carme-Snake-Client</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_D_3A_2FProgramming_2FC_2FCarme_2DSnake_2DClient_2Fsrc_2F.html">src</a></div>
+<h1>game.c-Dateireferenz</h1>Modul game kommuniziert mit dem Serialport, liest Tastatureingaben ein und Ruft die Highscorefunktion auf. <a href="#_details">Mehr ...</a>
+<p>
+<code>#include &lt;stdio.h&gt;</code><br>
+<code>#include &lt;stdlib.h&gt;</code><br>
+<code>#include &lt;math.h&gt;</code><br>
+<code>#include &lt;conio.h&gt;</code><br>
+<code>#include &quot;<a class="el" href="highscore_8h-source.html">highscore.h</a>&quot;</code><br>
+<code>#include &quot;<a class="el" href="game_8h-source.html">game.h</a>&quot;</code><br>
+<code>#include &quot;<a class="el" href="window_8h-source.html">window.h</a>&quot;</code><br>
+<code>#include &quot;<a class="el" href="serport_8h-source.html">serport.h</a>&quot;</code><br>
+
+<p>
+Include-Abhängigkeitsdiagramm für game.c:<p><center><img src="game_8c__incl.png" border="0" usemap="#D:/Programming/C/Carme-Snake-Client/src/game.c_map" alt=""></center>
+<map name="D:/Programming/C/Carme-Snake-Client/src/game.c_map">
+<area href="highscore_8h-source.html" shape="rect" coords="374,208,463,235" alt="">
+<area href="game_8h-source.html" shape="rect" coords="386,259,451,285" alt="">
+<area href="window_8h-source.html" shape="rect" coords="381,309,456,336" alt="">
+<area href="serport_8h-source.html" shape="rect" coords="382,360,455,387" alt="">
+</map>
+
+<p>
+<a href="game_8c-source.html">gehe zum Quellcode dieser Datei</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Makrodefinitionen</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="game_8c.html#3389669def6e1751af3c374eb7cd54dd">NO_VALID_KEY</a>&nbsp;&nbsp;&nbsp;-1</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="game_8c.html#c248b44c41333613a8ad29b656f8950e">KEY_UP</a>&nbsp;&nbsp;&nbsp;328</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="game_8c.html#e27439eebd778013c33fbb14dd19fd04">KEY_DOWN</a>&nbsp;&nbsp;&nbsp;336</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="game_8c.html#199730aec8ce398d74880833785a8b79">KEY_LEFT</a>&nbsp;&nbsp;&nbsp;331</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="game_8c.html#8e25f52bf32130ac4a96fb5447a35e40">KEY_RIGHT</a>&nbsp;&nbsp;&nbsp;333</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="game_8c.html#a42b2fb0e720a080e79a92f4ca97d927">EXIT</a>&nbsp;&nbsp;&nbsp;27</td></tr>
+
+<tr><td colspan="2"><br><h2>Funktionen</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="game_8c.html#26a062ae3bc79a7eda8aab8729c7daa6">getkey</a> (void)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="game_8c.html#d2c20aac2ec02a44bc35b97981530f4c">Game</a> (int argc, char *argv[], const char *ApplicationPath)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Steuerung des eigentlichen Spiels.  <a href="#d2c20aac2ec02a44bc35b97981530f4c"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>Ausführliche Beschreibung</h2>
+Modul game kommuniziert mit dem Serialport, liest Tastatureingaben ein und Ruft die Highscorefunktion auf. 
+<p>
+
+<p>
+Definiert in Datei <a class="el" href="game_8c-source.html">game.c</a>.<hr><h2>Makro-Dokumentation</h2>
+<a class="anchor" name="a42b2fb0e720a080e79a92f4ca97d927"></a><!-- doxytag: member="game.c::EXIT" ref="a42b2fb0e720a080e79a92f4ca97d927" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">#define EXIT&nbsp;&nbsp;&nbsp;27          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definiert in Zeile <a class="el" href="game_8c-source.html#l00036">36</a> der Datei <a class="el" href="game_8c-source.html">game.c</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="e27439eebd778013c33fbb14dd19fd04"></a><!-- doxytag: member="game.c::KEY_DOWN" ref="e27439eebd778013c33fbb14dd19fd04" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">#define KEY_DOWN&nbsp;&nbsp;&nbsp;336          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definiert in Zeile <a class="el" href="game_8c-source.html#l00033">33</a> der Datei <a class="el" href="game_8c-source.html">game.c</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="199730aec8ce398d74880833785a8b79"></a><!-- doxytag: member="game.c::KEY_LEFT" ref="199730aec8ce398d74880833785a8b79" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">#define KEY_LEFT&nbsp;&nbsp;&nbsp;331          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definiert in Zeile <a class="el" href="game_8c-source.html#l00034">34</a> der Datei <a class="el" href="game_8c-source.html">game.c</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="8e25f52bf32130ac4a96fb5447a35e40"></a><!-- doxytag: member="game.c::KEY_RIGHT" ref="8e25f52bf32130ac4a96fb5447a35e40" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">#define KEY_RIGHT&nbsp;&nbsp;&nbsp;333          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definiert in Zeile <a class="el" href="game_8c-source.html#l00035">35</a> der Datei <a class="el" href="game_8c-source.html">game.c</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="c248b44c41333613a8ad29b656f8950e"></a><!-- doxytag: member="game.c::KEY_UP" ref="c248b44c41333613a8ad29b656f8950e" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">#define KEY_UP&nbsp;&nbsp;&nbsp;328          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definiert in Zeile <a class="el" href="game_8c-source.html#l00032">32</a> der Datei <a class="el" href="game_8c-source.html">game.c</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="3389669def6e1751af3c374eb7cd54dd"></a><!-- doxytag: member="game.c::NO_VALID_KEY" ref="3389669def6e1751af3c374eb7cd54dd" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">#define NO_VALID_KEY&nbsp;&nbsp;&nbsp;-1          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definiert in Zeile <a class="el" href="game_8c-source.html#l00031">31</a> der Datei <a class="el" href="game_8c-source.html">game.c</a>.
+<p>
+Wird benutzt von <a class="el" href="game_8c-source.html#l00198">getkey()</a>.    </td>
+  </tr>
+</table>
+<hr><h2>Dokumentation der Funktionen</h2>
+<a class="anchor" name="d2c20aac2ec02a44bc35b97981530f4c"></a><!-- doxytag: member="game.c::Game" ref="d2c20aac2ec02a44bc35b97981530f4c" args="(int argc, char *argv[], const char *ApplicationPath)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">int Game           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">int&nbsp;</td>
+          <td class="mdname" nowrap> <em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>char *&nbsp;</td>
+          <td class="mdname" nowrap> <em>argv</em>[], </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>const char *&nbsp;</td>
+          <td class="mdname" nowrap> <em>ApplicationPath</em></td>
+        </tr>
+        <tr>
+          <td class="md"></td>
+          <td class="md">)&nbsp;</td>
+          <td class="md" colspan="2"></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Steuerung des eigentlichen Spiels. 
+<p>
+Liest den Spielername ein, verabreitet die Steuerbefehle für die Schlange und den Score<p>
+&lt; Array für Spielername<p>
+&lt; Variable zur Verarbeitung der eingelesenen Zeichen<p>
+&lt; Variable zum einlesen der Zeichen von der Tastatur<p>
+&lt; Variable zum speichern des letzen eingelesenen Zeichens<p>
+&lt; Variable für den Score<p>
+&lt; Variable für die Portnummer<p>
+&lt; Variable für Rückgabewert der Highscorefunktion<p>
+&lt; Wird 1 wenn Highscore geknackt wurde, sonst 0 
+<p>
+Definiert in Zeile <a class="el" href="game_8c-source.html#l00059">59</a> der Datei <a class="el" href="game_8c-source.html">game.c</a>.
+<p>
+Benutzt <a class="el" href="window_8h.html#6b681f4e0a72f94c48925452ce2efd14">ClearWindow()</a>, <a class="el" href="window_8h-source.html#l00252">COL_BLACK</a>, <a class="el" href="window_8h-source.html#l00233">COL_GREEN</a>, <a class="el" href="window_8h-source.html#l00232">COL_RED</a>, <a class="el" href="window_8h.html#da342c15c4003b26b1d22ee513c59260">DrawFilledRectangle()</a>, <a class="el" href="window_8h.html#11c214049de28dbd97d389581817dc10">DrawTextXY()</a>, <a class="el" href="window_8h.html#0ca3a6077a861236d2f9aa6646d955b4c8235eecfbd3dbc5649cf02515a71989">FONT_NORMAL</a>, <a class="el" href="window_8h.html#dc1cab7cbc26dfc76e52660a847a6b6a">GetKeyPress()</a>, <a class="el" href="main_8c-source.html#l00083">score</a>, <a class="el" href="window_8h.html#ddac38a95edf90171f28987319bc7ed7">SelectFont()</a> und <a class="el" href="window_8h.html#465e6e6cd7c1263b7bbd43fb6331caacfbef6a0aa8c931df6a39efcd20fbe776">W_KEY_RETURN</a>.
+<p>
+Wird benutzt von <a class="el" href="_snake__main_8c-source.html#l00052">gfxmain()</a>.
+<p>
+Hier ist der Graph aller Aufrufe für diese Funktion:<p><center><img src="game_8c_d2c20aac2ec02a44bc35b97981530f4c_cgraph.png" border="0" usemap="#game_8c_d2c20aac2ec02a44bc35b97981530f4c_cgraph_map" alt=""></center>
+<map name="game_8c_d2c20aac2ec02a44bc35b97981530f4c_cgraph_map">
+<area href="window_8h.html#6b681f4e0a72f94c48925452ce2efd14" shape="rect" coords="133,5,232,32" alt="">
+<area href="window_8h.html#da342c15c4003b26b1d22ee513c59260" shape="rect" coords="113,56,253,83" alt="">
+<area href="window_8h.html#11c214049de28dbd97d389581817dc10" shape="rect" coords="137,107,229,133" alt="">
+<area href="window_8h.html#dc1cab7cbc26dfc76e52660a847a6b6a" shape="rect" coords="133,157,233,184" alt="">
+<area href="window_8h.html#ddac38a95edf90171f28987319bc7ed7" shape="rect" coords="140,208,225,235" alt="">
+</map>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="26a062ae3bc79a7eda8aab8729c7daa6"></a><!-- doxytag: member="game.c::getkey" ref="26a062ae3bc79a7eda8aab8729c7daa6" args="(void)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">int getkey           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">void&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definiert in Zeile <a class="el" href="game_8c-source.html#l00198">198</a> der Datei <a class="el" href="game_8c-source.html">game.c</a>.
+<p>
+Benutzt <a class="el" href="window_8h.html#dc1cab7cbc26dfc76e52660a847a6b6a">GetKeyPress()</a> und <a class="el" href="game_8c-source.html#l00031">NO_VALID_KEY</a>.
+<p>
+Hier ist der Graph aller Aufrufe für diese Funktion:<p><center><img src="game_8c_26a062ae3bc79a7eda8aab8729c7daa6_cgraph.png" border="0" usemap="#game_8c_26a062ae3bc79a7eda8aab8729c7daa6_cgraph_map" alt=""></center>
+<map name="game_8c_26a062ae3bc79a7eda8aab8729c7daa6_cgraph_map">
+<area href="window_8h.html#dc1cab7cbc26dfc76e52660a847a6b6a" shape="rect" coords="115,5,215,32" alt="">
+</map>
+    </td>
+  </tr>
+</table>
+<hr size="1"><address style="align: right;"><small>Erzeugt am Sat Jan 12 02:25:17 2013 für Carme-Snake von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.4.5 </small></address>
+</body>
+</html>

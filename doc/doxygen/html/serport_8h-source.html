@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1">
+<title>Carme-Snake: D:/Programming/C/Carme-Snake-Client/src/serport.h Quellcode</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Erzeugt von Doxygen 1.4.5 -->
+<div class="tabs">
+  <ul>
+    <li><a href="index.html"><span>Hauptseite</span></a></li>
+    <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+    <li id="current"><a href="files.html"><span>Dateien</span></a></li>
+    <li><a href="dirs.html"><span>Verzeichnisse</span></a></li>
+    <li><a href="pages.html"><span>Zusätzliche&nbsp;Informationen</span></a></li>
+  </ul></div>
+<div class="tabs">
+  <ul>
+    <li><a href="files.html"><span>Auflistung&nbsp;der&nbsp;Dateien</span></a></li>
+    <li><a href="globals.html"><span>Datei-Elemente</span></a></li>
+  </ul></div>
+<div class="nav">
+<a class="el" href="dir_D_3A_2F.html">D:</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_D_3A_2FProgramming_2F.html">Programming</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_D_3A_2FProgramming_2FC_2F.html">C</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_D_3A_2FProgramming_2FC_2FCarme_2DSnake_2DClient_2F.html">Carme-Snake-Client</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_D_3A_2FProgramming_2FC_2FCarme_2DSnake_2DClient_2Fsrc_2F.html">src</a></div>
+<h1>serport.h</h1><a href="serport_8h.html">gehe zur Dokumentation dieser Datei</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#ifndef SERIAL_PORT_INTERFACE_H</span>
+<a name="l00002"></a>00002 <span class="preprocessor"></span><span class="preprocessor">#define SERIAL_PORT_INTERFACE_H</span>
+<a name="l00003"></a>00003 <span class="preprocessor"></span><span class="comment">/*****************************************************************************/</span>
+<a name="l00004"></a>00004 <span class="comment">/*  Header     : SerialPortInterface                            Version 1.0  */</span>
+<a name="l00005"></a>00005 <span class="comment">/*****************************************************************************/</span>
+<a name="l00006"></a>00006 <span class="comment">/*                                                                           */</span>
+<a name="l00007"></a>00007 <span class="comment">/*  Function   : This module is an interface to the win32 API-Functions to   */</span>
+<a name="l00008"></a>00008 <span class="comment">/*               handle the serial port                                      */</span>
+<a name="l00009"></a>00009 <span class="comment">/*                                                                           */</span>
+<a name="l00010"></a>00010 <span class="comment">/*  Procedures : InitSerialPort                Initializes the serial port   */</span>
+<a name="l00011"></a>00011 <span class="comment">/*               ShutdownSerialPort            Releases the serial port      */</span>
+<a name="l00012"></a>00012 <span class="comment">/*               GetByteFromSerialPort         Reads a byte from serial port */</span>
+<a name="l00013"></a>00013 <span class="comment">/*               SendByteToSerialPort          Sends a byte to the serial pt */</span>
+<a name="l00014"></a>00014 <span class="comment">/*               ClearSerialPortBuffer         Empties the transmit buffer   */</span>
+<a name="l00015"></a>00015 <span class="comment">/*               BytesAvaillableFromSerialPort Amount of availlable bytes    */</span>
+<a name="l00016"></a>00016 <span class="comment">/*               UnsentBytesInSerialPort       How many bytes still to send  */</span>
+<a name="l00017"></a>00017 <span class="comment">/*                                                                           */</span>
+<a name="l00018"></a>00018 <span class="comment">/*  Author     : I. Oesch                                                    */</span>
+<a name="l00019"></a>00019 <span class="comment">/*                                                                           */</span>
+<a name="l00020"></a>00020 <span class="comment">/*  History    : 12.07.2002  IO Created                                      */</span>
+<a name="l00021"></a>00021 <span class="comment">/*                                                                           */</span>
+<a name="l00022"></a>00022 <span class="comment">/*  File       : serport.h                                                   */</span>
+<a name="l00023"></a>00023 <span class="comment">/*                                                                           */</span>
+<a name="l00024"></a>00024 <span class="comment">/*****************************************************************************/</span>
+<a name="l00025"></a>00025 <span class="comment">/* MagicSoft                                                                 */</span>
+<a name="l00026"></a>00026 <span class="comment">/*****************************************************************************/</span>
+<a name="l00027"></a>00027 
+<a name="l00028"></a>00028 <span class="comment">/* imports */</span>
+<a name="l00029"></a>00029 
+<a name="l00030"></a>00030 <span class="comment">/* module constant declaration  */</span>
+<a name="l00031"></a>00031 
+<a name="l00032"></a>00032 <span class="comment">/* module type declaration      */</span>
+<a name="l00033"></a><a class="code" href="serport_8h.html#783064ca20cd587e4b16de0939db712c">00033</a> <span class="keyword">typedef</span> <span class="keyword">enum</span> <a class="code" href="serport_8h.html#783064ca20cd587e4b16de0939db712c">PortType</a> {
+<a name="l00034"></a>00034         <a class="code" href="serport_8h.html#783064ca20cd587e4b16de0939db712cbd2103035a8021942390a78a431ba0c4">DUMMY</a>,
+<a name="l00035"></a>00035         <a class="code" href="serport_8h.html#783064ca20cd587e4b16de0939db712cf844887960ff17500d1a44c33af38b78">COM1</a> = 1,
+<a name="l00036"></a>00036         <a class="code" href="serport_8h.html#783064ca20cd587e4b16de0939db712ca9d582cd711bb7e4814f163af03fc5c2">COM2</a> = 2,
+<a name="l00037"></a>00037         <a class="code" href="serport_8h.html#783064ca20cd587e4b16de0939db712c4e09844d2586f0df783fcaa2753899f8">COM3</a> = 3,
+<a name="l00038"></a>00038         <a class="code" href="serport_8h.html#783064ca20cd587e4b16de0939db712cd3052390df38c96103f85d82900fa259">COM4</a> = 4,
+<a name="l00039"></a>00039         <a class="code" href="serport_8h.html#783064ca20cd587e4b16de0939db712c0e817345893c98ea792a365a1713dff5">COM5</a> = 5,
+<a name="l00040"></a>00040         <a class="code" href="serport_8h.html#783064ca20cd587e4b16de0939db712ce4507bdbbe2296106f173b6099c41de7">COM6</a> = 6,
+<a name="l00041"></a>00041         <a class="code" href="serport_8h.html#783064ca20cd587e4b16de0939db712c1ff56bf66686ad64587f0edb5823d6d7">COM7</a> = 7
+<a name="l00042"></a>00042 } <a class="code" href="serport_8h.html#783064ca20cd587e4b16de0939db712c">PortType</a>;
+<a name="l00043"></a>00043 
+<a name="l00044"></a><a class="code" href="serport_8h.html#433c4f3cf7e29a2a3735560d6fd551fd">00044</a> <span class="keyword">typedef</span> <span class="keyword">enum</span> <a class="code" href="serport_8h.html#433c4f3cf7e29a2a3735560d6fd551fd">ParityType</a> {
+<a name="l00045"></a>00045         <a class="code" href="serport_8h.html#433c4f3cf7e29a2a3735560d6fd551fdf1a47cb1284201167502831e56d96bd7">P_NONE</a>,
+<a name="l00046"></a>00046         <a class="code" href="serport_8h.html#433c4f3cf7e29a2a3735560d6fd551fdd3f35215f913f314d494290a574929d1">P_EVEN</a>,
+<a name="l00047"></a>00047         <a class="code" href="serport_8h.html#433c4f3cf7e29a2a3735560d6fd551fdc2e773615dcc02268c98a424184832b5">P_ODD</a>,
+<a name="l00048"></a>00048         <a class="code" href="serport_8h.html#433c4f3cf7e29a2a3735560d6fd551fde3653b03e1ea00d286b32e491124154d">P_MARK</a>,
+<a name="l00049"></a>00049         <a class="code" href="serport_8h.html#433c4f3cf7e29a2a3735560d6fd551fd965c426cef3315ccfd4de72d84c2f61f">P_SPACE</a>,
+<a name="l00050"></a>00050 } <a class="code" href="serport_8h.html#433c4f3cf7e29a2a3735560d6fd551fd">ParityType</a>;
+<a name="l00051"></a>00051 
+<a name="l00052"></a><a class="code" href="serport_8h.html#38e261dbb0e70f73322a2b5142b1f8c4">00052</a> <span class="keyword">typedef</span> <span class="keyword">enum</span> <a class="code" href="serport_8h.html#38e261dbb0e70f73322a2b5142b1f8c4">BaudrateType</a> {
+<a name="l00053"></a>00053         <a class="code" href="serport_8h.html#38e261dbb0e70f73322a2b5142b1f8c4f3af8e234279100722af05706511a891">Bd600</a>,
+<a name="l00054"></a>00054         <a class="code" href="serport_8h.html#38e261dbb0e70f73322a2b5142b1f8c4c4266a82c6481d5508fd16dc1061f76a">Bd1200</a>,
+<a name="l00055"></a>00055         <a class="code" href="serport_8h.html#38e261dbb0e70f73322a2b5142b1f8c4dd53ee83c2a55653e82a8e7687065504">Bd2400</a>,
+<a name="l00056"></a>00056         <a class="code" href="serport_8h.html#38e261dbb0e70f73322a2b5142b1f8c4c8665aedf09e2846de06d3b7bdd72741">Bd4800</a>,
+<a name="l00057"></a>00057         <a class="code" href="serport_8h.html#38e261dbb0e70f73322a2b5142b1f8c49578119692f450270b2939fe92f875c9">Bd9600</a>,
+<a name="l00058"></a>00058         <a class="code" href="serport_8h.html#38e261dbb0e70f73322a2b5142b1f8c49eb3a214ed801637cc373a778cec1177">Bd19200</a>
+<a name="l00059"></a>00059 } <a class="code" href="serport_8h.html#38e261dbb0e70f73322a2b5142b1f8c4">BaudrateType</a>;
+<a name="l00060"></a>00060 
+<a name="l00061"></a>00061 <span class="comment">/* module data declaration      */</span>
+<a name="l00062"></a>00062 
+<a name="l00063"></a>00063 <span class="comment">/* module procedure declaration */</span>
+<a name="l00064"></a>00064 <span class="keyword">extern</span> <span class="keywordtype">int</span>  <a class="code" href="serport_8c.html#98b55ee701e5f4ba268d8542b7803554">InitSerialPort</a>(<a class="code" href="serport_8h.html#783064ca20cd587e4b16de0939db712c">PortType</a> Port, <a class="code" href="serport_8h.html#38e261dbb0e70f73322a2b5142b1f8c4">BaudrateType</a> BaudRate, <a class="code" href="serport_8h.html#433c4f3cf7e29a2a3735560d6fd551fd">ParityType</a> Parity, <span class="keywordtype">int</span> Bits, <span class="keywordtype">int</span> Stopbits);
+<a name="l00065"></a>00065 <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="serport_8c.html#d708c08ed0c1dc60aeb3674a9a06f288">ShutdownSerialPort</a>(<span class="keywordtype">void</span>);
+<a name="l00066"></a>00066 <span class="keyword">extern</span> <span class="keywordtype">int</span>  <a class="code" href="serport_8c.html#3e8d9991590284f8457f82515e6b3f55">GetByteFromSerialPort</a>(<span class="keywordtype">void</span>);
+<a name="l00067"></a>00067 <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="serport_8c.html#e7d011c3ebfea3c8636e9dfff48c2b8f">SendByteToSerialPort</a>(<span class="keywordtype">int</span> Byte);
+<a name="l00068"></a>00068 <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="serport_8c.html#e314efa07a8a8a13f537409be003e820">ClearSerialPortBuffer</a>(<span class="keywordtype">void</span>);
+<a name="l00069"></a>00069 <span class="keyword">extern</span> <span class="keywordtype">int</span>  <a class="code" href="serport_8c.html#0e32b30221ce16edc4754b4ac1f02478">BytesAvaillableFromSerialPort</a>(<span class="keywordtype">void</span>);
+<a name="l00070"></a>00070 <span class="keyword">extern</span> <span class="keywordtype">int</span>  <a class="code" href="serport_8c.html#d0ed27500a77d29b08df8e9f055cb621">UnsentBytesInSerialPort</a>(<span class="keywordtype">void</span>);
+<a name="l00071"></a>00071 
+<a name="l00072"></a>00072 <span class="comment">/*****************************************************************************/</span>
+<a name="l00073"></a>00073 <span class="comment">/*  End Header  : SerialPortInterface                                        */</span>
+<a name="l00074"></a>00074 <span class="comment">/*****************************************************************************/</span>
+<a name="l00075"></a>00075 <span class="preprocessor">#endif</span>
+<a name="l00076"></a>00076 <span class="preprocessor"></span>
+<a name="l00077"></a>00077 
+<a name="l00078"></a>00078 
+<a name="l00079"></a>00079 
+</pre></div><hr size="1"><address style="align: right;"><small>Erzeugt am Sat Jan 12 02:25:17 2013 für Carme-Snake von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.4.5 </small></address>
+</body>
+</html>
