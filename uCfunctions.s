@@ -371,7 +371,7 @@ STR r1,[r0]
 LDR r0,=FFLSR
 LDR r1,[r0]
 TST r1,#(1<<0)
-# BNE data_not_ready Weis nicht ob notwendig <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< einkomentieren wenn Interrupt, nicht pollen
+BEQ data_not_ready  @ Weis nicht ob notwendig <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< einkomentieren wenn Interrupt, nicht pollen
 # Daten bereit -> Richtung einlesen
 LDR r0,=FFRBR
 LDR r1,[r0]
@@ -423,7 +423,7 @@ LDR r0,=ICHP
 LDR r1,[r0]
 MOV r1,r1, LSR #16
 AND r1, r1, #63
-CMP r1,#26				@ Timer Interrupt ID = 26
+CMP r1,#26						@ Timer Interrupt ID = 26
 BNE no_timer_irq				@ step over if NO timer irq was thrown
 
 # OSCR auf 0 setzen wenn Interrupt ausgelöst wurde
@@ -457,7 +457,7 @@ LDMFD 	sp!, {r0-r1, r12, pc}^
 write_byte:
 STMFD 	sp!, {r0-r2, lr} 		@ save context
 # Parameter in r0 sichern
-MOV r0,r2
+MOV r2,r0
 
 # FFLCR &= ~(1<<7);	// DLAB löschen
 LDR r0,=FFLCR
@@ -466,14 +466,16 @@ BIC r1,r1,#(1<<7)
 STR r1,[r0]
 
 # warten bis Ausgangsbuffer leer
-write_byte_while:
-LDR r0,=FFLSR
-LDR r1,[r0]
-TST r1,#(1<<5)
+@LDR r0,=FFLSR
+@write_byte_while:
+
+@LDR r1,[r0]
+@TST r1,#(1<<5)
 # wenn Bit gesetzt: busy
-BEQ write_byte_while
+@BEQ write_byte_while
 
 LDR r0,=FFTHR
+MOV r2,#10
 LDR r2,[r0]
 
 LDMFD 	sp!, {r0-r2, pc}^ 		@ restore context, return

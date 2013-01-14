@@ -246,7 +246,9 @@ int main()
 			{
 			case COLLISION:
 				game_over = 1;
+				disable_interrupts();
 				write_byte(score);
+				enable_interrupts();
 				break;
 
 			case FOOD:
