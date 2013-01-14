@@ -1,7 +1,9 @@
 Carme-Snake
 ===========
 
-A snake game implementation on the microcontroller kit CARME
+A snake game implementation on the microcontroller kit CARME.
+Contains only the microcontroller code! The client code running on the PC can be found here:
+[Carme-Snake-Client code](https://github.com/stocyr/Carme-Snake-Client)
 
 Links
 -----------

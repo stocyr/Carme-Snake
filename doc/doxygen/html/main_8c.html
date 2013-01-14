@@ -82,7 +82,7 @@ Include-Abhängigkeitsdiagramm für main.c:<p><center><img src="main_8c__incl.png"
 <tr><td colspan="2"><br><h2>Variablen</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">volatile enum <a class="el" href="main_8h.html#ef72c37be9d1b9e6e5bbd6ef09448abe">direction</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#3d2fed6a3c8ed6c54d7637e4be95ffd2">snake_direction</a> = '?'</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Globale Variable, welche vom Interrupthandler über UART1 aktualisiert wird.  <a href="#3d2fed6a3c8ed6c54d7637e4be95ffd2"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Globale Variable, welche vom Interrupthandler über UART0 aktualisiert wird.  <a href="#3d2fed6a3c8ed6c54d7637e4be95ffd2"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">volatile int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#5eaa52de26924e9dfcc728d688edc25c">timer_irq_flag</a> = 0</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Globale Variable, welche vom Interrupthandler über den Timer gesetzt wird.  <a href="#5eaa52de26924e9dfcc728d688edc25c"></a><br></td></tr>
@@ -306,7 +306,7 @@ Schlange wird zurückgesetzt, Spielfeld neu gezeichnet.
 <p>
 Definiert in Zeile <a class="el" href="main_8c-source.html#l00191">191</a> der Datei <a class="el" href="main_8c-source.html">main.c</a>.
 <p>
-Benutzt <a class="el" href="main_8c-source.html#l00050">DELAY_REDUCTION</a>, <a class="el" href="main_8c-source.html#l00081">delay_time</a>, <a class="el" href="main_8h.html#46348a598e447edb204877cdae260c27">disable_interrupts()</a>, <a class="el" href="graphics_8c-source.html#l00068">draw_field()</a>, <a class="el" href="main_8h.html#530819fc5e18e6a7c179ae90d1e9448a">enable_interrupts()</a>, <a class="el" href="snake__controller_8c-source.html#l00200">init_snake()</a>, <a class="el" href="main_8h-source.html#l00036">INITIAL_SIZE</a>, <a class="el" href="main_8c-source.html#l00080">level</a>, <a class="el" href="main_8c-source.html#l00049">START_DELAY</a> und <a class="el" href="main_8c-source.html#l00077">startup_size</a>.
+Benutzt <a class="el" href="main_8c-source.html#l00050">DELAY_REDUCTION</a>, <a class="el" href="main_8c-source.html#l00081">delay_time</a>, <a class="el" href="main_8h.html#46348a598e447edb204877cdae260c27">disable_interrupts()</a>, <a class="el" href="graphics_8c-source.html#l00068">draw_field()</a>, <a class="el" href="main_8h.html#530819fc5e18e6a7c179ae90d1e9448a">enable_interrupts()</a>, <a class="el" href="snake__controller_8c-source.html#l00203">init_snake()</a>, <a class="el" href="main_8h-source.html#l00036">INITIAL_SIZE</a>, <a class="el" href="main_8c-source.html#l00080">level</a>, <a class="el" href="main_8c-source.html#l00049">START_DELAY</a> und <a class="el" href="main_8c-source.html#l00077">startup_size</a>.
 <p>
 Wird benutzt von <a class="el" href="main_8c-source.html#l00212">main()</a>.
 <p>
@@ -357,7 +357,7 @@ Struktogramm: <div align="center">
 <p>
 Definiert in Zeile <a class="el" href="main_8c-source.html#l00212">212</a> der Datei <a class="el" href="main_8c-source.html">main.c</a>.
 <p>
-Benutzt <a class="el" href="snake__controller_8c-source.html#l00191">check_initial_state()</a>, <a class="el" href="main_8h.html#46348a598e447edb204877cdae260c27">disable_interrupts()</a>, <a class="el" href="graphics_8c-source.html#l00079">draw_food()</a>, <a class="el" href="main_8h.html#530819fc5e18e6a7c179ae90d1e9448a">enable_interrupts()</a>, <a class="el" href="main_8h.html#b4a88417b3d0170d754c647c30b7216acc9284597026dcc021735c0970ca0c93">FOOD</a>, <a class="el" href="main_8c-source.html#l00082">game_over</a>, <a class="el" href="main_8h.html#73ecd992119001f6600418d8295d343f">init_counter()</a>, <a class="el" href="main_8c-source.html#l00178">init_game()</a>, <a class="el" href="marsenne_8c-source.html#l00061">init_genrand()</a>, <a class="el" href="graphics_8c-source.html#l00037">init_graphics()</a>, <a class="el" href="main_8c-source.html#l00191">init_level()</a>, <a class="el" href="main_8h.html#65c566f7a512164c4a80c8966aed957d">init_uart()</a>, <a class="el" href="main_8c-source.html#l00080">level</a>, <a class="el" href="main_8h.html#b4a88417b3d0170d754c647c30b7216a8697250efc73639dd2a6e7da243ac68b">NOTHING</a>, <a class="el" href="main_8c-source.html#l00122">randomize_food()</a>, <a class="el" href="main_8c-source.html#l00083">score</a>, <a class="el" href="snake__controller_8c-source.html#l00043">size</a>, <a class="el" href="main_8c-source.html#l00062">snake_direction</a>, <a class="el" href="snake__controller_8c-source.html#l00058">step_forward()</a> und <a class="el" href="main_8h.html#71fbd14f6ccf4b435a41ae2bae104568">write_byte()</a>.
+Benutzt <a class="el" href="snake__controller_8c-source.html#l00194">check_initial_state()</a>, <a class="el" href="main_8h.html#46348a598e447edb204877cdae260c27">disable_interrupts()</a>, <a class="el" href="graphics_8c-source.html#l00079">draw_food()</a>, <a class="el" href="main_8h.html#530819fc5e18e6a7c179ae90d1e9448a">enable_interrupts()</a>, <a class="el" href="carme_8h-source.html#l00024">FFLCR</a>, <a class="el" href="carme_8h-source.html#l00026">FFLSR</a>, <a class="el" href="carme_8h-source.html#l00019">FFTHR</a>, <a class="el" href="main_8h.html#b4a88417b3d0170d754c647c30b7216acc9284597026dcc021735c0970ca0c93">FOOD</a>, <a class="el" href="main_8c-source.html#l00082">game_over</a>, <a class="el" href="main_8h.html#73ecd992119001f6600418d8295d343f">init_counter()</a>, <a class="el" href="main_8c-source.html#l00178">init_game()</a>, <a class="el" href="marsenne_8c-source.html#l00061">init_genrand()</a>, <a class="el" href="graphics_8c-source.html#l00037">init_graphics()</a>, <a class="el" href="main_8c-source.html#l00191">init_level()</a>, <a class="el" href="main_8h.html#65c566f7a512164c4a80c8966aed957d">init_uart()</a>, <a class="el" href="main_8c-source.html#l00080">level</a>, <a class="el" href="main_8h.html#b4a88417b3d0170d754c647c30b7216a8697250efc73639dd2a6e7da243ac68b">NOTHING</a>, <a class="el" href="main_8c-source.html#l00122">randomize_food()</a>, <a class="el" href="main_8c-source.html#l00083">score</a>, <a class="el" href="snake__controller_8c-source.html#l00043">size</a>, <a class="el" href="main_8c-source.html#l00062">snake_direction</a> und <a class="el" href="snake__controller_8c-source.html#l00058">step_forward()</a>.
 <p>
 Hier ist der Graph aller Aufrufe für diese Funktion:<p><center><img src="main_8c_ea83b916b3f52eec32ae6d54d59b4453_cgraph.png" border="0" usemap="#main_8c_ea83b916b3f52eec32ae6d54d59b4453_cgraph_map" alt=""></center>
 <map name="main_8c_ea83b916b3f52eec32ae6d54d59b4453_cgraph_map">
@@ -373,7 +373,6 @@ Hier ist der Graph aller Aufrufe für diese Funktion:<p><center><img src="main_8c
 <area href="main_8h.html#65c566f7a512164c4a80c8966aed957d" shape="rect" coords="135,512,203,539" alt="">
 <area href="main_8c.html#918a7b1185b5d4aadeeadc264e92e58a" shape="rect" coords="113,411,226,437" alt="">
 <area href="snake__controller_8c.html#76b1b7c11a5738ad98be821ff7794746" shape="rect" coords="122,563,217,589" alt="">
-<area href="main_8h.html#71fbd14f6ccf4b435a41ae2bae104568" shape="rect" coords="129,613,210,640" alt="">
 <area href="graphics_8c.html#3383779eb1fe142978d371a3428c33c0" shape="rect" coords="321,208,399,235" alt="">
 <area href="snake__controller_8c.html#355629f5f037edd2e3a7face80a52886" shape="rect" coords="319,157,401,184" alt="">
 <area href="graphics_8c.html#ee8a0e5ffcee2ad169181b5cd536a85f" shape="rect" coords="486,157,613,184" alt="">
@@ -448,7 +447,7 @@ Liefert eine Zufällige Position innerhalb des Spielfeldes, jedoch *nicht* auf de
 <p>
 Definiert in Zeile <a class="el" href="main_8c-source.html#l00122">122</a> der Datei <a class="el" href="main_8c-source.html">main.c</a>.
 <p>
-Benutzt <a class="el" href="snake__controller_8c-source.html#l00157">check_snake_collision()</a> und <a class="el" href="main_8c-source.html#l00106">randomize_location()</a>.
+Benutzt <a class="el" href="snake__controller_8c-source.html#l00160">check_snake_collision()</a> und <a class="el" href="main_8c-source.html#l00106">randomize_location()</a>.
 <p>
 Wird benutzt von <a class="el" href="main_8c-source.html#l00212">main()</a>.
 <p>
@@ -608,7 +607,7 @@ Enthält die Position des Futters.
 <p>
 Definiert in Zeile <a class="el" href="main_8c-source.html#l00079">79</a> der Datei <a class="el" href="main_8c-source.html">main.c</a>.
 <p>
-Wird benutzt von <a class="el" href="snake__controller_8c-source.html#l00180">check_food_collision()</a>.    </td>
+Wird benutzt von <a class="el" href="snake__controller_8c-source.html#l00183">check_food_collision()</a>.    </td>
   </tr>
 </table>
 <a class="anchor" name="f8af61ed6db77551408eb5e96ee77818"></a><!-- doxytag: member="main.c::game_over" ref="f8af61ed6db77551408eb5e96ee77818" args="" --><p>
@@ -693,7 +692,7 @@ Wird benutzt von <a class="el" href="main_8c-source.html#l00178">init_game()</a>
 <p>
 Definiert in Zeile <a class="el" href="main_8c-source.html#l00083">83</a> der Datei <a class="el" href="main_8c-source.html">main.c</a>.
 <p>
-Wird benutzt von <a class="el" href="highscore_8c-source.html#l00098">fileload()</a>, <a class="el" href="highscore_8c-source.html#l00155">filesave()</a>, <a class="el" href="game_8c-source.html#l00059">Game()</a>, <a class="el" href="zeichnen_8c-source.html#l00068">Highscore_zeichnen()</a>, <a class="el" href="main_8c-source.html#l00178">init_game()</a>, <a class="el" href="main_8c-source.html#l00212">main()</a> und <a class="el" href="highscore_8c-source.html#l00210">sort()</a>.    </td>
+Wird benutzt von <a class="el" href="highscore_8c-source.html#l00098">fileload()</a>, <a class="el" href="highscore_8c-source.html#l00155">filesave()</a>, <a class="el" href="game_8c-source.html#l00051">Game()</a>, <a class="el" href="zeichnen_8c-source.html#l00070">Highscore_zeichnen()</a>, <a class="el" href="main_8c-source.html#l00178">init_game()</a>, <a class="el" href="main_8c-source.html#l00212">main()</a> und <a class="el" href="highscore_8c-source.html#l00210">sort()</a>.    </td>
   </tr>
 </table>
 <a class="anchor" name="3d2fed6a3c8ed6c54d7637e4be95ffd2"></a><!-- doxytag: member="main.c::snake_direction" ref="3d2fed6a3c8ed6c54d7637e4be95ffd2" args="" --><p>
@@ -716,7 +715,7 @@ Wird benutzt von <a class="el" href="highscore_8c-source.html#l00098">fileload()
     <td>
 
 <p>
-Globale Variable, welche vom Interrupthandler über UART1 aktualisiert wird. 
+Globale Variable, welche vom Interrupthandler über UART0 aktualisiert wird. 
 <p>
 Die Variable ist das Interface zur UART1 Schnittstelle. Sie enthält die Richtung, in die die Schlange steuern soll. Wird per PC Tastatur gesteuert und dann per UART zum CARME Kit gesendet.<p>
 Bevor überhaupt eine Taste gedrückt wurde hat die Variable den Wert '?', damit man erkennen kann, wenn dann erstmals ein r, o, l oder u hereinkommt. 
@@ -752,7 +751,7 @@ Die Schlange beginnt als einzelnes Glied und wächst dann in die Richtung, in die
 <p>
 Definiert in Zeile <a class="el" href="main_8c-source.html#l00077">77</a> der Datei <a class="el" href="main_8c-source.html">main.c</a>.
 <p>
-Wird benutzt von <a class="el" href="snake__controller_8c-source.html#l00191">check_initial_state()</a> und <a class="el" href="main_8c-source.html#l00191">init_level()</a>.    </td>
+Wird benutzt von <a class="el" href="snake__controller_8c-source.html#l00194">check_initial_state()</a> und <a class="el" href="main_8c-source.html#l00191">init_level()</a>.    </td>
   </tr>
 </table>
 <a class="anchor" name="5eaa52de26924e9dfcc728d688edc25c"></a><!-- doxytag: member="main.c::timer_irq_flag" ref="5eaa52de26924e9dfcc728d688edc25c" args="" --><p>
@@ -784,7 +783,7 @@ Definiert in Zeile <a class="el" href="main_8c-source.html#l00068">68</a> der Da
 Wird benutzt von <a class="el" href="main_8c-source.html#l00140">delay()</a>.    </td>
   </tr>
 </table>
-<hr size="1"><address style="align: right;"><small>Erzeugt am Sat Jan 12 02:25:20 2013 für Carme-Snake von&nbsp;
+<hr size="1"><address style="align: right;"><small>Erzeugt am Mon Jan 14 17:36:37 2013 für Carme-Snake von&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.4.5 </small></address>
 </body>
