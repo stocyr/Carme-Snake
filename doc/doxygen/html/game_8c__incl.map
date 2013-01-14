@@ -1,0 +1,5 @@
+base referer
+rect $highscore_8h-source.html 374,208 463,235
+rect $game_8h-source.html 386,259 451,285
+rect $window_8h-source.html 381,309 456,336
+rect $serport_8h-source.html 382,360 455,387

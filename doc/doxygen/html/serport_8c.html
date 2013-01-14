@@ -1,0 +1,375 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1">
+<title>Carme-Snake: D:/Programming/C/Carme-Snake-Client/src/serport.c-Dateireferenz</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Erzeugt von Doxygen 1.4.5 -->
+<div class="tabs">
+  <ul>
+    <li><a href="index.html"><span>Hauptseite</span></a></li>
+    <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+    <li id="current"><a href="files.html"><span>Dateien</span></a></li>
+    <li><a href="dirs.html"><span>Verzeichnisse</span></a></li>
+    <li><a href="pages.html"><span>Zusätzliche&nbsp;Informationen</span></a></li>
+  </ul></div>
+<div class="tabs">
+  <ul>
+    <li><a href="files.html"><span>Auflistung&nbsp;der&nbsp;Dateien</span></a></li>
+    <li><a href="globals.html"><span>Datei-Elemente</span></a></li>
+  </ul></div>
+<div class="nav">
+<a class="el" href="dir_D_3A_2F.html">D:</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_D_3A_2FProgramming_2F.html">Programming</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_D_3A_2FProgramming_2FC_2F.html">C</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_D_3A_2FProgramming_2FC_2FCarme_2DSnake_2DClient_2F.html">Carme-Snake-Client</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_D_3A_2FProgramming_2FC_2FCarme_2DSnake_2DClient_2Fsrc_2F.html">src</a></div>
+<h1>serport.c-Dateireferenz</h1><code>#include &quot;<a class="el" href="serport_8h-source.html">serport.h</a>&quot;</code><br>
+<code>#include &lt;windows.h&gt;</code><br>
+
+<p>
+Include-Abhängigkeitsdiagramm für serport.c:<p><center><img src="serport_8c__incl.png" border="0" usemap="#D:/Programming/C/Carme-Snake-Client/src/serport.c_map" alt=""></center>
+<map name="D:/Programming/C/Carme-Snake-Client/src/serport.c_map">
+<area href="serport_8h-source.html" shape="rect" coords="386,5,459,32" alt="">
+</map>
+
+<p>
+<a href="serport_8c-source.html">gehe zum Quellcode dieser Datei</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Funktionen</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="serport_8c.html#98b55ee701e5f4ba268d8542b7803554">InitSerialPort</a> (<a class="el" href="serport_8h.html#783064ca20cd587e4b16de0939db712c">PortType</a> Port, <a class="el" href="serport_8h.html#38e261dbb0e70f73322a2b5142b1f8c4">BaudrateType</a> BaudRate, <a class="el" href="serport_8h.html#433c4f3cf7e29a2a3735560d6fd551fd">ParityType</a> Parity, int Bits, int Stopbits)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="serport_8c.html#d708c08ed0c1dc60aeb3674a9a06f288">ShutdownSerialPort</a> (void)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="serport_8c.html#3e8d9991590284f8457f82515e6b3f55">GetByteFromSerialPort</a> (void)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="serport_8c.html#e7d011c3ebfea3c8636e9dfff48c2b8f">SendByteToSerialPort</a> (int Byte)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="serport_8c.html#e314efa07a8a8a13f537409be003e820">ClearSerialPortBuffer</a> (void)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="serport_8c.html#0e32b30221ce16edc4754b4ac1f02478">BytesAvaillableFromSerialPort</a> (void)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="serport_8c.html#d0ed27500a77d29b08df8e9f055cb621">UnsentBytesInSerialPort</a> (void)</td></tr>
+
+<tr><td colspan="2"><br><h2>Variablen</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static HANDLE&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="serport_8c.html#48f8e68f4689776b31a64ea5b0b33a8e">ComPort</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static COMMTIMEOUTS&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="serport_8c.html#21f0da5e65646887b7bb73cee0dec690">OldTimeout</a></td></tr>
+
+</table>
+<hr><h2>Dokumentation der Funktionen</h2>
+<a class="anchor" name="0e32b30221ce16edc4754b4ac1f02478"></a><!-- doxytag: member="serport.c::BytesAvaillableFromSerialPort" ref="0e32b30221ce16edc4754b4ac1f02478" args="(void)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">int BytesAvaillableFromSerialPort           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">void&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definiert in Zeile <a class="el" href="serport_8c-source.html#l00366">366</a> der Datei <a class="el" href="serport_8c-source.html">serport.c</a>.
+<p>
+Benutzt <a class="el" href="serport_8c-source.html#l00037">ComPort</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="e314efa07a8a8a13f537409be003e820"></a><!-- doxytag: member="serport.c::ClearSerialPortBuffer" ref="e314efa07a8a8a13f537409be003e820" args="(void)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">void ClearSerialPortBuffer           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">void&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definiert in Zeile <a class="el" href="serport_8c-source.html#l00335">335</a> der Datei <a class="el" href="serport_8c-source.html">serport.c</a>.
+<p>
+Benutzt <a class="el" href="serport_8c-source.html#l00037">ComPort</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="3e8d9991590284f8457f82515e6b3f55"></a><!-- doxytag: member="serport.c::GetByteFromSerialPort" ref="3e8d9991590284f8457f82515e6b3f55" args="(void)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">int GetByteFromSerialPort           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">void&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definiert in Zeile <a class="el" href="serport_8c-source.html#l00263">263</a> der Datei <a class="el" href="serport_8c-source.html">serport.c</a>.
+<p>
+Benutzt <a class="el" href="serport_8c-source.html#l00037">ComPort</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="98b55ee701e5f4ba268d8542b7803554"></a><!-- doxytag: member="serport.c::InitSerialPort" ref="98b55ee701e5f4ba268d8542b7803554" args="(PortType Port, BaudrateType BaudRate, ParityType Parity, int Bits, int Stopbits)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">int InitSerialPort           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top"><a class="el" href="serport_8h.html#783064ca20cd587e4b16de0939db712c">PortType</a>&nbsp;</td>
+          <td class="mdname" nowrap> <em>Port</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap><a class="el" href="serport_8h.html#38e261dbb0e70f73322a2b5142b1f8c4">BaudrateType</a>&nbsp;</td>
+          <td class="mdname" nowrap> <em>BaudRate</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap><a class="el" href="serport_8h.html#433c4f3cf7e29a2a3735560d6fd551fd">ParityType</a>&nbsp;</td>
+          <td class="mdname" nowrap> <em>Parity</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>int&nbsp;</td>
+          <td class="mdname" nowrap> <em>Bits</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>int&nbsp;</td>
+          <td class="mdname" nowrap> <em>Stopbits</em></td>
+        </tr>
+        <tr>
+          <td class="md"></td>
+          <td class="md">)&nbsp;</td>
+          <td class="md" colspan="2"></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definiert in Zeile <a class="el" href="serport_8c-source.html#l00065">65</a> der Datei <a class="el" href="serport_8c-source.html">serport.c</a>.
+<p>
+Benutzt <a class="el" href="serport_8h.html#38e261dbb0e70f73322a2b5142b1f8c4c4266a82c6481d5508fd16dc1061f76a">Bd1200</a>, <a class="el" href="serport_8h.html#38e261dbb0e70f73322a2b5142b1f8c49eb3a214ed801637cc373a778cec1177">Bd19200</a>, <a class="el" href="serport_8h.html#38e261dbb0e70f73322a2b5142b1f8c4dd53ee83c2a55653e82a8e7687065504">Bd2400</a>, <a class="el" href="serport_8h.html#38e261dbb0e70f73322a2b5142b1f8c4c8665aedf09e2846de06d3b7bdd72741">Bd4800</a>, <a class="el" href="serport_8h.html#38e261dbb0e70f73322a2b5142b1f8c4f3af8e234279100722af05706511a891">Bd600</a>, <a class="el" href="serport_8h.html#38e261dbb0e70f73322a2b5142b1f8c49578119692f450270b2939fe92f875c9">Bd9600</a>, <a class="el" href="serport_8h.html#783064ca20cd587e4b16de0939db712cf844887960ff17500d1a44c33af38b78">COM1</a>, <a class="el" href="serport_8h.html#783064ca20cd587e4b16de0939db712ca9d582cd711bb7e4814f163af03fc5c2">COM2</a>, <a class="el" href="serport_8h.html#783064ca20cd587e4b16de0939db712c4e09844d2586f0df783fcaa2753899f8">COM3</a>, <a class="el" href="serport_8h.html#783064ca20cd587e4b16de0939db712cd3052390df38c96103f85d82900fa259">COM4</a>, <a class="el" href="serport_8h.html#783064ca20cd587e4b16de0939db712c0e817345893c98ea792a365a1713dff5">COM5</a>, <a class="el" href="serport_8h.html#783064ca20cd587e4b16de0939db712ce4507bdbbe2296106f173b6099c41de7">COM6</a>, <a class="el" href="serport_8h.html#783064ca20cd587e4b16de0939db712c1ff56bf66686ad64587f0edb5823d6d7">COM7</a>, <a class="el" href="serport_8c-source.html#l00037">ComPort</a>, <a class="el" href="serport_8c-source.html#l00038">OldTimeout</a>, <a class="el" href="serport_8h.html#433c4f3cf7e29a2a3735560d6fd551fdd3f35215f913f314d494290a574929d1">P_EVEN</a>, <a class="el" href="serport_8h.html#433c4f3cf7e29a2a3735560d6fd551fde3653b03e1ea00d286b32e491124154d">P_MARK</a>, <a class="el" href="serport_8h.html#433c4f3cf7e29a2a3735560d6fd551fdf1a47cb1284201167502831e56d96bd7">P_NONE</a>, <a class="el" href="serport_8h.html#433c4f3cf7e29a2a3735560d6fd551fdc2e773615dcc02268c98a424184832b5">P_ODD</a>, <a class="el" href="serport_8h.html#433c4f3cf7e29a2a3735560d6fd551fd965c426cef3315ccfd4de72d84c2f61f">P_SPACE</a> und <a class="el" href="serport_8c-source.html#l00227">ShutdownSerialPort()</a>.
+<p>
+Hier ist der Graph aller Aufrufe für diese Funktion:<p><center><img src="serport_8c_98b55ee701e5f4ba268d8542b7803554_cgraph.png" border="0" usemap="#serport_8c_98b55ee701e5f4ba268d8542b7803554_cgraph_map" alt=""></center>
+<map name="serport_8c_98b55ee701e5f4ba268d8542b7803554_cgraph_map">
+<area href="serport_8c.html#d708c08ed0c1dc60aeb3674a9a06f288" shape="rect" coords="149,5,285,32" alt="">
+</map>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="e7d011c3ebfea3c8636e9dfff48c2b8f"></a><!-- doxytag: member="serport.c::SendByteToSerialPort" ref="e7d011c3ebfea3c8636e9dfff48c2b8f" args="(int Byte)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">void SendByteToSerialPort           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">int&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap> <em>Byte</em>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definiert in Zeile <a class="el" href="serport_8c-source.html#l00302">302</a> der Datei <a class="el" href="serport_8c-source.html">serport.c</a>.
+<p>
+Benutzt <a class="el" href="serport_8c-source.html#l00037">ComPort</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="d708c08ed0c1dc60aeb3674a9a06f288"></a><!-- doxytag: member="serport.c::ShutdownSerialPort" ref="d708c08ed0c1dc60aeb3674a9a06f288" args="(void)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">void ShutdownSerialPort           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">void&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definiert in Zeile <a class="el" href="serport_8c-source.html#l00227">227</a> der Datei <a class="el" href="serport_8c-source.html">serport.c</a>.
+<p>
+Benutzt <a class="el" href="serport_8c-source.html#l00037">ComPort</a> und <a class="el" href="serport_8c-source.html#l00038">OldTimeout</a>.
+<p>
+Wird benutzt von <a class="el" href="serport_8c-source.html#l00065">InitSerialPort()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="d0ed27500a77d29b08df8e9f055cb621"></a><!-- doxytag: member="serport.c::UnsentBytesInSerialPort" ref="d0ed27500a77d29b08df8e9f055cb621" args="(void)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">int UnsentBytesInSerialPort           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">void&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definiert in Zeile <a class="el" href="serport_8c-source.html#l00399">399</a> der Datei <a class="el" href="serport_8c-source.html">serport.c</a>.
+<p>
+Benutzt <a class="el" href="serport_8c-source.html#l00037">ComPort</a>.    </td>
+  </tr>
+</table>
+<hr><h2>Variablen-Dokumentation</h2>
+<a class="anchor" name="48f8e68f4689776b31a64ea5b0b33a8e"></a><!-- doxytag: member="serport.c::ComPort" ref="48f8e68f4689776b31a64ea5b0b33a8e" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">HANDLE <a class="el" href="serport_8c.html#48f8e68f4689776b31a64ea5b0b33a8e">ComPort</a><code> [static]</code>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definiert in Zeile <a class="el" href="serport_8c-source.html#l00037">37</a> der Datei <a class="el" href="serport_8c-source.html">serport.c</a>.
+<p>
+Wird benutzt von <a class="el" href="serport_8c-source.html#l00366">BytesAvaillableFromSerialPort()</a>, <a class="el" href="serport_8c-source.html#l00335">ClearSerialPortBuffer()</a>, <a class="el" href="serport_8c-source.html#l00263">GetByteFromSerialPort()</a>, <a class="el" href="serport_8c-source.html#l00065">InitSerialPort()</a>, <a class="el" href="serport_8c-source.html#l00302">SendByteToSerialPort()</a>, <a class="el" href="serport_8c-source.html#l00227">ShutdownSerialPort()</a> und <a class="el" href="serport_8c-source.html#l00399">UnsentBytesInSerialPort()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="21f0da5e65646887b7bb73cee0dec690"></a><!-- doxytag: member="serport.c::OldTimeout" ref="21f0da5e65646887b7bb73cee0dec690" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">COMMTIMEOUTS <a class="el" href="serport_8c.html#21f0da5e65646887b7bb73cee0dec690">OldTimeout</a><code> [static]</code>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definiert in Zeile <a class="el" href="serport_8c-source.html#l00038">38</a> der Datei <a class="el" href="serport_8c-source.html">serport.c</a>.
+<p>
+Wird benutzt von <a class="el" href="serport_8c-source.html#l00065">InitSerialPort()</a> und <a class="el" href="serport_8c-source.html#l00227">ShutdownSerialPort()</a>.    </td>
+  </tr>
+</table>
+<hr size="1"><address style="align: right;"><small>Erzeugt am Sat Jan 12 02:25:18 2013 für Carme-Snake von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.4.5 </small></address>
+</body>
+</html>

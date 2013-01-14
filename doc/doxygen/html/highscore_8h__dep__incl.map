@@ -1,0 +1,4 @@
+base referer
+rect $game_8c-source.html 410,5 729,32
+rect $highscore_8c-source.html 398,56 741,83
+rect $zeichnen_8c-source.html 400,107 739,133

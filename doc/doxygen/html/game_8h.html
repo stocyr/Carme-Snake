@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1">
+<title>Carme-Snake: D:/Programming/C/Carme-Snake-Client/src/game.h-Dateireferenz</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Erzeugt von Doxygen 1.4.5 -->
+<div class="tabs">
+  <ul>
+    <li><a href="index.html"><span>Hauptseite</span></a></li>
+    <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+    <li id="current"><a href="files.html"><span>Dateien</span></a></li>
+    <li><a href="dirs.html"><span>Verzeichnisse</span></a></li>
+    <li><a href="pages.html"><span>Zusätzliche&nbsp;Informationen</span></a></li>
+  </ul></div>
+<div class="tabs">
+  <ul>
+    <li><a href="files.html"><span>Auflistung&nbsp;der&nbsp;Dateien</span></a></li>
+    <li><a href="globals.html"><span>Datei-Elemente</span></a></li>
+  </ul></div>
+<div class="nav">
+<a class="el" href="dir_D_3A_2F.html">D:</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_D_3A_2FProgramming_2F.html">Programming</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_D_3A_2FProgramming_2FC_2F.html">C</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_D_3A_2FProgramming_2FC_2FCarme_2DSnake_2DClient_2F.html">Carme-Snake-Client</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_D_3A_2FProgramming_2FC_2FCarme_2DSnake_2DClient_2Fsrc_2F.html">src</a></div>
+<h1>game.h-Dateireferenz</h1>
+<p>
+Dieser Graph zeigt, welche Datei direkt oder indirekt diese Datei enthält:<p><center><img src="game_8h__dep__incl.png" border="0" usemap="#D:/Programming/C/Carme-Snake-Client/src/game.hdep_map" alt=""></center>
+<map name="D:/Programming/C/Carme-Snake-Client/src/game.hdep_map">
+<area href="game_8c-source.html" shape="rect" coords="394,5,713,32" alt="">
+<area href="_snake__main_8c-source.html" shape="rect" coords="374,56,733,83" alt="">
+</map>
+
+<p>
+<a href="game_8h-source.html">gehe zum Quellcode dieser Datei</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Funktionen</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="game_8h.html#d2c20aac2ec02a44bc35b97981530f4c">Game</a> (int argc, char *argv[], const char *ApplicationPath)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Steuerung des eigentlichen Spiels.  <a href="#d2c20aac2ec02a44bc35b97981530f4c"></a><br></td></tr>
+</table>
+<hr><h2>Dokumentation der Funktionen</h2>
+<a class="anchor" name="d2c20aac2ec02a44bc35b97981530f4c"></a><!-- doxytag: member="game.h::Game" ref="d2c20aac2ec02a44bc35b97981530f4c" args="(int argc, char *argv[], const char *ApplicationPath)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">int Game           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">int&nbsp;</td>
+          <td class="mdname" nowrap> <em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>char *&nbsp;</td>
+          <td class="mdname" nowrap> <em>argv</em>[], </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>const char *&nbsp;</td>
+          <td class="mdname" nowrap> <em>ApplicationPath</em></td>
+        </tr>
+        <tr>
+          <td class="md"></td>
+          <td class="md">)&nbsp;</td>
+          <td class="md" colspan="2"></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Steuerung des eigentlichen Spiels. 
+<p>
+Liest den Spielername ein, verabreitet die Steuerbefehle für die Schlange und den Score<p>
+&lt; Array für Spielername<p>
+&lt; Variable zur Verarbeitung der eingelesenen Zeichen<p>
+&lt; Variable zum einlesen der Zeichen von der Tastatur<p>
+&lt; Variable zum speichern des letzen eingelesenen Zeichens<p>
+&lt; Variable für den Score<p>
+&lt; Variable für die Portnummer<p>
+&lt; Variable für Rückgabewert der Highscorefunktion<p>
+&lt; Wird 1 wenn Highscore geknackt wurde, sonst 0 
+<p>
+Definiert in Zeile <a class="el" href="game_8c-source.html#l00059">59</a> der Datei <a class="el" href="game_8c-source.html">game.c</a>.
+<p>
+Benutzt <a class="el" href="window_8h.html#6b681f4e0a72f94c48925452ce2efd14">ClearWindow()</a>, <a class="el" href="window_8h-source.html#l00252">COL_BLACK</a>, <a class="el" href="window_8h-source.html#l00233">COL_GREEN</a>, <a class="el" href="window_8h-source.html#l00232">COL_RED</a>, <a class="el" href="window_8h.html#da342c15c4003b26b1d22ee513c59260">DrawFilledRectangle()</a>, <a class="el" href="window_8h.html#11c214049de28dbd97d389581817dc10">DrawTextXY()</a>, <a class="el" href="window_8h.html#0ca3a6077a861236d2f9aa6646d955b4c8235eecfbd3dbc5649cf02515a71989">FONT_NORMAL</a>, <a class="el" href="window_8h.html#dc1cab7cbc26dfc76e52660a847a6b6a">GetKeyPress()</a>, <a class="el" href="main_8c-source.html#l00083">score</a>, <a class="el" href="window_8h.html#ddac38a95edf90171f28987319bc7ed7">SelectFont()</a> und <a class="el" href="window_8h.html#465e6e6cd7c1263b7bbd43fb6331caacfbef6a0aa8c931df6a39efcd20fbe776">W_KEY_RETURN</a>.
+<p>
+Wird benutzt von <a class="el" href="_snake__main_8c-source.html#l00052">gfxmain()</a>.
+<p>
+Hier ist der Graph aller Aufrufe für diese Funktion:<p><center><img src="game_8h_d2c20aac2ec02a44bc35b97981530f4c_cgraph.png" border="0" usemap="#game_8h_d2c20aac2ec02a44bc35b97981530f4c_cgraph_map" alt=""></center>
+<map name="game_8h_d2c20aac2ec02a44bc35b97981530f4c_cgraph_map">
+<area href="window_8h.html#6b681f4e0a72f94c48925452ce2efd14" shape="rect" coords="133,5,232,32" alt="">
+<area href="window_8h.html#da342c15c4003b26b1d22ee513c59260" shape="rect" coords="113,56,253,83" alt="">
+<area href="window_8h.html#11c214049de28dbd97d389581817dc10" shape="rect" coords="137,107,229,133" alt="">
+<area href="window_8h.html#dc1cab7cbc26dfc76e52660a847a6b6a" shape="rect" coords="133,157,233,184" alt="">
+<area href="window_8h.html#ddac38a95edf90171f28987319bc7ed7" shape="rect" coords="140,208,225,235" alt="">
+</map>
+    </td>
+  </tr>
+</table>
+<hr size="1"><address style="align: right;"><small>Erzeugt am Sat Jan 12 02:25:17 2013 für Carme-Snake von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.4.5 </small></address>
+</body>
+</html>

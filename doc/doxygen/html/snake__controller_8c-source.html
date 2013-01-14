@@ -89,37 +89,37 @@
 <a name="l00090"></a>00090         snake[<a class="code" href="snake__controller_8c.html#96e89a298e0a9f469b9ae458d6afae9f">head</a>].y = new_pos.y;
 <a name="l00091"></a>00091         <a class="code" href="graphics_8c.html#ee8a0e5ffcee2ad169181b5cd536a85f">draw_snake_head</a>(snake[<a class="code" href="snake__controller_8c.html#96e89a298e0a9f469b9ae458d6afae9f">head</a>]);
 <a name="l00092"></a>00092 
-<a name="l00093"></a>00093         <span class="keywordflow">if</span>(initial)
-<a name="l00094"></a>00094         {
-<a name="l00095"></a>00095                 <span class="comment">// Länge steigt am Anfang von 1 bis auf startup_size</span>
-<a name="l00096"></a>00096                 <span class="comment">// (Schlange baut sich auf)</span>
-<a name="l00097"></a>00097                 <a class="code" href="snake__controller_8c.html#f7bd60b75b29d79b660a2859395c1a24">size</a>++;
-<a name="l00098"></a>00098         }
-<a name="l00099"></a>00099         <span class="keywordflow">else</span>
-<a name="l00100"></a>00100         {
-<a name="l00101"></a>00101                 <span class="comment">// Länge bleibt gleich. Tail löschen:</span>
-<a name="l00102"></a>00102                 <a class="code" href="graphics_8c.html#fdb3a5034c49091c27b540dbf03f4e3f">clear_snake_tail</a>(snake[<a class="code" href="snake__controller_8c.html#7aea2552dfe7eb84b9443b6fc9ba6e01">tail</a>]);
-<a name="l00103"></a>00103                 <span class="comment">// Tail nachrutschen</span>
-<a name="l00104"></a>00104                 tail++;
-<a name="l00105"></a>00105                 tail %= <a class="code" href="main_8h.html#e9ce1ae38621389b25a2ca89a712e0c6">SNAKE_BUFFER</a>;
-<a name="l00106"></a>00106 
-<a name="l00107"></a>00107                 <span class="comment">// bei nachgerutschtem Tail nochmal den Tail neu zeichnen (Ästhetik)</span>
-<a name="l00108"></a>00108                 <a class="code" href="graphics_8c.html#ee8a0e5ffcee2ad169181b5cd536a85f">draw_snake_head</a>(snake[tail]);
-<a name="l00109"></a>00109         }
-<a name="l00110"></a>00110 
-<a name="l00111"></a>00111         <span class="comment">// wenn auf FOOD getroffen, FOOD zurückkliefern</span>
-<a name="l00112"></a>00112         <span class="keywordflow">if</span>(<a class="code" href="snake__controller_8c.html#95b62a914c274c05229dd2fc42619b42">check_food_collision</a>(new_pos))
-<a name="l00113"></a>00113         {
-<a name="l00114"></a>00114                 <span class="comment">// länge von Snake erhöhen</span>
-<a name="l00115"></a>00115                 <span class="keywordflow">if</span>(initial)
-<a name="l00116"></a>00116                 {
-<a name="l00117"></a>00117                         <a class="code" href="main_8c.html#1b34c77f48cdbfd8120965c5e8183b44">startup_size</a>++;
-<a name="l00118"></a>00118                 }
-<a name="l00119"></a>00119                 <span class="keywordflow">else</span>
-<a name="l00120"></a>00120                 {
-<a name="l00121"></a>00121                         <a class="code" href="snake__controller_8c.html#f7bd60b75b29d79b660a2859395c1a24">size</a>++;
-<a name="l00122"></a>00122                 }
-<a name="l00123"></a>00123                 <span class="keywordflow">return</span> <a class="code" href="main_8h.html#b4a88417b3d0170d754c647c30b7216acc9284597026dcc021735c0970ca0c93">FOOD</a>;
+<a name="l00093"></a>00093         <span class="comment">// wenn auf FOOD getroffen, FOOD zurückkliefern</span>
+<a name="l00094"></a>00094         <span class="keywordflow">if</span>(<a class="code" href="snake__controller_8c.html#95b62a914c274c05229dd2fc42619b42">check_food_collision</a>(new_pos))
+<a name="l00095"></a>00095         {
+<a name="l00096"></a>00096                 <span class="comment">// länge von Snake erhöhen</span>
+<a name="l00097"></a>00097                 <span class="keywordflow">if</span>(initial)
+<a name="l00098"></a>00098                 {
+<a name="l00099"></a>00099                         <a class="code" href="main_8c.html#1b34c77f48cdbfd8120965c5e8183b44">startup_size</a>++;
+<a name="l00100"></a>00100                 }
+<a name="l00101"></a>00101                 <span class="keywordflow">else</span>
+<a name="l00102"></a>00102                 {
+<a name="l00103"></a>00103                         <a class="code" href="snake__controller_8c.html#f7bd60b75b29d79b660a2859395c1a24">size</a>++;
+<a name="l00104"></a>00104                 }
+<a name="l00105"></a>00105                 <span class="keywordflow">return</span> <a class="code" href="main_8h.html#b4a88417b3d0170d754c647c30b7216acc9284597026dcc021735c0970ca0c93">FOOD</a>;
+<a name="l00106"></a>00106         }
+<a name="l00107"></a>00107 
+<a name="l00108"></a>00108         <span class="keywordflow">if</span>(initial)
+<a name="l00109"></a>00109         {
+<a name="l00110"></a>00110                 <span class="comment">// Länge steigt am Anfang von 1 bis auf startup_size</span>
+<a name="l00111"></a>00111                 <span class="comment">// (Schlange baut sich auf)</span>
+<a name="l00112"></a>00112                 <a class="code" href="snake__controller_8c.html#f7bd60b75b29d79b660a2859395c1a24">size</a>++;
+<a name="l00113"></a>00113         }
+<a name="l00114"></a>00114         <span class="keywordflow">else</span>
+<a name="l00115"></a>00115         {
+<a name="l00116"></a>00116                 <span class="comment">// Länge bleibt gleich. Tail löschen:</span>
+<a name="l00117"></a>00117                 <a class="code" href="graphics_8c.html#fdb3a5034c49091c27b540dbf03f4e3f">clear_snake_tail</a>(snake[<a class="code" href="snake__controller_8c.html#7aea2552dfe7eb84b9443b6fc9ba6e01">tail</a>]);
+<a name="l00118"></a>00118                 <span class="comment">// Tail nachrutschen</span>
+<a name="l00119"></a>00119                 tail++;
+<a name="l00120"></a>00120                 tail %= <a class="code" href="main_8h.html#e9ce1ae38621389b25a2ca89a712e0c6">SNAKE_BUFFER</a>;
+<a name="l00121"></a>00121 
+<a name="l00122"></a>00122                 <span class="comment">// bei nachgerutschtem Tail nochmal den Tail neu zeichnen (Ästhetik)</span>
+<a name="l00123"></a>00123                 <a class="code" href="graphics_8c.html#ee8a0e5ffcee2ad169181b5cd536a85f">draw_snake_head</a>(snake[tail]);
 <a name="l00124"></a>00124         }
 <a name="l00125"></a>00125 
 <a name="l00126"></a>00126         <span class="keywordflow">return</span> <a class="code" href="main_8h.html#b4a88417b3d0170d754c647c30b7216a8697250efc73639dd2a6e7da243ac68b">NOTHING</a>;
@@ -183,7 +183,7 @@
 <a name="l00207"></a>00207 
 <a name="l00208"></a>00208         <a class="code" href="graphics_8c.html#ee8a0e5ffcee2ad169181b5cd536a85f">draw_snake_head</a>(snake[<a class="code" href="snake__controller_8c.html#96e89a298e0a9f469b9ae458d6afae9f">head</a>]);
 <a name="l00209"></a>00209 }
-</pre></div><hr size="1"><address style="align: right;"><small>Erzeugt am Sat Jan 12 01:01:28 2013 für Carme-Snake von&nbsp;
+</pre></div><hr size="1"><address style="align: right;"><small>Erzeugt am Sat Jan 12 02:25:17 2013 für Carme-Snake von&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.4.5 </small></address>
 </body>

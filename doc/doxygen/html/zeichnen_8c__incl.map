@@ -1,0 +1,4 @@
+base referer
+rect $window_8h-source.html 400,5 475,32
+rect $highscore_8h-source.html 393,56 482,83
+rect $zeichnen_8h-source.html 395,107 480,133

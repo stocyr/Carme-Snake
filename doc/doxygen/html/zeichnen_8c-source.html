@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1">
+<title>Carme-Snake: D:/Programming/C/Carme-Snake-Client/src/zeichnen.c Quellcode</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Erzeugt von Doxygen 1.4.5 -->
+<div class="tabs">
+  <ul>
+    <li><a href="index.html"><span>Hauptseite</span></a></li>
+    <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+    <li id="current"><a href="files.html"><span>Dateien</span></a></li>
+    <li><a href="dirs.html"><span>Verzeichnisse</span></a></li>
+    <li><a href="pages.html"><span>Zusätzliche&nbsp;Informationen</span></a></li>
+  </ul></div>
+<div class="tabs">
+  <ul>
+    <li><a href="files.html"><span>Auflistung&nbsp;der&nbsp;Dateien</span></a></li>
+    <li><a href="globals.html"><span>Datei-Elemente</span></a></li>
+  </ul></div>
+<div class="nav">
+<a class="el" href="dir_D_3A_2F.html">D:</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_D_3A_2FProgramming_2F.html">Programming</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_D_3A_2FProgramming_2FC_2F.html">C</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_D_3A_2FProgramming_2FC_2FCarme_2DSnake_2DClient_2F.html">Carme-Snake-Client</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_D_3A_2FProgramming_2FC_2FCarme_2DSnake_2DClient_2Fsrc_2F.html">src</a></div>
+<h1>zeichnen.c</h1><a href="zeichnen_8c.html">gehe zur Dokumentation dieser Datei</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/*****************************************************************************/</span>
+<a name="l00002"></a>00002 <span class="comment">/*  Modul      :   Zeichnen                                     Version 1.0  */</span>
+<a name="l00003"></a>00003 <span class="comment">/*****************************************************************************/</span>
+<a name="l00004"></a>00004 <span class="comment">/*                                                                           */</span>
+<a name="l00005"></a>00005 <span class="comment">/*  Funktion   :   Zuständig für sämtliche Anzeigen während des Spiel-       */</span>
+<a name="l00006"></a>00006 <span class="comment">/*                 verlaufs.                                                 */</span>
+<a name="l00007"></a>00007 <span class="comment">/*                                                                           */</span>
+<a name="l00008"></a>00008 <span class="comment">/*  Bearbeiter :   P. Ambuehl                                                */</span>
+<a name="l00009"></a>00009 <span class="comment">/*                                                                           */</span>
+<a name="l00010"></a>00010 <span class="comment">/*  History    :   24.12.2012 erstellt ambup1                                */</span>
+<a name="l00011"></a>00011 <span class="comment">/*                                                                           */</span>
+<a name="l00012"></a>00012 <span class="comment">/*  File Name  :   zeichnen.c                                                */</span>
+<a name="l00013"></a>00013 <span class="comment">/*                                                                           */</span>
+<a name="l00014"></a>00014 <span class="comment">/*****************************************************************************/</span>
+<a name="l00015"></a>00015 
+<a name="l00016"></a>00016 <span class="comment">/* Files importieren */</span>
+<a name="l00017"></a>00017 <span class="preprocessor">#include "<a class="code" href="window_8h.html">window.h</a>"</span>
+<a name="l00018"></a>00018 <span class="preprocessor">#include "<a class="code" href="highscore_8h.html">highscore.h</a>"</span>
+<a name="l00019"></a>00019 <span class="preprocessor">#include "<a class="code" href="zeichnen_8h.html">zeichnen.h</a>"</span>
+<a name="l00020"></a>00020 <span class="preprocessor">#include &lt;stdio.h&gt;</span>
+<a name="l00021"></a>00021 <span class="preprocessor">#include &lt;string.h&gt;</span>
+<a name="l00022"></a>00022 <span class="preprocessor">#include &lt;stdlib.h&gt;</span>
+<a name="l00023"></a>00023 
+<a name="l00024"></a>00024 
+<a name="l00025"></a>00025 
+<a name="l00026"></a>00026 
+<a name="l00027"></a>00027 
+<a name="l00028"></a>00028 <span class="comment">/*****************************************************************************/</span>
+<a name="l00029"></a>00029 <span class="comment">/*  Funktion   : Menu zeichnen                                  Version 1.0  */</span>
+<a name="l00030"></a>00030 <span class="comment">/*****************************************************************************/</span>
+<a name="l00031"></a>00031 <span class="comment">/*                                                                           */</span>
+<a name="l00032"></a>00032 <span class="comment">/*  Funktion   : Erzeugt die Anzeigen des Hauptmenus.                                        */</span>
+<a name="l00033"></a>00033 <span class="comment">/*                                                                           */</span>
+<a name="l00034"></a>00034 <span class="comment">/*  Bearbeiter : Peter Ambühl                                                */</span>
+<a name="l00035"></a>00035 <span class="comment">/*                                                                           */</span>
+<a name="l00036"></a>00036 <span class="comment">/*  History    : 24.12.2012 erstellt ambup1                                                              */</span>
+<a name="l00037"></a>00037 <span class="comment">/*                                                                           */</span>
+<a name="l00038"></a>00038 <span class="comment">/*****************************************************************************/</span>
+<a name="l00039"></a>00039 
+<a name="l00040"></a><a class="code" href="zeichnen_8h.html#fc97cfe57b6528ec2b5894d01630a10a">00040</a> <span class="keywordtype">void</span> <a class="code" href="zeichnen_8c.html#fc97cfe57b6528ec2b5894d01630a10a">Menu_zeichnen</a>(<span class="keywordtype">void</span>){
+<a name="l00041"></a>00041         <span class="comment">/* Hauptmenu Anzeigen zeichnen */</span>
+<a name="l00042"></a>00042         <a class="code" href="window_8h.html#ddac38a95edf90171f28987319bc7ed7">SelectFont</a>(<span class="stringliteral">"Arial MS"</span>, 45, <a class="code" href="window_8h.html#0ca3a6077a861236d2f9aa6646d955b48eb964930ad7f6da082d77afed1c25be">FONT_BOLD</a>);
+<a name="l00043"></a>00043         <a class="code" href="window_8h.html#11c214049de28dbd97d389581817dc10">DrawTextXY</a> (250, 70, <a class="code" href="window_8h.html#9c6ad5ad03eac289bdbb533d224e4833">COL_GREEN</a>, <span class="stringliteral">"CARME-SNAKE"</span>);
+<a name="l00044"></a>00044         <a class="code" href="window_8h.html#ddac38a95edf90171f28987319bc7ed7">SelectFont</a>(<span class="stringliteral">"Arial MS"</span>, 30, <a class="code" href="window_8h.html#0ca3a6077a861236d2f9aa6646d955b4c8235eecfbd3dbc5649cf02515a71989">FONT_NORMAL</a>);
+<a name="l00045"></a>00045         <a class="code" href="window_8h.html#11c214049de28dbd97d389581817dc10">DrawTextXY</a> (240, 230, <a class="code" href="window_8h.html#9c6ad5ad03eac289bdbb533d224e4833">COL_GREEN</a>, <span class="stringliteral">"1 Spiel starten"</span>);
+<a name="l00046"></a>00046         <a class="code" href="window_8h.html#11c214049de28dbd97d389581817dc10">DrawTextXY</a> (236, 300, <a class="code" href="window_8h.html#4e3509a3689770e59720247a6a35dcbd">COL_YELLOW</a>, <span class="stringliteral">"2 Hall of Fame"</span>);
+<a name="l00047"></a>00047         <a class="code" href="window_8h.html#11c214049de28dbd97d389581817dc10">DrawTextXY</a> (230, 370, <a class="code" href="window_8h.html#5e27e8849ba2bf4ac71176a217d203c7">COL_RED</a>, <span class="stringliteral">"3 Spiel beenden"</span>);
+<a name="l00048"></a>00048         <a class="code" href="window_8h.html#11c214049de28dbd97d389581817dc10">DrawTextXY</a> (80, 530, <a class="code" href="window_8h.html#9c6ad5ad03eac289bdbb533d224e4833">COL_GREEN</a>, <span class="stringliteral">"P. Ambühl, M. Bärtschi, C. Stoller"</span>);
+<a name="l00049"></a>00049 }
+<a name="l00050"></a>00050 
+<a name="l00051"></a>00051 
+<a name="l00052"></a>00052 <span class="comment">/*****************************************************************************/</span>
+<a name="l00053"></a>00053 <span class="comment">/*  Funktion   : Highscore zeichnen                             Version 1.0  */</span>
+<a name="l00054"></a>00054 <span class="comment">/*****************************************************************************/</span>
+<a name="l00055"></a>00055 <span class="comment">/*                                                                           */</span>
+<a name="l00056"></a>00056 <span class="comment">/*  Funktion   : Zeichnet die Highscoreliste.                                                        */</span>
+<a name="l00057"></a>00057 <span class="comment">/*                                                                           */</span>
+<a name="l00058"></a>00058 <span class="comment">/*  Bearbeiter : Peter Ambuehl                                               */</span>
+<a name="l00059"></a>00059 <span class="comment">/*                                                                           */</span>
+<a name="l00060"></a>00060 <span class="comment">/*  History    : 24.12.2012 erstellt ambup1                                                              */</span>
+<a name="l00061"></a>00061 <span class="comment">/*                                                                           */</span>
+<a name="l00062"></a>00062 <span class="comment">/*****************************************************************************/</span>
+<a name="l00063"></a>00063 
+<a name="l00068"></a><a class="code" href="zeichnen_8h.html#ec3ff1b837d5a2af9ef53420bc70849f">00068</a> <span class="keywordtype">void</span> <a class="code" href="zeichnen_8c.html#ec3ff1b837d5a2af9ef53420bc70849f">Highscore_zeichnen</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *ApplicationPath){
+<a name="l00069"></a>00069 
+<a name="l00070"></a>00070         <span class="keywordtype">char</span> Name[1];
+<a name="l00071"></a>00071         Name[0]=<span class="charliteral">'a'</span>;
+<a name="l00072"></a>00072         <span class="keywordtype">int</span> index;
+<a name="l00073"></a>00073         <span class="keywordtype">char</span> ausgabe2[100];
+<a name="l00074"></a>00074 
+<a name="l00075"></a>00075         <a class="code" href="highscore_8c.html#ddae7e4a905d3a4cabd60e835c3a3945">highscore</a>(Name, 1, ApplicationPath);
+<a name="l00076"></a>00076         <a class="code" href="window_8h.html#6b681f4e0a72f94c48925452ce2efd14">ClearWindow</a> ();
+<a name="l00077"></a>00077 
+<a name="l00078"></a>00078         <a class="code" href="window_8h.html#ddac38a95edf90171f28987319bc7ed7">SelectFont</a>(<span class="stringliteral">"Arial MS"</span>, 30, <a class="code" href="window_8h.html#0ca3a6077a861236d2f9aa6646d955b48eb964930ad7f6da082d77afed1c25be">FONT_BOLD</a>);
+<a name="l00079"></a>00079         <a class="code" href="window_8h.html#11c214049de28dbd97d389581817dc10">DrawTextXY</a> (220, 50, <a class="code" href="window_8h.html#9c6ad5ad03eac289bdbb533d224e4833">COL_GREEN</a>, <span class="stringliteral">"Highscoreliste"</span>);
+<a name="l00080"></a>00080 
+<a name="l00081"></a>00081         <span class="comment">// Zeichnet die Highscoreliste</span>
+<a name="l00082"></a>00082         <a class="code" href="window_8h.html#ddac38a95edf90171f28987319bc7ed7">SelectFont</a>(<span class="stringliteral">"Arial MS"</span>, 30, <a class="code" href="window_8h.html#0ca3a6077a861236d2f9aa6646d955b4c8235eecfbd3dbc5649cf02515a71989">FONT_NORMAL</a>);
+<a name="l00083"></a>00083         <span class="keywordflow">for</span>(index=9; index&gt;=0; index--){
+<a name="l00084"></a>00084 
+<a name="l00085"></a>00085                 <span class="comment">// Umwandlung der Punke</span>
+<a name="l00086"></a>00086 
+<a name="l00087"></a>00087                 sprintf(ausgabe2,<span class="stringliteral">"%d"</span>,<a class="code" href="highscore_8h.html#e92200817813dbf730900025c42e84b1">topten</a>[index].<a class="code" href="main_8c.html#ca1cd3c3055991bf20499ee86739f7e2">score</a>);
+<a name="l00088"></a>00088 
+<a name="l00089"></a>00089                 <span class="comment">// Name und zugehörige Punkte darstellen</span>
+<a name="l00090"></a>00090 
+<a name="l00091"></a>00091                 <a class="code" href="window_8h.html#11c214049de28dbd97d389581817dc10">DrawTextXY</a> (50, 150+index*40, <a class="code" href="window_8h.html#9c6ad5ad03eac289bdbb533d224e4833">COL_GREEN</a>, <a class="code" href="highscore_8h.html#e92200817813dbf730900025c42e84b1">topten</a>[index].name);
+<a name="l00092"></a>00092                 <a class="code" href="window_8h.html#11c214049de28dbd97d389581817dc10">DrawTextXY</a> (530, 150+index*40, <a class="code" href="window_8h.html#5e27e8849ba2bf4ac71176a217d203c7">COL_RED</a>, ausgabe2);
+<a name="l00093"></a>00093         }
+<a name="l00094"></a>00094 }
+<a name="l00095"></a>00095 
+<a name="l00096"></a>00096 <span class="comment">/****************************************************************************/</span>
+<a name="l00097"></a>00097 <span class="comment">/*      Ende Funktion Highscore zeichnen                                                                        */</span>
+<a name="l00098"></a>00098 <span class="comment">/****************************************************************************/</span>
+<a name="l00099"></a>00099 
+<a name="l00100"></a>00100 <span class="comment">/*****************************************************************************/</span>
+<a name="l00101"></a>00101 <span class="comment">/*  Ende Modul Zeichnen                                                                  */</span>
+<a name="l00102"></a>00102 <span class="comment">/*****************************************************************************/</span>
+</pre></div><hr size="1"><address style="align: right;"><small>Erzeugt am Sat Jan 12 02:25:17 2013 für Carme-Snake von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.4.5 </small></address>
+</body>
+</html>

@@ -1,0 +1,445 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1">
+<title>Carme-Snake: D:/Programming/C/Carme-Snake-Client/src/serport.c Quellcode</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Erzeugt von Doxygen 1.4.5 -->
+<div class="tabs">
+  <ul>
+    <li><a href="index.html"><span>Hauptseite</span></a></li>
+    <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+    <li id="current"><a href="files.html"><span>Dateien</span></a></li>
+    <li><a href="dirs.html"><span>Verzeichnisse</span></a></li>
+    <li><a href="pages.html"><span>Zusätzliche&nbsp;Informationen</span></a></li>
+  </ul></div>
+<div class="tabs">
+  <ul>
+    <li><a href="files.html"><span>Auflistung&nbsp;der&nbsp;Dateien</span></a></li>
+    <li><a href="globals.html"><span>Datei-Elemente</span></a></li>
+  </ul></div>
+<div class="nav">
+<a class="el" href="dir_D_3A_2F.html">D:</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_D_3A_2FProgramming_2F.html">Programming</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_D_3A_2FProgramming_2FC_2F.html">C</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_D_3A_2FProgramming_2FC_2FCarme_2DSnake_2DClient_2F.html">Carme-Snake-Client</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_D_3A_2FProgramming_2FC_2FCarme_2DSnake_2DClient_2Fsrc_2F.html">src</a></div>
+<h1>serport.c</h1><a href="serport_8c.html">gehe zur Dokumentation dieser Datei</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/* general control */</span>
+<a name="l00002"></a>00002 
+<a name="l00003"></a>00003 <span class="comment">/*****************************************************************************/</span>
+<a name="l00004"></a>00004 <span class="comment">/*  Module     : SerialPortInterface                            Version 1.0  */</span>
+<a name="l00005"></a>00005 <span class="comment">/*****************************************************************************/</span>
+<a name="l00006"></a>00006 <span class="comment">/*                                                                           */</span>
+<a name="l00007"></a>00007 <span class="comment">/*  Function   : This module is an interface to the win32 API-Functions to   */</span>
+<a name="l00008"></a>00008 <span class="comment">/*               handle the serial port                                      */</span>
+<a name="l00009"></a>00009 <span class="comment">/*                                                                           */</span>
+<a name="l00010"></a>00010 <span class="comment">/*  Procedures : InitSerialPort                Initializes the serial port   */</span>
+<a name="l00011"></a>00011 <span class="comment">/*               ShutdownSerialPort            Releases the serial port      */</span>
+<a name="l00012"></a>00012 <span class="comment">/*               GetByteFromSerialPort         Reads a byte from serial port */</span>
+<a name="l00013"></a>00013 <span class="comment">/*               SendByteToSerialPort          Sends a byte to the serial pt */</span>
+<a name="l00014"></a>00014 <span class="comment">/*               ClearSerialPortBuffer         Empties the transmit buffer   */</span>
+<a name="l00015"></a>00015 <span class="comment">/*               BytesAvaillableFromSerialPort Amount of availlable bytes    */</span>
+<a name="l00016"></a>00016 <span class="comment">/*               UnsentBytesInSerialPort       How many bytes still to send  */</span>
+<a name="l00017"></a>00017 <span class="comment">/*                                                                           */</span>
+<a name="l00018"></a>00018 <span class="comment">/*  Author     : I. Oesch                                                    */</span>
+<a name="l00019"></a>00019 <span class="comment">/*                                                                           */</span>
+<a name="l00020"></a>00020 <span class="comment">/*  History    : 12.07.2002  IO Created                                      */</span>
+<a name="l00021"></a>00021 <span class="comment">/*                                                                           */</span>
+<a name="l00022"></a>00022 <span class="comment">/*  File       : serport.c                                                   */</span>
+<a name="l00023"></a>00023 <span class="comment">/*                                                                           */</span>
+<a name="l00024"></a>00024 <span class="comment">/*****************************************************************************/</span>
+<a name="l00025"></a>00025 <span class="comment">/* MagicSoft                                                                 */</span>
+<a name="l00026"></a>00026 <span class="comment">/*****************************************************************************/</span>
+<a name="l00027"></a>00027 
+<a name="l00028"></a>00028 <span class="comment">/* imports */</span>
+<a name="l00029"></a>00029 <span class="preprocessor">#include "<a class="code" href="serport_8h.html">serport.h</a>"</span>
+<a name="l00030"></a>00030 <span class="preprocessor">#include &lt;windows.h&gt;</span>
+<a name="l00031"></a>00031 
+<a name="l00032"></a>00032 <span class="comment">/* module constant declaration */</span>
+<a name="l00033"></a>00033 
+<a name="l00034"></a>00034 <span class="comment">/* module type declaration */</span>
+<a name="l00035"></a>00035 
+<a name="l00036"></a>00036 <span class="comment">/* module data declaration */</span>
+<a name="l00037"></a><a class="code" href="serport_8c.html#48f8e68f4689776b31a64ea5b0b33a8e">00037</a> <span class="keyword">static</span> HANDLE         <a class="code" href="serport_8c.html#48f8e68f4689776b31a64ea5b0b33a8e">ComPort</a>;
+<a name="l00038"></a><a class="code" href="serport_8c.html#21f0da5e65646887b7bb73cee0dec690">00038</a> <span class="keyword">static</span> COMMTIMEOUTS   <a class="code" href="serport_8c.html#21f0da5e65646887b7bb73cee0dec690">OldTimeout</a>;
+<a name="l00039"></a>00039 
+<a name="l00040"></a>00040 <span class="comment">/* module procedure declaration */</span>
+<a name="l00041"></a>00041 
+<a name="l00042"></a>00042 <span class="comment">/*****************************************************************************/</span>
+<a name="l00043"></a>00043 <span class="comment">/*  Procedure   : InitSerialPort                                             */</span>
+<a name="l00044"></a>00044 <span class="comment">/*****************************************************************************/</span>
+<a name="l00045"></a>00045 <span class="comment">/*                                                                           */</span>
+<a name="l00046"></a>00046 <span class="comment">/*  Function    : Initializion for the serial interface. Opens the selected  */</span>
+<a name="l00047"></a>00047 <span class="comment">/*                comunicationsport and prepares everything for communication*/</span>
+<a name="l00048"></a>00048 <span class="comment">/*                                                                           */</span>
+<a name="l00049"></a>00049 <span class="comment">/*  Type        : Global                                                     */</span>
+<a name="l00050"></a>00050 <span class="comment">/*                                                                           */</span>
+<a name="l00051"></a>00051 <span class="comment">/*  Input Para  : PortType Either COM1 or COM2                               */</span>
+<a name="l00052"></a>00052 <span class="comment">/*                BaudRate Requested baudrate for communication              */</span>
+<a name="l00053"></a>00053 <span class="comment">/*                Parity   Either NONE, EVEN, ODD, MARK or SPACE             */</span>
+<a name="l00054"></a>00054 <span class="comment">/*                Bits     Number of Databits, either 7 or 8                 */</span>
+<a name="l00055"></a>00055 <span class="comment">/*                StopBits Number of stopbits, either 1 or 2                 */</span>
+<a name="l00056"></a>00056 <span class="comment">/*                                                                           */</span>
+<a name="l00057"></a>00057 <span class="comment">/*  Output Para : 0 on success, negative Value otherwise                     */</span>
+<a name="l00058"></a>00058 <span class="comment">/*                                                                           */</span>
+<a name="l00059"></a>00059 <span class="comment">/*  Author      : I. Oesch                                                   */</span>
+<a name="l00060"></a>00060 <span class="comment">/*                                                                           */</span>
+<a name="l00061"></a>00061 <span class="comment">/*  History     : 12.07.2002  IO  Created                                    */</span>
+<a name="l00062"></a>00062 <span class="comment">/*                                                                           */</span>
+<a name="l00063"></a>00063 <span class="comment">/*****************************************************************************/</span>
+<a name="l00064"></a>00064 
+<a name="l00065"></a><a class="code" href="serport_8h.html#98b55ee701e5f4ba268d8542b7803554">00065</a> <span class="keywordtype">int</span> <a class="code" href="serport_8c.html#98b55ee701e5f4ba268d8542b7803554">InitSerialPort</a>(<a class="code" href="serport_8h.html#783064ca20cd587e4b16de0939db712c">PortType</a> Port, <a class="code" href="serport_8h.html#38e261dbb0e70f73322a2b5142b1f8c4">BaudrateType</a> BaudRate, <a class="code" href="serport_8h.html#433c4f3cf7e29a2a3735560d6fd551fd">ParityType</a> Parity,
+<a name="l00066"></a>00066                                                         <span class="keywordtype">int</span> Bits, <span class="keywordtype">int</span> Stopbits)
+<a name="l00067"></a>00067 {
+<a name="l00068"></a>00068    <span class="comment">/* Method data declaration      */</span>
+<a name="l00069"></a>00069    <span class="keywordtype">int</span> i;
+<a name="l00070"></a>00070    <span class="keywordtype">char</span> *PortId = <span class="stringliteral">""</span>;
+<a name="l00071"></a>00071    COMMTIMEOUTS   NewTimeout = {0};
+<a name="l00072"></a>00072    DCB            DeviceControlBlock;
+<a name="l00073"></a>00073 
+<a name="l00074"></a>00074    <span class="comment">/* Method code declaration      */</span>
+<a name="l00075"></a>00075 
+<a name="l00076"></a>00076    <span class="comment">/*check for correct port */</span>
+<a name="l00077"></a>00077    <span class="keywordflow">switch</span> (Port) {
+<a name="l00078"></a>00078       <span class="keywordflow">case</span> <a class="code" href="serport_8h.html#783064ca20cd587e4b16de0939db712cf844887960ff17500d1a44c33af38b78">COM1</a>:
+<a name="l00079"></a>00079         PortId = <span class="stringliteral">"COM1"</span>;
+<a name="l00080"></a>00080             <span class="keywordflow">break</span>;
+<a name="l00081"></a>00081 
+<a name="l00082"></a>00082       <span class="keywordflow">case</span> <a class="code" href="serport_8h.html#783064ca20cd587e4b16de0939db712ca9d582cd711bb7e4814f163af03fc5c2">COM2</a> :
+<a name="l00083"></a>00083         PortId = <span class="stringliteral">"COM2"</span>;
+<a name="l00084"></a>00084             <span class="keywordflow">break</span>;
+<a name="l00085"></a>00085 
+<a name="l00086"></a>00086       <span class="keywordflow">case</span> <a class="code" href="serport_8h.html#783064ca20cd587e4b16de0939db712c4e09844d2586f0df783fcaa2753899f8">COM3</a> :
+<a name="l00087"></a>00087         PortId = <span class="stringliteral">"COM3"</span>;
+<a name="l00088"></a>00088         <span class="keywordflow">break</span>;
+<a name="l00089"></a>00089 
+<a name="l00090"></a>00090       <span class="keywordflow">case</span> <a class="code" href="serport_8h.html#783064ca20cd587e4b16de0939db712cd3052390df38c96103f85d82900fa259">COM4</a> :
+<a name="l00091"></a>00091         PortId = <span class="stringliteral">"COM4"</span>;
+<a name="l00092"></a>00092         <span class="keywordflow">break</span>;
+<a name="l00093"></a>00093 
+<a name="l00094"></a>00094       <span class="keywordflow">case</span> <a class="code" href="serport_8h.html#783064ca20cd587e4b16de0939db712c0e817345893c98ea792a365a1713dff5">COM5</a> :
+<a name="l00095"></a>00095         PortId = <span class="stringliteral">"COM5"</span>;
+<a name="l00096"></a>00096         <span class="keywordflow">break</span>;
+<a name="l00097"></a>00097 
+<a name="l00098"></a>00098       <span class="keywordflow">case</span> <a class="code" href="serport_8h.html#783064ca20cd587e4b16de0939db712ce4507bdbbe2296106f173b6099c41de7">COM6</a> :
+<a name="l00099"></a>00099         PortId = <span class="stringliteral">"COM6"</span>;
+<a name="l00100"></a>00100         <span class="keywordflow">break</span>;
+<a name="l00101"></a>00101 
+<a name="l00102"></a>00102       <span class="keywordflow">case</span> <a class="code" href="serport_8h.html#783064ca20cd587e4b16de0939db712c1ff56bf66686ad64587f0edb5823d6d7">COM7</a> :
+<a name="l00103"></a>00103         PortId = <span class="stringliteral">"COM7"</span>;
+<a name="l00104"></a>00104         <span class="keywordflow">break</span>;
+<a name="l00105"></a>00105 
+<a name="l00106"></a>00106       <span class="keywordflow">default</span>:
+<a name="l00107"></a>00107             <span class="keywordflow">return</span> -1;
+<a name="l00108"></a>00108             <span class="keywordflow">break</span>;
+<a name="l00109"></a>00109    }
+<a name="l00110"></a>00110 
+<a name="l00111"></a>00111    <span class="comment">/* Open the selected port */</span>
+<a name="l00112"></a>00112    <a class="code" href="serport_8c.html#48f8e68f4689776b31a64ea5b0b33a8e">ComPort</a> = CreateFile( PortId,
+<a name="l00113"></a>00113                          GENERIC_READ | GENERIC_WRITE,
+<a name="l00114"></a>00114                          0,
+<a name="l00115"></a>00115                          0,
+<a name="l00116"></a>00116                          OPEN_EXISTING,
+<a name="l00117"></a>00117                          0,
+<a name="l00118"></a>00118                          0);
+<a name="l00119"></a>00119 
+<a name="l00120"></a>00120    <span class="comment">/* check if port could be openend */</span>
+<a name="l00121"></a>00121    <span class="keywordflow">if</span>(<a class="code" href="serport_8c.html#48f8e68f4689776b31a64ea5b0b33a8e">ComPort</a> != INVALID_HANDLE_VALUE) {
+<a name="l00122"></a>00122 
+<a name="l00123"></a>00123       <span class="comment">/* Set the comm timeouts such, that read returns immediately */</span>
+<a name="l00124"></a>00124       <span class="comment">/* independent if any bytes are availlable or not            */</span>
+<a name="l00125"></a>00125       GetCommTimeouts(<a class="code" href="serport_8c.html#48f8e68f4689776b31a64ea5b0b33a8e">ComPort</a>,&amp;<a class="code" href="serport_8c.html#21f0da5e65646887b7bb73cee0dec690">OldTimeout</a>);
+<a name="l00126"></a>00126       NewTimeout.ReadIntervalTimeout = MAXDWORD;
+<a name="l00127"></a>00127       SetCommTimeouts(<a class="code" href="serport_8c.html#48f8e68f4689776b31a64ea5b0b33a8e">ComPort</a>, &amp;NewTimeout);
+<a name="l00128"></a>00128 
+<a name="l00129"></a>00129       <span class="comment">/* Setup the device controlblock (Baudrate and other parameters) */</span>
+<a name="l00130"></a>00130       DeviceControlBlock.DCBlength = <span class="keyword">sizeof</span>(DCB);
+<a name="l00131"></a>00131       GetCommState(<a class="code" href="serport_8c.html#48f8e68f4689776b31a64ea5b0b33a8e">ComPort</a>, &amp;DeviceControlBlock);
+<a name="l00132"></a>00132       BuildCommDCB(<span class="stringliteral">"baud=1200 parity=N data=8 stop=1"</span>, &amp;DeviceControlBlock);
+<a name="l00133"></a>00133       <span class="keywordflow">switch</span> (BaudRate) {
+<a name="l00134"></a>00134                 <span class="keywordflow">case</span> <a class="code" href="serport_8h.html#38e261dbb0e70f73322a2b5142b1f8c4f3af8e234279100722af05706511a891">Bd600</a> :
+<a name="l00135"></a>00135            DeviceControlBlock.BaudRate = CBR_600;
+<a name="l00136"></a>00136                    <span class="keywordflow">break</span>;
+<a name="l00137"></a>00137 
+<a name="l00138"></a>00138                 <span class="keywordflow">case</span> <a class="code" href="serport_8h.html#38e261dbb0e70f73322a2b5142b1f8c4c4266a82c6481d5508fd16dc1061f76a">Bd1200</a> :
+<a name="l00139"></a>00139            DeviceControlBlock.BaudRate = CBR_1200;
+<a name="l00140"></a>00140                    <span class="keywordflow">break</span>;
+<a name="l00141"></a>00141 
+<a name="l00142"></a>00142                 <span class="keywordflow">case</span> <a class="code" href="serport_8h.html#38e261dbb0e70f73322a2b5142b1f8c4dd53ee83c2a55653e82a8e7687065504">Bd2400</a> :
+<a name="l00143"></a>00143            DeviceControlBlock.BaudRate = CBR_2400;
+<a name="l00144"></a>00144                <span class="keywordflow">break</span>;
+<a name="l00145"></a>00145 
+<a name="l00146"></a>00146                 <span class="keywordflow">case</span> <a class="code" href="serport_8h.html#38e261dbb0e70f73322a2b5142b1f8c4c8665aedf09e2846de06d3b7bdd72741">Bd4800</a> :
+<a name="l00147"></a>00147            DeviceControlBlock.BaudRate = CBR_4800;
+<a name="l00148"></a>00148                <span class="keywordflow">break</span>;
+<a name="l00149"></a>00149 
+<a name="l00150"></a>00150                 <span class="keywordflow">case</span> <a class="code" href="serport_8h.html#38e261dbb0e70f73322a2b5142b1f8c49578119692f450270b2939fe92f875c9">Bd9600</a> :
+<a name="l00151"></a>00151            DeviceControlBlock.BaudRate = CBR_9600;
+<a name="l00152"></a>00152                <span class="keywordflow">break</span>;
+<a name="l00153"></a>00153 
+<a name="l00154"></a>00154                 <span class="keywordflow">case</span> <a class="code" href="serport_8h.html#38e261dbb0e70f73322a2b5142b1f8c49eb3a214ed801637cc373a778cec1177">Bd19200</a> :
+<a name="l00155"></a>00155            DeviceControlBlock.BaudRate = CBR_19200;
+<a name="l00156"></a>00156                <span class="keywordflow">break</span>;
+<a name="l00157"></a>00157 
+<a name="l00158"></a>00158         <span class="keywordflow">default</span>:
+<a name="l00159"></a>00159                <span class="comment">/* illegal baudrate... */</span>
+<a name="l00160"></a>00160            <a class="code" href="serport_8c.html#d708c08ed0c1dc60aeb3674a9a06f288">ShutdownSerialPort</a>();
+<a name="l00161"></a>00161                <span class="keywordflow">return</span> -2;
+<a name="l00162"></a>00162                <span class="keywordflow">break</span>;
+<a name="l00163"></a>00163       }
+<a name="l00164"></a>00164       <span class="keywordflow">switch</span> (Bits) {
+<a name="l00165"></a>00165          <span class="keywordflow">case</span> 5:
+<a name="l00166"></a>00166          <span class="keywordflow">case</span> 6:
+<a name="l00167"></a>00167          <span class="keywordflow">case</span> 7:
+<a name="l00168"></a>00168          <span class="keywordflow">case</span> 8:
+<a name="l00169"></a>00169             DeviceControlBlock.ByteSize = Bits;
+<a name="l00170"></a>00170             <span class="keywordflow">break</span>;
+<a name="l00171"></a>00171 
+<a name="l00172"></a>00172          <span class="keywordflow">default</span>:
+<a name="l00173"></a>00173             <a class="code" href="serport_8c.html#d708c08ed0c1dc60aeb3674a9a06f288">ShutdownSerialPort</a>();
+<a name="l00174"></a>00174                 <span class="keywordflow">return</span> -3;
+<a name="l00175"></a>00175                 <span class="keywordflow">break</span>;
+<a name="l00176"></a>00176       }
+<a name="l00177"></a>00177       <span class="keywordflow">switch</span> (Stopbits) {
+<a name="l00178"></a>00178          <span class="keywordflow">case</span> 1: DeviceControlBlock.StopBits = 0; <span class="keywordflow">break</span>;  <span class="comment">// 1 = 1.5</span>
+<a name="l00179"></a>00179          <span class="keywordflow">case</span> 2: DeviceControlBlock.StopBits = 2; <span class="keywordflow">break</span>;
+<a name="l00180"></a>00180          <span class="keywordflow">default</span>: <a class="code" href="serport_8c.html#d708c08ed0c1dc60aeb3674a9a06f288">ShutdownSerialPort</a>(); <span class="keywordflow">return</span> -4; <span class="keywordflow">break</span>;
+<a name="l00181"></a>00181       }
+<a name="l00182"></a>00182       <span class="keywordflow">switch</span> (Parity) {
+<a name="l00183"></a>00183          <span class="keywordflow">case</span> <a class="code" href="serport_8h.html#433c4f3cf7e29a2a3735560d6fd551fdf1a47cb1284201167502831e56d96bd7">P_NONE</a>:  DeviceControlBlock.fParity = 0;
+<a name="l00184"></a>00184                      DeviceControlBlock.Parity  = 0;
+<a name="l00185"></a>00185                      <span class="keywordflow">break</span>;
+<a name="l00186"></a>00186          <span class="keywordflow">case</span> <a class="code" href="serport_8h.html#433c4f3cf7e29a2a3735560d6fd551fdd3f35215f913f314d494290a574929d1">P_EVEN</a>:  DeviceControlBlock.fParity = 1;
+<a name="l00187"></a>00187                      DeviceControlBlock.Parity  = 2;
+<a name="l00188"></a>00188                      <span class="keywordflow">break</span>;
+<a name="l00189"></a>00189          <span class="keywordflow">case</span> <a class="code" href="serport_8h.html#433c4f3cf7e29a2a3735560d6fd551fdc2e773615dcc02268c98a424184832b5">P_ODD</a>:   DeviceControlBlock.fParity = 1;
+<a name="l00190"></a>00190                      DeviceControlBlock.Parity  = 1;
+<a name="l00191"></a>00191                      <span class="keywordflow">break</span>;
+<a name="l00192"></a>00192          <span class="keywordflow">case</span> <a class="code" href="serport_8h.html#433c4f3cf7e29a2a3735560d6fd551fde3653b03e1ea00d286b32e491124154d">P_MARK</a>:  DeviceControlBlock.fParity = 1;
+<a name="l00193"></a>00193                      DeviceControlBlock.Parity  = 3;
+<a name="l00194"></a>00194                      <span class="keywordflow">break</span>;
+<a name="l00195"></a>00195          <span class="keywordflow">case</span> <a class="code" href="serport_8h.html#433c4f3cf7e29a2a3735560d6fd551fd965c426cef3315ccfd4de72d84c2f61f">P_SPACE</a>: DeviceControlBlock.fParity = 1;
+<a name="l00196"></a>00196                      DeviceControlBlock.Parity  = 4;
+<a name="l00197"></a>00197                      <span class="keywordflow">break</span>;
+<a name="l00198"></a>00198          <span class="keywordflow">default</span>:    <a class="code" href="serport_8c.html#d708c08ed0c1dc60aeb3674a9a06f288">ShutdownSerialPort</a>();
+<a name="l00199"></a>00199                      <span class="keywordflow">return</span> -5;
+<a name="l00200"></a>00200                      <span class="keywordflow">break</span>;
+<a name="l00201"></a>00201       }
+<a name="l00202"></a>00202       SetCommState(<a class="code" href="serport_8c.html#48f8e68f4689776b31a64ea5b0b33a8e">ComPort</a>, &amp;DeviceControlBlock);
+<a name="l00203"></a>00203    }
+<a name="l00204"></a>00204    <span class="keywordflow">return</span> 0;
+<a name="l00205"></a>00205 }
+<a name="l00206"></a>00206 <span class="comment">/*****************************************************************************/</span>
+<a name="l00207"></a>00207 <span class="comment">/*  End         : InitSerialPort                                             */</span>
+<a name="l00208"></a>00208 <span class="comment">/*****************************************************************************/</span>
+<a name="l00209"></a>00209 
+<a name="l00210"></a>00210 <span class="comment">/*****************************************************************************/</span>
+<a name="l00211"></a>00211 <span class="comment">/*  Procedure   : ShutdownSerialPort                                         */</span>
+<a name="l00212"></a>00212 <span class="comment">/*****************************************************************************/</span>
+<a name="l00213"></a>00213 <span class="comment">/*                                                                           */</span>
+<a name="l00214"></a>00214 <span class="comment">/*  Function    : Stops all pending communications and closes the port       */</span>
+<a name="l00215"></a>00215 <span class="comment">/*                                                                           */</span>
+<a name="l00216"></a>00216 <span class="comment">/*  Type        : Global                                                     */</span>
+<a name="l00217"></a>00217 <span class="comment">/*                                                                           */</span>
+<a name="l00218"></a>00218 <span class="comment">/*  Input Para  : None                                                       */</span>
+<a name="l00219"></a>00219 <span class="comment">/*                                                                           */</span>
+<a name="l00220"></a>00220 <span class="comment">/*  Output Para : None                                                       */</span>
+<a name="l00221"></a>00221 <span class="comment">/*                                                                           */</span>
+<a name="l00222"></a>00222 <span class="comment">/*  Author      : I. Oesch                                                   */</span>
+<a name="l00223"></a>00223 <span class="comment">/*                                                                           */</span>
+<a name="l00224"></a>00224 <span class="comment">/*  History     : 12.07.2002  IO  Created                                    */</span>
+<a name="l00225"></a>00225 <span class="comment">/*                                                                           */</span>
+<a name="l00226"></a>00226 <span class="comment">/*****************************************************************************/</span>
+<a name="l00227"></a><a class="code" href="serport_8h.html#d708c08ed0c1dc60aeb3674a9a06f288">00227</a> <span class="keywordtype">void</span> <a class="code" href="serport_8c.html#d708c08ed0c1dc60aeb3674a9a06f288">ShutdownSerialPort</a>(<span class="keywordtype">void</span>)
+<a name="l00228"></a>00228 {
+<a name="l00229"></a>00229    <span class="comment">/* Method data declaration      */</span>
+<a name="l00230"></a>00230 
+<a name="l00231"></a>00231    <span class="comment">/* Method code declaration      */</span>
+<a name="l00232"></a>00232 
+<a name="l00233"></a>00233    <span class="comment">/* Abort any pending operations */</span>
+<a name="l00234"></a>00234    PurgeComm(<a class="code" href="serport_8c.html#48f8e68f4689776b31a64ea5b0b33a8e">ComPort</a>, PURGE_RXABORT);
+<a name="l00235"></a>00235 
+<a name="l00236"></a>00236    <span class="comment">/* Restore old settings */</span>
+<a name="l00237"></a>00237    SetCommTimeouts(<a class="code" href="serport_8c.html#48f8e68f4689776b31a64ea5b0b33a8e">ComPort</a>, &amp;<a class="code" href="serport_8c.html#21f0da5e65646887b7bb73cee0dec690">OldTimeout</a>);
+<a name="l00238"></a>00238 
+<a name="l00239"></a>00239    <span class="comment">/* and close the port */</span>
+<a name="l00240"></a>00240    CloseHandle(<a class="code" href="serport_8c.html#48f8e68f4689776b31a64ea5b0b33a8e">ComPort</a>);
+<a name="l00241"></a>00241 }
+<a name="l00242"></a>00242 <span class="comment">/*****************************************************************************/</span>
+<a name="l00243"></a>00243 <span class="comment">/*  End         : ShutdownSerialPort                                         */</span>
+<a name="l00244"></a>00244 <span class="comment">/*****************************************************************************/</span>
+<a name="l00245"></a>00245 
+<a name="l00246"></a>00246 <span class="comment">/*****************************************************************************/</span>
+<a name="l00247"></a>00247 <span class="comment">/*  Procedure   : GetByteFromSerialPort                                      */</span>
+<a name="l00248"></a>00248 <span class="comment">/*****************************************************************************/</span>
+<a name="l00249"></a>00249 <span class="comment">/*                                                                           */</span>
+<a name="l00250"></a>00250 <span class="comment">/*  Function    : Fetches a Byte from the inputbuffer                        */</span>
+<a name="l00251"></a>00251 <span class="comment">/*                                                                           */</span>
+<a name="l00252"></a>00252 <span class="comment">/*  Type        : Global                                                     */</span>
+<a name="l00253"></a>00253 <span class="comment">/*                                                                           */</span>
+<a name="l00254"></a>00254 <span class="comment">/*  Input Para  : None                                                       */</span>
+<a name="l00255"></a>00255 <span class="comment">/*                                                                           */</span>
+<a name="l00256"></a>00256 <span class="comment">/*  Output Para : Byte from Buffer or -1 if none availlable                  */</span>
+<a name="l00257"></a>00257 <span class="comment">/*                                                                           */</span>
+<a name="l00258"></a>00258 <span class="comment">/*  Author      : I. Oesch                                                   */</span>
+<a name="l00259"></a>00259 <span class="comment">/*                                                                           */</span>
+<a name="l00260"></a>00260 <span class="comment">/*  History     : 12.07.2002  IO  Created                                    */</span>
+<a name="l00261"></a>00261 <span class="comment">/*                                                                           */</span>
+<a name="l00262"></a>00262 <span class="comment">/*****************************************************************************/</span>
+<a name="l00263"></a><a class="code" href="serport_8h.html#3e8d9991590284f8457f82515e6b3f55">00263</a> <span class="keywordtype">int</span> <a class="code" href="serport_8c.html#3e8d9991590284f8457f82515e6b3f55">GetByteFromSerialPort</a>(<span class="keywordtype">void</span>)
+<a name="l00264"></a>00264 {
+<a name="l00265"></a>00265    <span class="comment">/* Method data declaration      */</span>
+<a name="l00266"></a>00266    <span class="keywordtype">int</span> Value = -1;
+<a name="l00267"></a>00267    <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> Buffer[10];
+<a name="l00268"></a>00268    DWORD BytesRead;
+<a name="l00269"></a>00269 
+<a name="l00270"></a>00270    <span class="comment">/* Method code declaration      */</span>
+<a name="l00271"></a>00271 
+<a name="l00272"></a>00272    <span class="comment">/* Read one byte */</span>
+<a name="l00273"></a>00273    ReadFile(<a class="code" href="serport_8c.html#48f8e68f4689776b31a64ea5b0b33a8e">ComPort</a>, Buffer, 1, &amp;BytesRead, NULL);
+<a name="l00274"></a>00274 
+<a name="l00275"></a>00275    <span class="comment">/* Check if we got one, if not, return -1 */</span>
+<a name="l00276"></a>00276    <span class="keywordflow">if</span> (BytesRead &gt; 0) {
+<a name="l00277"></a>00277       Value = Buffer[0];
+<a name="l00278"></a>00278    }
+<a name="l00279"></a>00279    <span class="keywordflow">return</span> Value;
+<a name="l00280"></a>00280 }
+<a name="l00281"></a>00281 <span class="comment">/*****************************************************************************/</span>
+<a name="l00282"></a>00282 <span class="comment">/*  End         : GetByteFromSerialPort                                      */</span>
+<a name="l00283"></a>00283 <span class="comment">/*****************************************************************************/</span>
+<a name="l00284"></a>00284 
+<a name="l00285"></a>00285 <span class="comment">/*****************************************************************************/</span>
+<a name="l00286"></a>00286 <span class="comment">/*  Procedure   : SendByteToSerialPort                                       */</span>
+<a name="l00287"></a>00287 <span class="comment">/*****************************************************************************/</span>
+<a name="l00288"></a>00288 <span class="comment">/*                                                                           */</span>
+<a name="l00289"></a>00289 <span class="comment">/*  Function    : Sends a Byte to the serial port                            */</span>
+<a name="l00290"></a>00290 <span class="comment">/*                                                                           */</span>
+<a name="l00291"></a>00291 <span class="comment">/*  Type        : Global                                                     */</span>
+<a name="l00292"></a>00292 <span class="comment">/*                                                                           */</span>
+<a name="l00293"></a>00293 <span class="comment">/*  Input Para  : Byte     Byte    to transmit                               */</span>
+<a name="l00294"></a>00294 <span class="comment">/*                                                                           */</span>
+<a name="l00295"></a>00295 <span class="comment">/*  Output Para : none                                                       */</span>
+<a name="l00296"></a>00296 <span class="comment">/*                                                                           */</span>
+<a name="l00297"></a>00297 <span class="comment">/*  Author      : I. Oesch                                                   */</span>
+<a name="l00298"></a>00298 <span class="comment">/*                                                                           */</span>
+<a name="l00299"></a>00299 <span class="comment">/*  History     : 12.07.2002  IO  Created                                    */</span>
+<a name="l00300"></a>00300 <span class="comment">/*                                                                           */</span>
+<a name="l00301"></a>00301 <span class="comment">/*****************************************************************************/</span>
+<a name="l00302"></a><a class="code" href="serport_8h.html#e7d011c3ebfea3c8636e9dfff48c2b8f">00302</a> <span class="keywordtype">void</span> <a class="code" href="serport_8c.html#e7d011c3ebfea3c8636e9dfff48c2b8f">SendByteToSerialPort</a>(<span class="keywordtype">int</span> Byte)
+<a name="l00303"></a>00303 {
+<a name="l00304"></a>00304    <span class="comment">/* Method data declaration      */</span>
+<a name="l00305"></a>00305    <span class="keywordtype">char</span> Buffer[10];
+<a name="l00306"></a>00306    DWORD BytesWroten;
+<a name="l00307"></a>00307 
+<a name="l00308"></a>00308    <span class="comment">/* Method code declaration      */</span>
+<a name="l00309"></a>00309 
+<a name="l00310"></a>00310    <span class="comment">/* Write the Byte */</span>
+<a name="l00311"></a>00311    Buffer[0] = Byte;
+<a name="l00312"></a>00312    WriteFile(<a class="code" href="serport_8c.html#48f8e68f4689776b31a64ea5b0b33a8e">ComPort</a>, Buffer, 1, &amp;BytesWroten, NULL);
+<a name="l00313"></a>00313 }
+<a name="l00314"></a>00314 <span class="comment">/*****************************************************************************/</span>
+<a name="l00315"></a>00315 <span class="comment">/*  End         : SendByteToSerialPort                                       */</span>
+<a name="l00316"></a>00316 <span class="comment">/*****************************************************************************/</span>
+<a name="l00317"></a>00317 
+<a name="l00318"></a>00318 <span class="comment">/*****************************************************************************/</span>
+<a name="l00319"></a>00319 <span class="comment">/*  Procedure   : ClearSerialPortBuffer                                      */</span>
+<a name="l00320"></a>00320 <span class="comment">/*****************************************************************************/</span>
+<a name="l00321"></a>00321 <span class="comment">/*                                                                           */</span>
+<a name="l00322"></a>00322 <span class="comment">/*  Function    : Clears the receivebuffer                                   */</span>
+<a name="l00323"></a>00323 <span class="comment">/*                                                                           */</span>
+<a name="l00324"></a>00324 <span class="comment">/*  Type        : Global                                                     */</span>
+<a name="l00325"></a>00325 <span class="comment">/*                                                                           */</span>
+<a name="l00326"></a>00326 <span class="comment">/*  Input Para  : None                                                       */</span>
+<a name="l00327"></a>00327 <span class="comment">/*                                                                           */</span>
+<a name="l00328"></a>00328 <span class="comment">/*  Output Para : none                                                       */</span>
+<a name="l00329"></a>00329 <span class="comment">/*                                                                           */</span>
+<a name="l00330"></a>00330 <span class="comment">/*  Author      : I. Oesch                                                   */</span>
+<a name="l00331"></a>00331 <span class="comment">/*                                                                           */</span>
+<a name="l00332"></a>00332 <span class="comment">/*  History     : 12.07.2002  IO  Created                                    */</span>
+<a name="l00333"></a>00333 <span class="comment">/*                                                                           */</span>
+<a name="l00334"></a>00334 <span class="comment">/*****************************************************************************/</span>
+<a name="l00335"></a><a class="code" href="serport_8h.html#e314efa07a8a8a13f537409be003e820">00335</a> <span class="keywordtype">void</span> <a class="code" href="serport_8c.html#e314efa07a8a8a13f537409be003e820">ClearSerialPortBuffer</a>(<span class="keywordtype">void</span>)
+<a name="l00336"></a>00336 {
+<a name="l00337"></a>00337    <span class="comment">/* Method data declaration      */</span>
+<a name="l00338"></a>00338 
+<a name="l00339"></a>00339    <span class="comment">/* Method code declaration      */</span>
+<a name="l00340"></a>00340 
+<a name="l00341"></a>00341    <span class="comment">/* clear the transmit and the receivebuffer */</span>
+<a name="l00342"></a>00342    PurgeComm(<a class="code" href="serport_8c.html#48f8e68f4689776b31a64ea5b0b33a8e">ComPort</a>, PURGE_TXCLEAR|PURGE_RXCLEAR);
+<a name="l00343"></a>00343 }
+<a name="l00344"></a>00344 <span class="comment">/*****************************************************************************/</span>
+<a name="l00345"></a>00345 <span class="comment">/*  End         : ClearSerialPortBuffer                                      */</span>
+<a name="l00346"></a>00346 <span class="comment">/*****************************************************************************/</span>
+<a name="l00347"></a>00347 
+<a name="l00348"></a>00348 <span class="comment">/*****************************************************************************/</span>
+<a name="l00349"></a>00349 <span class="comment">/*  Procedure   : BytesAvaillableFromSerialPort                              */</span>
+<a name="l00350"></a>00350 <span class="comment">/*****************************************************************************/</span>
+<a name="l00351"></a>00351 <span class="comment">/*                                                                           */</span>
+<a name="l00352"></a>00352 <span class="comment">/*  Function    : Returns the amount of availlable bytes in the receive      */</span>
+<a name="l00353"></a>00353 <span class="comment">/*                buffer                                                     */</span>
+<a name="l00354"></a>00354 <span class="comment">/*                                                                           */</span>
+<a name="l00355"></a>00355 <span class="comment">/*  Type        : Global                                                     */</span>
+<a name="l00356"></a>00356 <span class="comment">/*                                                                           */</span>
+<a name="l00357"></a>00357 <span class="comment">/*  Input Para  : None                                                       */</span>
+<a name="l00358"></a>00358 <span class="comment">/*                                                                           */</span>
+<a name="l00359"></a>00359 <span class="comment">/*  Output Para : Number of Bytes availlable in Inputbuffer                  */</span>
+<a name="l00360"></a>00360 <span class="comment">/*                                                                           */</span>
+<a name="l00361"></a>00361 <span class="comment">/*  Author      : I. Oesch                                                   */</span>
+<a name="l00362"></a>00362 <span class="comment">/*                                                                           */</span>
+<a name="l00363"></a>00363 <span class="comment">/*  History     : 12.07.2002  IO  Created                                    */</span>
+<a name="l00364"></a>00364 <span class="comment">/*                                                                           */</span>
+<a name="l00365"></a>00365 <span class="comment">/*****************************************************************************/</span>
+<a name="l00366"></a><a class="code" href="serport_8h.html#0e32b30221ce16edc4754b4ac1f02478">00366</a> <span class="keywordtype">int</span> <a class="code" href="serport_8c.html#0e32b30221ce16edc4754b4ac1f02478">BytesAvaillableFromSerialPort</a>(<span class="keywordtype">void</span>)
+<a name="l00367"></a>00367 {
+<a name="l00368"></a>00368    <span class="comment">/* Method data declaration      */</span>
+<a name="l00369"></a>00369    DWORD    Errors;     <span class="comment">// pointer to variable to receive error codes</span>
+<a name="l00370"></a>00370    COMSTAT  Stat;       <span class="comment">// pointer to buffer for communications status</span>
+<a name="l00371"></a>00371 
+<a name="l00372"></a>00372    <span class="comment">/* Method code declaration      */</span>
+<a name="l00373"></a>00373    <span class="comment">/* get the comm state */</span>
+<a name="l00374"></a>00374    ClearCommError(<a class="code" href="serport_8c.html#48f8e68f4689776b31a64ea5b0b33a8e">ComPort</a>, &amp;Errors, &amp;Stat);
+<a name="l00375"></a>00375 
+<a name="l00376"></a>00376    <span class="keywordflow">return</span> (Stat.cbInQue);        <span class="comment">// bytes in input buffer</span>
+<a name="l00377"></a>00377 }
+<a name="l00378"></a>00378 <span class="comment">/*****************************************************************************/</span>
+<a name="l00379"></a>00379 <span class="comment">/*  End         : BytesAvaillableFromSerialPort                              */</span>
+<a name="l00380"></a>00380 <span class="comment">/*****************************************************************************/</span>
+<a name="l00381"></a>00381 
+<a name="l00382"></a>00382 <span class="comment">/*****************************************************************************/</span>
+<a name="l00383"></a>00383 <span class="comment">/*  Procedure   : UnsentBytesInSerialPort                                    */</span>
+<a name="l00384"></a>00384 <span class="comment">/*****************************************************************************/</span>
+<a name="l00385"></a>00385 <span class="comment">/*                                                                           */</span>
+<a name="l00386"></a>00386 <span class="comment">/*  Function    : Returns the number of bytes still to transmit in buffer    */</span>
+<a name="l00387"></a>00387 <span class="comment">/*                                                                           */</span>
+<a name="l00388"></a>00388 <span class="comment">/*  Type        : Global                                                     */</span>
+<a name="l00389"></a>00389 <span class="comment">/*                                                                           */</span>
+<a name="l00390"></a>00390 <span class="comment">/*  Input Para  : None                                                       */</span>
+<a name="l00391"></a>00391 <span class="comment">/*                                                                           */</span>
+<a name="l00392"></a>00392 <span class="comment">/*  Output Para : Number of Bytes stil waiting to be transmited              */</span>
+<a name="l00393"></a>00393 <span class="comment">/*                                                                           */</span>
+<a name="l00394"></a>00394 <span class="comment">/*  Author      : I. Oesch                                                   */</span>
+<a name="l00395"></a>00395 <span class="comment">/*                                                                           */</span>
+<a name="l00396"></a>00396 <span class="comment">/*  History     : 12.07.2002  IO  Created                                    */</span>
+<a name="l00397"></a>00397 <span class="comment">/*                                                                           */</span>
+<a name="l00398"></a>00398 <span class="comment">/*****************************************************************************/</span>
+<a name="l00399"></a><a class="code" href="serport_8h.html#d0ed27500a77d29b08df8e9f055cb621">00399</a> <span class="keywordtype">int</span> <a class="code" href="serport_8c.html#d0ed27500a77d29b08df8e9f055cb621">UnsentBytesInSerialPort</a>(<span class="keywordtype">void</span>)
+<a name="l00400"></a>00400 {
+<a name="l00401"></a>00401    <span class="comment">/* Method data declaration      */</span>
+<a name="l00402"></a>00402    DWORD    Errors;     <span class="comment">// pointer to variable to receive error codes</span>
+<a name="l00403"></a>00403    COMSTAT  Stat;       <span class="comment">// pointer to buffer for communications status</span>
+<a name="l00404"></a>00404 
+<a name="l00405"></a>00405    <span class="comment">/* Method code declaration      */</span>
+<a name="l00406"></a>00406    <span class="comment">/* get the comm state */</span>
+<a name="l00407"></a>00407    ClearCommError(<a class="code" href="serport_8c.html#48f8e68f4689776b31a64ea5b0b33a8e">ComPort</a>, &amp;Errors, &amp;Stat);
+<a name="l00408"></a>00408 
+<a name="l00409"></a>00409    <span class="keywordflow">return</span> (Stat.cbOutQue);        <span class="comment">// bytes in output buffer</span>
+<a name="l00410"></a>00410 }
+<a name="l00411"></a>00411 <span class="comment">/*****************************************************************************/</span>
+<a name="l00412"></a>00412 <span class="comment">/*  End         : UnsentBytesInSerialPort                                    */</span>
+<a name="l00413"></a>00413 <span class="comment">/*****************************************************************************/</span>
+<a name="l00414"></a>00414 
+<a name="l00415"></a>00415 <span class="comment">/*****************************************************************************/</span>
+<a name="l00416"></a>00416 <span class="comment">/*  End Module  : SerialPortInterface                                        */</span>
+<a name="l00417"></a>00417 <span class="comment">/*****************************************************************************/</span>
+<a name="l00418"></a>00418 
+</pre></div><hr size="1"><address style="align: right;"><small>Erzeugt am Sat Jan 12 02:25:17 2013 für Carme-Snake von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.4.5 </small></address>
+</body>
+</html>

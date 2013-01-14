@@ -1,0 +1,552 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1">
+<title>Carme-Snake: D:/Programming/C/Carme-Snake-Client/src/serport.h-Dateireferenz</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Erzeugt von Doxygen 1.4.5 -->
+<div class="tabs">
+  <ul>
+    <li><a href="index.html"><span>Hauptseite</span></a></li>
+    <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+    <li id="current"><a href="files.html"><span>Dateien</span></a></li>
+    <li><a href="dirs.html"><span>Verzeichnisse</span></a></li>
+    <li><a href="pages.html"><span>Zusätzliche&nbsp;Informationen</span></a></li>
+  </ul></div>
+<div class="tabs">
+  <ul>
+    <li><a href="files.html"><span>Auflistung&nbsp;der&nbsp;Dateien</span></a></li>
+    <li><a href="globals.html"><span>Datei-Elemente</span></a></li>
+  </ul></div>
+<div class="nav">
+<a class="el" href="dir_D_3A_2F.html">D:</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_D_3A_2FProgramming_2F.html">Programming</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_D_3A_2FProgramming_2FC_2F.html">C</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_D_3A_2FProgramming_2FC_2FCarme_2DSnake_2DClient_2F.html">Carme-Snake-Client</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_D_3A_2FProgramming_2FC_2FCarme_2DSnake_2DClient_2Fsrc_2F.html">src</a></div>
+<h1>serport.h-Dateireferenz</h1>
+<p>
+Dieser Graph zeigt, welche Datei direkt oder indirekt diese Datei enthält:<p><center><img src="serport_8h__dep__incl.png" border="0" usemap="#D:/Programming/C/Carme-Snake-Client/src/serport.hdep_map" alt=""></center>
+<map name="D:/Programming/C/Carme-Snake-Client/src/serport.hdep_map">
+<area href="game_8c-source.html" shape="rect" coords="386,5,705,32" alt="">
+<area href="serport_8c-source.html" shape="rect" coords="382,56,709,83" alt="">
+</map>
+
+<p>
+<a href="serport_8h-source.html">gehe zum Quellcode dieser Datei</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Typdefinitionen</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef enum <a class="el" href="serport_8h.html#783064ca20cd587e4b16de0939db712c">PortType</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="serport_8h.html#783064ca20cd587e4b16de0939db712c">PortType</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef enum <a class="el" href="serport_8h.html#433c4f3cf7e29a2a3735560d6fd551fd">ParityType</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="serport_8h.html#433c4f3cf7e29a2a3735560d6fd551fd">ParityType</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef enum <a class="el" href="serport_8h.html#38e261dbb0e70f73322a2b5142b1f8c4">BaudrateType</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="serport_8h.html#38e261dbb0e70f73322a2b5142b1f8c4">BaudrateType</a></td></tr>
+
+<tr><td colspan="2"><br><h2>Aufzählungen</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="serport_8h.html#783064ca20cd587e4b16de0939db712c">PortType</a> { <br>
+&nbsp;&nbsp;<a class="el" href="serport_8h.html#783064ca20cd587e4b16de0939db712cbd2103035a8021942390a78a431ba0c4">DUMMY</a>, 
+<a class="el" href="serport_8h.html#783064ca20cd587e4b16de0939db712cf844887960ff17500d1a44c33af38b78">COM1</a> =  1, 
+<a class="el" href="serport_8h.html#783064ca20cd587e4b16de0939db712ca9d582cd711bb7e4814f163af03fc5c2">COM2</a> =  2, 
+<a class="el" href="serport_8h.html#783064ca20cd587e4b16de0939db712c4e09844d2586f0df783fcaa2753899f8">COM3</a> =  3, 
+<br>
+&nbsp;&nbsp;<a class="el" href="serport_8h.html#783064ca20cd587e4b16de0939db712cd3052390df38c96103f85d82900fa259">COM4</a> =  4, 
+<a class="el" href="serport_8h.html#783064ca20cd587e4b16de0939db712c0e817345893c98ea792a365a1713dff5">COM5</a> =  5, 
+<a class="el" href="serport_8h.html#783064ca20cd587e4b16de0939db712ce4507bdbbe2296106f173b6099c41de7">COM6</a> =  6, 
+<a class="el" href="serport_8h.html#783064ca20cd587e4b16de0939db712c1ff56bf66686ad64587f0edb5823d6d7">COM7</a> =  7
+<br>
+ }</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="serport_8h.html#433c4f3cf7e29a2a3735560d6fd551fd">ParityType</a> { <br>
+&nbsp;&nbsp;<a class="el" href="serport_8h.html#433c4f3cf7e29a2a3735560d6fd551fdf1a47cb1284201167502831e56d96bd7">P_NONE</a>, 
+<a class="el" href="serport_8h.html#433c4f3cf7e29a2a3735560d6fd551fdd3f35215f913f314d494290a574929d1">P_EVEN</a>, 
+<a class="el" href="serport_8h.html#433c4f3cf7e29a2a3735560d6fd551fdc2e773615dcc02268c98a424184832b5">P_ODD</a>, 
+<a class="el" href="serport_8h.html#433c4f3cf7e29a2a3735560d6fd551fde3653b03e1ea00d286b32e491124154d">P_MARK</a>, 
+<br>
+&nbsp;&nbsp;<a class="el" href="serport_8h.html#433c4f3cf7e29a2a3735560d6fd551fd965c426cef3315ccfd4de72d84c2f61f">P_SPACE</a>
+<br>
+ }</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="serport_8h.html#38e261dbb0e70f73322a2b5142b1f8c4">BaudrateType</a> { <br>
+&nbsp;&nbsp;<a class="el" href="serport_8h.html#38e261dbb0e70f73322a2b5142b1f8c4f3af8e234279100722af05706511a891">Bd600</a>, 
+<a class="el" href="serport_8h.html#38e261dbb0e70f73322a2b5142b1f8c4c4266a82c6481d5508fd16dc1061f76a">Bd1200</a>, 
+<a class="el" href="serport_8h.html#38e261dbb0e70f73322a2b5142b1f8c4dd53ee83c2a55653e82a8e7687065504">Bd2400</a>, 
+<a class="el" href="serport_8h.html#38e261dbb0e70f73322a2b5142b1f8c4c8665aedf09e2846de06d3b7bdd72741">Bd4800</a>, 
+<br>
+&nbsp;&nbsp;<a class="el" href="serport_8h.html#38e261dbb0e70f73322a2b5142b1f8c49578119692f450270b2939fe92f875c9">Bd9600</a>, 
+<a class="el" href="serport_8h.html#38e261dbb0e70f73322a2b5142b1f8c49eb3a214ed801637cc373a778cec1177">Bd19200</a>
+<br>
+ }</td></tr>
+
+<tr><td colspan="2"><br><h2>Funktionen</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="serport_8h.html#98b55ee701e5f4ba268d8542b7803554">InitSerialPort</a> (<a class="el" href="serport_8h.html#783064ca20cd587e4b16de0939db712c">PortType</a> Port, <a class="el" href="serport_8h.html#38e261dbb0e70f73322a2b5142b1f8c4">BaudrateType</a> BaudRate, <a class="el" href="serport_8h.html#433c4f3cf7e29a2a3735560d6fd551fd">ParityType</a> Parity, int Bits, int Stopbits)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="serport_8h.html#d708c08ed0c1dc60aeb3674a9a06f288">ShutdownSerialPort</a> (void)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="serport_8h.html#3e8d9991590284f8457f82515e6b3f55">GetByteFromSerialPort</a> (void)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="serport_8h.html#e7d011c3ebfea3c8636e9dfff48c2b8f">SendByteToSerialPort</a> (int Byte)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="serport_8h.html#e314efa07a8a8a13f537409be003e820">ClearSerialPortBuffer</a> (void)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="serport_8h.html#0e32b30221ce16edc4754b4ac1f02478">BytesAvaillableFromSerialPort</a> (void)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="serport_8h.html#d0ed27500a77d29b08df8e9f055cb621">UnsentBytesInSerialPort</a> (void)</td></tr>
+
+</table>
+<hr><h2>Dokumentation der benutzerdefinierten Typen</h2>
+<a class="anchor" name="38e261dbb0e70f73322a2b5142b1f8c4"></a><!-- doxytag: member="serport.h::BaudrateType" ref="38e261dbb0e70f73322a2b5142b1f8c4" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">typedef enum <a class="el" href="serport_8h.html#38e261dbb0e70f73322a2b5142b1f8c4">BaudrateType</a>  <a class="el" href="serport_8h.html#38e261dbb0e70f73322a2b5142b1f8c4">BaudrateType</a>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="433c4f3cf7e29a2a3735560d6fd551fd"></a><!-- doxytag: member="serport.h::ParityType" ref="433c4f3cf7e29a2a3735560d6fd551fd" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">typedef enum <a class="el" href="serport_8h.html#433c4f3cf7e29a2a3735560d6fd551fd">ParityType</a>  <a class="el" href="serport_8h.html#433c4f3cf7e29a2a3735560d6fd551fd">ParityType</a>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="783064ca20cd587e4b16de0939db712c"></a><!-- doxytag: member="serport.h::PortType" ref="783064ca20cd587e4b16de0939db712c" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">typedef enum <a class="el" href="serport_8h.html#783064ca20cd587e4b16de0939db712c">PortType</a>  <a class="el" href="serport_8h.html#783064ca20cd587e4b16de0939db712c">PortType</a>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+    </td>
+  </tr>
+</table>
+<hr><h2>Dokumentation der Aufzählungstypen</h2>
+<a class="anchor" name="38e261dbb0e70f73322a2b5142b1f8c4"></a><!-- doxytag: member="serport.h::BaudrateType" ref="38e261dbb0e70f73322a2b5142b1f8c4" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">enum <a class="el" href="serport_8h.html#38e261dbb0e70f73322a2b5142b1f8c4">BaudrateType</a>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+<dl compact><dt><b>Aufzählungswerte: </b></dt><dd>
+<table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em><a class="anchor" name="38e261dbb0e70f73322a2b5142b1f8c4f3af8e234279100722af05706511a891"></a><!-- doxytag: member="Bd600" ref="38e261dbb0e70f73322a2b5142b1f8c4f3af8e234279100722af05706511a891" args="" -->Bd600</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" name="38e261dbb0e70f73322a2b5142b1f8c4c4266a82c6481d5508fd16dc1061f76a"></a><!-- doxytag: member="Bd1200" ref="38e261dbb0e70f73322a2b5142b1f8c4c4266a82c6481d5508fd16dc1061f76a" args="" -->Bd1200</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" name="38e261dbb0e70f73322a2b5142b1f8c4dd53ee83c2a55653e82a8e7687065504"></a><!-- doxytag: member="Bd2400" ref="38e261dbb0e70f73322a2b5142b1f8c4dd53ee83c2a55653e82a8e7687065504" args="" -->Bd2400</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" name="38e261dbb0e70f73322a2b5142b1f8c4c8665aedf09e2846de06d3b7bdd72741"></a><!-- doxytag: member="Bd4800" ref="38e261dbb0e70f73322a2b5142b1f8c4c8665aedf09e2846de06d3b7bdd72741" args="" -->Bd4800</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" name="38e261dbb0e70f73322a2b5142b1f8c49578119692f450270b2939fe92f875c9"></a><!-- doxytag: member="Bd9600" ref="38e261dbb0e70f73322a2b5142b1f8c49578119692f450270b2939fe92f875c9" args="" -->Bd9600</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" name="38e261dbb0e70f73322a2b5142b1f8c49eb3a214ed801637cc373a778cec1177"></a><!-- doxytag: member="Bd19200" ref="38e261dbb0e70f73322a2b5142b1f8c49eb3a214ed801637cc373a778cec1177" args="" -->Bd19200</em>&nbsp;</td><td>
+</td></tr>
+</table>
+</dl>
+
+<p>
+Definiert in Zeile <a class="el" href="serport_8h-source.html#l00052">52</a> der Datei <a class="el" href="serport_8h-source.html">serport.h</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="433c4f3cf7e29a2a3735560d6fd551fd"></a><!-- doxytag: member="serport.h::ParityType" ref="433c4f3cf7e29a2a3735560d6fd551fd" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">enum <a class="el" href="serport_8h.html#433c4f3cf7e29a2a3735560d6fd551fd">ParityType</a>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+<dl compact><dt><b>Aufzählungswerte: </b></dt><dd>
+<table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em><a class="anchor" name="433c4f3cf7e29a2a3735560d6fd551fdf1a47cb1284201167502831e56d96bd7"></a><!-- doxytag: member="P_NONE" ref="433c4f3cf7e29a2a3735560d6fd551fdf1a47cb1284201167502831e56d96bd7" args="" -->P_NONE</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" name="433c4f3cf7e29a2a3735560d6fd551fdd3f35215f913f314d494290a574929d1"></a><!-- doxytag: member="P_EVEN" ref="433c4f3cf7e29a2a3735560d6fd551fdd3f35215f913f314d494290a574929d1" args="" -->P_EVEN</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" name="433c4f3cf7e29a2a3735560d6fd551fdc2e773615dcc02268c98a424184832b5"></a><!-- doxytag: member="P_ODD" ref="433c4f3cf7e29a2a3735560d6fd551fdc2e773615dcc02268c98a424184832b5" args="" -->P_ODD</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" name="433c4f3cf7e29a2a3735560d6fd551fde3653b03e1ea00d286b32e491124154d"></a><!-- doxytag: member="P_MARK" ref="433c4f3cf7e29a2a3735560d6fd551fde3653b03e1ea00d286b32e491124154d" args="" -->P_MARK</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" name="433c4f3cf7e29a2a3735560d6fd551fd965c426cef3315ccfd4de72d84c2f61f"></a><!-- doxytag: member="P_SPACE" ref="433c4f3cf7e29a2a3735560d6fd551fd965c426cef3315ccfd4de72d84c2f61f" args="" -->P_SPACE</em>&nbsp;</td><td>
+</td></tr>
+</table>
+</dl>
+
+<p>
+Definiert in Zeile <a class="el" href="serport_8h-source.html#l00044">44</a> der Datei <a class="el" href="serport_8h-source.html">serport.h</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="783064ca20cd587e4b16de0939db712c"></a><!-- doxytag: member="serport.h::PortType" ref="783064ca20cd587e4b16de0939db712c" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">enum <a class="el" href="serport_8h.html#783064ca20cd587e4b16de0939db712c">PortType</a>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+<dl compact><dt><b>Aufzählungswerte: </b></dt><dd>
+<table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em><a class="anchor" name="783064ca20cd587e4b16de0939db712cbd2103035a8021942390a78a431ba0c4"></a><!-- doxytag: member="DUMMY" ref="783064ca20cd587e4b16de0939db712cbd2103035a8021942390a78a431ba0c4" args="" -->DUMMY</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" name="783064ca20cd587e4b16de0939db712cf844887960ff17500d1a44c33af38b78"></a><!-- doxytag: member="COM1" ref="783064ca20cd587e4b16de0939db712cf844887960ff17500d1a44c33af38b78" args="" -->COM1</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" name="783064ca20cd587e4b16de0939db712ca9d582cd711bb7e4814f163af03fc5c2"></a><!-- doxytag: member="COM2" ref="783064ca20cd587e4b16de0939db712ca9d582cd711bb7e4814f163af03fc5c2" args="" -->COM2</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" name="783064ca20cd587e4b16de0939db712c4e09844d2586f0df783fcaa2753899f8"></a><!-- doxytag: member="COM3" ref="783064ca20cd587e4b16de0939db712c4e09844d2586f0df783fcaa2753899f8" args="" -->COM3</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" name="783064ca20cd587e4b16de0939db712cd3052390df38c96103f85d82900fa259"></a><!-- doxytag: member="COM4" ref="783064ca20cd587e4b16de0939db712cd3052390df38c96103f85d82900fa259" args="" -->COM4</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" name="783064ca20cd587e4b16de0939db712c0e817345893c98ea792a365a1713dff5"></a><!-- doxytag: member="COM5" ref="783064ca20cd587e4b16de0939db712c0e817345893c98ea792a365a1713dff5" args="" -->COM5</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" name="783064ca20cd587e4b16de0939db712ce4507bdbbe2296106f173b6099c41de7"></a><!-- doxytag: member="COM6" ref="783064ca20cd587e4b16de0939db712ce4507bdbbe2296106f173b6099c41de7" args="" -->COM6</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" name="783064ca20cd587e4b16de0939db712c1ff56bf66686ad64587f0edb5823d6d7"></a><!-- doxytag: member="COM7" ref="783064ca20cd587e4b16de0939db712c1ff56bf66686ad64587f0edb5823d6d7" args="" -->COM7</em>&nbsp;</td><td>
+</td></tr>
+</table>
+</dl>
+
+<p>
+Definiert in Zeile <a class="el" href="serport_8h-source.html#l00033">33</a> der Datei <a class="el" href="serport_8h-source.html">serport.h</a>.    </td>
+  </tr>
+</table>
+<hr><h2>Dokumentation der Funktionen</h2>
+<a class="anchor" name="0e32b30221ce16edc4754b4ac1f02478"></a><!-- doxytag: member="serport.h::BytesAvaillableFromSerialPort" ref="0e32b30221ce16edc4754b4ac1f02478" args="(void)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">int BytesAvaillableFromSerialPort           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">void&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definiert in Zeile <a class="el" href="serport_8c-source.html#l00366">366</a> der Datei <a class="el" href="serport_8c-source.html">serport.c</a>.
+<p>
+Benutzt <a class="el" href="serport_8c-source.html#l00037">ComPort</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="e314efa07a8a8a13f537409be003e820"></a><!-- doxytag: member="serport.h::ClearSerialPortBuffer" ref="e314efa07a8a8a13f537409be003e820" args="(void)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">void ClearSerialPortBuffer           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">void&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definiert in Zeile <a class="el" href="serport_8c-source.html#l00335">335</a> der Datei <a class="el" href="serport_8c-source.html">serport.c</a>.
+<p>
+Benutzt <a class="el" href="serport_8c-source.html#l00037">ComPort</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="3e8d9991590284f8457f82515e6b3f55"></a><!-- doxytag: member="serport.h::GetByteFromSerialPort" ref="3e8d9991590284f8457f82515e6b3f55" args="(void)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">int GetByteFromSerialPort           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">void&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definiert in Zeile <a class="el" href="serport_8c-source.html#l00263">263</a> der Datei <a class="el" href="serport_8c-source.html">serport.c</a>.
+<p>
+Benutzt <a class="el" href="serport_8c-source.html#l00037">ComPort</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="98b55ee701e5f4ba268d8542b7803554"></a><!-- doxytag: member="serport.h::InitSerialPort" ref="98b55ee701e5f4ba268d8542b7803554" args="(PortType Port, BaudrateType BaudRate, ParityType Parity, int Bits, int Stopbits)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">int InitSerialPort           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top"><a class="el" href="serport_8h.html#783064ca20cd587e4b16de0939db712c">PortType</a>&nbsp;</td>
+          <td class="mdname" nowrap> <em>Port</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap><a class="el" href="serport_8h.html#38e261dbb0e70f73322a2b5142b1f8c4">BaudrateType</a>&nbsp;</td>
+          <td class="mdname" nowrap> <em>BaudRate</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap><a class="el" href="serport_8h.html#433c4f3cf7e29a2a3735560d6fd551fd">ParityType</a>&nbsp;</td>
+          <td class="mdname" nowrap> <em>Parity</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>int&nbsp;</td>
+          <td class="mdname" nowrap> <em>Bits</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>int&nbsp;</td>
+          <td class="mdname" nowrap> <em>Stopbits</em></td>
+        </tr>
+        <tr>
+          <td class="md"></td>
+          <td class="md">)&nbsp;</td>
+          <td class="md" colspan="2"></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definiert in Zeile <a class="el" href="serport_8c-source.html#l00065">65</a> der Datei <a class="el" href="serport_8c-source.html">serport.c</a>.
+<p>
+Benutzt <a class="el" href="serport_8h.html#38e261dbb0e70f73322a2b5142b1f8c4c4266a82c6481d5508fd16dc1061f76a">Bd1200</a>, <a class="el" href="serport_8h.html#38e261dbb0e70f73322a2b5142b1f8c49eb3a214ed801637cc373a778cec1177">Bd19200</a>, <a class="el" href="serport_8h.html#38e261dbb0e70f73322a2b5142b1f8c4dd53ee83c2a55653e82a8e7687065504">Bd2400</a>, <a class="el" href="serport_8h.html#38e261dbb0e70f73322a2b5142b1f8c4c8665aedf09e2846de06d3b7bdd72741">Bd4800</a>, <a class="el" href="serport_8h.html#38e261dbb0e70f73322a2b5142b1f8c4f3af8e234279100722af05706511a891">Bd600</a>, <a class="el" href="serport_8h.html#38e261dbb0e70f73322a2b5142b1f8c49578119692f450270b2939fe92f875c9">Bd9600</a>, <a class="el" href="serport_8h.html#783064ca20cd587e4b16de0939db712cf844887960ff17500d1a44c33af38b78">COM1</a>, <a class="el" href="serport_8h.html#783064ca20cd587e4b16de0939db712ca9d582cd711bb7e4814f163af03fc5c2">COM2</a>, <a class="el" href="serport_8h.html#783064ca20cd587e4b16de0939db712c4e09844d2586f0df783fcaa2753899f8">COM3</a>, <a class="el" href="serport_8h.html#783064ca20cd587e4b16de0939db712cd3052390df38c96103f85d82900fa259">COM4</a>, <a class="el" href="serport_8h.html#783064ca20cd587e4b16de0939db712c0e817345893c98ea792a365a1713dff5">COM5</a>, <a class="el" href="serport_8h.html#783064ca20cd587e4b16de0939db712ce4507bdbbe2296106f173b6099c41de7">COM6</a>, <a class="el" href="serport_8h.html#783064ca20cd587e4b16de0939db712c1ff56bf66686ad64587f0edb5823d6d7">COM7</a>, <a class="el" href="serport_8c-source.html#l00037">ComPort</a>, <a class="el" href="serport_8c-source.html#l00038">OldTimeout</a>, <a class="el" href="serport_8h.html#433c4f3cf7e29a2a3735560d6fd551fdd3f35215f913f314d494290a574929d1">P_EVEN</a>, <a class="el" href="serport_8h.html#433c4f3cf7e29a2a3735560d6fd551fde3653b03e1ea00d286b32e491124154d">P_MARK</a>, <a class="el" href="serport_8h.html#433c4f3cf7e29a2a3735560d6fd551fdf1a47cb1284201167502831e56d96bd7">P_NONE</a>, <a class="el" href="serport_8h.html#433c4f3cf7e29a2a3735560d6fd551fdc2e773615dcc02268c98a424184832b5">P_ODD</a>, <a class="el" href="serport_8h.html#433c4f3cf7e29a2a3735560d6fd551fd965c426cef3315ccfd4de72d84c2f61f">P_SPACE</a> und <a class="el" href="serport_8c-source.html#l00227">ShutdownSerialPort()</a>.
+<p>
+Hier ist der Graph aller Aufrufe für diese Funktion:<p><center><img src="serport_8h_98b55ee701e5f4ba268d8542b7803554_cgraph.png" border="0" usemap="#serport_8h_98b55ee701e5f4ba268d8542b7803554_cgraph_map" alt=""></center>
+<map name="serport_8h_98b55ee701e5f4ba268d8542b7803554_cgraph_map">
+<area href="serport_8c.html#d708c08ed0c1dc60aeb3674a9a06f288" shape="rect" coords="149,5,285,32" alt="">
+</map>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="e7d011c3ebfea3c8636e9dfff48c2b8f"></a><!-- doxytag: member="serport.h::SendByteToSerialPort" ref="e7d011c3ebfea3c8636e9dfff48c2b8f" args="(int Byte)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">void SendByteToSerialPort           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">int&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap> <em>Byte</em>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definiert in Zeile <a class="el" href="serport_8c-source.html#l00302">302</a> der Datei <a class="el" href="serport_8c-source.html">serport.c</a>.
+<p>
+Benutzt <a class="el" href="serport_8c-source.html#l00037">ComPort</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="d708c08ed0c1dc60aeb3674a9a06f288"></a><!-- doxytag: member="serport.h::ShutdownSerialPort" ref="d708c08ed0c1dc60aeb3674a9a06f288" args="(void)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">void ShutdownSerialPort           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">void&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definiert in Zeile <a class="el" href="serport_8c-source.html#l00227">227</a> der Datei <a class="el" href="serport_8c-source.html">serport.c</a>.
+<p>
+Benutzt <a class="el" href="serport_8c-source.html#l00037">ComPort</a> und <a class="el" href="serport_8c-source.html#l00038">OldTimeout</a>.
+<p>
+Wird benutzt von <a class="el" href="serport_8c-source.html#l00065">InitSerialPort()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="d0ed27500a77d29b08df8e9f055cb621"></a><!-- doxytag: member="serport.h::UnsentBytesInSerialPort" ref="d0ed27500a77d29b08df8e9f055cb621" args="(void)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">int UnsentBytesInSerialPort           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">void&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+
+<p>
+Definiert in Zeile <a class="el" href="serport_8c-source.html#l00399">399</a> der Datei <a class="el" href="serport_8c-source.html">serport.c</a>.
+<p>
+Benutzt <a class="el" href="serport_8c-source.html#l00037">ComPort</a>.    </td>
+  </tr>
+</table>
+<hr size="1"><address style="align: right;"><small>Erzeugt am Sat Jan 12 02:25:19 2013 für Carme-Snake von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.4.5 </small></address>
+</body>
+</html>
