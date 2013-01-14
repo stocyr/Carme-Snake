@@ -249,8 +249,8 @@ int main()
 				disable_interrupts();
 				//write_byte(score);
 
-				FFLCR &= ~(1<<7);
-				while (!(FFLSR & (1<<5)));
+				FFLCR &= ~(1<<7);			// DLAB löschen für zugriff
+				while (!(FFLSR & (1<<5)));	// Solange UART Busy
 				FFTHR = score;
 
 				enable_interrupts();
