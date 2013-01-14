@@ -30,7 +30,7 @@
  * @mainpage Carme-Snake
  * Dieses Spiel ist eine Snake-Klon. <br>
  * Das Spiel wird auf dem LCD der CARME Kits angezeigt, die Bedienung erfolgt über die Pfeiltasten an einem PC. <br>
- * Das Interface PC <-> CARME erfolgt per RS232 auf den UART1 Port des CARME Kits. <br>
+ * Das Interface PC <-> CARME erfolgt per RS232 auf den UART0 Port des CARME Kits. <br>
  *
  * <img src="../../DFD_v2.png">
  *
@@ -52,7 +52,7 @@
 
 /* global variables */
 /**
- * Globale Variable, welche vom Interrupthandler über UART1 aktualisiert wird.
+ * Globale Variable, welche vom Interrupthandler über UART0 aktualisiert wird.
  * Die Variable ist das Interface zur UART1 Schnittstelle. Sie enthält die Richtung,
  * in die die Schlange steuern soll. Wird per PC Tastatur gesteuert und dann per
  * UART zum CARME Kit gesendet. <p>

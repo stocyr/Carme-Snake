@@ -75,6 +75,9 @@ enum result step_forward(int initial)
 		case DOWN:
 			new_pos.y++;
 			break;
+		default:
+			// Wenn kein gültiges Zeichen, game over.
+			return COLLISION;
 		}
 
 	// wenn eine kollision passieren würde, kollision zurückliefern, nicht mehr fahren.

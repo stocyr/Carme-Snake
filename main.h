@@ -37,7 +37,7 @@
 
 /* Enumerations */
 /**
- * Dieser Enumerator dient zur Aufschlüsselung der Zeichen von der UART1 Schnittstelle.
+ * Dieser Enumerator dient zur Aufschlüsselung der Zeichen von der UART0 Schnittstelle.
  * Er definiert dadurch auch gleich das Protokoll: Je nachdem, welches Zeichen von der
  * Schnittstelle ankommt, wird es als die jeweilige Richtung interpretiert.
  */
@@ -73,7 +73,7 @@ extern void init_counter();		///< Initialisiert den Timer auf Hardwarestufe.
 extern void init_uart();		///< Initialisiert die UART1 Schnittstelle auf Hardwarestufe.
 extern void start_timer();		///< Startet den Timer auf Hardwarestufe.
 
-extern void write_byte(char byte);	///< Schreibt ein Byte über die UART1 Schnittstelle.
+extern void write_byte(char byte);	///< Schreibt ein Byte über die UART0 Schnittstelle.
 
 extern void enable_interrupts();	///< Schaltet Interrupts auf Hardwarestufe ein.
 extern void disable_interrupts();	///< Schaltet Interrupts auf Hardwarestufe aus.
