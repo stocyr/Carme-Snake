@@ -247,7 +247,12 @@ int main()
 			case COLLISION:
 				game_over = 1;
 				disable_interrupts();
-				write_byte(score);
+				//write_byte(score);
+
+				FFLCR &= ~(1<<7);
+				while (!(FFLSR & (1<<5)));
+				FFTHR = score;
+
 				enable_interrupts();
 				break;
 
