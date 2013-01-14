@@ -67,53 +67,81 @@
 <a name="l00058"></a>00058         <span class="comment">/* Bildschirm löschen */</span>
 <a name="l00059"></a>00059         <a class="code" href="window_8h.html#6b681f4e0a72f94c48925452ce2efd14">ClearWindow</a>();
 <a name="l00060"></a>00060 
-<a name="l00061"></a>00061         <span class="keywordtype">int</span> Key=0;
-<a name="l00062"></a>00062         <a class="code" href="zeichnen_8c.html#fc97cfe57b6528ec2b5894d01630a10a">Menu_zeichnen</a>();
-<a name="l00063"></a>00063 
-<a name="l00064"></a>00064         <span class="comment">/* Taste einlesen */</span>
-<a name="l00065"></a>00065         <span class="keywordflow">while</span>(1){
-<a name="l00066"></a>00066                 <span class="keywordflow">while</span> (<a class="code" href="window_8h.html#124494536773a67abe6bb43d1eaf8dc0">IsKeyPressReady</a>()){
-<a name="l00067"></a>00067                         Key = <a class="code" href="window_8h.html#dc1cab7cbc26dfc76e52660a847a6b6a">GetKeyPress</a>();
-<a name="l00068"></a>00068                 }
-<a name="l00069"></a>00069                 <span class="keywordflow">if</span>(Key==<span class="charliteral">'1'</span>){
-<a name="l00070"></a>00070 
-<a name="l00071"></a>00071                         <span class="comment">/* Game aufrufen */</span>
-<a name="l00072"></a>00072                         <a class="code" href="game_8c.html#d2c20aac2ec02a44bc35b97981530f4c">Game</a>(argc, argv, ApplicationPath);
-<a name="l00073"></a>00073 
-<a name="l00074"></a>00074                         <span class="comment">/* Hauptmenu anzeigen */</span>
-<a name="l00075"></a>00075                         Key=0;
-<a name="l00076"></a>00076                         <a class="code" href="window_8h.html#6b681f4e0a72f94c48925452ce2efd14">ClearWindow</a>();
-<a name="l00077"></a>00077                         <a class="code" href="zeichnen_8c.html#fc97cfe57b6528ec2b5894d01630a10a">Menu_zeichnen</a>();
-<a name="l00078"></a>00078                 }
-<a name="l00079"></a>00079                 <span class="keywordflow">if</span>(Key==<span class="charliteral">'2'</span>){
-<a name="l00080"></a>00080 
-<a name="l00081"></a>00081                         <span class="comment">/* Highscorelise anzeigen */</span>
-<a name="l00082"></a>00082                         <a class="code" href="zeichnen_8c.html#ec3ff1b837d5a2af9ef53420bc70849f">Highscore_zeichnen</a>(ApplicationPath);
-<a name="l00083"></a>00083                         <a class="code" href="window_8h.html#a55be8c13a9a5e4868fb701b084dc424">WaitMs</a>(5000);
-<a name="l00084"></a>00084                         <a class="code" href="window_8h.html#6ebefdada09f4c3a59beb3cc69eb9a32">InitGraphic</a>(-1, -1);
-<a name="l00085"></a>00085 
-<a name="l00086"></a>00086                         <span class="comment">/* Hauptmenu anzeigen */</span>
-<a name="l00087"></a>00087                         Key=0;
-<a name="l00088"></a>00088                         <a class="code" href="window_8h.html#6b681f4e0a72f94c48925452ce2efd14">ClearWindow</a>();
-<a name="l00089"></a>00089                         <a class="code" href="zeichnen_8c.html#fc97cfe57b6528ec2b5894d01630a10a">Menu_zeichnen</a>();
-<a name="l00090"></a>00090                 }
-<a name="l00091"></a>00091                 <span class="keywordflow">if</span>(Key==<span class="charliteral">'3'</span>){
-<a name="l00092"></a>00092 
-<a name="l00093"></a>00093                         <span class="comment">/* Grafikfenster schliessen */</span>
-<a name="l00094"></a>00094                         <a class="code" href="window_8h.html#b56c9ea857f0e04be959469612293e5b">CloseGraphic</a>();
-<a name="l00095"></a>00095 
-<a name="l00096"></a>00096                         <span class="comment">/* Programmende - Fehlerlose Ausführung zurückmelden */</span>
-<a name="l00097"></a>00097                         <span class="keywordflow">return</span> 0;
-<a name="l00098"></a>00098                 }
-<a name="l00099"></a>00099         }
-<a name="l00100"></a>00100 }
-<a name="l00101"></a>00101 <span class="comment">/****************************************************************************/</span>
-<a name="l00102"></a>00102 <span class="comment">/*      Ende Hauptprogramm                                                                                                              */</span>
-<a name="l00103"></a>00103 <span class="comment">/****************************************************************************/</span>
-<a name="l00104"></a>00104 <span class="comment">/*****************************************************************************/</span>
-<a name="l00105"></a>00105 <span class="comment">/*  Ende Modul Hauptprogramm                                                             */</span>
-<a name="l00106"></a>00106 <span class="comment">/*****************************************************************************/</span>
-</pre></div><hr size="1"><address style="align: right;"><small>Erzeugt am Sat Jan 12 02:25:17 2013 für Carme-Snake von&nbsp;
+<a name="l00061"></a>00061         <span class="keywordtype">int</span> Key = 0;
+<a name="l00062"></a>00062         <span class="keywordtype">int</span> port = 1;           
+<a name="l00063"></a>00063         <a class="code" href="zeichnen_8c.html#fc97cfe57b6528ec2b5894d01630a10a">Menu_zeichnen</a>();
+<a name="l00064"></a>00064 
+<a name="l00065"></a>00065         <span class="comment">/* Taste einlesen */</span>
+<a name="l00066"></a>00066         <span class="keywordflow">while</span>(1){
+<a name="l00067"></a>00067                 <span class="keywordflow">while</span> (<a class="code" href="window_8h.html#124494536773a67abe6bb43d1eaf8dc0">IsKeyPressReady</a>()){
+<a name="l00068"></a>00068                         Key = <a class="code" href="window_8h.html#dc1cab7cbc26dfc76e52660a847a6b6a">GetKeyPress</a>();
+<a name="l00069"></a>00069                 }
+<a name="l00070"></a>00070                 <span class="keywordflow">if</span>(Key==<span class="charliteral">'1'</span>){
+<a name="l00071"></a>00071 
+<a name="l00072"></a>00072                         <span class="comment">/* Game aufrufen */</span>
+<a name="l00073"></a>00073                         <a class="code" href="game_8c.html#16e09f1f1d538b49be81562d18877e65">Game</a>(port, ApplicationPath);
+<a name="l00074"></a>00074 
+<a name="l00075"></a>00075                         <span class="comment">/* Hauptmenu anzeigen */</span>
+<a name="l00076"></a>00076                         Key=0;
+<a name="l00077"></a>00077                         <a class="code" href="window_8h.html#6b681f4e0a72f94c48925452ce2efd14">ClearWindow</a>();
+<a name="l00078"></a>00078                         <a class="code" href="zeichnen_8c.html#fc97cfe57b6528ec2b5894d01630a10a">Menu_zeichnen</a>();
+<a name="l00079"></a>00079                 }
+<a name="l00080"></a>00080                 <span class="keywordflow">if</span>(Key==<span class="charliteral">'2'</span>){
+<a name="l00081"></a>00081 
+<a name="l00082"></a>00082                         <span class="comment">/* Highscorelise anzeigen */</span>
+<a name="l00083"></a>00083                         <a class="code" href="zeichnen_8c.html#ec3ff1b837d5a2af9ef53420bc70849f">Highscore_zeichnen</a>(ApplicationPath);
+<a name="l00084"></a>00084                         <a class="code" href="window_8h.html#a55be8c13a9a5e4868fb701b084dc424">WaitMs</a>(5000);
+<a name="l00085"></a>00085                         <a class="code" href="window_8h.html#6ebefdada09f4c3a59beb3cc69eb9a32">InitGraphic</a>(-1, -1);
+<a name="l00086"></a>00086 
+<a name="l00087"></a>00087                         <span class="comment">/* Hauptmenu anzeigen */</span>
+<a name="l00088"></a>00088                         Key=0;
+<a name="l00089"></a>00089                         <a class="code" href="window_8h.html#6b681f4e0a72f94c48925452ce2efd14">ClearWindow</a>();
+<a name="l00090"></a>00090                         <a class="code" href="zeichnen_8c.html#fc97cfe57b6528ec2b5894d01630a10a">Menu_zeichnen</a>();
+<a name="l00091"></a>00091                 }
+<a name="l00092"></a>00092                 <span class="keywordflow">if</span>(Key==<span class="charliteral">'3'</span>){
+<a name="l00093"></a>00093 
+<a name="l00094"></a>00094                         <span class="comment">/* Grafikfenster schliessen */</span>
+<a name="l00095"></a>00095                         <a class="code" href="window_8h.html#b56c9ea857f0e04be959469612293e5b">CloseGraphic</a>();
+<a name="l00096"></a>00096 
+<a name="l00097"></a>00097                         <span class="comment">/* Programmende - Fehlerlose Ausführung zurückmelden */</span>
+<a name="l00098"></a>00098                         <span class="keywordflow">return</span> 0;
+<a name="l00099"></a>00099                 }
+<a name="l00100"></a>00100                 <span class="keywordflow">if</span>(Key==<span class="charliteral">'4'</span>){
+<a name="l00101"></a>00101 
+<a name="l00102"></a>00102                         <a class="code" href="window_8h.html#6b681f4e0a72f94c48925452ce2efd14">ClearWindow</a>();
+<a name="l00103"></a>00103 
+<a name="l00104"></a>00104                         <a class="code" href="window_8h.html#ddac38a95edf90171f28987319bc7ed7">SelectFont</a>(<span class="stringliteral">"Arial MS"</span>, 15, <a class="code" href="window_8h.html#0ca3a6077a861236d2f9aa6646d955b4c8235eecfbd3dbc5649cf02515a71989">FONT_NORMAL</a>);
+<a name="l00105"></a>00105                         <a class="code" href="window_8h.html#11c214049de28dbd97d389581817dc10">DrawTextXY</a> (50, 50, <a class="code" href="window_8h.html#9c6ad5ad03eac289bdbb533d224e4833">COL_GREEN</a>, <span class="stringliteral">"Bitte COMPORT Nummer eingeben (1 bis 7):"</span>);
+<a name="l00106"></a>00106 
+<a name="l00107"></a>00107                         <span class="keywordflow">while</span> (!<a class="code" href="window_8h.html#124494536773a67abe6bb43d1eaf8dc0">IsKeyPressReady</a>()){
+<a name="l00108"></a>00108                         }
+<a name="l00109"></a>00109                         Key = <a class="code" href="window_8h.html#dc1cab7cbc26dfc76e52660a847a6b6a">GetKeyPress</a>();
+<a name="l00110"></a>00110 
+<a name="l00111"></a>00111                         <span class="keywordflow">if</span> (Key &gt;= <span class="charliteral">'1'</span> &amp;&amp; Key &lt;= <span class="charliteral">'7'</span>){
+<a name="l00112"></a>00112                                 port = Key - <span class="charliteral">'0'</span>;
+<a name="l00113"></a>00113                         }
+<a name="l00114"></a>00114 
+<a name="l00115"></a>00115                         Key = -1;
+<a name="l00116"></a>00116 
+<a name="l00117"></a>00117                         <a class="code" href="window_8h.html#11c214049de28dbd97d389581817dc10">DrawTextXY</a> (50, 80, <a class="code" href="window_8h.html#9c6ad5ad03eac289bdbb533d224e4833">COL_GREEN</a>, <span class="stringliteral">"Gewählt: COM"</span>);
+<a name="l00118"></a>00118                         <span class="keywordtype">char</span> buffer[] = <span class="stringliteral">" \0"</span>;
+<a name="l00119"></a>00119                         buffer[0] = port + <span class="charliteral">'0'</span>;
+<a name="l00120"></a>00120                         <a class="code" href="window_8h.html#11c214049de28dbd97d389581817dc10">DrawTextXY</a> (177, 80, <a class="code" href="window_8h.html#9c6ad5ad03eac289bdbb533d224e4833">COL_GREEN</a>, buffer);
+<a name="l00121"></a>00121 
+<a name="l00122"></a>00122                         <a class="code" href="window_8h.html#a55be8c13a9a5e4868fb701b084dc424">WaitMs</a>(1200);
+<a name="l00123"></a>00123 
+<a name="l00124"></a>00124                         <a class="code" href="window_8h.html#6b681f4e0a72f94c48925452ce2efd14">ClearWindow</a>();
+<a name="l00125"></a>00125                         <a class="code" href="zeichnen_8c.html#fc97cfe57b6528ec2b5894d01630a10a">Menu_zeichnen</a>();
+<a name="l00126"></a>00126                 }
+<a name="l00127"></a>00127         }
+<a name="l00128"></a>00128 }
+<a name="l00129"></a>00129 <span class="comment">/****************************************************************************/</span>
+<a name="l00130"></a>00130 <span class="comment">/*      Ende Hauptprogramm                                                                                                              */</span>
+<a name="l00131"></a>00131 <span class="comment">/****************************************************************************/</span>
+<a name="l00132"></a>00132 <span class="comment">/*****************************************************************************/</span>
+<a name="l00133"></a>00133 <span class="comment">/*  Ende Modul Hauptprogramm                                                             */</span>
+<a name="l00134"></a>00134 <span class="comment">/*****************************************************************************/</span>
+</pre></div><hr size="1"><address style="align: right;"><small>Erzeugt am Mon Jan 14 17:36:35 2013 für Carme-Snake von&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.4.5 </small></address>
 </body>
