@@ -34,7 +34,6 @@ Dieser Graph zeigt, welche Datei direkt oder indirekt diese Datei enthält:<p><ce
 <tr><td colspan="2"><br><h2>Funktionen</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="zeichnen_8h.html#fc97cfe57b6528ec2b5894d01630a10a">Menu_zeichnen</a> (void)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Bildet das Menufenster auf dem Bildschirm ab.  <a href="#fc97cfe57b6528ec2b5894d01630a10a"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="zeichnen_8h.html#ec3ff1b837d5a2af9ef53420bc70849f">Highscore_zeichnen</a> (const char *ApplicationPath)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Bildet die Highscoreliste auf dem Bildschirm ab.  <a href="#ec3ff1b837d5a2af9ef53420bc70849f"></a><br></td></tr>
@@ -67,15 +66,9 @@ Dieser Graph zeigt, welche Datei direkt oder indirekt diese Datei enthält:<p><ce
 <p>
 Bildet die Highscoreliste auf dem Bildschirm ab. 
 <p>
-<dl compact><dt><b>Parameter:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>*ApplicationPath</em>&nbsp;</td><td>ist Pointer auf den Pfad der ausführbaren Datei</td></tr>
-  </table>
-</dl>
-&lt;Strukturarray mit einem Element um Fkt <a class="el" href="highscore_8c.html#ddae7e4a905d3a4cabd60e835c3a3945">highscore()</a> aufzurufen.<p>
-&lt;Array um Punkte in Ziffern umzuwandeln 
+
 <p>
-Definiert in Zeile <a class="el" href="zeichnen_8c-source.html#l00080">80</a> der Datei <a class="el" href="zeichnen_8c-source.html">zeichnen.c</a>.
+Definiert in Zeile <a class="el" href="zeichnen_8c-source.html#l00076">76</a> der Datei <a class="el" href="zeichnen_8c-source.html">zeichnen.c</a>.
 <p>
 Benutzt <a class="el" href="window_8h.html#6b681f4e0a72f94c48925452ce2efd14">ClearWindow()</a>, <a class="el" href="window_8h-source.html#l00234">COL_BLUE</a>, <a class="el" href="window_8h-source.html#l00244">COL_LIGHTBLUE</a>, <a class="el" href="window_8h-source.html#l00232">COL_RED</a>, <a class="el" href="window_8h.html#11c214049de28dbd97d389581817dc10">DrawTextXY()</a>, <a class="el" href="window_8h.html#0ca3a6077a861236d2f9aa6646d955b48eb964930ad7f6da082d77afed1c25be">FONT_BOLD</a>, <a class="el" href="window_8h.html#0ca3a6077a861236d2f9aa6646d955b4c8235eecfbd3dbc5649cf02515a71989">FONT_NORMAL</a>, <a class="el" href="highscore_8c-source.html#l00053">highscore()</a>, <a class="el" href="main_8c-source.html#l00084">score</a>, <a class="el" href="window_8h.html#ddac38a95edf90171f28987319bc7ed7">SelectFont()</a> und <a class="el" href="highscore_8h-source.html#l00035">topten</a>.
 <p>
@@ -117,13 +110,11 @@ Hier ist der Graph aller Aufrufe für diese Funktion:<p><center><img src="zeichne
     <td>
 
 <p>
-Bildet das Menufenster auf dem Bildschirm ab. 
-<p>
 
 <p>
-Definiert in Zeile <a class="el" href="zeichnen_8c-source.html#l00048">48</a> der Datei <a class="el" href="zeichnen_8c-source.html">zeichnen.c</a>.
+Definiert in Zeile <a class="el" href="zeichnen_8c-source.html#l00044">44</a> der Datei <a class="el" href="zeichnen_8c-source.html">zeichnen.c</a>.
 <p>
-Benutzt <a class="el" href="window_8h-source.html#l00234">COL_BLUE</a>, <a class="el" href="window_8h-source.html#l00233">COL_GREEN</a>, <a class="el" href="window_8h-source.html#l00244">COL_LIGHTBLUE</a>, <a class="el" href="window_8h-source.html#l00232">COL_RED</a>, <a class="el" href="window_8h.html#11c214049de28dbd97d389581817dc10">DrawTextXY()</a>, <a class="el" href="window_8h.html#0ca3a6077a861236d2f9aa6646d955b48eb964930ad7f6da082d77afed1c25be">FONT_BOLD</a>, <a class="el" href="window_8h.html#0ca3a6077a861236d2f9aa6646d955b4c8235eecfbd3dbc5649cf02515a71989">FONT_NORMAL</a> und <a class="el" href="window_8h.html#ddac38a95edf90171f28987319bc7ed7">SelectFont()</a>.
+Benutzt <a class="el" href="window_8h-source.html#l00234">COL_BLUE</a>, <a class="el" href="window_8h-source.html#l00233">COL_GREEN</a>, <a class="el" href="window_8h-source.html#l00244">COL_LIGHTBLUE</a>, <a class="el" href="window_8h-source.html#l00232">COL_RED</a>, <a class="el" href="window_8h-source.html#l00235">COL_YELLOW</a>, <a class="el" href="window_8h.html#11c214049de28dbd97d389581817dc10">DrawTextXY()</a>, <a class="el" href="window_8h.html#0ca3a6077a861236d2f9aa6646d955b48eb964930ad7f6da082d77afed1c25be">FONT_BOLD</a>, <a class="el" href="window_8h.html#0ca3a6077a861236d2f9aa6646d955b4c8235eecfbd3dbc5649cf02515a71989">FONT_NORMAL</a> und <a class="el" href="window_8h.html#ddac38a95edf90171f28987319bc7ed7">SelectFont()</a>.
 <p>
 Wird benutzt von <a class="el" href="_snake__main_8c-source.html#l00059">gfxmain()</a>.
 <p>
@@ -135,7 +126,7 @@ Hier ist der Graph aller Aufrufe für diese Funktion:<p><center><img src="zeichne
     </td>
   </tr>
 </table>
-<hr size="1"><address style="align: right;"><small>Erzeugt am Sun Jan 20 14:24:35 2013 für Carme-Snake von&nbsp;
+<hr size="1"><address style="align: right;"><small>Erzeugt am Sun Jan 20 15:55:25 2013 für Carme-Snake von&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.4.5 </small></address>
 </body>

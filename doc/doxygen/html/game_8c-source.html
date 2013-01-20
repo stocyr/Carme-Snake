@@ -61,23 +61,23 @@
 <a name="l00044"></a>00044 <span class="comment">/*               01.04.2012 erste Versuche mit Spielfeld / Bewegung          */</span>
 <a name="l00045"></a>00045 <span class="comment">/*               02.04.2012 Funktionalität in Funktionen ausgelagert         */</span>
 <a name="l00046"></a>00046 <span class="comment">/*                               20.06.2012 überarbeitet                                                                         */</span>
-<a name="l00047"></a>00047 <span class="comment">/*                               24.12.2012 Kopiert von Tequiz, Totalüberarbeitung und           */</span>
+<a name="l00047"></a>00047 <span class="comment">/*                               24.12.2012 ambup1 Kopiert von Tequiz, Totalüberarbeitung und*/</span>
 <a name="l00048"></a>00048 <span class="comment">/*                                                      Anpassung an Carme-Snake                                                 */</span>
 <a name="l00049"></a>00049 <span class="comment">/*                                                                           */</span>
 <a name="l00050"></a>00050 <span class="comment">/*****************************************************************************/</span>
 <a name="l00051"></a>00051 
 <a name="l00052"></a>00052 
-<a name="l00061"></a><a class="code" href="game_8c.html#16e09f1f1d538b49be81562d18877e65">00061</a> <span class="keywordtype">int</span> <a class="code" href="game_8c.html#16e09f1f1d538b49be81562d18877e65">Game</a>(<span class="keywordtype">int</span> port, <span class="keyword">const</span> <span class="keywordtype">char</span> *ApplicationPath) {
+<a name="l00061"></a><a class="code" href="game_8h.html#16e09f1f1d538b49be81562d18877e65">00061</a> <span class="keywordtype">int</span> <a class="code" href="game_8c.html#16e09f1f1d538b49be81562d18877e65">Game</a>(<span class="keywordtype">int</span> port, <span class="keyword">const</span> <span class="keywordtype">char</span> *ApplicationPath) {
 <a name="l00062"></a>00062 
 <a name="l00063"></a>00063         <span class="comment">// Variabeln definieren</span>
-<a name="l00064"></a>00064     <span class="keywordtype">char</span> Name[20];              
-<a name="l00065"></a>00065     <span class="keywordtype">int</span> Zeichen;                
-<a name="l00066"></a>00066         <span class="keywordtype">int</span> key;                        
-<a name="l00067"></a>00067         <span class="keywordtype">int</span> dir = 0;            
-<a name="l00068"></a>00068         <span class="keywordtype">int</span> dir_old = 0;        
-<a name="l00069"></a>00069         <span class="keywordtype">int</span> <a class="code" href="main_8c.html#ca1cd3c3055991bf20499ee86739f7e2">score</a>;                      
-<a name="l00070"></a>00070         <span class="keywordtype">int</span> winner;                     
-<a name="l00071"></a>00071 
+<a name="l00064"></a>00064     <span class="keywordtype">char</span> Name[20];              <span class="comment">// Array für Spielername</span>
+<a name="l00065"></a>00065     <span class="keywordtype">int</span> Zeichen;                <span class="comment">// Variable zur Verarbeitung der eingelesenen Zeichen</span>
+<a name="l00066"></a>00066         <span class="keywordtype">int</span> key;                        <span class="comment">// Variable zum einlesen der Zeichen von der Tastatur</span>
+<a name="l00067"></a>00067         <span class="keywordtype">int</span> dir = 0;            <span class="comment">// Variable zum speichern der Richtung</span>
+<a name="l00068"></a>00068         <span class="keywordtype">int</span> dir_old = 0;        <span class="comment">// Variable zum speichern der letzten Richtung</span>
+<a name="l00069"></a>00069         <span class="keywordtype">int</span> <a class="code" href="main_8c.html#ca1cd3c3055991bf20499ee86739f7e2">score</a>;                      <span class="comment">// Variable für den Score</span>
+<a name="l00070"></a>00070         <span class="keywordtype">int</span> winner;                     <span class="comment">// Variable für Rückgabewert der Highscorefunktion</span>
+<a name="l00071"></a>00071                                                 <span class="comment">// Wird 1 wenn Highscore geknackt wurde, sonst 0</span>
 <a name="l00072"></a>00072         <span class="keywordtype">int</span> i = 0;
 <a name="l00073"></a>00073 
 <a name="l00074"></a>00074 
@@ -201,7 +201,7 @@
 <a name="l00192"></a>00192 <span class="comment">/*****************************************************************************/</span>
 <a name="l00193"></a>00193 <span class="comment">/*  Ende Modul Game                                                                      */</span>
 <a name="l00194"></a>00194 <span class="comment">/*****************************************************************************/</span>
-</pre></div><hr size="1"><address style="align: right;"><small>Erzeugt am Sun Jan 20 14:24:35 2013 für Carme-Snake von&nbsp;
+</pre></div><hr size="1"><address style="align: right;"><small>Erzeugt am Sun Jan 20 15:55:25 2013 für Carme-Snake von&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.4.5 </small></address>
 </body>

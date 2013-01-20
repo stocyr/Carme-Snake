@@ -86,7 +86,7 @@ Dieser Graph zeigt, welche Datei direkt oder indirekt diese Datei enthält:<p><ce
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Schaltet Interrupts auf Hardwarestufe aus.  <a href="#46348a598e447edb204877cdae260c27"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8h.html#25165e286cbf7b2ba88ecb29a1fc9d0b">interrupt_handler</a> ()</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Interrupt handler, der UART- und Timerinterrupt behandelt.  <a href="#25165e286cbf7b2ba88ecb29a1fc9d0b"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Interrupt handler, der UART- und Timerinterrupt behandelt. Flowchart:.  <a href="#25165e286cbf7b2ba88ecb29a1fc9d0b"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8h.html#15b5cfb2d22ffa967b65516f9c433ecc">get_interrupt_state</a> ()</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Liefert zurück, ob Interrupts eingeschaltet sind oder nicht.  <a href="#15b5cfb2d22ffa967b65516f9c433ecc"></a><br></td></tr>
@@ -449,9 +449,12 @@ Wird benutzt von <a class="el" href="main_8c-source.html#l00215">main()</a>.    
     <td>
 
 <p>
-Interrupt handler, der UART- und Timerinterrupt behandelt. 
+Interrupt handler, der UART- und Timerinterrupt behandelt. Flowchart:. 
 <p>
-    </td>
+<div align="center">
+<img src="../../Interrupthandler_Flowchart.png" alt="Interrupthandler_Flowchart.png">
+</div>
+     </td>
   </tr>
 </table>
 <a class="anchor" name="8b19c091a06f204875a40fbd053acc24"></a><!-- doxytag: member="main.h::start_timer" ref="8b19c091a06f204875a40fbd053acc24" args="()" --><p>
@@ -633,7 +636,7 @@ Definiert in Zeile <a class="el" href="main_8c-source.html#l00069">69</a> der Da
 Wird benutzt von <a class="el" href="main_8c-source.html#l00141">delay()</a>.    </td>
   </tr>
 </table>
-<hr size="1"><address style="align: right;"><small>Erzeugt am Sun Jan 20 14:24:35 2013 für Carme-Snake von&nbsp;
+<hr size="1"><address style="align: right;"><small>Erzeugt am Sun Jan 20 15:55:25 2013 für Carme-Snake von&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.4.5 </small></address>
 </body>

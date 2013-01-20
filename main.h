@@ -78,6 +78,8 @@ extern void write_byte(char byte);	///< Schreibt ein Byte über die UART0 Schnitt
 extern void enable_interrupts();	///< Schaltet Interrupts auf Hardwarestufe ein.
 extern void disable_interrupts();	///< Schaltet Interrupts auf Hardwarestufe aus.
 extern void interrupt_handler();	///< Interrupt handler, der UART- und Timerinterrupt behandelt.
+                                    ///< Flowchart:
+                                    ///< <img src="../../Interrupthandler_Flowchart.png">
 extern int get_interrupt_state();	///< Liefert zurück, ob Interrupts eingeschaltet sind oder nicht.
 
 #endif

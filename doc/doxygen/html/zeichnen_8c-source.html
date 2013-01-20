@@ -63,69 +63,70 @@
 <a name="l00041"></a>00041 <span class="comment">/*                                                                           */</span>
 <a name="l00042"></a>00042 <span class="comment">/*****************************************************************************/</span>
 <a name="l00043"></a>00043 
-<a name="l00048"></a><a class="code" href="zeichnen_8h.html#fc97cfe57b6528ec2b5894d01630a10a">00048</a> <span class="keywordtype">void</span> <a class="code" href="zeichnen_8c.html#fc97cfe57b6528ec2b5894d01630a10a">Menu_zeichnen</a>(<span class="keywordtype">void</span>){
-<a name="l00049"></a>00049         <span class="comment">/* Hauptmenu Anzeigen zeichnen */</span>
-<a name="l00050"></a>00050         <a class="code" href="window_8h.html#ddac38a95edf90171f28987319bc7ed7">SelectFont</a>(<span class="stringliteral">"Bauhaus 93"</span>, 45, <a class="code" href="window_8h.html#0ca3a6077a861236d2f9aa6646d955b48eb964930ad7f6da082d77afed1c25be">FONT_BOLD</a>);
-<a name="l00051"></a>00051         <a class="code" href="window_8h.html#11c214049de28dbd97d389581817dc10">DrawTextXY</a> (800, 300, <a class="code" href="window_8h.html#4830ae504499296e0b85f6d8e1c30d1e">COL_BLUE</a>, <span class="stringliteral">"CARME-SNAKE"</span>);
-<a name="l00052"></a>00052         <a class="code" href="window_8h.html#ddac38a95edf90171f28987319bc7ed7">SelectFont</a>(<span class="stringliteral">"Papyrus"</span>, 30, <a class="code" href="window_8h.html#0ca3a6077a861236d2f9aa6646d955b4c8235eecfbd3dbc5649cf02515a71989">FONT_NORMAL</a>);
-<a name="l00053"></a>00053         <a class="code" href="window_8h.html#11c214049de28dbd97d389581817dc10">DrawTextXY</a> (240, 230, <a class="code" href="window_8h.html#9c6ad5ad03eac289bdbb533d224e4833">COL_GREEN</a>, <span class="stringliteral">"1 Spiel starten"</span>);
-<a name="l00054"></a>00054         <a class="code" href="window_8h.html#11c214049de28dbd97d389581817dc10">DrawTextXY</a> (236, 300, <a class="code" href="window_8h.html#064b4c955e4e65e7e33b7cda6a496edb">COL_LIGHTBLUE</a>, <span class="stringliteral">"2 Hall of Fame"</span>);
-<a name="l00055"></a>00055         <a class="code" href="window_8h.html#11c214049de28dbd97d389581817dc10">DrawTextXY</a> (230, 370, <a class="code" href="window_8h.html#5e27e8849ba2bf4ac71176a217d203c7">COL_RED</a>, <span class="stringliteral">"3 Spiel beenden"</span>);
-<a name="l00056"></a>00056         <a class="code" href="window_8h.html#ddac38a95edf90171f28987319bc7ed7">SelectFont</a>(<span class="stringliteral">"Agency FB"</span>, 16, <a class="code" href="window_8h.html#0ca3a6077a861236d2f9aa6646d955b4c8235eecfbd3dbc5649cf02515a71989">FONT_NORMAL</a>);
-<a name="l00057"></a>00057         <a class="code" href="window_8h.html#11c214049de28dbd97d389581817dc10">DrawTextXY</a> (600, 530, <a class="code" href="window_8h.html#064b4c955e4e65e7e33b7cda6a496edb">COL_LIGHTBLUE</a>, <span class="stringliteral">"P. Ambühl, M. Bärtschi, C. Stoller"</span>);
-<a name="l00058"></a>00058 }
-<a name="l00059"></a>00059 
-<a name="l00060"></a>00060 
-<a name="l00061"></a>00061 <span class="comment">/*****************************************************************************/</span>
-<a name="l00062"></a>00062 <span class="comment">/*  Funktion   : Highscore zeichnen                             Version 1.0  */</span>
-<a name="l00063"></a>00063 <span class="comment">/*****************************************************************************/</span>
-<a name="l00064"></a>00064 <span class="comment">/*                                                                           */</span>
-<a name="l00065"></a>00065 <span class="comment">/*  Funktion   : Zeichnet die Highscoreliste.                                                        */</span>
-<a name="l00066"></a>00066 <span class="comment">/*                                                                           */</span>
-<a name="l00067"></a>00067 <span class="comment">/*  Bearbeiter : Marcel Schläppi                                             */</span>
-<a name="l00068"></a>00068 <span class="comment">/*                                                                           */</span>
-<a name="l00069"></a>00069 <span class="comment">/*  History    : 23.06.2012 schlm19 erstellt                                                     */</span>
-<a name="l00070"></a>00070 <span class="comment">/*                               26.12.2012 ambup1  Kopiert von Tequiz-Spiel und angepasst an*/</span>
-<a name="l00071"></a>00071 <span class="comment">/*                                                                      Carme-Snake                                                              */</span>
-<a name="l00072"></a>00072 <span class="comment">/*                                                                           */</span>
-<a name="l00073"></a>00073 <span class="comment">/*****************************************************************************/</span>
-<a name="l00074"></a>00074 
-<a name="l00080"></a><a class="code" href="zeichnen_8h.html#ec3ff1b837d5a2af9ef53420bc70849f">00080</a> <span class="keywordtype">void</span> <a class="code" href="zeichnen_8c.html#ec3ff1b837d5a2af9ef53420bc70849f">Highscore_zeichnen</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *ApplicationPath){
-<a name="l00081"></a>00081 
-<a name="l00082"></a>00082         <span class="keywordtype">char</span> Name[1];   
-<a name="l00083"></a>00083         Name[0]=<span class="charliteral">'a'</span>;
-<a name="l00084"></a>00084         <span class="keywordtype">int</span> index;
-<a name="l00085"></a>00085         <span class="keywordtype">char</span> ausgabe2[100];             
-<a name="l00086"></a>00086 
-<a name="l00087"></a>00087         <a class="code" href="highscore_8c.html#ddae7e4a905d3a4cabd60e835c3a3945">highscore</a>(Name, 1, ApplicationPath);
-<a name="l00088"></a>00088         <a class="code" href="window_8h.html#6b681f4e0a72f94c48925452ce2efd14">ClearWindow</a> ();
-<a name="l00089"></a>00089 
-<a name="l00090"></a>00090         <a class="code" href="window_8h.html#ddac38a95edf90171f28987319bc7ed7">SelectFont</a>(<span class="stringliteral">"Bauhaus 93"</span>, 30, <a class="code" href="window_8h.html#0ca3a6077a861236d2f9aa6646d955b48eb964930ad7f6da082d77afed1c25be">FONT_BOLD</a>);
-<a name="l00091"></a>00091         <a class="code" href="window_8h.html#11c214049de28dbd97d389581817dc10">DrawTextXY</a> (220, 50, <a class="code" href="window_8h.html#4830ae504499296e0b85f6d8e1c30d1e">COL_BLUE</a>, <span class="stringliteral">"Highscoreliste"</span>);
+<a name="l00044"></a><a class="code" href="zeichnen_8h.html#fc97cfe57b6528ec2b5894d01630a10a">00044</a> <span class="keywordtype">void</span> <a class="code" href="zeichnen_8c.html#fc97cfe57b6528ec2b5894d01630a10a">Menu_zeichnen</a>(<span class="keywordtype">void</span>){
+<a name="l00045"></a>00045         <span class="comment">/* Hauptmenu Anzeigen zeichnen */</span>
+<a name="l00046"></a>00046         <a class="code" href="window_8h.html#ddac38a95edf90171f28987319bc7ed7">SelectFont</a>(<span class="stringliteral">"Bauhaus 93"</span>, 45, <a class="code" href="window_8h.html#0ca3a6077a861236d2f9aa6646d955b48eb964930ad7f6da082d77afed1c25be">FONT_BOLD</a>);
+<a name="l00047"></a>00047         <a class="code" href="window_8h.html#11c214049de28dbd97d389581817dc10">DrawTextXY</a> (800, 300, <a class="code" href="window_8h.html#4830ae504499296e0b85f6d8e1c30d1e">COL_BLUE</a>, <span class="stringliteral">"CARME-SNAKE"</span>);
+<a name="l00048"></a>00048         <a class="code" href="window_8h.html#ddac38a95edf90171f28987319bc7ed7">SelectFont</a>(<span class="stringliteral">"Papyrus"</span>, 30, <a class="code" href="window_8h.html#0ca3a6077a861236d2f9aa6646d955b4c8235eecfbd3dbc5649cf02515a71989">FONT_NORMAL</a>);
+<a name="l00049"></a>00049         <a class="code" href="window_8h.html#11c214049de28dbd97d389581817dc10">DrawTextXY</a> (240, 230, <a class="code" href="window_8h.html#9c6ad5ad03eac289bdbb533d224e4833">COL_GREEN</a>, <span class="stringliteral">"1 Spiel starten"</span>);
+<a name="l00050"></a>00050         <a class="code" href="window_8h.html#11c214049de28dbd97d389581817dc10">DrawTextXY</a> (240, 300, <a class="code" href="window_8h.html#064b4c955e4e65e7e33b7cda6a496edb">COL_LIGHTBLUE</a>, <span class="stringliteral">"2 Hall of Fame"</span>);
+<a name="l00051"></a>00051         <a class="code" href="window_8h.html#11c214049de28dbd97d389581817dc10">DrawTextXY</a> (240, 370, <a class="code" href="window_8h.html#4e3509a3689770e59720247a6a35dcbd">COL_YELLOW</a>, <span class="stringliteral">"3 Comport wählen"</span>);
+<a name="l00052"></a>00052         <a class="code" href="window_8h.html#11c214049de28dbd97d389581817dc10">DrawTextXY</a> (240, 440, <a class="code" href="window_8h.html#5e27e8849ba2bf4ac71176a217d203c7">COL_RED</a>, <span class="stringliteral">"4 Spiel beenden"</span>);
+<a name="l00053"></a>00053         <a class="code" href="window_8h.html#ddac38a95edf90171f28987319bc7ed7">SelectFont</a>(<span class="stringliteral">"Agency FB"</span>, 16, <a class="code" href="window_8h.html#0ca3a6077a861236d2f9aa6646d955b4c8235eecfbd3dbc5649cf02515a71989">FONT_NORMAL</a>);
+<a name="l00054"></a>00054         <a class="code" href="window_8h.html#11c214049de28dbd97d389581817dc10">DrawTextXY</a> (600, 530, <a class="code" href="window_8h.html#064b4c955e4e65e7e33b7cda6a496edb">COL_LIGHTBLUE</a>, <span class="stringliteral">"P. Ambühl, M. Bärtschi, C. Stoller"</span>);
+<a name="l00055"></a>00055 }
+<a name="l00056"></a>00056 
+<a name="l00057"></a>00057 
+<a name="l00058"></a>00058 <span class="comment">/*****************************************************************************/</span>
+<a name="l00059"></a>00059 <span class="comment">/*  Funktion   : Highscore zeichnen                             Version 1.0  */</span>
+<a name="l00060"></a>00060 <span class="comment">/*****************************************************************************/</span>
+<a name="l00061"></a>00061 <span class="comment">/*                                                                           */</span>
+<a name="l00062"></a>00062 <span class="comment">/*  Funktion   : Zeichnet die Highscoreliste.                                                        */</span>
+<a name="l00063"></a>00063 <span class="comment">/*                                                                           */</span>
+<a name="l00064"></a>00064 <span class="comment">/*  Bearbeiter : Marcel Schläppi                                             */</span>
+<a name="l00065"></a>00065 <span class="comment">/*                                                                           */</span>
+<a name="l00066"></a>00066 <span class="comment">/*  History    : 23.06.2012 schlm19 erstellt                                                     */</span>
+<a name="l00067"></a>00067 <span class="comment">/*                               26.12.2012 ambup1  Kopiert von Tequiz-Spiel und angepasst an*/</span>
+<a name="l00068"></a>00068 <span class="comment">/*                                                                      Carme-Snake                                                              */</span>
+<a name="l00069"></a>00069 <span class="comment">/*                                                                           */</span>
+<a name="l00070"></a>00070 <span class="comment">/*****************************************************************************/</span>
+<a name="l00071"></a>00071 
+<a name="l00076"></a><a class="code" href="zeichnen_8h.html#ec3ff1b837d5a2af9ef53420bc70849f">00076</a> <span class="keywordtype">void</span> <a class="code" href="zeichnen_8c.html#ec3ff1b837d5a2af9ef53420bc70849f">Highscore_zeichnen</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *ApplicationPath){
+<a name="l00077"></a>00077 
+<a name="l00078"></a>00078         <span class="keywordtype">char</span> Name[1];
+<a name="l00079"></a>00079         Name[0]=<span class="charliteral">'a'</span>;
+<a name="l00080"></a>00080         <span class="keywordtype">int</span> index;
+<a name="l00081"></a>00081         <span class="keywordtype">char</span> ausgabe2[100];
+<a name="l00082"></a>00082 
+<a name="l00083"></a>00083         <a class="code" href="highscore_8c.html#ddae7e4a905d3a4cabd60e835c3a3945">highscore</a>(Name, 1, ApplicationPath);
+<a name="l00084"></a>00084         <a class="code" href="window_8h.html#6b681f4e0a72f94c48925452ce2efd14">ClearWindow</a> ();
+<a name="l00085"></a>00085 
+<a name="l00086"></a>00086         <a class="code" href="window_8h.html#ddac38a95edf90171f28987319bc7ed7">SelectFont</a>(<span class="stringliteral">"Bauhaus 93"</span>, 30, <a class="code" href="window_8h.html#0ca3a6077a861236d2f9aa6646d955b48eb964930ad7f6da082d77afed1c25be">FONT_BOLD</a>);
+<a name="l00087"></a>00087         <a class="code" href="window_8h.html#11c214049de28dbd97d389581817dc10">DrawTextXY</a> (220, 50, <a class="code" href="window_8h.html#4830ae504499296e0b85f6d8e1c30d1e">COL_BLUE</a>, <span class="stringliteral">"Highscoreliste"</span>);
+<a name="l00088"></a>00088 
+<a name="l00089"></a>00089         <span class="comment">// Zeichnet die Highscoreliste</span>
+<a name="l00090"></a>00090         <a class="code" href="window_8h.html#ddac38a95edf90171f28987319bc7ed7">SelectFont</a>(<span class="stringliteral">"Papyrus"</span>, 30, <a class="code" href="window_8h.html#0ca3a6077a861236d2f9aa6646d955b4c8235eecfbd3dbc5649cf02515a71989">FONT_NORMAL</a>);
+<a name="l00091"></a>00091         <span class="keywordflow">for</span>(index=9; index&gt;=0; index--){
 <a name="l00092"></a>00092 
-<a name="l00093"></a>00093         <span class="comment">// Zeichnet die Highscoreliste</span>
-<a name="l00094"></a>00094         <a class="code" href="window_8h.html#ddac38a95edf90171f28987319bc7ed7">SelectFont</a>(<span class="stringliteral">"Papyrus"</span>, 30, <a class="code" href="window_8h.html#0ca3a6077a861236d2f9aa6646d955b4c8235eecfbd3dbc5649cf02515a71989">FONT_NORMAL</a>);
-<a name="l00095"></a>00095         <span class="keywordflow">for</span>(index=9; index&gt;=0; index--){
+<a name="l00093"></a>00093                 <span class="comment">// Umwandlung der Punke</span>
+<a name="l00094"></a>00094 
+<a name="l00095"></a>00095                 sprintf(ausgabe2,<span class="stringliteral">"%d"</span>,<a class="code" href="highscore_8h.html#e92200817813dbf730900025c42e84b1">topten</a>[index].<a class="code" href="main_8c.html#ca1cd3c3055991bf20499ee86739f7e2">score</a>);
 <a name="l00096"></a>00096 
-<a name="l00097"></a>00097                 <span class="comment">// Umwandlung der Punke</span>
+<a name="l00097"></a>00097                 <span class="comment">// Name und zugehörige Punkte darstellen</span>
 <a name="l00098"></a>00098 
-<a name="l00099"></a>00099                 sprintf(ausgabe2,<span class="stringliteral">"%d"</span>,<a class="code" href="highscore_8h.html#e92200817813dbf730900025c42e84b1">topten</a>[index].<a class="code" href="main_8c.html#ca1cd3c3055991bf20499ee86739f7e2">score</a>);
-<a name="l00100"></a>00100 
-<a name="l00101"></a>00101                 <span class="comment">// Name und zugehörige Punkte darstellen</span>
-<a name="l00102"></a>00102 
-<a name="l00103"></a>00103                 <a class="code" href="window_8h.html#11c214049de28dbd97d389581817dc10">DrawTextXY</a> (50, 150+index*40, <a class="code" href="window_8h.html#064b4c955e4e65e7e33b7cda6a496edb">COL_LIGHTBLUE</a>, <a class="code" href="highscore_8h.html#e92200817813dbf730900025c42e84b1">topten</a>[index].name);
-<a name="l00104"></a>00104                 <a class="code" href="window_8h.html#11c214049de28dbd97d389581817dc10">DrawTextXY</a> (530, 150+index*40, <a class="code" href="window_8h.html#5e27e8849ba2bf4ac71176a217d203c7">COL_RED</a>, ausgabe2);
-<a name="l00105"></a>00105         }
-<a name="l00106"></a>00106 }
+<a name="l00099"></a>00099                 <a class="code" href="window_8h.html#11c214049de28dbd97d389581817dc10">DrawTextXY</a> (50, 150+index*40, <a class="code" href="window_8h.html#064b4c955e4e65e7e33b7cda6a496edb">COL_LIGHTBLUE</a>, <a class="code" href="highscore_8h.html#e92200817813dbf730900025c42e84b1">topten</a>[index].name);
+<a name="l00100"></a>00100                 <a class="code" href="window_8h.html#11c214049de28dbd97d389581817dc10">DrawTextXY</a> (530, 150+index*40, <a class="code" href="window_8h.html#5e27e8849ba2bf4ac71176a217d203c7">COL_RED</a>, ausgabe2);
+<a name="l00101"></a>00101         }
+<a name="l00102"></a>00102 }
+<a name="l00103"></a>00103 
+<a name="l00104"></a>00104 <span class="comment">/****************************************************************************/</span>
+<a name="l00105"></a>00105 <span class="comment">/*      Ende Funktion Highscore zeichnen                                                                        */</span>
+<a name="l00106"></a>00106 <span class="comment">/****************************************************************************/</span>
 <a name="l00107"></a>00107 
-<a name="l00108"></a>00108 <span class="comment">/****************************************************************************/</span>
-<a name="l00109"></a>00109 <span class="comment">/*      Ende Funktion Highscore zeichnen                                                                        */</span>
-<a name="l00110"></a>00110 <span class="comment">/****************************************************************************/</span>
-<a name="l00111"></a>00111 
-<a name="l00112"></a>00112 <span class="comment">/*****************************************************************************/</span>
-<a name="l00113"></a>00113 <span class="comment">/*  Ende Modul Zeichnen                                                                  */</span>
-<a name="l00114"></a>00114 <span class="comment">/*****************************************************************************/</span>
-</pre></div><hr size="1"><address style="align: right;"><small>Erzeugt am Sun Jan 20 14:24:35 2013 für Carme-Snake von&nbsp;
+<a name="l00108"></a>00108 <span class="comment">/*****************************************************************************/</span>
+<a name="l00109"></a>00109 <span class="comment">/*  Ende Modul Zeichnen                                                                  */</span>
+<a name="l00110"></a>00110 <span class="comment">/*****************************************************************************/</span>
+</pre></div><hr size="1"><address style="align: right;"><small>Erzeugt am Sun Jan 20 15:55:25 2013 für Carme-Snake von&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.4.5 </small></address>
 </body>

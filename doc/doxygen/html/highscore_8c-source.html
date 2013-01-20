@@ -41,9 +41,9 @@
 <a name="l00024"></a>00024 <span class="comment">//Header Dateien implementieren</span>
 <a name="l00025"></a>00025 <span class="preprocessor">#include "<a class="code" href="highscore_8h.html">highscore.h</a>"</span>
 <a name="l00026"></a>00026 <span class="preprocessor">#include "<a class="code" href="window_8h.html">window.h</a>"</span>
-<a name="l00027"></a>00027 <span class="preprocessor">#include&lt;stdio.h&gt;</span>
-<a name="l00028"></a>00028 <span class="preprocessor">#include&lt;stdlib.h&gt;</span>
-<a name="l00029"></a>00029 <span class="preprocessor">#include&lt;string.h&gt;</span>
+<a name="l00027"></a>00027 <span class="preprocessor">#include &lt;stdio.h&gt;</span>
+<a name="l00028"></a>00028 <span class="preprocessor">#include &lt;stdlib.h&gt;</span>
+<a name="l00029"></a>00029 <span class="preprocessor">#include &lt;string.h&gt;</span>
 <a name="l00030"></a>00030 
 <a name="l00031"></a>00031 <span class="comment">/*****************************************************************************/</span>
 <a name="l00032"></a>00032 <span class="comment">/*  Funktion   :   Highscore                                    Version 1.0  */</span>
@@ -158,9 +158,9 @@
 <a name="l00161"></a><a class="code" href="highscore_8h.html#b7a0b89f8b4ba7bdeb475bfb448540db">00161</a> <span class="keywordtype">void</span> <a class="code" href="highscore_8c.html#b7a0b89f8b4ba7bdeb475bfb448540db">filesave</a> (<span class="keyword">const</span> <span class="keywordtype">char</span> *Path, <a class="code" href="structplayer.html">player</a> <a class="code" href="highscore_8h.html#e92200817813dbf730900025c42e84b1">topten</a>[11]){
 <a name="l00162"></a>00162 
 <a name="l00163"></a>00163         <span class="comment">//Variablen definieren</span>
-<a name="l00164"></a>00164         <span class="keywordtype">int</span> i;                                  
-<a name="l00165"></a>00165 
-<a name="l00166"></a>00166         <span class="keywordtype">char</span> buffer2[1000];             
+<a name="l00164"></a>00164         <span class="keywordtype">int</span> i;
+<a name="l00165"></a>00165         <span class="comment">//Buffer für den Pfad des .txt</span>
+<a name="l00166"></a>00166         <span class="keywordtype">char</span> buffer2[1000];
 <a name="l00167"></a>00167 
 <a name="l00168"></a>00168         <span class="comment">//Externes File definieren</span>
 <a name="l00169"></a>00169         FILE *Highscore;
@@ -233,10 +233,12 @@
 <a name="l00241"></a>00241 <span class="comment">/*      Ende Funktion sort                                                                                                      */</span>
 <a name="l00242"></a>00242 <span class="comment">/****************************************************************************/</span>
 <a name="l00243"></a>00243 
-<a name="l00244"></a>00244 <span class="comment">/*****************************************************************************/</span>
-<a name="l00245"></a>00245 <span class="comment">/*  Ende Modul highscore                                                                 */</span>
+<a name="l00244"></a>00244 
+<a name="l00245"></a>00245 
 <a name="l00246"></a>00246 <span class="comment">/*****************************************************************************/</span>
-</pre></div><hr size="1"><address style="align: right;"><small>Erzeugt am Sun Jan 20 14:24:35 2013 für Carme-Snake von&nbsp;
+<a name="l00247"></a>00247 <span class="comment">/*  Ende Modul highscore                                                                 */</span>
+<a name="l00248"></a>00248 <span class="comment">/*****************************************************************************/</span>
+</pre></div><hr size="1"><address style="align: right;"><small>Erzeugt am Sun Jan 20 15:55:25 2013 für Carme-Snake von&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.4.5 </small></address>
 </body>

@@ -220,9 +220,6 @@ int main()
     /**
      * \todo UART Interrupts funktionieren noch nicht.
      * Als Workaround wird nun alle 1ms im Timer-Interrupt-Handler die UART1 Schnittstelle gepollt. <br>
-     *
-     * Struktogramm:
-     * <img src="../../Spielablauf_Struktogramm.png">
      */
     init_uart();
 
