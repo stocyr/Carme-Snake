@@ -33,8 +33,6 @@
 .global get_interrupt_state
 .global start_timer
 
-#.data
-
 .extern timer_irq_flag
 .extern snake_direction
 
@@ -47,7 +45,7 @@ STMFD 	sp!, {r0-r1, lr} 		@ save context
 # ICMR = ICMR | (1<<26); Interrupt freigeben
 LDR r0,=ICMR
 LDR r1,[r0]
-ORR r1,r1,#(1<<26)		@ Bit 26 setzen
+ORR r1,r1,#(1<<26)				@ Bit 26 setzen
 STR r1, [r0]
 # ICLR = ICLR & ~(1<<26); IRQ auslösen
 LDR r0,=ICLR
@@ -58,10 +56,9 @@ STR r1, [r0]
 LDR r0,=IPR1
 LDR r1,[r0]
 
-MOV r1,#26		@ 26 hineinschreiben
+MOV r1,#26						@ 26 hineinschreiben
 ORR r1,r1,#(1<<31)
 STR r1, [r0]
-
 
 # OSMR0 = 3250; Match Register so setzen, dass sich 1ms Tackt ergibt
 LDR r1,=3250
@@ -81,160 +78,14 @@ STR r1, [r0]
 # CKEN = CKEN | (1<<9); OsTimer Unit Clock enable
 LDR r0,=CKEN
 LDR r1,[r0]
-ORR r1,r1,#(1<<9)		@ Bit 9 setzen
+ORR r1,r1,#(1<<9)				@ Bit 9 setzen
 STR r1, [r0]
 
 LDMFD 	sp!, {r0-r1, pc}^ 		@ restore context, return
 
 
 
-
-# uart ralphrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrralph
-#
-#
-#
-# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
 init_uart:
-@Clock = Clock | (1 << 6);
-
-LDR r0, =CKEN
-LDR r1, [r0]
-ORR r1, #(1<<6)
-STR r1, [r0]
-
-@LineControl &= ~(1<<7); /*DABL auf 0*/
-LDR r0, =FFLCR
-LDR r1, [r0]
-BIC r1, #(1<<7)
-STR r1, [r0]
-
-@InerruptEnable &= ~(1 << 6); /*UUE Bit auf 0*/
-LDR r0, =FFIER
-LDR r1, [r0]
-BIC r1, #(1<<6)
-STR r1, [r0]
-
-@LineControl = 0; /*LineControl alles auf 0*/
-
-@LineControl |= (1 << 7); /*DABL auf 1*/
-
-LDR r0, =FFLCR
-MOV r1, #0x0
-ORR r1, #(1<<7)
-STR r1, [r0]
-
-@DivisorLatchLow = 96 & 0xFF; /*Divisor auf 0096 setzen*/
-
-LDR r0, =FFDLL
-LDR r1, [r0]
-MOV r1, #(96 & 0xFF)
-STR r1, [r0]
-
-@DivisorLatchHigh = (96 >> 8) & 0xFF;/*Divisor auf 0096, also hier 00*/
-
-LDR r0, =FFDLH
-LDR r1, [r0]
-MOV r1, #(96>>8)
-AND r1, #0xFF
-STR r1, [r0]
-
-@LineControl = 0;
-LDR r0, =FFLCR
-MOV r1, #0x0
-STR r1, [r0]
-
-@FIFOControl &= ~(1<<0); /*FIFO ausschalten (bit 1 auf 0), auch FIFOControl = 0; mˆglich*/
-
-LDR r0, =FFFCR
-LDR r1, [r0]
-BIC r1, #(1<<0)
-STR r1, [r0]
-
-@LineControl |= (1<<0);
-
-/*Word Length Select auf 8bit (0b11)*/
-
-@LineControl |= (1<<1);
-
-/*Word Length Select auf 8bit (0b11)*/
-
-LDR r0, =FFLCR
-LDR r1, [r0]
-ORR r1, #(1<<0)
-ORR r1, #(1<<1)
-STR r1, [r0]
-
-@ModemControl = 0;
-
-/*Modem Steuerleitung ausschalten*/
-
-LDR r0, =FFMCR
-MOV r1, #0x0
-STR r1, [r0]
-
-@InfraredSelection = 0; /*Infrarot ausschalten*/
-
-LDR r0, =FFISR
-STR r1, [r0]
-
-@AutoBaudrate |= (1<<0);
-
-/*Auto Baudrate ausschalten*/
-
-LDR r0, =FFABR
-LDR r1, [r0]
-ORR r1, #(1<<0)
-STR r1, [r0]
-
-@GpioPinDirectionRegister &= ~(1<<2); /*als input definiert*/
-
-@GpioPinDirectionRegister |= (1<<7);
-
-/*als output definiert*/
-
-LDR r0, =GPDR1
-LDR r1, [r0]
-BIC r1, #(1<<2)
-ORR r1, #(1<<7)
-STR r1, [r0]
-
-@GpioAlternateFunctionSelect |= (1<<4);
-
-@GpioAlternateFunctionSelect |= (1<<15);
-
-@GpioAlternateFunctionSelect &= ~(1<<14);
-
-LDR r0, =GAFR1_L
-LDR r1, [r0]
-ORR r1, #(1<<4)
-ORR r1, #(1<<15)
-BIC r1, #(1<<14)
-STR r1, [r0]
-
-@InterruptEnable |= (1 << 6); /*UUE Bit auf 1*/
-
-LDR r0, =FFIER
-LDR r1, [r0]
-ORR r1, #(1<<6)
-STR r1, [r0]
-MOV pc,lr
-
-
-
-/*****************************************************************************/
-
-/*  Ende        : SerielleSchnittstelleInit
-
-                        */
-
-/*****************************************************************************/
-
-
-
-
-
-init_uart_original:
 STMFD 	sp!, {r0-r3, lr} 		@ save context
 
 # UART initialisieren:
@@ -315,7 +166,7 @@ LDR r0,=FFLCR
 LDR r1,[r0]
 ORR r1,r1,#(1<<7)
 STR r1,[r0]
-# FFDLL = 96;			// Bausrate: 9600
+# FFDLL = 96;		// Bausrate: 9600
 LDR r1,=FFDLL
 MOV r2,#96
 STR r2,[r1]
@@ -324,7 +175,7 @@ LDR r1,=FFDLH
 MOV r2,#0
 STR r2,[r1]
 # Line control konfigurieren
-# FFLCR = 0;			// 1 stop bit, kein parity bit
+# FFLCR = 0;		// 1 stop bit, kein parity bit
 MOV r1,#0
 # FFLCR |= (1<<0);	// 8bit übertragung
 ORR r1,r1,#(1<<0)
@@ -342,7 +193,7 @@ ORR r2,r2,#(1<<6)
 ORR r2,r2,#(1<<0)
 STR r2,[r1]
 
-LDMFD 	sp!, {r0-r3, pc}^ 		@ restore context, return
+LDMFD 	sp!, {r0-r3, pc}^ 			@ restore context, return
 
 
 
@@ -351,14 +202,16 @@ interrupt_handler:
 SUB lr, lr, #4 						@ adjust link register for return address
 STMFD 	sp!, {r0-r1, r12, lr} 		@ save context
 
-
+# <<<<<<<<<<<<<<<<<<<<<<<<<<<<< Einkomentieren wenn UART Interrupt initialisierung funktioniert
 # kommt der interupt von UART?
-LDR r0,=ICHP
-LDR r1,[r0]
-MOV r1,r1, LSR #16
-AND r1, r1, #63
-CMP r1,#22					@ UART Interrupt ID = |FFUART Id = 22 | BTUART ID = 23 | STUART ID = 24 |
-# BNE no_uart_interrupt <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< einkomentieren wenn Interrupt, nicht pollen
+# LDR r0,=ICHP
+# LDR r1,[r0]
+# MOV r1,r1, LSR #16
+# AND r1, r1, #63
+# CMP r1,#22						@ UART Interrupt ID = |FFUART Id = 22 | BTUART ID = 23 | STUART ID = 24 |
+# BNE no_uart_interrupt
+# <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
 # UART Verarbeitung: je nach erhaltenem Zeichen wird die Variable snake_direction anders gesetzt.
 
 # FFLCR &= ~(1<<7);	// DLAB löschen
@@ -371,7 +224,7 @@ STR r1,[r0]
 LDR r0,=FFLSR
 LDR r1,[r0]
 TST r1,#(1<<0)
-BEQ data_not_ready  @ Weis nicht ob notwendig <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< einkomentieren wenn Interrupt, nicht pollen
+BEQ data_not_ready
 # Daten bereit -> Richtung einlesen
 LDR r0,=FFRBR
 LDR r1,[r0]
@@ -410,12 +263,14 @@ MOV r1,#'d'
 STR r1,[r0]
 b end_switch
 
-# Variable speichern
+# Switch beenden
 end_switch:
 
 data_not_ready:
 
-# B end_interrupt_handler <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< einkomentieren wenn Interrupt, nicht pollen
+# <<<<<<<<<<<<<<<<<<<<<<<<<<<<< Einkomentieren wenn UART Interrupt initialisierung funktioniert
+# B end_interrupt_handler
+# <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 no_uart_interrupt:
 # kommt der Interrupt vom Timer?
@@ -466,13 +321,13 @@ BIC r1,r1,#(1<<7)
 STR r1,[r0]
 
 # warten bis Ausgangsbuffer leer
-@LDR r0,=FFLSR
-@write_byte_while:
+LDR r0,=FFLSR
+write_byte_while:
 
-@LDR r1,[r0]
-@TST r1,#(1<<5)
+LDR r1,[r0]
+TST r1,#(1<<5)
 # wenn Bit gesetzt: busy
-@BEQ write_byte_while
+BEQ write_byte_while
 
 LDR r0,=FFTHR
 MOV r2,#10
