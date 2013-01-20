@@ -98,11 +98,11 @@ Lädt Highscoreliste aus Datei.
 </dl>
 
 <p>
-Definiert in Zeile <a class="el" href="highscore_8c-source.html#l00098">98</a> der Datei <a class="el" href="highscore_8c-source.html">highscore.c</a>.
+Definiert in Zeile <a class="el" href="highscore_8c-source.html#l00103">103</a> der Datei <a class="el" href="highscore_8c-source.html">highscore.c</a>.
 <p>
-Benutzt <a class="el" href="main_8c-source.html#l00083">score</a>.
+Benutzt <a class="el" href="main_8c-source.html#l00084">score</a>.
 <p>
-Wird benutzt von <a class="el" href="highscore_8c-source.html#l00049">highscore()</a>.    </td>
+Wird benutzt von <a class="el" href="highscore_8c-source.html#l00053">highscore()</a>.    </td>
   </tr>
 </table>
 <a class="anchor" name="b7a0b89f8b4ba7bdeb475bfb448540db"></a><!-- doxytag: member="highscore.h::filesave" ref="b7a0b89f8b4ba7bdeb475bfb448540db" args="(const char *Path, player topten[11])" --><p>
@@ -144,16 +144,17 @@ Speichert Highscoreliste in Datei.
 <dl compact><dt><b>Parameter:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
     <tr><td valign="top"></td><td valign="top"><em>Path</em>&nbsp;</td><td>zeigt auf den Pfad des Spiels </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>topten,:</em>&nbsp;</td><td>Strukturarray mit neuer Highscoreliste </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>topten,:</em>&nbsp;</td><td>Strukturarray mit neuer Highscoreliste</td></tr>
   </table>
 </dl>
-
+&lt;Index für for-Schlaufe<p>
+&lt;Buffer für den Pfad des .txt 
 <p>
-Definiert in Zeile <a class="el" href="highscore_8c-source.html#l00155">155</a> der Datei <a class="el" href="highscore_8c-source.html">highscore.c</a>.
+Definiert in Zeile <a class="el" href="highscore_8c-source.html#l00161">161</a> der Datei <a class="el" href="highscore_8c-source.html">highscore.c</a>.
 <p>
-Benutzt <a class="el" href="main_8c-source.html#l00083">score</a>.
+Benutzt <a class="el" href="main_8c-source.html#l00084">score</a>.
 <p>
-Wird benutzt von <a class="el" href="highscore_8c-source.html#l00049">highscore()</a>.    </td>
+Wird benutzt von <a class="el" href="highscore_8c-source.html#l00053">highscore()</a>.    </td>
   </tr>
 </table>
 <a class="anchor" name="ddae7e4a905d3a4cabd60e835c3a3945"></a><!-- doxytag: member="highscore.h::highscore" ref="ddae7e4a905d3a4cabd60e835c3a3945" args="(char *name, int score, const char *ApplicationPath)" --><p>
@@ -208,11 +209,11 @@ Handling der Highscorefunktionen und prüfen ob Highscore geknackt wurde.
 <dl compact><dt><b>Rückgabe:</b></dt><dd>Gibt 1 zurück wenn der Highscore geknackt wurde, sonst 0 </dd></dl>
 
 <p>
-Definiert in Zeile <a class="el" href="highscore_8c-source.html#l00049">49</a> der Datei <a class="el" href="highscore_8c-source.html">highscore.c</a>.
+Definiert in Zeile <a class="el" href="highscore_8c-source.html#l00053">53</a> der Datei <a class="el" href="highscore_8c-source.html">highscore.c</a>.
 <p>
-Benutzt <a class="el" href="highscore_8c-source.html#l00098">fileload()</a>, <a class="el" href="highscore_8c-source.html#l00155">filesave()</a>, <a class="el" href="highscore_8h-source.html#l00022">player::score</a>, <a class="el" href="highscore_8c-source.html#l00210">sort()</a> und <a class="el" href="highscore_8h-source.html#l00033">topten</a>.
+Benutzt <a class="el" href="highscore_8c-source.html#l00103">fileload()</a>, <a class="el" href="highscore_8c-source.html#l00161">filesave()</a>, <a class="el" href="highscore_8h-source.html#l00024">player::score</a>, <a class="el" href="highscore_8c-source.html#l00217">sort()</a> und <a class="el" href="highscore_8h-source.html#l00035">topten</a>.
 <p>
-Wird benutzt von <a class="el" href="zeichnen_8c-source.html#l00070">Highscore_zeichnen()</a>.
+Wird benutzt von <a class="el" href="zeichnen_8c-source.html#l00080">Highscore_zeichnen()</a>.
 <p>
 Hier ist der Graph aller Aufrufe für diese Funktion:<p><center><img src="highscore_8h_ddae7e4a905d3a4cabd60e835c3a3945_cgraph.png" border="0" usemap="#highscore_8h_ddae7e4a905d3a4cabd60e835c3a3945_cgraph_map" alt=""></center>
 <map name="highscore_8h_ddae7e4a905d3a4cabd60e835c3a3945_cgraph_map">
@@ -276,12 +277,12 @@ Strukturarray zum laden, bearbeiten und speichern der Highscoreliste.
 <p>
 
 <p>
-Definiert in Zeile <a class="el" href="highscore_8h-source.html#l00033">33</a> der Datei <a class="el" href="highscore_8h-source.html">highscore.h</a>.
+Definiert in Zeile <a class="el" href="highscore_8h-source.html#l00035">35</a> der Datei <a class="el" href="highscore_8h-source.html">highscore.h</a>.
 <p>
-Wird benutzt von <a class="el" href="highscore_8c-source.html#l00049">highscore()</a> und <a class="el" href="zeichnen_8c-source.html#l00070">Highscore_zeichnen()</a>.    </td>
+Wird benutzt von <a class="el" href="highscore_8c-source.html#l00053">highscore()</a> und <a class="el" href="zeichnen_8c-source.html#l00080">Highscore_zeichnen()</a>.    </td>
   </tr>
 </table>
-<hr size="1"><address style="align: right;"><small>Erzeugt am Fri Jan 18 19:00:47 2013 für Carme-Snake von&nbsp;
+<hr size="1"><address style="align: right;"><small>Erzeugt am Sun Jan 20 14:24:35 2013 für Carme-Snake von&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.4.5 </small></address>
 </body>

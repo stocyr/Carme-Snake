@@ -136,7 +136,7 @@ Länge der Schlange bei Begin des Spiels.
 <p>
 Definiert in Zeile <a class="el" href="main_8h-source.html#l00036">36</a> der Datei <a class="el" href="main_8h-source.html">main.h</a>.
 <p>
-Wird benutzt von <a class="el" href="main_8c-source.html#l00191">init_level()</a>.    </td>
+Wird benutzt von <a class="el" href="main_8c-source.html#l00192">init_level()</a>.    </td>
   </tr>
 </table>
 <a class="anchor" name="e9ce1ae38621389b25a2ca89a712e0c6"></a><!-- doxytag: member="main.h::SNAKE_BUFFER" ref="e9ce1ae38621389b25a2ca89a712e0c6" args="" --><p>
@@ -300,7 +300,7 @@ Schaltet Interrupts auf Hardwarestufe aus.
 <p>
 
 <p>
-Wird benutzt von <a class="el" href="main_8c-source.html#l00191">init_level()</a> und <a class="el" href="main_8c-source.html#l00212">main()</a>.    </td>
+Wird benutzt von <a class="el" href="main_8c-source.html#l00192">init_level()</a> und <a class="el" href="main_8c-source.html#l00215">main()</a>.    </td>
   </tr>
 </table>
 <a class="anchor" name="530819fc5e18e6a7c179ae90d1e9448a"></a><!-- doxytag: member="main.h::enable_interrupts" ref="530819fc5e18e6a7c179ae90d1e9448a" args="()" --><p>
@@ -331,7 +331,7 @@ Schaltet Interrupts auf Hardwarestufe ein.
 <p>
 
 <p>
-Wird benutzt von <a class="el" href="main_8c-source.html#l00191">init_level()</a>, <a class="el" href="main_8c-source.html#l00212">main()</a> und <a class="el" href="main_8c-source.html#l00160">restore_interruptstate()</a>.    </td>
+Wird benutzt von <a class="el" href="main_8c-source.html#l00192">init_level()</a>, <a class="el" href="main_8c-source.html#l00215">main()</a> und <a class="el" href="main_8c-source.html#l00161">restore_interruptstate()</a>.    </td>
   </tr>
 </table>
 <a class="anchor" name="15b5cfb2d22ffa967b65516f9c433ecc"></a><!-- doxytag: member="main.h::get_interrupt_state" ref="15b5cfb2d22ffa967b65516f9c433ecc" args="()" --><p>
@@ -391,7 +391,7 @@ Initialisiert den Timer auf Hardwarestufe.
 <p>
 
 <p>
-Wird benutzt von <a class="el" href="main_8c-source.html#l00212">main()</a>.    </td>
+Wird benutzt von <a class="el" href="main_8c-source.html#l00215">main()</a>.    </td>
   </tr>
 </table>
 <a class="anchor" name="65c566f7a512164c4a80c8966aed957d"></a><!-- doxytag: member="main.h::init_uart" ref="65c566f7a512164c4a80c8966aed957d" args="()" --><p>
@@ -422,7 +422,7 @@ Initialisiert die UART1 Schnittstelle auf Hardwarestufe.
 <p>
 
 <p>
-Wird benutzt von <a class="el" href="main_8c-source.html#l00212">main()</a>.    </td>
+Wird benutzt von <a class="el" href="main_8c-source.html#l00215">main()</a>.    </td>
   </tr>
 </table>
 <a class="anchor" name="25165e286cbf7b2ba88ecb29a1fc9d0b"></a><!-- doxytag: member="main.h::interrupt_handler" ref="25165e286cbf7b2ba88ecb29a1fc9d0b" args="()" --><p>
@@ -482,7 +482,7 @@ Startet den Timer auf Hardwarestufe.
 <p>
 
 <p>
-Wird benutzt von <a class="el" href="main_8c-source.html#l00140">delay()</a>.    </td>
+Wird benutzt von <a class="el" href="main_8c-source.html#l00141">delay()</a>.    </td>
   </tr>
 </table>
 <a class="anchor" name="71fbd14f6ccf4b435a41ae2bae104568"></a><!-- doxytag: member="main.h::write_byte" ref="71fbd14f6ccf4b435a41ae2bae104568" args="(char byte)" --><p>
@@ -540,7 +540,7 @@ Enthält die Position des Futters.
 <p>
 
 <p>
-Definiert in Zeile <a class="el" href="main_8c-source.html#l00079">79</a> der Datei <a class="el" href="main_8c-source.html">main.c</a>.
+Definiert in Zeile <a class="el" href="main_8c-source.html#l00080">80</a> der Datei <a class="el" href="main_8c-source.html">main.c</a>.
 <p>
 Wird benutzt von <a class="el" href="snake__controller_8c-source.html#l00183">check_food_collision()</a>.    </td>
   </tr>
@@ -570,9 +570,9 @@ Globale Variable, welche vom Interrupthandler über UART0 aktualisiert wird.
 Die Variable ist das Interface zur UART1 Schnittstelle. Sie enthält die Richtung, in die die Schlange steuern soll. Wird per PC Tastatur gesteuert und dann per UART zum CARME Kit gesendet.<p>
 Bevor überhaupt eine Taste gedrückt wurde hat die Variable den Wert '?', damit man erkennen kann, wenn dann erstmals ein r, o, l oder u hereinkommt. 
 <p>
-Definiert in Zeile <a class="el" href="main_8c-source.html#l00062">62</a> der Datei <a class="el" href="main_8c-source.html">main.c</a>.
+Definiert in Zeile <a class="el" href="main_8c-source.html#l00063">63</a> der Datei <a class="el" href="main_8c-source.html">main.c</a>.
 <p>
-Wird benutzt von <a class="el" href="main_8c-source.html#l00212">main()</a> und <a class="el" href="snake__controller_8c-source.html#l00058">step_forward()</a>.    </td>
+Wird benutzt von <a class="el" href="main_8c-source.html#l00215">main()</a> und <a class="el" href="snake__controller_8c-source.html#l00058">step_forward()</a>.    </td>
   </tr>
 </table>
 <a class="anchor" name="1b34c77f48cdbfd8120965c5e8183b44"></a><!-- doxytag: member="main.h::startup_size" ref="1b34c77f48cdbfd8120965c5e8183b44" args="" --><p>
@@ -599,9 +599,9 @@ Enthält die Länge der Schlange während dem Aufstarten.
 <p>
 Die Schlange beginnt als einzelnes Glied und wächst dann in die Richtung, in die der Spieler das erste Mal gedrückt hat. Diese wachsende Länge wird mit dieser Variable gespeichert. Schlussendlich ist dann nur noch die variable 'size' des Ringbuffers dafür zuständig. 
 <p>
-Definiert in Zeile <a class="el" href="main_8c-source.html#l00077">77</a> der Datei <a class="el" href="main_8c-source.html">main.c</a>.
+Definiert in Zeile <a class="el" href="main_8c-source.html#l00078">78</a> der Datei <a class="el" href="main_8c-source.html">main.c</a>.
 <p>
-Wird benutzt von <a class="el" href="snake__controller_8c-source.html#l00194">check_initial_state()</a> und <a class="el" href="main_8c-source.html#l00191">init_level()</a>.    </td>
+Wird benutzt von <a class="el" href="snake__controller_8c-source.html#l00194">check_initial_state()</a> und <a class="el" href="main_8c-source.html#l00192">init_level()</a>.    </td>
   </tr>
 </table>
 <a class="anchor" name="5eaa52de26924e9dfcc728d688edc25c"></a><!-- doxytag: member="main.h::timer_irq_flag" ref="5eaa52de26924e9dfcc728d688edc25c" args="" --><p>
@@ -628,12 +628,12 @@ Globale Variable, welche vom Interrupthandler über den Timer gesetzt wird.
 <p>
 Alle 1ms wird das Flag vom Interrupt des Timers gesetzt. Damit werden genaue Zeitverzögerungen möglich. 
 <p>
-Definiert in Zeile <a class="el" href="main_8c-source.html#l00068">68</a> der Datei <a class="el" href="main_8c-source.html">main.c</a>.
+Definiert in Zeile <a class="el" href="main_8c-source.html#l00069">69</a> der Datei <a class="el" href="main_8c-source.html">main.c</a>.
 <p>
-Wird benutzt von <a class="el" href="main_8c-source.html#l00140">delay()</a>.    </td>
+Wird benutzt von <a class="el" href="main_8c-source.html#l00141">delay()</a>.    </td>
   </tr>
 </table>
-<hr size="1"><address style="align: right;"><small>Erzeugt am Fri Jan 18 19:00:47 2013 für Carme-Snake von&nbsp;
+<hr size="1"><address style="align: right;"><small>Erzeugt am Sun Jan 20 14:24:35 2013 für Carme-Snake von&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.4.5 </small></address>
 </body>

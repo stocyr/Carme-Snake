@@ -29,32 +29,34 @@
 <a name="l00007"></a>00007 <span class="comment">/*  Bearbeiter :  Dominik Robellaz                                           */</span>
 <a name="l00008"></a>00008 <span class="comment">/*                                                                           */</span>
 <a name="l00009"></a>00009 <span class="comment">/*  History    :  30.03.2012 erstellt robed1                                 */</span>
-<a name="l00010"></a>00010 <span class="comment">/*                                                                           */</span>
-<a name="l00011"></a>00011 <span class="comment">/*  File Name  :  highscore.h                                                */</span>
+<a name="l00010"></a>00010 <span class="comment">/*                                17.12.2012 ambup1   Kopiert von Tequiz-Spiel, Kommentar        */</span>
+<a name="l00011"></a>00011 <span class="comment">/*                                                                        Doxygen-tauglich gemacht                               */</span>
 <a name="l00012"></a>00012 <span class="comment">/*                                                                           */</span>
-<a name="l00013"></a>00013 <span class="comment">/*****************************************************************************/</span>
-<a name="l00014"></a>00014 
-<a name="l00015"></a>00015 <span class="preprocessor">#ifndef HIGHSCORE_H</span>
-<a name="l00016"></a>00016 <span class="preprocessor"></span><span class="preprocessor">#define HIGHSCORE_H</span>
-<a name="l00017"></a>00017 <span class="preprocessor"></span>
-<a name="l00018"></a>00018 <span class="comment">/* externe (globale) Funktionen */</span>
-<a name="l00020"></a><a class="code" href="structplayer.html">00020</a> <span class="keyword">typedef</span> <span class="keyword">struct </span>{
-<a name="l00021"></a><a class="code" href="structplayer.html#82f84290b3e44bcbb325684670bed517">00021</a>         <span class="keywordtype">char</span> name[100];
-<a name="l00022"></a><a class="code" href="structplayer.html#ca1cd3c3055991bf20499ee86739f7e2">00022</a>         <span class="keywordtype">int</span> <a class="code" href="main_8c.html#ca1cd3c3055991bf20499ee86739f7e2">score</a>;
-<a name="l00023"></a>00023 } <a class="code" href="structplayer.html">player</a>;
-<a name="l00024"></a>00024 
-<a name="l00025"></a>00025 <span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="highscore_8c.html#ddae7e4a905d3a4cabd60e835c3a3945">highscore</a>(<span class="keywordtype">char</span> *name, <span class="keywordtype">int</span> <a class="code" href="main_8c.html#ca1cd3c3055991bf20499ee86739f7e2">score</a>, <span class="keyword">const</span> <span class="keywordtype">char</span> *ApplicationPath);
-<a name="l00026"></a>00026 <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="highscore_8c.html#df12deadfdb99ce4f5beea6fec84a057">fileload</a> (<span class="keyword">const</span> <span class="keywordtype">char</span> *Path, <a class="code" href="structplayer.html">player</a> <a class="code" href="highscore_8h.html#e92200817813dbf730900025c42e84b1">topten</a>[11]);
-<a name="l00027"></a>00027 
-<a name="l00028"></a>00028 <span class="comment">/* interne Funktionen */</span>
-<a name="l00029"></a>00029 <span class="keywordtype">void</span> <a class="code" href="highscore_8c.html#b7a0b89f8b4ba7bdeb475bfb448540db">filesave</a> (<span class="keyword">const</span> <span class="keywordtype">char</span> *Path, <a class="code" href="structplayer.html">player</a> <a class="code" href="highscore_8h.html#e92200817813dbf730900025c42e84b1">topten</a>[11]);
-<a name="l00030"></a>00030 <span class="keywordtype">void</span> <a class="code" href="highscore_8c.html#df517266c10e251214cf653202652e98">sort</a>(<a class="code" href="structplayer.html">player</a> <a class="code" href="highscore_8h.html#e92200817813dbf730900025c42e84b1">topten</a>[10]);
-<a name="l00031"></a>00031 
-<a name="l00032"></a>00032 <span class="comment">/* Array mit Struktur player und 11 Eintraege definieren */</span>
-<a name="l00033"></a><a class="code" href="highscore_8h.html#e92200817813dbf730900025c42e84b1">00033</a> <a class="code" href="structplayer.html">player</a> <a class="code" href="highscore_8h.html#e92200817813dbf730900025c42e84b1">topten</a>[11];      
-<a name="l00034"></a>00034 
-<a name="l00035"></a>00035 <span class="preprocessor">#endif</span>
-</pre></div><hr size="1"><address style="align: right;"><small>Erzeugt am Fri Jan 18 19:00:47 2013 für Carme-Snake von&nbsp;
+<a name="l00013"></a>00013 <span class="comment">/*  File Name  :  highscore.h                                                */</span>
+<a name="l00014"></a>00014 <span class="comment">/*                                                                           */</span>
+<a name="l00015"></a>00015 <span class="comment">/*****************************************************************************/</span>
+<a name="l00016"></a>00016 
+<a name="l00017"></a>00017 <span class="preprocessor">#ifndef HIGHSCORE_H</span>
+<a name="l00018"></a>00018 <span class="preprocessor"></span><span class="preprocessor">#define HIGHSCORE_H</span>
+<a name="l00019"></a>00019 <span class="preprocessor"></span>
+<a name="l00020"></a>00020 <span class="comment">/* externe (globale) Funktionen */</span>
+<a name="l00022"></a><a class="code" href="structplayer.html">00022</a> <span class="keyword">typedef</span> <span class="keyword">struct </span>{
+<a name="l00023"></a><a class="code" href="structplayer.html#82f84290b3e44bcbb325684670bed517">00023</a>         <span class="keywordtype">char</span> name[100];
+<a name="l00024"></a><a class="code" href="structplayer.html#ca1cd3c3055991bf20499ee86739f7e2">00024</a>         <span class="keywordtype">int</span> <a class="code" href="main_8c.html#ca1cd3c3055991bf20499ee86739f7e2">score</a>;
+<a name="l00025"></a>00025 } <a class="code" href="structplayer.html">player</a>;
+<a name="l00026"></a>00026 
+<a name="l00027"></a>00027 <span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="highscore_8c.html#ddae7e4a905d3a4cabd60e835c3a3945">highscore</a>(<span class="keywordtype">char</span> *name, <span class="keywordtype">int</span> <a class="code" href="main_8c.html#ca1cd3c3055991bf20499ee86739f7e2">score</a>, <span class="keyword">const</span> <span class="keywordtype">char</span> *ApplicationPath);
+<a name="l00028"></a>00028 <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="highscore_8c.html#df12deadfdb99ce4f5beea6fec84a057">fileload</a> (<span class="keyword">const</span> <span class="keywordtype">char</span> *Path, <a class="code" href="structplayer.html">player</a> <a class="code" href="highscore_8h.html#e92200817813dbf730900025c42e84b1">topten</a>[11]);
+<a name="l00029"></a>00029 
+<a name="l00030"></a>00030 <span class="comment">/* interne Funktionen */</span>
+<a name="l00031"></a>00031 <span class="keywordtype">void</span> <a class="code" href="highscore_8c.html#b7a0b89f8b4ba7bdeb475bfb448540db">filesave</a> (<span class="keyword">const</span> <span class="keywordtype">char</span> *Path, <a class="code" href="structplayer.html">player</a> <a class="code" href="highscore_8h.html#e92200817813dbf730900025c42e84b1">topten</a>[11]);
+<a name="l00032"></a>00032 <span class="keywordtype">void</span> <a class="code" href="highscore_8c.html#df517266c10e251214cf653202652e98">sort</a>(<a class="code" href="structplayer.html">player</a> <a class="code" href="highscore_8h.html#e92200817813dbf730900025c42e84b1">topten</a>[10]);
+<a name="l00033"></a>00033 
+<a name="l00034"></a>00034 <span class="comment">/* Array mit Struktur player und 11 Eintraege definieren */</span>
+<a name="l00035"></a><a class="code" href="highscore_8h.html#e92200817813dbf730900025c42e84b1">00035</a> <a class="code" href="structplayer.html">player</a> <a class="code" href="highscore_8h.html#e92200817813dbf730900025c42e84b1">topten</a>[11];      
+<a name="l00036"></a>00036 
+<a name="l00037"></a>00037 <span class="preprocessor">#endif</span>
+</pre></div><hr size="1"><address style="align: right;"><small>Erzeugt am Sun Jan 20 14:24:35 2013 für Carme-Snake von&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.4.5 </small></address>
 </body>
